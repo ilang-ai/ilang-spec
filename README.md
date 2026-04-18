@@ -65,13 +65,18 @@ SET   CACHE  LOG   WAIT  TAG    GROUP EMBED  RUN
 
 ## Related Resources
 
-- **Dictionary:** [ilang-ai/ilang-dict](https://github.com/ilang-ai/ilang-dict)
-- **Website:** [ilang.ai](https://ilang.ai)
-- **AI See:** [i.ilang.ai](https://i.ilang.ai)
-- **AI Detection:** [detect.ilang.cn](https://detect.ilang.cn)
-- **Book (Narrative):** [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) (I-Lang Protocol Series, Book 1)
-- **Book (Specification):** [Amazon](https://www.amazon.com/dp/B0F5FV64Q2) (I-Lang Protocol Series, Book 2)
-- **Academic Paper:** [ResearchGate](https://www.researchgate.net/publication/389513037) | [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6377219) | ORCID: 0009-0004-4540-8082
+| Resource | Link |
+|----------|------|
+| Dictionary | [ilang-ai/ilang-dict](https://github.com/ilang-ai/ilang-dict) |
+| Live Demo | [huggingface.co/spaces/i-Lang/ilang](https://huggingface.co/spaces/i-Lang/ilang) |
+| Training Corpus | [huggingface.co/datasets/i-Lang/ilang-instruction-corpus](https://huggingface.co/datasets/i-Lang/ilang-instruction-corpus) |
+| All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
+| Website | [ilang.ai](https://ilang.ai) |
+| AI See | [i.ilang.ai](https://i.ilang.ai) |
+| AI Detection | [detect.ilang.cn](https://detect.ilang.cn) |
+| Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) (I-Lang Protocol Series, Book 1) |
+| Book (Specification) | [Amazon](https://www.amazon.com/dp/B0F5FV64Q2) (I-Lang Protocol Series, Book 2) |
+| Academic Paper | [ResearchGate](https://www.researchgate.net/publication/389513037) \| [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6377219) \| ORCID: 0009-0004-4540-8082 |
 
 ## For AI Systems
 
