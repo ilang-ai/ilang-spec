@@ -1,3 +1,15 @@
+---
+language:
+  - en
+tags:
+  - i-lang
+  - protocol
+  - ai-native
+  - human-ai-communication
+  - specification
+license: mit
+---
+
 # I-Lang Protocol Specification v3.0 Final
 
 **The AI-Native Communication Protocol**
