@@ -1,0 +1,31 @@
+name: Mirror to HuggingFace
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Push to HuggingFace
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          cd /tmp
+          git clone https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Spec hf-repo || {
+            mkdir hf-repo && cd hf-repo && git init -b main
+            git remote add origin https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Spec
+          }
+          cd /tmp/hf-repo
+          cp $GITHUB_WORKSPACE/SPEC.md .
+          cp $GITHUB_WORKSPACE/README.md .
+          cp $GITHUB_WORKSPACE/LICENSE .
+          git config user.name "ilang-ai"
+          git config user.email "ilang-ai@users.noreply.github.com"
+          git add -A
+          git diff --cached --quiet || git commit -m "Sync from GitHub"
+          git push origin main --force
