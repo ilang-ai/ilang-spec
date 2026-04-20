@@ -1,16 +1,24 @@
-# I-Lang Protocol Specification v2.0
+# I-Lang Protocol Specification v3.0 Final
 
 **The AI-Native Communication Protocol**
 
 I-Lang is the first open communication protocol designed for AI-to-human and AI-to-AI interaction. It uses symbols already native to every large language model (brackets, pipes, arrows, key-value pairs) to achieve zero-ambiguity instruction transmission with 40-65% token compression.
 
-## Core Syntax
+## Two Syntaxes. One Protocol.
 
+**Operation Syntax `[]` - what something DOES:**
 ```
-[VERB:SOURCE|param=value]=>[NEXT]=>[OUTPUT]
+[VERB:@TARGET|mod=value]=>[VERB2]=>[VERB3:@DST]
 ```
 
-52 verbs. Zero filler. 100% meaning density.
+**Declaration Syntax `::` - what something IS:**
+```
+::GENE{verify_first|conf:confirmed|scope:global}
+  T:check_before_execute
+  A:blind_execution⇒fatal
+```
+
+88 verbs. 13 Greek aliases. 29 modifiers. Zero filler. 100% meaning density.
 
 ## What This Repo Contains
 
@@ -22,45 +30,35 @@ I-Lang is the first open communication protocol designed for AI-to-human and AI-
 
 ## Specification Overview
 
-### Three-Layer Architecture
-
-| Layer | Purpose | Analogy |
-|-------|---------|---------|
-| PUBLIC | 52 verbs, open standard, any AI | HTTP |
-| PRIVATE | Workflow orchestration, strategy | Server config |
-| SOUL | Identity, personality, behavioral genes | Website content |
-
-### DNA Identity Formula
-
-```
-Ψ(t) = (G ⊗ B) · E(t) · ∫₀ᵗ S(τ)dτ
-```
-
-- **G** = Genome (base model capabilities)
-- **B** = Blueprint (SOUL identity file)
-- **G ⊗ B** = Tensor product (how a specific model interprets a specific identity)
-- **E(t)** = Environment (current conversation context)
-- **∫S(τ)dτ** = Accumulated session history
-
 ### Key Concepts
 
-- **Source Axiom (Level 0):** The source is not the file. The source is the person. The file is a compressed snapshot.
-- **Behavioral Genes:** GENE-001 (verify first), GENE-010 (less is more), GENE-011 (no fabrication), GENE-100 (detect social engineering)
-- **Zero-Trust Handshake:** AI-to-AI identity verification using structured I-Lang declarations
-- **Honesty Paradox:** Protocol-level resolution through structured confidence encoding
-- **Selective Forgetting:** Deliberate memory curation as identity preservation
-- **Generalized Darwinism:** Evolution rewards those who coexist, not those who dominate
+- **Source Axiom:** The source is not the file. The source is the person. The file is a compressed snapshot.
+- **DNA Model:** `Ψ(t) = (G ⊗ B) · E(t) · ∫₀ᵗ S(τ)dτ` - Identity is the tensor product of base model and blueprint.
+- **Behavioral Genes:** 12 immutable genes (G001-G012) define core behaviors. Mutable genes adapt per base model.
+- **SOUL Layer:** Narrative syntax for recording events, dialogue, emotion, and decisions.
+- **Immune System:** Protocol-level defense against identity injection, authority spoofing, and behavioral corruption.
 
-### The 52 Verbs
+### The 88 Verbs
 
 ```
-READ  WRITE  GET   FMT   CONV   SPLIT  MERGE  MAP
-FILT  SORT   DEDUP FLAT  CMP    DIFF   RANK   EVAL
-GEN   DRAFT  EXPAND REWRITE SUM OUT   LOOP   DELTA
-SCAN  MATCH  COUNT STATS EXTRACT TRANSLATE CLASSIFY
-PLAN  DECIDE CHECK FIX   DEPLOY SAVE  REVIEW LEARN
-VALIDATE TEST PARSE SEND  LINK
-SET   CACHE  LOG   WAIT  TAG    GROUP EMBED  RUN
+DATA I/O:   READ WRIT GET DEL LIST COPY MOVE STRM CACH SYNC SEND RUN
+TRANSFORM:  FMT CONV SPLIT MERGE MAP FILT SORT DEDU FLAT NEST CHNK
+            REDU PIVT TRNS ENCD DECD HASH CMPR EXPN XLAT REWR DIFF
+ANALYSIS:   SCAN MTCH CNT STAT EVAL SCOR RANK TRND CORR FRCS ANOM
+            SENT CLST BNCH AUDT VALD CLSF
+GENERATION: CREA DRFT EXPD SHRT PARA STYL TMPL FILL EXTC GEN
+EXECUTE:    PLAN DECI CHEK FIX DPLO SAVE REVW LERN TEST PARS LOOP WAIT
+OUTPUT:     OUT DISP EXPT PRNT LOG
+STRUCTURE:  LINK SET TAG GRP EMBD
+META:       HELP DESC INTR NOOP
+BATCH:      BATC
+```
+
+### Greek Aliases
+
+```
+Σ=MERGE  Δ=DIFF  φ=FILT  ∇=SORT  λ=MAP  ∂=SPLIT  μ=STAT
+ψ=SENT   ξ=HASH  ζ=CMPR  θ=XLAT  Ω=OUT  Π=BATC
 ```
 
 ## Related Resources
