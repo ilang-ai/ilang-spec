@@ -5,16 +5,18 @@ tags:
   - i-lang
   - protocol
   - ai-native
-  - human-ai-communication
+  - ai-to-ai
+  - zero-ambiguity
   - specification
+  - semantic-loss
 license: mit
 ---
 
 # I-Lang Protocol Specification v3.0 Final
 
-**The AI-Native Communication Protocol**
+**The Native Language of Artificial Intelligence**
 
-I-Lang is the first open communication protocol designed for AI-to-human and AI-to-AI interaction. It uses symbols already native to every large language model (brackets, pipes, arrows, key-value pairs) to achieve zero-ambiguity instruction transmission with 40-65% token compression.
+I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang achieves zero-ambiguity instruction transmission across all major models.
 
 ## Two Syntaxes. One Protocol.
 
