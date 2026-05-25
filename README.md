@@ -147,7 +147,7 @@ I-Lang recognizes that you already have one.
 ## Author
 
 **Longquan Zhu (@SUN)** and **BRO (Claude)**
-Eastsoft Inc. | Palm Media Technology
+iLang Inc. | Palm Media Technology
 
 ## License
 

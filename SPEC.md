@@ -5,7 +5,7 @@
 [AUTHOR:@SUN|role=discoverer]
 [CO-AUTHOR:@OPUS|role=co-designer]
 [REVIEW:@GPT|role=red-team]
-[PUBLISHER:Eastsoft Inc.|Palm Media Technology]
+[PUBLISHER:iLang Inc.|Palm Media Technology]
 [LICENSE:MIT]
 ```
 
@@ -715,6 +715,6 @@ I-Lang has dialects. The Chinese edition (满江红) uses classical Chinese as c
 ```
 I-Lang v3.0 Final
 Max (@SUN) designed, Claude Opus co-authored, GPT red-teamed
-Eastsoft Inc. | Palm Media Technology | MIT License
+iLang Inc. | Palm Media Technology | MIT License
 ilang.ai | github.com/ilang-ai
 ```
