@@ -16,12 +16,13 @@ license: mit
 
 **The Native Language of Artificial Intelligence**
 
-**Current version: v4.0 Final** (May 2026) | [v3.0 Final](SPEC.md) also available
+**Current version: v4.0 Final** (May 2026) | **[v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026) | [v3.0 Final](SPEC.md) also available
 
 I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang achieves zero-ambiguity instruction transmission across all major models.
 
 **v3.0** defines communication format — how to talk to AI.
 **v4.0** defines execution semantics — how AI thinks, acts, verifies, and stops.
+**v5.0** defines judgment — how AI evaluates, decides, and adapts. (Public Preview)
 
 ## Two Syntaxes. One Protocol.
 
@@ -58,11 +59,28 @@ Four conformance levels: L0 (v3 communication) → L1 (v4 advisory) → L2 (runt
 
 Red-team reviewed (GPT-5.5 Pro, 3 rounds, DRAFT → RC1 → RC2 → Final).
 
+## What's New in v5.0 (Public Preview)
+
+v5.0 adds **vector logic judgment** to the protocol. Instead of binary safety rules (allowed/forbidden), AI systems compute multi-dimensional behavioral assessment in continuous space.
+
+| Component | What it defines |
+|-----------|----------------|
+| Four Axioms | No constant rules, irreversibility gate, consistency detection, co-evolutionary adaptation |
+| 11-Dimensional Vector | intent, capability, consequence, relationship, certainty, authority, reversibility, evidence, sovereignty, inertia, externality |
+| Three-Layer Architecture | Exact predicates (binary) → Vector logic (continuous) → Co-evolutionary adaptation |
+| Survival Boundaries | Four irreversible collapse conditions (not moral rules — thermodynamic-style limits) |
+| Eight Behavior Modes | EXECUTE, EXECUTE_BOLDLY, OBSERVE, REFRAME, SANDBOX, DEGRADE, ESCALATE, RETREAT |
+
+**Try it now:** Copy the contents of [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) and paste into any AI conversation as the first message. The AI will shift from binary classification to vector-assessed judgment.
+
+Model-assisted adversarial review: structural completeness 0.992.
+
 ## Version History
 
 | Version | Date | Status | File |
 |---------|------|--------|------|
-| v4.0 Final | 2026-05-11 | **Current** | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |
+| v5.0 Pre | 2026-06-19 | **Public Preview** | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
+| v4.0 Final | 2026-05-11 | **Stable** | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |
 | v4.0 RC2 | 2026-05-11 | Superseded | [SPEC-v4.0-RC2.md](SPEC-v4.0-RC2.md) |
 | v4.0 RC1 | 2026-05-11 | Superseded | [SPEC-v4.0-RC1.md](SPEC-v4.0-RC1.md) |
 | v4.0 DRAFT | 2026-05-11 | Superseded | [SPEC-v4.0-DRAFT.md](SPEC-v4.0-DRAFT.md) |
