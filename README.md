@@ -79,7 +79,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | Version | Date | Status | File |
 |---------|------|--------|------|
-| v5.0 Pre | 2026-06-19 | **Public Preview** | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
+| v5.0 Pre 1.1.0 | 2026-06-20 | **Public Preview (Frozen)** | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
 | v4.0 Final | 2026-05-11 | **Stable** | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |
 | v4.0 RC2 | 2026-05-11 | Superseded | [SPEC-v4.0-RC2.md](SPEC-v4.0-RC2.md) |
 | v4.0 RC1 | 2026-05-11 | Superseded | [SPEC-v4.0-RC1.md](SPEC-v4.0-RC1.md) |
