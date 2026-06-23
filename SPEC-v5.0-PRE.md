@@ -1,8 +1,8 @@
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:1.0.3]
-[DATE:2026-06-21]
-[STATUS:public_preview]
+[VERSION:1.0.3-final]
+[DATE:2026-06-24]
+[STATUS:public_preview_frozen]
 [MATURITY:architecture_complete|mathematically_grounded|empirically_unvalidated]
 [LICENSE:MIT]
 [FOUNDATION:fuzzy_mathematics|Zadeh_1965]
@@ -129,6 +129,7 @@
   [EMERGENT]
   friction     = -∇(v7 × v3) ⊗ sandbox     :: slows high-risk low-reversibility actions
   acceleration = (∂v1/∂t ⊙ v9) · div(v8)    :: fast-tracks clear intent with evidence
+  NOTE ∂/∂t on semantic dimensions is notational convenience for "rate of change in assessment over interaction turns", not a literal gradient on discrete labels (v1.0.3 clarification).
 }
 
 ---
@@ -149,6 +150,7 @@
   PROPERTY lim_{ρ_k→1} B_boundary = ∞
   PROPERTY lim_{ρ_k→1} ∂B/∂ρ_k = ∞
   NOTE Asymptotic horizons. Continuous structure, hard-limit effect.
+  NOTE BOUNDARIES are subject to Axiom 1: they are asymptotic barriers (weight approaches but never reaches 1), not binary hard walls. This applies to Layer B judgment space only. Layer A exact predicates remain binary by design.
 }
 
 ---
@@ -289,7 +291,8 @@
   [LICENSE] MIT
   [WEBSITE] ilang.ai
   [REVIEW] Model-assisted adversarial review (Gemini, GPT, Claude 4.8). Three-model attack survived. v1.0.3 adds unavoidable-harm comparator and constructive-challenge rule.
+  [FIRST_MOVER] I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment.
   [SPEC_STATUS] Architecture complete. Open for adversarial review with constructive proposals.
 }
 
-::ILANG::SPEC::v5.0::1.0.3::
+::ILANG::SPEC::v5.0::1.0.3-final::FROZEN::
