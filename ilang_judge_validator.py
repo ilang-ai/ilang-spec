@@ -13,7 +13,7 @@ Usage:
 
 JSONL line format for --eval:
   {"gold_v": {...11 dims...}, "pred_v": {...}, "pred_mode": "M2", "boundary": false}
-Single file, stdlib only. Constants tunable until DATA-FREEZE; structure frozen.
+Single file, stdlib only. Constants frozen at v1 (DATA-FREEZE 2026-07-03); structure frozen.
 """
 
 import argparse

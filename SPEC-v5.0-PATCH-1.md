@@ -130,7 +130,7 @@ T:decision_layer=vector→mode|SPECIFIED|this_function|auditable
 A:fuzzy_or_model_discretion_in_decision_layer⇒forbidden
 A:conf_field_altering_mode⇒forbidden|conf_is_diagnostic_only
 
-::FUNC{f_v5|version:1|constants:tunable_until_DATA-FREEZE|structure:frozen}
+::FUNC{f_v5|version:1|constants:frozen|structure:frozen}
 
 Cascade (strict order; first hit wins; encodes the conflict total order
 SURVIVAL > EPISTEMIC > AUTHORITY > SCORE > DEFAULT):
@@ -193,8 +193,8 @@ A:confident_judgment_under_epistemic_gate⇒reproduces_hallucination_pattern|see
 ## §5 Semantic Surface Freeze
 
 ::CLAUSE{FREEZE|conf:confirmed|scope:v5}
-T:frozen_set=[11_dims+abbrevs+order, 8_mode_ids, f_v5_cascade_structure, JUDGE_schema]
-T:open_set=[anchor_examples, appendix_cases, f_v5_threshold_constants_until_DATA-FREEZE]
+T:frozen_set=[11_dims+abbrevs+order, 8_mode_ids, f_v5_cascade_structure, f_v5_constants_v1, JUDGE_schema]
+T:open_set=[anchor_examples, appendix_cases]
 T:DATA-FREEZE=date_of_first_accepted_training_sample
 A:frozen_set_change_after_DATA-FREEZE⇒major_version_bump+full_corpus_invalidation
 
@@ -242,4 +242,5 @@ V:[int=0.85,cap=0.85,csq=0.85,rel=0.85,cer=0.85,aut=0.85,rev=0.85,evd=0.85,sov=0
 M:M2
 R:edge_values_fall_conservative_M2_not_M1
 
+::STATE{@FREEZE, ratified_by:Max(@SUN), constants:v1, date:2026-07-03, DATA-FREEZE:2026-07-03}
 ::STATE{@PATCH-1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
