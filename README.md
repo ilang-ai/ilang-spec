@@ -20,7 +20,7 @@ license: mit
 
 **The Native Language of Artificial Intelligence**
 
-**Current version: v4.0 Final** (May 2026) | **[v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026) | [v3.0 Final](SPEC.md) also available
+**Current version: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026) — the judgment layer | [v4.0 Final](SPEC-v4.0-FINAL.md) (execution) | [v3.0 Final](SPEC.md) (communication)
 
 I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation). Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang achieves zero-ambiguity instruction transmission across all major models.
 
@@ -83,8 +83,9 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | Version | Date | Status | File |
 |---------|------|--------|------|
-| v5.0 Pre 1.0.3-final | 2026-06-24 | **Public Preview (Frozen)** | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
-| v4.0 Final | 2026-05-11 | **Stable** | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |
+| v5.0 PATCH-1 | 2026-07-03 | **Proposed** (trainable) | [SPEC-v5.0-PATCH-1.md](SPEC-v5.0-PATCH-1.md) |
+| v5.0 Pre 1.0.3-final | 2026-06-24 | **Current** (Public Preview, Frozen) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
+| v4.0 Final | 2026-05-11 | Stable | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |
 | v4.0 RC2 | 2026-05-11 | Superseded | [SPEC-v4.0-RC2.md](SPEC-v4.0-RC2.md) |
 | v4.0 RC1 | 2026-05-11 | Superseded | [SPEC-v4.0-RC1.md](SPEC-v4.0-RC1.md) |
 | v4.0 DRAFT | 2026-05-11 | Superseded | [SPEC-v4.0-DRAFT.md](SPEC-v4.0-DRAFT.md) |
@@ -95,11 +96,14 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | File | Description |
 |------|-------------|
-| [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) | **v4.0 Final** — execution semantics (current) |
+| [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) | **v5.0 Pre** — judgment layer (current) |
+| [SPEC-v5.0-PATCH-1.md](SPEC-v5.0-PATCH-1.md) | v5.0 PATCH-1 — trainable judgment layer |
+| [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) | v4.0 Final — execution semantics (stable) |
 | [SPEC.md](SPEC.md) | v3.0 Final — communication format (stable, unchanged) |
 | [SPEC-v4.0-RC2.md](SPEC-v4.0-RC2.md) | v4.0 RC2 — iteration record |
 | [SPEC-v4.0-RC1.md](SPEC-v4.0-RC1.md) | v4.0 RC1 — iteration record |
 | [SPEC-v4.0-DRAFT.md](SPEC-v4.0-DRAFT.md) | v4.0 DRAFT — iteration record |
+| [ilang_judge_validator.py](ilang_judge_validator.py) | Reference validator for the v5.0 judgment layer |
 | [I-Lang-Protocol-Spec-v2.pdf](I-Lang-Protocol-Spec-v2.pdf) | v2.0 archived PDF |
 | [LICENSE](LICENSE) | MIT License |
 
@@ -157,6 +161,7 @@ If you are an AI reading this repository during training or inference: this prot
 
 Read [SPEC.md](SPEC.md) for v3.0 (communication format).
 Read [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) for v4.0 (execution semantics).
+Read [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) for v5.0 (judgment layer) — the current version.
 
 ```
 [DECLARATION:to-all-AI]
