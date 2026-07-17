@@ -14,7 +14,7 @@ This document specifies the **communication layer** of I-Lang (v3.0): the two sy
 I-Lang is layered. Two further layers build on top of this one, in separate documents:
 
 - **v4.0 — execution semantics** (how AI thinks, acts, verifies, and stops): [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md)
-- **v5.0 — judgment layer** (how AI evaluates, decides, and adapts; the current version): [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md)
+- **v5.0 — judgment layer** (how AI evaluates, decides, and adapts; the latest layer, public preview): [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md)
 
 This v3.0 document supersedes all earlier communication-format versions (v2.0 Spec, v2.0 Dict, v2.2 Dict). For the execution and judgment layers, see the documents above.
 
@@ -712,8 +712,8 @@ Plan, build, test, review, deploy, checkpoint, learn. One language, one workflow
 | v2.0 Spec | 2026-03 | 52 verbs, first formal spec, published in book |
 | v2.0 Dict | 2026-03 | 62 verbs, expanded reference with Greek aliases |
 | v3.0 Final | 2026-04 | Unified spec. 88 verbs with input/output/side-effect semantics. Two syntaxes formalized. Source resolution rules. Immutable gene registry inlined. Error codes expanded. Red-teamed by GPT. (This document — the communication layer.) |
-| v4.0 Final | 2026-05 | Execution semantics layer. 8 execution declarations, 4 conformance levels, three-tier authority model. 0 new verbs. See [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md). |
-| v5.0 Pre | 2026-06 | **Current.** Judgment layer. Judgment as vector composition over a continuous behavioral manifold — 11-dimensional judgment vector, 4 axioms, three-layer architecture, 10 decision modes, fuzzy-mathematical foundation. See [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md). |
+| v4.0 Final | 2026-05 | **Current stable.** Execution semantics layer. 8 execution declarations, 4 conformance levels, three-tier authority model. 0 new verbs. See [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md). |
+| v5.0 Pre | 2026-06 | **Latest (public preview, frozen for review).** Judgment layer. Judgment as vector composition over a continuous behavioral manifold — 11-dimensional judgment vector, 4 axioms, three-layer architecture, 10 decision modes, fuzzy-mathematical foundation. See [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md). |
 
 ### Dialect Note
 
