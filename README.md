@@ -86,6 +86,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | Version | Date | Status | File |
 |---------|------|--------|------|
+| v5.0 PATCH-2 | 2026-08-05 | **Proposed** (grammar + registry) | [SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) |
 | v5.0 PATCH-1 | 2026-07-03 | **Proposed** (trainable) | [SPEC-v5.0-PATCH-1.md](SPEC-v5.0-PATCH-1.md) |
 | v5.0 Pre 1.0.3-final | 2026-06-24 | **Latest** (Public Preview, Frozen) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
 | v4.0 Final | 2026-05-11 | **Current stable** | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |
@@ -101,6 +102,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 |------|-------------|
 | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) | **v5.0 Pre** — judgment layer (latest, public preview) |
 | [SPEC-v5.0-PATCH-1.md](SPEC-v5.0-PATCH-1.md) | v5.0 PATCH-1 — trainable judgment layer |
+| [SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) | v5.0 PATCH-2 — declaration grammar and entity registry |
 | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) | v4.0 Final — execution semantics (current stable) |
 | [SPEC.md](SPEC.md) | v3.0 Final — communication format (stable, unchanged) |
 | [SPEC-v4.0-RC2.md](SPEC-v4.0-RC2.md) | v4.0 RC2 — iteration record |

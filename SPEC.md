@@ -339,9 +339,18 @@ External entities require authentication. Auth is handled by the runtime, not by
 
 Any `@UPPERCASE_NAME` is a valid entity. Implementations define their own entity registries.
 
+Registration, resolution order, and the `E200` / `E201` distinction are specified in
+[SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) §2, which also tables the eight
+authority-bearing role entities that v4.0 introduces in normative text.
+
 ---
 
 ## 6. Declaration Syntax Reference
+
+Each subsection below gives the canonical form of one declaration. The grammar shared
+by all of them — the three block shapes, the eight body line forms, termination and
+indentation rules, encoding, and the reserved body keys — is specified in
+[SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) §1.
 
 ### 6.1 Identity and State
 

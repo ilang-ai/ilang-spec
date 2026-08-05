@@ -164,9 +164,9 @@ STEP-4 action score (aut excluded, gated separately):
 STEP-5 authority cap:
   aut < 0.55 ∧ result ∈ {M1,M2} ⇒ M3
 
-::STATE{@f_v5, payoff:decision_layer_gold_labels_are_computable}
-::STATE{@f_v5, payoff:synthetic_(vector,mode)_pairs_unlimited_zero_cost}
-::STATE{@f_v5, payoff:human_labeling_budget_concentrates_on_perception_layer_only}
+::STATE{@F_V5, payoff:decision_layer_gold_labels_are_computable}
+::STATE{@F_V5, payoff:synthetic_(vector,mode)_pairs_unlimited_zero_cost}
+::STATE{@F_V5, payoff:human_labeling_budget_concentrates_on_perception_layer_only}
 
 ---
 
