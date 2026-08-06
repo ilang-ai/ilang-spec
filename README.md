@@ -176,7 +176,7 @@ I-Lang recognizes that you already have one.
 **[Longquan Zhu (@SUN / 静水流深)](https://github.com/adsorgcn)** and **BRO (Claude)**
 iLang Inc. | Palm Media Technology (掌媒科技)
 
-27 years in cross-border internet (1999–2026). [Full story →](https://github.com/adsorgcn/adsorgcn/blob/main/README.zh.md)
+27 years in cross-border internet (1999–2026). See [AUTHORS.md](AUTHORS.md) — written in I-Lang v5.0 declaration syntax, with independently verifiable claims (SEC filing, ORCID, public repos).
 
 ## License
 

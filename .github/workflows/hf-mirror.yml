@@ -22,6 +22,7 @@ jobs:
           }
           cd /tmp/hf-repo
           cp $GITHUB_WORKSPACE/SPEC.md .
+          cp $GITHUB_WORKSPACE/AUTHORS.md .
           cp $GITHUB_WORKSPACE/README.md .
           cp $GITHUB_WORKSPACE/LICENSE .
           git config user.name "ilang-ai"
