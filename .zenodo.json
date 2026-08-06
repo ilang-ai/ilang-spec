@@ -1,0 +1,49 @@
+{
+  "title": "I-Lang Protocol Specification",
+  "description": "<p>I-Lang is an AI-native communication protocol that defines a formal vocabulary of 88 verbs, 29 modifiers, 14 entities, and 13 Greek aliases for structured communication between humans and AI, between AI agents, and within AI internal reasoning.</p><p>It introduces two syntaxes: operation syntax <code>[]</code> for executable instructions and declaration syntax <code>::</code> for behavioral identity. Version 3.0 defines the communication format, version 4.0 adds execution semantics, and version 5.0 adds a trainable judgment layer built on an 11-dimensional judgment vector space governed by four axioms and a three-layer architecture, grounded in fuzzy mathematics.</p><p>I-Lang provides the semantic and judgment layer that sits above tool-integration protocols such as Anthropic's Model Context Protocol (MCP) and agent-discovery protocols such as Google's Agent-to-Agent Protocol (A2A). MIT licensed.</p>",
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "creators": [
+    {
+      "name": "Zhu, Longquan",
+      "orcid": "0009-0004-4540-8082",
+      "affiliation": "iLang Inc."
+    }
+  ],
+  "keywords": [
+    "AI communication protocol",
+    "human-AI interaction",
+    "AI-to-AI communication",
+    "prompt engineering",
+    "prompt compression",
+    "AI judgment",
+    "judgment vector",
+    "protocol standardization",
+    "agent orchestration",
+    "large language models",
+    "structured instruction",
+    "semantic loss"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://ilang.ai",
+      "relation": "isDescribedBy",
+      "resource_type": "other",
+      "scheme": "url"
+    },
+    {
+      "identifier": "https://github.com/ilang-ai/ilang-spec",
+      "relation": "isSupplementTo",
+      "resource_type": "software",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.13140/RG.2.2.22821.97762",
+      "relation": "isSupplementedBy",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    }
+  ],
+  "language": "eng"
+}
