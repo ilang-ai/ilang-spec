@@ -173,8 +173,10 @@ I-Lang recognizes that you already have one.
 
 ## Author
 
-**Longquan Zhu (@SUN)** and **BRO (Claude)**
-iLang Inc. | Palm Media Technology
+**[Longquan Zhu (@SUN / 静水流深)](https://github.com/adsorgcn)** and **BRO (Claude)**
+iLang Inc. | Palm Media Technology (掌媒科技)
+
+27 years in cross-border internet (1999–2026). [Full story →](https://github.com/adsorgcn/adsorgcn/blob/main/README.zh.md)
 
 ## License
 
