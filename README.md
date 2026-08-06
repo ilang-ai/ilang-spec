@@ -18,6 +18,9 @@ license: mit
 
 # I-Lang Protocol Specification
 
+[![DOI](https://zenodo.org/badge/1171803217.svg)](https://doi.org/10.5281/zenodo.21821452)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **The Native Language of Artificial Intelligence**
 
 **Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication)
@@ -177,6 +180,29 @@ I-Lang recognizes that you already have one.
 iLang Inc. | Palm Media Technology (掌媒科技)
 
 27 years in cross-border internet (1999–2026). See [AUTHORS.md](AUTHORS.md) — written in I-Lang v5.0 declaration syntax, with independently verifiable claims (SEC filing, ORCID, public repos).
+
+## Citation
+
+If you use I-Lang in academic work, please cite:
+
+```bibtex
+@software{zhu_ilang_2026,
+  author    = {Zhu, Longquan},
+  title     = {I-Lang Protocol Specification},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.21821452},
+  url       = {https://doi.org/10.5281/zenodo.21821452},
+  license   = {MIT},
+  orcid     = {0009-0004-4540-8082}
+}
+```
+
+Plain text:
+
+> Zhu, Longquan. (2026). *I-Lang Protocol Specification*. Zenodo. https://doi.org/10.5281/zenodo.21821452
+
+The DOI above is the concept DOI: it always resolves to the latest version. Each release also receives its own version-specific DOI.
 
 ## License
 
