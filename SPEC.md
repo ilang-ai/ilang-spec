@@ -339,7 +339,7 @@ External entities require authentication. Auth is handled by the runtime, not by
 
 Any `@UPPERCASE_NAME` is a valid entity. Implementations define their own entity registries.
 
-Registration, resolution order, and the `E200` / `E201` distinction are specified in
+Registration, resolution order, and the `E200` / `E201` / `E202` error semantics are specified in
 [SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) §2, which also tables the eight
 authority-bearing role entities that v4.0 introduces in normative text.
 
@@ -541,6 +541,7 @@ Properties:
 |------|---------|
 | E200 | Entity Not Found |
 | E201 | Unsupported Entity |
+| E202 | Entity Rebinding |
 | E300 | Syntax Error |
 | E301 | Type Mismatch |
 | E302 | Invalid Modifier |

@@ -4,6 +4,7 @@
 ::STATE{@PATCH, authors:Max(@SUN)+BRO(@OPUS), purpose:close_two_undefined_surfaces}
 ::STATE{@PATCH, new_blocks:[::GRAMMAR, ::REGISTRY, ::BODY]}
 ::STATE{@PATCH, frozen_set_touched:false, see:PATCH-1_§5}
+::STATE{@PATCH, rev:2026-08-11, changes:[registry_31→32_adds_::LIST, rebinding_error_E301→E202]}
 
 Purpose: v3.0 §6 shows one example per declaration but never states the grammar of the
 indented body. v3.0 §5.3 permits custom entities in one sentence but defines no
@@ -14,7 +15,8 @@ This patch specifies what the corpus already does. It introduces no new behavior
 ::CLAUSE{SCOPE|conf:confirmed|scope:v5}
 T:this_patch_is_descriptive|codifies_existing_spec_examples
 T:frozen_set_untouched|11_dims+8_modes+f_v5+JUDGE_schema_unchanged
-T:no_new_verbs|no_new_modifiers|no_new_declarations
+T:no_new_verbs|no_new_modifiers|no_new_declarations_at_ratification
+T:rev_2026-08-11_registers_::LIST_via_§1.5_amendment_channel|codifies_canon_usage
 A:reading_this_patch_as_behavior_change⇒misread
 
 ---
@@ -90,7 +92,7 @@ E:`[LAYER:A|type=exact_predicate|mode=binary]`
 ::BODY{B6|name:prose}
 T:form=free_text_line
 T:permitted_only_where_declaration_type_declares_prose_body
-T:current_prose_body_types=[::LESSON,::MODULE,::OBJECTIVE_narrative_fields]
+T:current_prose_body_types=[::LESSON,::MODULE,::LIST,::OBJECTIVE_narrative_fields]
 E:`Express middleware order matters. Auth before route handlers.`
 
 ::BODY{B7|name:nested_declaration}
@@ -146,7 +148,7 @@ T:key_meaning_resolves_against_enclosing_declaration_type
 T:unknown_key_in_known_declaration⇒parse_as_B2_field|do_not_reject
 A:global_key_namespace_assumption⇒misparse
 
-### §1.5 Declaration registry (31 structural)
+### §1.5 Declaration registry (32 structural)
 
 Complete list of structural declarations across all three layers. Narrative/SOUL
 declarations are counted separately in §1.6.
@@ -168,8 +170,17 @@ declarations are counted separately in §1.6.
 `::JUDGE` `::BOUNDARY` `::DIM` `::MODE` `::FUNC` `::SCHEMA` `::CASE` `::CLAUSE`
 `::MODULE`
 
+**Registered by amendment (1)**
+
+`::LIST`
+
+Enumeration block. The header names the collection (`::LIST{@REPOS}`); the body is
+one B6 prose line per item. `::LIST` is a declared prose-body type under §1.2 B6.
+Registered 2026-08-11 through this section's DECL-COUNT amendment channel, codifying
+canon usage in `AUTHORS.md`.
+
 ::CLAUSE{DECL-COUNT|conf:confirmed|scope:v5}
-T:structural_declarations=31|14_v3+8_v4+9_v5
+T:structural_declarations=32|14_v3+8_v4+9_v5+1_amended
 T:this_registry_is_the_canonical_count
 A:citing_a_different_total_without_amending_this_table⇒drift
 
@@ -250,7 +261,7 @@ T:scope=document|a_custom_entity_is_local_to_the_document_that_uses_it
 T:SHOULD_be_introduced_by_`::STATE{@NAME, …}`_before_first_operational_use
 T:MUST_NOT_shadow_a_Tier_1/2/3_name_with_different_semantics
 A:lowercase_or_leading_digit_after_the_sigil⇒E300
-A:rebinding_a_registered_name_to_foreign_semantics⇒E301
+A:rebinding_a_registered_name_to_foreign_semantics⇒E202_Entity_Rebinding
 
 ::REGISTRY{resolution|conf:confirmed|scope:v5}
 T:resolution_order=Tier1→Tier2→Tier3→document_custom→runtime_registry
@@ -362,7 +373,7 @@ Resolved as follows:
 |-------|---------------|------------|
 | "40 modifiers" | v3.0 §4 tables 29; v4.0 states "29 modifiers unchanged"; no v5.0 modifier additions | 29 |
 | "22 entities" | v3.0 §5 tables 14; v4.0 uses 8 role entities normatively without tabling them | 22 confirmed, role tier now tabled (§2.1) |
-| "12 declarations" | no layer or combination sums to 12 | 31 structural + 13 narrative (§1.5, §1.6) |
+| "12 declarations" | no layer or combination sums to 12 | 31 structural + 13 narrative at ratification (§1.5, §1.6); 32 structural since the 2026-08-11 `::LIST` amendment |
 
 One casing deviation was found in the canon by mechanical check against §2.2 and
 corrected in the same change set:
