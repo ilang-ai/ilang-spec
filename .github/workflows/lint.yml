@@ -1,0 +1,26 @@
+name: Canon Lint
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Grammar validator selftest
+        run: python ilang_grammar_validator.py --selftest
+      - name: Canon gate (grammar + registry)
+        run: python ilang_grammar_validator.py --canon .
+      - name: Judge validator selftest
+        run: python ilang_judge_validator.py --selftest
+      - name: JUDGE blocks in patches
+        run: |
+          python ilang_judge_validator.py --check SPEC-v5.0-PATCH-1.md
+          python ilang_judge_validator.py --check SPEC-v5.0-PATCH-2.md

@@ -109,6 +109,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 | [SPEC-v4.0-RC1.md](SPEC-v4.0-RC1.md) | v4.0 RC1 — iteration record |
 | [SPEC-v4.0-DRAFT.md](SPEC-v4.0-DRAFT.md) | v4.0 DRAFT — iteration record |
 | [ilang_judge_validator.py](ilang_judge_validator.py) | Reference validator for the v5.0 judgment layer |
+| [ilang_grammar_validator.py](ilang_grammar_validator.py) | Grammar & registry validator (PATCH-2 §1/§2 mechanical checks; CI canon gate) |
 | [AUTHORS.md](AUTHORS.md) | Authorship record written in I-Lang v5.0 declaration syntax (canon demo, includes `::LIST` usage) |
 | [CITATION.cff](CITATION.cff) | Citation metadata (GitHub citation support; mirrored by .zenodo.json) |
 | [I-Lang-Protocol-Spec-v2.pdf](I-Lang-Protocol-Spec-v2.pdf) | v2.0 archived PDF |

@@ -6,6 +6,7 @@
 ::STATE{@PATCH, frozen_set_touched:false, see:PATCH-1_§5}
 ::STATE{@PATCH, rev:2026-08-11, changes:[registry_31→32_adds_::LIST, rebinding_error_E301→E202]}
 ::STATE{@PATCH, rev:2026-08-11b, changes:[verb_count_88_reaffirmed, §1.7_grammar_amendments, BOUNDARY/CLAUSE/MODULE_canonical_forms, JUDGE_indent_exception, status:adopted]}
+::STATE{@PATCH, rev:2026-08-11c, changes:[meta_decl_category_GRAMMAR/BODY/REGISTRY, B6+=RULE_annotation_body, same_line_trailing_body, grammar_validator_ships]}
 ::STATE{@PATCH, adopted:2026-08-11, normative_by_reference:SPEC.md_§5.3_§6}
 
 Purpose: v3.0 §6 shows one example per declaration but never states the grammar of the
@@ -60,6 +61,7 @@ A:mixing_brace_span_and_header_body_in_one_declaration⇒E300
 ::CLAUSE{FLUSH-LEFT-BODY|conf:confirmed|scope:v5}
 T:a_header_line_immediately_followed_by_lines_matching_body_forms_B1-B5_at_the_same_indent⇒header_body
 T:flush_left_body_terminates_at_first_blank_line_OR_next_`::`_header_line
+T:a_single_body_form_token_MAY_trail_the_header_on_the_same_line|whitespace_separated|e.g._PATCH-1_§2_::MODE_lines
 T:codifies_canon_layout|clause_blocks_of_PATCH-1_and_PATCH-2+frozen_JUDGE_serialization_PATCH-1_§4
 A:applying_body_indent>header_indent_to_flush_left_bodies⇒false_reject
 
@@ -101,7 +103,7 @@ E:`[LAYER:A|type=exact_predicate|mode=binary]`
 ::BODY{B6|name:prose}
 T:form=free_text_line
 T:permitted_only_where_declaration_type_declares_prose_body
-T:current_prose_body_types=[::LESSON,::MODULE,::LIST,::OBJECTIVE_narrative_fields]
+T:current_prose_body_types=[::LESSON,::MODULE,::LIST,::RULE_annotation_body,::OBJECTIVE_narrative_fields]
 E:`Express middleware order matters. Auth before route handlers.`
 
 ::BODY{B7|name:nested_declaration}
@@ -131,6 +133,7 @@ T:structural_tokens_are_ASCII|verbs,modifiers,entity_names,declaration_names,key
 T:values_and_prose_MAY_be_any_language
 T:CJK_full_width_punctuation_in_values_is_legal|（）：，、
 A:full_width_colon_or_pipe_as_structural_separator⇒E300|use_ASCII_`:`_and_`|`
+
 NOTE Chinese-carrier dialects (满江红) apply this rule: carrier language lives in values,
 structure stays ASCII. A production system prompt mixing iLang structure with Chinese
 values is conformant.
@@ -188,6 +191,15 @@ Enumeration block. The header names the collection (`::LIST{@REPOS}`); the body 
 one B6 prose line per item. `::LIST` is a declared prose-body type under §1.2 B6.
 Registered 2026-08-11 through this section's DECL-COUNT amendment channel, codifying
 canon usage in `AUTHORS.md`.
+
+**Meta (spec-authoring) declarations (3), counted separately**
+
+`::GRAMMAR` `::BODY` `::REGISTRY`
+
+Introduced by this patch's own header (`new_blocks`) as the machinery for writing
+the grammar down. They are spec-authoring declarations, legal in normative
+specification documents, and — like the narrative set and `::END_UNTRUSTED` —
+are not counted in the structural total of 32.
 
 ::CLAUSE{DECL-COUNT|conf:confirmed|scope:v5}
 T:structural_declarations=32|14_v3+8_v4+9_v5+1_amended
@@ -356,6 +368,7 @@ T:L2=enforce_entity_resolution_order+E200/E201_distinction
 T:L2=reject_E300_body_lines_in_non_prose_declarations
 T:L3=no_additional_requirement|PATCH-2_adds_no_grading_surface
 T:validator_coverage=grammar_and_registry_are_checkable_without_model_inference
+T:grammar_validator_ships_in_repo|ilang_grammar_validator.py|canon_gate:AUTHORS+PRE+PATCHes+SPEC+FINAL+README
 
 ::CLAUSE{BACKWARD-COMPAT|conf:confirmed|scope:v5}
 T:every_example_in_v3.0_§10_parses_unchanged_under_this_grammar
