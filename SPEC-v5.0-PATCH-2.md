@@ -455,6 +455,7 @@ corrected in the same change set:
 |----------|-----|-----|--------|
 | PATCH-1 §3, 3 lines | `::STATE{@f_v5, …}` | `::STATE{@F_V5, …}` | v3.0 §2.5 requires UPPERCASE after `@`. The function name `f_v5` in `::FUNC{f_v5\|version:1}` is a field value, not an entity, and is unchanged. PATCH-1's frozen set covers the cascade structure and constants, not this token. |
 | PRE §MATH_FOUNDATION, 1 line | `(non-诚勿扰 model)` | `(non-simultaneous model)` | IME artifact in the frozen text (2026-08-11). Intended sense per PRE §VECTOR EXTRACTION: dimensions are not extracted simultaneously. Corrected under this table's correction-channel precedent; no frozen constant touched. |
+| v4.0-FINAL §7, 2 lines | `\|method=evidence_map`, `\|against=@OBJECTIVE\|rubric=@RUBRIC` | `\|typ=evidence_map`, `\|src=@OBJECTIVE]=>[SCOR\|src=@RUBRIC]` | The modifier registry is closed at 29; no_new_modifiers reaffirmed 2026-08-11 by @SUN. The four-step pattern now uses registered keys only (`typ` per the EXTC line above it, `src` accepts entities, SCOR is the score-against-metric verb). Semantics unchanged. |
 
 Two further lowercase matches were inspected and are not violations: `@objective` in
 `SPEC-v4.0-DRAFT.md` (superseded by FINAL, retained as history) and `@i-language` in

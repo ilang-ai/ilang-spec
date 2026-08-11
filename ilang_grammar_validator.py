@@ -25,10 +25,9 @@ runtime semantics, intentionally out of scope. E202 (rebinding a registered
 name) is reported as a WARN candidate when a document ::STATE-introduces a
 Tier-1/2 name.
 
-NOTE on E302: v4.0-FINAL's composite patterns use ad-hoc operation modifier
-keys (method=, against=, rubric=). Until the modifier registry question is
-settled by amendment, unknown modifier keys are WARN by default; --strict
-promotes WARN to exit-failing.
+NOTE on E302: the modifier registry is closed at 29 (no_new_modifiers
+reaffirmed 2026-08-11; the v4.0-FINAL §7 examples that used ad-hoc keys were
+rewritten to registered ones). Unknown operation modifier keys are ERROR.
 
 Input modes (auto-detected per file):
   raw    first nonblank line is ::ILANG::  -> whole file is I-Lang
@@ -588,7 +587,7 @@ class Linter:
                             continue          # continuation of previous value
                         key = piece.split("=", 1)[0].strip()
                         if key and key not in MODIFIERS:
-                            self.add(WARN, lineno, "E302",
+                            self.add(ERROR, lineno, "E302",
                                      "modifier `%s` not in the 29-key registry" % key)
 
     # -------------------------------------------------------------- entities
@@ -752,8 +751,10 @@ BAD_CASES = [
      "nested narrative missing double brace"),
 ]
 
+BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[READ:@GH|frobnicate=1]",
+                  "E302", "unknown modifier"))
+
 WARN_CASES = [
-    ("[READ:@GH|frobnicate=1]", "E302", "unknown modifier"),
     ("::STATE{@SRC, meaning:redefined}", "E202", "tier-1 rebinding candidate"),
 ]
 

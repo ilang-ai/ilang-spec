@@ -285,11 +285,11 @@ created → running → failed
 [EXTC:@OBJECTIVE|typ=deliverables]
   → enumerate concrete deliverables from objective
 
-[AUDT:@DELIVERABLES|method=evidence_map]
+[AUDT:@DELIVERABLES|typ=evidence_map]
   → map each deliverable to ::EVIDENCE items
   → verify each evidence exists and result=pass
 
-[VALD:@EVIDENCE|against=@OBJECTIVE|rubric=@RUBRIC]
+[VALD:@EVIDENCE|src=@OBJECTIVE]=>[SCOR|src=@RUBRIC]
   → confirm evidence set covers every requirement
   → score against rubric if present
 
