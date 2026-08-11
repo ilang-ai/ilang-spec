@@ -54,13 +54,14 @@ E:`::PRIORITY{` … `}` , `::DECAY{` … `}` , `::MODULE::NAME{` … `}`
 T:parser_selects_shape_by_lookahead|closing_brace_on_header_line⇒inline
 T:unclosed_brace_on_header_line⇒brace_span
 T:closed_brace_plus_indented_next_line⇒header_body
+T:closed_brace_plus_same_indent_body_form_line⇒header_body|see_FLUSH-LEFT-BODY_below
 A:mixing_brace_span_and_header_body_in_one_declaration⇒E300
 
-::CLAUSE{JUDGE-INDENT-EXCEPTION|conf:confirmed|scope:v5}
-T:the_frozen_JUDGE_serialization_predates_this_grammar|PATCH-1_§4
-T:V:/M:/R:_lines_MAY_sit_at_the_same_indent_as_the_::JUDGE_header
-T:parser_binds_them_by_reserved_key_match|not_by_indent
-A:applying_body_indent>header_indent_to_JUDGE_blocks⇒false_reject
+::CLAUSE{FLUSH-LEFT-BODY|conf:confirmed|scope:v5}
+T:a_header_line_immediately_followed_by_lines_matching_body_forms_B1-B5_at_the_same_indent⇒header_body
+T:flush_left_body_terminates_at_first_blank_line_OR_next_`::`_header_line
+T:codifies_canon_layout|clause_blocks_of_PATCH-1_and_PATCH-2+frozen_JUDGE_serialization_PATCH-1_§4
+A:applying_body_indent>header_indent_to_flush_left_bodies⇒false_reject
 
 ### §1.2 Body line forms (closed set of 8)
 
@@ -213,7 +214,8 @@ None changes the meaning of any existing document.
 
 ::GRAMMAR{form:document_header|conf:confirmed}
 T:form=`::ILANG::<version>[::<name>]`_as_first_nonblank_line_of_a_document
-T:zero_or_more_top_level_`[TAG:value]`_preamble_lines_may_follow|TAG=UPPERCASE
+T:the_`::ILANG`_prefix_is_a_document_marker_not_a_declaration|registry_membership_unaffected
+T:zero_or_more_preamble_lines_may_follow|each_line=one_or_more_concatenated_`[TAG:value]`_tags|TAG=UPPERCASE
 T:preamble_lines_are_document_metadata|NOT_operations|no_E304
 E:`::ILANG::v5.0::SPEC` + `[TYPE:protocol_specification]`
 E:`::ILANG::v5.0` + `[TYPE:profile][SCOPE:public][LANG:en]`
