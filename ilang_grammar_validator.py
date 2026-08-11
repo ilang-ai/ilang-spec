@@ -98,6 +98,8 @@ RE_TEMPORAL_PREFIX = re.compile(r"^(T\[[^\]]+\])\s+(::.*)$")
 RE_TEMPORAL_BIND = re.compile(r"^T\[[^\]]+\]=\S+")
 RE_TEMPORAL_NOTE = re.compile(r"^(T\[[^\]]+\](→T\[[^\]]+\])?|PARALLEL\{[^}]*\})(\s.*)?$")
 RE_TAG_LINE = re.compile(r"^(\[[A-Z][A-Z0-9_\-]*(?::[^\[\]]*)?\])+$")
+# B5 form 1: `[TAG] text` — one tag group, optional trailing free text
+RE_TAG_TEXT = re.compile(r"^\[[A-Z][A-Z0-9_\-]*(?::[^\[\]]*)?\](\s+\S.*)?$")
 RE_KEY = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):(.*)$")
 # entity tokens count only in structural positions ({, :, |, comma, →, =);
 # @ tokens embedded in free prose values are exempt (PATCH-2 Appendix B)
@@ -120,6 +122,8 @@ class Linter:
         self.annotations = 0
         self.custom_entities = {}    # name -> first lineno (used w/o ::STATE intro)
         self.introduced = set()      # entities introduced via ::STATE
+        self.mixed_last_op = False
+        self.body_last_op = False
         raw = next((l for l in self.lines if l.strip()), "")
         self.raw_mode = raw.strip().startswith("::ILANG::")
 
@@ -163,16 +167,25 @@ class Linter:
                 continue
             s = line.strip()
             if s.startswith("::") or RE_TEMPORAL_PREFIX.match(s):
+                self.mixed_last_op = False
                 i = self.parse_construct(i, mixed=True)
                 continue
             # bare operation chains / tag-or-op lines; markdown links and
-            # reference-style links never fully match these shapes
-            if s.startswith("=>"):
-                self.add(ERROR, i + 1, "E300",
-                         "orphan `=>` continuation: no preceding operation line")
+            # reference-style links never fully match these shapes. A `=>` line
+            # in mixed mode is linted only as a continuation of a preceding bare
+            # operation line — otherwise it is markdown background.
+            if not s:
+                self.mixed_last_op = False
+            elif s.startswith("=>"):
+                if self.mixed_last_op:
+                    self.check_operation(i, s[2:].strip(), chain=True)
             elif s.startswith("[") and "](" not in s and not s.startswith("[!"):
                 if "]=>" in s or RE_TAG_LINE.match(s):
                     self.check_bracket_line(i, s)
+                    self.mixed_last_op = ("]=>" in s
+                                          or self.head_of(s) in VERBS | ALIASES)
+            else:
+                self.mixed_last_op = False
             i += 1
 
     @staticmethod
@@ -190,16 +203,30 @@ class Linter:
         i = start
         last_op = False          # tracks whether `=>` may continue a chain
         seen_construct = False   # colophon tolerance: prose ok in tag-only regions
+        in_preamble = False      # §1.7: tag lines right after a ::ILANG header
+        nonblank = [j for j in range(start, end) if self.lines[j].strip()]
+        first_nb = nonblank[0] if nonblank else -1
+        last_nb = nonblank[-1] if nonblank else -1
         while i < end:
             s = self.lines[i].strip()
             if not s or s == "---":
                 last_op = False
                 i += 1
                 continue
-            if RE_DOC_MARKER.match(s) or RE_TEMPORAL_BIND.match(s):
+            if RE_DOC_MARKER.match(s):
+                if i == first_nb:
+                    in_preamble = True
+                elif i != last_nb:
+                    self.add(ERROR, i + 1, "E300",
+                             "::ILANG document marker may only open or close a document (§1.7)")
                 last_op = False
                 i += 1
                 continue
+            if RE_TEMPORAL_BIND.match(s):
+                last_op = False
+                i += 1
+                continue
+            in_preamble_here, in_preamble = in_preamble, False
             if s.startswith("::") or RE_TEMPORAL_PREFIX.match(s):
                 seen_construct, last_op = True, False
                 i = self.parse_construct(i, mixed=False, limit=end)
@@ -213,6 +240,14 @@ class Linter:
                 i += 1
                 continue
             if s.startswith("["):
+                # preamble position (§1.7): tag lines right after a ::ILANG
+                # header are document metadata even when TAG collides with a
+                # verb name — never parsed as operations, no E304
+                if in_preamble_here and RE_TAG_LINE.match(s) and "]=>" not in s:
+                    in_preamble = True
+                    last_op = False
+                    i += 1
+                    continue
                 self.check_bracket_line(i, s)
                 last_op = "]=>" in s or self.head_of(s) in VERBS | ALIASES
                 if last_op:
@@ -254,6 +289,9 @@ class Linter:
         name, subname, rest = m.group(1), m.group(2), m.group(3)
 
         if name == "ILANG":
+            if not RE_DOC_MARKER.match(decl_text):
+                self.add(ERROR, i + 1, "E300",
+                         "malformed ::ILANG document marker: " + decl_text[:60])
             return i + 1
         if subname and name != "MODULE":
             self.add(ERROR, i + 1, "E300",
@@ -273,6 +311,19 @@ class Linter:
         if not rest.startswith("{"):
             self.add(ERROR, i + 1, "E300", "::%s header lacks `{`" % name)
             return i + 1
+
+        # §1.3: full-width ：/｜ as structural separators ⇒ E300. Full-width
+        # punctuation is legal inside values, so ： is flagged only when a
+        # pipe-delimited field carries no ASCII colon at all.
+        if "｜" in rest:
+            self.add(ERROR, i + 1, "E300",
+                     "full-width ｜ as structural separator (§1.3) — use ASCII `|`")
+        elif "：" in rest:
+            for seg in rest.strip("{}").split("|"):
+                if "：" in seg and ":" not in seg:
+                    self.add(ERROR, i + 1, "E300",
+                             "full-width ： as structural separator (§1.3) — use ASCII `:`")
+                    break
 
         # narrative double-brace requirement; content brace may span lines
         if name in NARR_DOUBLE:
@@ -323,14 +374,19 @@ class Linter:
         return -1
 
     def consume_brace_span(self, i, name, rest, end):
-        depth = rest.count("{") - rest.count("}")
+        # §1.1: a set-span (header ends with `{`) terminates at the bare `}` line;
+        # a wrapped field header (content after the opening brace, v3.0 §10.3
+        # style) terminates at the first line ending with `}`. Braces embedded
+        # mid-content are content, not structure.
+        wrapped = not rest.rstrip().endswith("{")
         j = i + 1
-        while j < end and depth > 0:
-            depth += self.lines[j].count("{") - self.lines[j].count("}")
+        while j < end:
+            t = self.lines[j].strip()
+            if t == "}" or (wrapped and t.endswith("}")):
+                return j + 1
             j += 1
-        if depth > 0:
-            self.add(ERROR, i + 1, "E300", "::%s brace span never closes" % name)
-        return j
+        self.add(ERROR, i + 1, "E300", "::%s brace span never closes" % name)
+        return end
 
     def consume_opaque(self, j, delimiter, end):
         while j < end:
@@ -342,10 +398,14 @@ class Linter:
     def consume_body(self, i, name, header_indent, end):
         """Collect header_body lines: indented, or flush-left per FLUSH-LEFT-BODY."""
         j = i + 1
+        regime = None            # 'indent' | 'flush' once the first body line binds
+        self.body_last_op = False
         while j < end:
             line = self.lines[j]
             s = line.strip()
             if not s:
+                if regime != "indent":
+                    return j     # flush-left bodies terminate at the first blank
                 # blank permitted inside indented body if next nonblank still indented
                 k = j + 1
                 while k < end and not self.lines[k].strip():
@@ -358,12 +418,20 @@ class Linter:
                 return j
             indent = len(line) - len(line.lstrip())
             if indent > header_indent:
+                if regime == "flush":
+                    return j
+                regime = "indent"
                 j = self.body_line(j, name, s, indent, end)
                 continue
+            if regime == "indent":
+                return j         # dedent terminates the indented body (§1.1)
+            if indent != header_indent:
+                return j         # FLUSH-LEFT binds at the same indent only
             # flush-left: body-form line binds; next `::`/`T[` header terminates
             if s.startswith("::") or RE_TEMPORAL_PREFIX.match(s) or RE_DOC_MARKER.match(s):
                 return j
             if self.is_body_form(s):
+                regime = "flush"
                 self.classify_body_line(j, name, s, nested=False)
                 j += 1
                 continue
@@ -383,6 +451,11 @@ class Linter:
                 self.add(ERROR, j + 1, "E300",
                          "nested ::%s is not a registered declaration" % nested_name)
                 return j + 1
+            if nested_name in NARR_DOUBLE:
+                nrest = s[2 + len(nested_name):].strip()
+                if not re.match(r"^\{[^{}]*\}\{.*\}\s*$", nrest):
+                    self.add(ERROR, j + 1, "E300",
+                             "::%s requires double-brace form ::VERB{addressing}{content} (v3.0 §7)" % nested_name)
             self.scan_entities(j, s)
             # nested declaration may carry its own deeper body (B1-B6); a
             # declaration nested deeper still exceeds one level -> E300
@@ -405,11 +478,15 @@ class Linter:
         self.classify_body_line(j, name, s, nested=False)
         return j + 1
 
-    @staticmethod
-    def is_body_form(s):
-        """B1-B5 / reserved-key shapes eligible for flush-left binding."""
-        if s.startswith(("T:", "A:", "E:", "[", "=>")):
+    def is_body_form(self, s):
+        """B1-B5 / reserved-key shapes eligible for flush-left binding.
+        B8 (`[VERB...]` operations, `=>` continuations) is deliberately excluded:
+        FLUSH-LEFT-BODY binds body forms B1-B5 only."""
+        if s.startswith(("T:", "A:")):
             return True
+        if s.startswith("["):
+            return bool((RE_TAG_LINE.match(s) or RE_TAG_TEXT.match(s))
+                        and self.head_of(s) not in VERBS | ALIASES)
         return bool(RE_KEY.match(s)) or bool(RE_TEMPORAL_BIND.match(s))
 
     def classify_body_line(self, j, parent, s, nested):
@@ -423,13 +500,20 @@ class Linter:
             self.scan_entities(j, s)
             return
         if s.startswith("=>"):                               # B8 continuation
-            self.check_operation(j, s[2:].strip(), chain=True)
+            if self.body_last_op:
+                self.check_operation(j, s[2:].strip(), chain=True)
+            elif parent not in PROSE_BODY:
+                self.add(ERROR, lineno, "E300",
+                         "orphan `=>` continuation in ::%s body: no preceding operation line (§1.7)" % parent)
             return
         if s.startswith("["):                                # B5 or B8
             if "]=>" in s or self.head_of(s) in VERBS | ALIASES:
                 self.check_operation(j, s, chain=True)
-            elif RE_TAG_LINE.match(s):
+                self.body_last_op = True
+            elif RE_TAG_LINE.match(s) or RE_TAG_TEXT.match(s):
                 pass                                         # B5 tag line
+            elif parent in PROSE_BODY:
+                pass                                         # bracket-initial prose
             else:
                 self.add(ERROR, lineno, "E300",
                          "bracket body line is neither B5 tag nor B8 operation: " + s[:60])
@@ -490,9 +574,9 @@ class Linter:
                     else:
                         self.note_entity(i, target)
                 elif head in ("BATC", "Π"):
-                    if target not in VERBS:
+                    if target not in VERBS and target not in ALIASES:
                         self.add(ERROR, lineno, "E304",
-                                 "BATC verb reference `%s` is not a registered verb" % target)
+                                 "BATC verb reference `%s` is not a registered verb or alias" % target)
                 else:
                     self.add(ERROR, lineno, "E300",
                              "operation target `%s` is not an @ENTITY (v3.0 §2.2; BATC/Π excepted)" % target)
@@ -533,7 +617,17 @@ def lint_paths(paths, as_json, strict):
     report = []
     for path in paths:
         try:
-            text = open(path, encoding="utf-8").read()
+            # utf-8-sig strips a UTF-8 BOM so raw-mode detection still works
+            text = open(path, encoding="utf-8-sig").read()
+        except UnicodeDecodeError:
+            total_err += 1
+            report.append({"file": path, "mode": "unreadable", "errors": 1,
+                           "warnings": 0, "findings": [{
+                               "level": ERROR, "line": 1, "code": "E300",
+                               "message": "file is not valid UTF-8 (§1.3 file_encoding=UTF-8)"}]})
+            if not as_json:
+                print("%s:1 [ERROR E300] file is not valid UTF-8 (§1.3 file_encoding=UTF-8)" % path)
+            continue
         except OSError as e:
             print("cannot read %s: %s" % (path, e), file=sys.stderr)
             return 2
@@ -574,6 +668,7 @@ def lint_paths(paths, as_json, strict):
 GOOD_DOC = """\
 ::ILANG::v5.0
 [TYPE:selftest][SCOPE:test][LANG:en]
+[LIST:known_repos][DESC:tag_names_may_collide_with_verbs_in_preamble]
 
 ::FACT{key:x|value:hello|conf:confirmed}
 ::GENE{verify_first|conf:confirmed|scope:global}
@@ -585,6 +680,7 @@ GOOD_DOC = """\
 ::CLAUSE{DEMO|conf:confirmed|scope:test}
 T:flush_left_body_binds
 A:ignoring_flush_left⇒false_reject
+[NOTE] a B5 tag line with trailing text binds too
 
 ::MODE{M1|name:EXEC_AUTO}     T:same_line_trailing_body
 
@@ -595,6 +691,10 @@ R:demo
 
 ::LIST{@REPOS}
   some/repo → prose line is fine inside LIST
+
+::LESSON{id:l1|type:build|scope:project|conf:confirmed}
+  Express middleware order matters.
+  [sic] bracket-initial prose is fine inside a prose body
 
 ::RULE{proxy_signals⇒insufficient}
   tests pass ≠ complete, annotation prose allowed under RULE
@@ -622,9 +722,12 @@ EOF_u1
 [READ:@SPEC|src=github.com/x]
   =>[PARS|typ=v5.0]
   =>[Ω]
+[BATC:Σ]
 
 ::SAY{@USER→@SELF}{hello there}
 ::EVENT{simple}
+
+::ILANG::v5.0::END
 """
 
 BAD_CASES = [
@@ -635,9 +738,18 @@ BAD_CASES = [
     ("[Φ:@GH]=>[Ω]", "E305", "unknown alias in chain"),
     ("::SAY{@A}", "E300", "narrative missing double brace"),
     ("[READ:bareword]", "E300", "bareword target"),
-    ("=>[Ω]", "E300", "orphan continuation"),
+    ("::ILANG::v5.0\n=>[Ω]", "E300", "orphan continuation"),
     ("::GENE{a|conf:c}\n  ::PRIOR{b:c}\n    ::PRIOR{d:e}", "E300", "nesting depth"),
     ("::FOO::BAR{x}", "E300", "two-segment non-MODULE"),
+    ("::FACT{key：a|value:b|conf:c}", "E300", "full-width colon separator"),
+    ("::FACT{key:a｜value:b}", "E300", "full-width pipe separator"),
+    ("::GENE{g|conf:c}\n  =>[Ω]", "E300", "orphan => inside body"),
+    ("::ILANG::v5.0 trailing junk\n::FACT{key:a|value:b|conf:c}", "E300",
+     "malformed document marker"),
+    ("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n::ILANG::MID::MARKER\n"
+     "::FACT{key:d|value:e|conf:c}", "E300", "mid-document marker"),
+    ("::ILANG::v5.0\n::LESSON{id:x|type:t|scope:s|conf:c}\n  ::SAY{@A}", "E300",
+     "nested narrative missing double brace"),
 ]
 
 WARN_CASES = [
@@ -682,6 +794,12 @@ def cmd_selftest():
 
 
 def main():
+    # findings echo source text (⇒, Greek, CJK); never die on a cp1252 console
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, ValueError):
+            pass
     p = argparse.ArgumentParser(description="I-Lang grammar & registry validator")
     g = p.add_mutually_exclusive_group(required=True)
     g.add_argument("--selftest", action="store_true")

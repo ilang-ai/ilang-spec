@@ -48,6 +48,8 @@ E:`::GENE{verify_first|conf:confirmed|scope:global}` + `  T:check_before_execute
 ::GRAMMAR{shape:brace_span|conf:confirmed}
 T:form=`::DECL{` + content_lines + `}`_on_own_line
 T:terminates_at_closing_brace_line|indentation_not_significant
+T:braces_embedded_in_content_lines_are_content_not_structure
+T:wrapped_field_header|content_after_opening_brace_on_header_line⇒terminates_at_first_line_ending_with_`}`|v3.0_§10.3_style
 T:used_when_content_is_a_set_rather_than_fields
 E:`::PRIORITY{` … `}` , `::DECAY{` … `}` , `::MODULE::NAME{` … `}`
 
@@ -226,6 +228,7 @@ None changes the meaning of any existing document.
 
 ::GRAMMAR{form:document_header|conf:confirmed}
 T:form=`::ILANG::<version>[::<name>]`_as_first_nonblank_line_of_a_document
+T:the_same_marker_form_MAY_close_a_document_as_its_last_nonblank_line|PRE_footer_form
 T:the_`::ILANG`_prefix_is_a_document_marker_not_a_declaration|registry_membership_unaffected
 T:zero_or_more_preamble_lines_may_follow|each_line=one_or_more_concatenated_`[TAG:value]`_tags|TAG=UPPERCASE
 T:preamble_lines_are_document_metadata|NOT_operations|no_E304
