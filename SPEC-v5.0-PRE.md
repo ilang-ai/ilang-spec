@@ -269,7 +269,7 @@
   [MAP]
   fuzzy_inference         → 11-dimensional behavioral assessment
   defuzzification         → mode selection (decision step 3)
-  progressive_reasoning   → partial vector extraction (non-诚勿扰 model)
+  progressive_reasoning   → partial vector extraction (non-simultaneous model)
   active_learning         → probe-based calibration
   expert_weighting        → skin-in-the-game constraint (axiom 4)
   fuzzy_clustering        → multiple assessments → convergent true value

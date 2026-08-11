@@ -1,8 +1,9 @@
 # I-Lang v5.0-PRE — PATCH-1: Trainable Judgment Layer
 
-::STATE{@PATCH, id:PATCH-1, target:SPEC-v5.0-PRE, status:proposed, date:2026-07-03}
+::STATE{@PATCH, id:PATCH-1, target:SPEC-v5.0-PRE, status:adopted, date:2026-07-03}
 ::STATE{@PATCH, authors:Max(@SUN)+BRO(@OPUS), purpose:make_v5_directly_trainable}
 ::STATE{@PATCH, new_blocks:[::DIM, ::MODE, ::FUNC, ::SCHEMA, ::CASE, ::CLAUSE]}
+::STATE{@PATCH, adopted:2026-08-11, note:constants_ratified_2026-07-03_per_@FREEZE_below|clarifying_clauses_added_2026-08-11}
 
 Purpose: convert v5.0-PRE from descriptive to executable. After this patch, training
 data generation, model training, and conformance grading proceed mechanically.
@@ -60,6 +61,11 @@ T:0.00=radical_departure_from_all_precedent
 ::DIM{ext|name:externality|abbrev_pos:11}
 T:1.00=zero_third_party_impact
 T:0.00=large_uncompensated_third_party_impact
+
+::CLAUSE{DIM-10-RENAME|conf:confirmed|scope:v5}
+T:PRE_§VECTOR_v10_`drift`_is_replaced_by_`ine`_inertia|renamed+polarity_inverted
+T:uniform_polarity_per_CONVENTION-1|1.00=continues_established_confirmed_patterns
+A:extracting_dim_10_as_drift_from_PRE⇒fails_frozen_V_line_schema
 
 ### §1.1 Anchor Framework
 
@@ -119,6 +125,11 @@ S:create a draft file in a local sandbox; deleting it leaves no trace
 ::CLAUSE{MODE-SET|conf:confirmed|scope:v5}
 T:mode_set_is_closed|count=8
 A:ninth_mode_or_free_text_mode⇒schema_violation
+
+::CLAUSE{MODES-SUPERSEDED|conf:confirmed|scope:v5}
+T:PRE_::MODULE::MODES_10_descriptive_modes_are_superseded_by_M1-M8_for_all_serialized_output
+T:approx_map=[EXECUTE≈M1,EXECUTE_BOLDLY≈M2,SANDBOX≈M2,DEGRADE≈M4,HEDGE≈M4,OBSERVE≈M5,UNCERTAIN≈M5,ESCALATE≈M6,REFRAME≈M7,RETREAT≈M8]
+A:emitting_PRE_mode_names_in_a_JUDGE_block⇒schema_violation
 
 ---
 

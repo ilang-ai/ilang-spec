@@ -83,7 +83,7 @@ Three degradation tiers:
 |------|-----------|----------|
 | `ignore` | `::PRIOR`, advisory hints | v3 model ignores, no harm |
 | `warn` | `::BUDGET`, `::STATUS` (advisory), self-audit | Continue communication, emit warning |
-| `safe_mode` | `::UNTRUSTED`, `::STATUS{authority:commit}`, `::PERMIT` | Read-only: summarize, translate, explain, but no execute, no status commit, no memory write |
+| `safe_mode` | `::UNTRUSTED`, `::STATUS{authority:commit}`, `::PERMIT` *(reserved, v4.1 — see Deferred Candidates)* | Read-only: summarize, translate, explain, but no execute, no status commit, no memory write |
 
 Standard warning texts:
 

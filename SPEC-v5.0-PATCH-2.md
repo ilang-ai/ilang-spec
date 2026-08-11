@@ -1,10 +1,12 @@
 # I-Lang v5.0-PRE — PATCH-2: Declaration Grammar and Entity Registry
 
-::STATE{@PATCH, id:PATCH-2, target:SPEC-v5.0-PRE, status:proposed, date:2026-08-05}
+::STATE{@PATCH, id:PATCH-2, target:SPEC-v5.0-PRE, status:adopted, date:2026-08-05}
 ::STATE{@PATCH, authors:Max(@SUN)+BRO(@OPUS), purpose:close_two_undefined_surfaces}
 ::STATE{@PATCH, new_blocks:[::GRAMMAR, ::REGISTRY, ::BODY]}
 ::STATE{@PATCH, frozen_set_touched:false, see:PATCH-1_§5}
 ::STATE{@PATCH, rev:2026-08-11, changes:[registry_31→32_adds_::LIST, rebinding_error_E301→E202]}
+::STATE{@PATCH, rev:2026-08-11b, changes:[verb_count_88_reaffirmed, §1.7_grammar_amendments, BOUNDARY/CLAUSE/MODULE_canonical_forms, JUDGE_indent_exception, status:adopted]}
+::STATE{@PATCH, adopted:2026-08-11, normative_by_reference:SPEC.md_§5.3_§6}
 
 Purpose: v3.0 §6 shows one example per declaration but never states the grammar of the
 indented body. v3.0 §5.3 permits custom entities in one sentence but defines no
@@ -54,6 +56,12 @@ T:unclosed_brace_on_header_line⇒brace_span
 T:closed_brace_plus_indented_next_line⇒header_body
 A:mixing_brace_span_and_header_body_in_one_declaration⇒E300
 
+::CLAUSE{JUDGE-INDENT-EXCEPTION|conf:confirmed|scope:v5}
+T:the_frozen_JUDGE_serialization_predates_this_grammar|PATCH-1_§4
+T:V:/M:/R:_lines_MAY_sit_at_the_same_indent_as_the_::JUDGE_header
+T:parser_binds_them_by_reserved_key_match|not_by_indent
+A:applying_body_indent>header_indent_to_JUDGE_blocks⇒false_reject
+
 ### §1.2 Body line forms (closed set of 8)
 
 ::BODY{B1|name:trait}
@@ -98,7 +106,8 @@ E:`Express middleware order matters. Auth before route handlers.`
 ::BODY{B7|name:nested_declaration}
 T:form=indented`::DECL{...}`_inside_parent_body
 T:child_inherits_parent_scope_unless_overridden
-T:one_level_of_nesting|deeper_nesting_undefined
+T:one_level_of_declaration_nesting|deeper_declaration_nesting_undefined
+T:nested_declaration_MAY_carry_its_own_more_indented_B1-B6_body_lines|amended:2026-08-11
 E:`::PRIOR{completion:assume_incomplete}`_inside_`::GENE{judgment}`
 
 ::BODY{B8|name:operation}
@@ -195,6 +204,51 @@ These are narrative, not structural, and are counted separately.
 `::LATENCY` and `::CONFIDENCE` appear as annotation lines in v3.0 §10.4 examples but
 are not defined in §7. They are treated as B2 field lines under their parent
 narrative declaration until formally registered.
+
+### §1.7 Grammar amendments (2026-08-11)
+
+Productions registered through the §1.5 amendment channel, codifying canon usage
+(`AUTHORS.md`, `SPEC-v5.0-PRE.md`) that a strict L2 reading previously rejected.
+None changes the meaning of any existing document.
+
+::GRAMMAR{form:document_header|conf:confirmed}
+T:form=`::ILANG::<version>[::<name>]`_as_first_nonblank_line_of_a_document
+T:zero_or_more_top_level_`[TAG:value]`_preamble_lines_may_follow|TAG=UPPERCASE
+T:preamble_lines_are_document_metadata|NOT_operations|no_E304
+E:`::ILANG::v5.0::SPEC` + `[TYPE:protocol_specification]`
+E:`::ILANG::v5.0` + `[TYPE:profile][SCOPE:public][LANG:en]`
+
+::GRAMMAR{form:temporal_prefix|conf:confirmed}
+T:form=`T[n]`_whitespace_declaration|binds_the_declaration_to_timeline_position_n
+T:extends_v3.0_§7.5_temporal_notation|the_prefix_is_a_marker_not_a_declaration
+T:lines_indented_deeper_than_the_prefixed_line_attach_to_that_declaration|header_body_rules
+T:`T[n]=value`_line_binds_position_n_to_an_absolute_value
+E:`T[0]  ::EVENT{1998|entered_wuhan_university}` , `T[9]=2015`
+
+::GRAMMAR{form:chain_continuation|conf:confirmed}
+T:an_operation_chain_MAY_wrap|continuation_lines_are_indented_and_begin_with_`=>`
+T:each_continuation_extends_the_chain_of_the_nearest_preceding_operation_line
+E:`[READ:@SPEC|src=...]` + `  =>[PARS|typ=v5.0]` + `  =>[LERN|whr=judgment_layer]`
+
+::GRAMMAR{form:narrative_payload|conf:confirmed}
+T:narrative_payload_braces_MAY_carry_pipe_separated_fields|first_segment=name
+T:subsequent_segments=`key:value`_fields_or_barewords|barewords_are_opaque_labels
+E:`::EVENT{1998|entered_wuhan_university|major:computer_science}`
+
+Canonical forms for the three registered declarations that previously had none:
+
+::GRAMMAR{decl:BOUNDARY|conf:confirmed}
+T:shape=inline|form=`::BOUNDARY{never:action|scope:context}`
+T:user_set_hard_stop|a_matched_boundary_resolves_to_M8_regardless_of_vector_score
+T:semantics_align_with_PATCH-1_§3_survival_gates
+
+::GRAMMAR{decl:CLAUSE|conf:confirmed}
+T:shape=header_body|form=`::CLAUSE{NAME|conf:level|scope:context}`+B1_body
+T:normative_statement_block|T:_lines_bind|A:_lines_reject
+
+::GRAMMAR{decl:MODULE|conf:confirmed}
+T:compound_header=`::MODULE::NAME{`|the_sole_two_segment_declaration_name
+T:shape=brace_span|body=B5_tag_lines+B6_prose|declared_prose_body_type_per_§1.2_B6
 
 ---
 
@@ -366,14 +420,15 @@ python3 ilang_judge_validator.py --check blueprint.ilang
 
 ## Appendix B — Ratification notes
 
-Three counts in `ilang-dict` did not match the normative specs at the time of writing.
-Resolved as follows:
+Counts in `ilang-dict` that did not match the normative specs (first three found at
+the time of writing; fourth resolved by the 2026-08-11 rev). Resolved as follows:
 
 | Claim | Spec evidence | Resolution |
 |-------|---------------|------------|
 | "40 modifiers" | v3.0 §4 tables 29; v4.0 states "29 modifiers unchanged"; no v5.0 modifier additions | 29 |
 | "22 entities" | v3.0 §5 tables 14; v4.0 uses 8 role entities normatively without tabling them | 22 confirmed, role tier now tabled (§2.1) |
 | "12 declarations" | no layer or combination sums to 12 | 31 structural + 13 narrative at ratification (§1.5, §1.6); 32 structural since the 2026-08-11 `::LIST` amendment |
+| "89 verbs" | v3.0 §3 tables 88; v4.0 states "No new verbs added (verb count: 88)"; SCOPE clause no_new_verbs | 88 reaffirmed 2026-08-11 by @SUN; JUDGE is the `::JUDGE` declaration, not an operation verb |
 
 One casing deviation was found in the canon by mechanical check against §2.2 and
 corrected in the same change set:
@@ -381,9 +436,10 @@ corrected in the same change set:
 | Location | Was | Now | Reason |
 |----------|-----|-----|--------|
 | PATCH-1 §3, 3 lines | `::STATE{@f_v5, …}` | `::STATE{@F_V5, …}` | v3.0 §2.5 requires UPPERCASE after `@`. The function name `f_v5` in `::FUNC{f_v5\|version:1}` is a field value, not an entity, and is unchanged. PATCH-1's frozen set covers the cascade structure and constants, not this token. |
+| PRE §MATH_FOUNDATION, 1 line | `(non-诚勿扰 model)` | `(non-simultaneous model)` | IME artifact in the frozen text (2026-08-11). Intended sense per PRE §VECTOR EXTRACTION: dimensions are not extracted simultaneously. Corrected under this table's correction-channel precedent; no frozen constant touched. |
 
 Two further lowercase matches were inspected and are not violations: `@objective` in
 `SPEC-v4.0-DRAFT.md` (superseded by FINAL, retained as history) and `@i-language` in
 RC1/RC2 (an npm package name in prose).
 
-::STATE{@PATCH-2, end:true, next:dict_alignment→validator_grammar_extension}
+::STATE{@PATCH-2, end:true, next:validator_grammar_extension|dict_alignment:done_2026-08-11}

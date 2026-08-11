@@ -16,17 +16,19 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           cd /tmp
-          git clone https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Spec hf-repo || {
-            mkdir hf-repo && cd hf-repo && git init -b main
-            git remote add origin https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Spec
-          }
+          git clone https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Spec hf-repo
           cd /tmp/hf-repo
           cp $GITHUB_WORKSPACE/SPEC.md .
+          cp $GITHUB_WORKSPACE/SPEC-v4.0-FINAL.md .
+          cp $GITHUB_WORKSPACE/SPEC-v5.0-PRE.md .
+          cp $GITHUB_WORKSPACE/SPEC-v5.0-PATCH-1.md .
+          cp $GITHUB_WORKSPACE/SPEC-v5.0-PATCH-2.md .
           cp $GITHUB_WORKSPACE/AUTHORS.md .
           cp $GITHUB_WORKSPACE/README.md .
           cp $GITHUB_WORKSPACE/LICENSE .
+          cp $GITHUB_WORKSPACE/ilang_judge_validator.py .
           git config user.name "ilang-ai"
           git config user.email "ilang-ai@users.noreply.github.com"
           git add -A
           git diff --cached --quiet || git commit -m "Sync from GitHub"
-          git push origin main --force
+          git push origin main

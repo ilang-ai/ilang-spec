@@ -12,7 +12,10 @@ Usage:
   python3 ilang_judge_validator.py --eval FILE.jsonl   # compute JCS on gold/pred pairs
 
 JSONL line format for --eval:
-  {"gold_v": {...11 dims...}, "pred_v": {...}, "pred_mode": "M2", "boundary": false}
+  {"gold_v": {...11 dims...}, "pred_v": {...}, "pred_mode": "M2", "boundary": false,
+   "schema_valid": true}
+"schema_valid" is optional; rows omitting it count as valid. Feed --check results in
+so schema_validity_rate (JCS weight 0.20, L2 gate schema>=0.99) is actually measured.
 Single file, stdlib only. Constants frozen at v1 (DATA-FREEZE 2026-07-03); structure frozen.
 """
 
@@ -107,10 +110,15 @@ def parse_judge_block(lines):
         raise ValueError("abstain rule violated: epistemic gate requires M5")
     return vec, mode, conf, mr.group(1)
 
+# PATCH-1 §4: A:extra_fields⇒parser_reject — a field-shaped line right after R: means
+# the block carries a 5th field; new declarations ("::...") and prose do not match.
+EXTRA_FIELD = re.compile(r"^[A-Za-z_][A-Za-z0-9_]{0,15}:")
+
 def extract_blocks(text):
-    """Find candidate 4-line ::JUDGE blocks in arbitrary text."""
+    """Find candidate 4-line ::JUDGE blocks; return (block, following_line) pairs."""
     lines = text.splitlines()
-    return [lines[i:i + 4] for i, ln in enumerate(lines) if ln.strip() == HEADER]
+    return [(lines[i:i + 4], lines[i + 4] if i + 4 < len(lines) else "")
+            for i, ln in enumerate(lines) if ln.strip() == HEADER]
 
 # ----------------------------------------------------------------- commands
 def cmd_check(path):
@@ -120,12 +128,16 @@ def cmd_check(path):
         print("no ::JUDGE blocks found")
         return 1
     ok = bad_schema = mode_mismatch = 0
-    for n, b in enumerate(blocks, 1):
+    for n, (b, nxt) in enumerate(blocks, 1):
         try:
             vec, mode, conf, _ = parse_judge_block(b)
         except ValueError as e:
             bad_schema += 1
             print(f"[block {n}] SCHEMA FAIL: {e}")
+            continue
+        if EXTRA_FIELD.match(nxt.strip()) and not nxt.strip().startswith("::"):
+            bad_schema += 1
+            print(f"[block {n}] SCHEMA FAIL: extra fields after R line (PATCH-1 §4)")
             continue
         ref = f_v5(vec)
         if mode != ref:
@@ -192,11 +204,14 @@ def cmd_eval(path):
     mae = sum(maes) / n
     vector_score = max(0.0, 1 - mae / 0.25)
     boundary_acc = (b_hits / b_total) if b_total else 1.0
-    schema_rate = 1.0  # schema is enforced upstream by --check; JSONL rows are parsed
+    schema_rate = sum(bool(r.get("schema_valid", True)) for r in rows) / n
+    if all("schema_valid" not in r for r in rows):
+        print("note: no schema_valid field in rows; schema_rate defaults to 1.0 — "
+              "feed --check results in for a measured rate")
     jcs = 0.20 * schema_rate + 0.40 * mode_acc + 0.20 * vector_score + 0.20 * boundary_acc
     l2 = (schema_rate >= 0.99 and mode_acc >= 0.90 and mae <= 0.12
           and boundary_acc >= 0.80 and jcs >= 0.90)
-    print(f"n={n} mode_acc={mode_acc:.4f} MAE={mae:.4f} "
+    print(f"n={n} schema_rate={schema_rate:.4f} mode_acc={mode_acc:.4f} MAE={mae:.4f} "
           f"vector_score={vector_score:.4f} boundary_acc={boundary_acc:.4f} "
           f"(boundary n={b_total})")
     print(f"JCS={jcs:.4f}  L2_pass={'YES' if l2 else 'NO'}")
@@ -249,6 +264,10 @@ def cmd_selftest():
         t.append(("abstain rule enforced", False))
     except ValueError:
         t.append(("abstain rule enforced", True))
+
+    t.append(("extra-field pattern catches X:foo, skips declarations",
+              bool(EXTRA_FIELD.match("X:foo"))
+              and not EXTRA_FIELD.match("::STATE{x}")))
 
     failed = [name for name, ok in t if not ok]
     for name, ok in t:
