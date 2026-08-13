@@ -1,3 +1,4 @@
+```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
 [VERSION:2.0.0]
@@ -10,6 +11,7 @@
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
 [HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction]
+```
 
 ---
 

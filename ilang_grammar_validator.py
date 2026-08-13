@@ -607,7 +607,6 @@ class Linter:
 
 # ------------------------------------------------------------------- commands
 CANON_FILES = ["SPEC.md", "SPEC-v4.0-FINAL.md", "SPEC-v5.0-PRE.md",
-               "SPEC-v5.0-PATCH-1.md", "SPEC-v5.0-PATCH-2.md",
                "AUTHORS.md", "README.md"]
 
 

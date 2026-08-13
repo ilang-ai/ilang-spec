@@ -21,8 +21,6 @@ jobs:
           cp $GITHUB_WORKSPACE/SPEC.md .
           cp $GITHUB_WORKSPACE/SPEC-v4.0-FINAL.md .
           cp $GITHUB_WORKSPACE/SPEC-v5.0-PRE.md .
-          cp $GITHUB_WORKSPACE/SPEC-v5.0-PATCH-1.md .
-          cp $GITHUB_WORKSPACE/SPEC-v5.0-PATCH-2.md .
           cp $GITHUB_WORKSPACE/AUTHORS.md .
           cp $GITHUB_WORKSPACE/README.md .
           cp $GITHUB_WORKSPACE/LICENSE .
