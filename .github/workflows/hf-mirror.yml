@@ -18,6 +18,7 @@ jobs:
           cd /tmp
           git clone https://i-Lang:${HF_TOKEN}@huggingface.co/datasets/i-Lang/iLang-Spec hf-repo
           cd /tmp/hf-repo
+          rm -f SPEC-v5.0-PATCH-1.md SPEC-v5.0-PATCH-2.md
           cp $GITHUB_WORKSPACE/SPEC.md .
           cp $GITHUB_WORKSPACE/SPEC-v4.0-FINAL.md .
           cp $GITHUB_WORKSPACE/SPEC-v5.0-PRE.md .
