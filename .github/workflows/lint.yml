@@ -20,7 +20,6 @@ jobs:
         run: python ilang_grammar_validator.py --canon .
       - name: Judge validator selftest
         run: python ilang_judge_validator.py --selftest
-      - name: JUDGE blocks in patches
+      - name: JUDGE blocks in spec
         run: |
-          python ilang_judge_validator.py --check SPEC-v5.0-PATCH-1.md
-          python ilang_judge_validator.py --check SPEC-v5.0-PATCH-2.md
+          python ilang_judge_validator.py --check SPEC-v5.0-PRE.md
