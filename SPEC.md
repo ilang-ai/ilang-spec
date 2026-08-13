@@ -340,7 +340,7 @@ External entities require authentication. Auth is handled by the runtime, not by
 Any `@UPPERCASE_NAME` is a valid entity. Implementations define their own entity registries.
 
 Registration, resolution order, and the `E200` / `E201` / `E202` error semantics are specified in
-[SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) §2, which also tables the eight
+[SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) §2, which also tables the eight
 authority-bearing role entities that v4.0 introduces in normative text.
 
 ---
@@ -350,7 +350,7 @@ authority-bearing role entities that v4.0 introduces in normative text.
 Each subsection below gives the canonical form of one declaration. The grammar shared
 by all of them — the three block shapes, the eight body line forms, termination and
 indentation rules, encoding, and the reserved body keys — is specified in
-[SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) §1. The canonical registry of all 32
+[SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) §1. The canonical registry of all 32
 structural declarations — this layer's 14, v4.0's 8, v5.0's 9, and the
 amendment-registered `::LIST` — is PATCH-2 §1.5.
 
@@ -726,8 +726,8 @@ Plan, build, test, review, deploy, checkpoint, learn. One language, one workflow
 | v3.0 Final | 2026-04 | Unified spec. 88 verbs with input/output/side-effect semantics. Two syntaxes formalized. Source resolution rules. Immutable gene registry inlined. Error codes expanded. Red-teamed by GPT. (This document — the communication layer.) |
 | v4.0 Final | 2026-05 | **Current stable.** Execution semantics layer. 8 execution declarations, 4 conformance levels, five-level authority model (system > developer > runtime > user > agent_self) with three-tier STATUS write authority. 0 new verbs. See [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md). |
 | v5.0 Pre | 2026-06 | **Latest (public preview, frozen for review).** Judgment layer. Judgment as vector composition over a continuous behavioral manifold — 11-dimensional judgment vector, 4 axioms, three-layer architecture, 10 draft decision modes (superseded by PATCH-1's frozen M1–M8 set), fuzzy-mathematical foundation. See [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md). |
-| v5.0 PATCH-1 | 2026-07 (rev 2026-08-11) | Trainable judgment layer: 11 dimensions operationalized, frozen 8-mode set M1–M8, reference function f_v5, frozen JUDGE serialization. Constants ratified 2026-07-03. See [SPEC-v5.0-PATCH-1.md](SPEC-v5.0-PATCH-1.md). |
-| v5.0 PATCH-2 | 2026-08 (rev 2026-08-11) | Declaration grammar (3 block shapes, 8 body forms), entity registry (22), declaration registry (32 structural + 13 narrative, incl. amendment-registered `::LIST`), error code E202. See [SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md). |
+| v5.0 PATCH-1 | 2026-07 (rev 2026-08-11) | Trainable judgment layer: 11 dimensions operationalized, frozen 8-mode set M1–M8, reference function f_v5, frozen JUDGE serialization. Constants ratified 2026-07-03. See [SPEC-v5.0-PATCH-1.md](archive/SPEC-v5.0-PATCH-1.md). |
+| v5.0 PATCH-2 | 2026-08 (rev 2026-08-11) | Declaration grammar (3 block shapes, 8 body forms), entity registry (22), declaration registry (32 structural + 13 narrative, incl. amendment-registered `::LIST`), error code E202. See [SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md). |
 
 ### Dialect Note
 
