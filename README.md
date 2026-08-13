@@ -76,7 +76,7 @@ v5.0 adds **vector logic judgment** to the protocol. Instead of binary safety ru
 | 11-Dimensional Vector | intent, capability, consequence, relationship, certainty, authority, reversibility, evidence, sovereignty, inertia, externality (PATCH-1 renames PRE's draft dim 10 "drift" to "inertia") |
 | Three-Layer Architecture | Exact predicates (binary) → Vector logic (continuous) → Co-evolutionary adaptation |
 | Survival Boundaries | Four irreversible collapse conditions (not moral rules — thermodynamic-style limits) |
-| Judgment Modes | M1 EXEC_AUTO, M2 EXEC_AUDIT, M3 CONFIRM, M4 ADVISE, M5 ASK, M6 DEFER, M7 DECLINE_ALT, M8 STOP — frozen closed set ([PATCH-1](SPEC-v5.0-PATCH-1.md) §2; supersedes PRE's 10 draft modes) |
+| Judgment Modes | M1 EXEC_AUTO, M2 EXEC_AUDIT, M3 CONFIRM, M4 ADVISE, M5 ASK, M6 DEFER, M7 DECLINE_ALT, M8 STOP — frozen closed set ([PATCH-1](archive/SPEC-v5.0-PATCH-1.md) §2; supersedes PRE's 10 draft modes) |
 
 **Try it now:** Copy the contents of [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) and paste into any AI conversation as the first message. The AI will shift from binary classification to vector-assessed judgment.
 
@@ -86,13 +86,13 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | Version | Date | Status | File |
 |---------|------|--------|------|
-| v5.0 PATCH-2 | 2026-08-05 (rev 2026-08-11) | **Adopted** (grammar + registry; normative by reference from SPEC.md) | [SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) |
-| v5.0 PATCH-1 | 2026-07-03 (rev 2026-08-11) | **Adopted** (trainable; constants ratified 2026-07-03) | [SPEC-v5.0-PATCH-1.md](SPEC-v5.0-PATCH-1.md) |
-| v5.0 Pre 1.0.3-final | 2026-06-24 | **Latest** (Public Preview, Frozen) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
+| v5.0 Pre 2.0.1 (merged) | 2026-08-13 | **Latest** (Public Preview; consolidates PRE + PATCH-1 + PATCH-2 + GENE correction) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
+| v5.0 PATCH-2 | 2026-08-05 (rev 2026-08-11) | **Adopted** (grammar + registry; normative by reference from SPEC.md; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) |
+| v5.0 PATCH-1 | 2026-07-03 (rev 2026-08-11) | **Adopted** (trainable; constants ratified 2026-07-03; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-1.md](archive/SPEC-v5.0-PATCH-1.md) |
 | v4.0 Final | 2026-05-11 | **Current stable** | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |
-| v4.0 RC2 | 2026-05-11 | Superseded | [SPEC-v4.0-RC2.md](SPEC-v4.0-RC2.md) |
-| v4.0 RC1 | 2026-05-11 | Superseded | [SPEC-v4.0-RC1.md](SPEC-v4.0-RC1.md) |
-| v4.0 DRAFT | 2026-05-11 | Superseded | [SPEC-v4.0-DRAFT.md](SPEC-v4.0-DRAFT.md) |
+| v4.0 RC2 | 2026-05-11 | Superseded | [archive/SPEC-v4.0-RC2.md](archive/SPEC-v4.0-RC2.md) |
+| v4.0 RC1 | 2026-05-11 | Superseded | [archive/SPEC-v4.0-RC1.md](archive/SPEC-v4.0-RC1.md) |
+| v4.0 DRAFT | 2026-05-11 | Superseded | [archive/SPEC-v4.0-DRAFT.md](archive/SPEC-v4.0-DRAFT.md) |
 | v3.0 Final | 2026-04 | Stable | [SPEC.md](SPEC.md) |
 | v2.0 | 2026-02 | Archived | [I-Lang-Protocol-Spec-v2.pdf](I-Lang-Protocol-Spec-v2.pdf) |
 
@@ -100,14 +100,14 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | File | Description |
 |------|-------------|
-| [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) | **v5.0 Pre** — judgment layer (latest, public preview) |
-| [SPEC-v5.0-PATCH-1.md](SPEC-v5.0-PATCH-1.md) | v5.0 PATCH-1 — trainable judgment layer |
-| [SPEC-v5.0-PATCH-2.md](SPEC-v5.0-PATCH-2.md) | v5.0 PATCH-2 — declaration grammar and entity registry |
+| [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) | **v5.0 Pre** — judgment layer, merged spec: Parts I–IV (latest, public preview) |
 | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) | v4.0 Final — execution semantics (current stable) |
 | [SPEC.md](SPEC.md) | v3.0 Final — communication format (stable, unchanged) |
-| [SPEC-v4.0-RC2.md](SPEC-v4.0-RC2.md) | v4.0 RC2 — iteration record |
-| [SPEC-v4.0-RC1.md](SPEC-v4.0-RC1.md) | v4.0 RC1 — iteration record |
-| [SPEC-v4.0-DRAFT.md](SPEC-v4.0-DRAFT.md) | v4.0 DRAFT — iteration record |
+| [archive/SPEC-v5.0-PATCH-1.md](archive/SPEC-v5.0-PATCH-1.md) | v5.0 PATCH-1 — trainable judgment layer (merged into v5.0 Pre) |
+| [archive/SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) | v5.0 PATCH-2 — declaration grammar and entity registry (merged into v5.0 Pre) |
+| [archive/SPEC-v4.0-RC2.md](archive/SPEC-v4.0-RC2.md) | v4.0 RC2 — iteration record |
+| [archive/SPEC-v4.0-RC1.md](archive/SPEC-v4.0-RC1.md) | v4.0 RC1 — iteration record |
+| [archive/SPEC-v4.0-DRAFT.md](archive/SPEC-v4.0-DRAFT.md) | v4.0 DRAFT — iteration record |
 | [ilang_judge_validator.py](ilang_judge_validator.py) | Reference validator for the v5.0 judgment layer |
 | [ilang_grammar_validator.py](ilang_grammar_validator.py) | Grammar & registry validator (PATCH-2 §1/§2 mechanical checks; CI canon gate) |
 | [AUTHORS.md](AUTHORS.md) | Authorship record written in I-Lang v5.0 declaration syntax (canon demo, includes `::LIST` usage) |

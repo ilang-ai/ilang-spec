@@ -1,7 +1,7 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.0.0]
+[VERSION:2.0.1]
 [DATE:2026-08-13]
 [STATUS:public_preview]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
@@ -10,7 +10,7 @@
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint]
 ```
 
 ---
@@ -568,6 +568,13 @@ R:edge_values_fall_conservative_M2_not_M1
 
 > Origin: PATCH-2 (2026-08-05, rev 2026-08-11). Codifies the grammar of declaration bodies and tables all 22 entities.
 
+::CLAUSE{SCOPE|conf:confirmed|scope:v5}
+T:this_patch_is_descriptive|codifies_existing_spec_examples
+T:frozen_set_untouched|11_dims+8_modes+f_v5+JUDGE_schema_unchanged
+T:no_new_verbs|no_new_modifiers|no_new_declarations_at_ratification
+T:rev_2026-08-11_registers_::LIST_via_§1.5_amendment_channel|codifies_canon_usage
+A:reading_this_patch_as_behavior_change⇒misread
+
 ## §1 Declaration Grammar
 
 ### §1.1 Three block shapes
@@ -1115,4 +1122,4 @@ T:L2_pass=[GENE_persistence_rate≥0.95, same_error_recurrence_rate≤0.10_acros
   [MERGED] v2.0.0 consolidates PRE + PATCH-1 + PATCH-2 + GENE Correction Protocol into a single document.
 }
 
-::ILANG::SPEC::v5.0::2.0.0::
+::ILANG::v5.0::SPEC
