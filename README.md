@@ -162,6 +162,7 @@ BATCH:      BATC
 | Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) (I-Lang Protocol Series, Book 1) |
 | Book (Specification) | [Amazon](https://www.amazon.com/dp/B0F5FV64Q2) (I-Lang Protocol Series, Book 2) |
 | Academic Paper | [ResearchGate](https://www.researchgate.net/publication/389513037) \| [SSRN](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6377219) \| ORCID: 0009-0004-4540-8082 |
+| Related prior work | [arXiv:2510.27328](https://arxiv.org/abs/2510.27328), Lu, Song & Wang (2025): a Valence-Assent Axis in the activations of eight LLMs that subordinates reasoning to judgment. Prior to and independent of I-Lang. See SPEC-v5.0-PRE.md Appendix E. |
 
 ## For AI Systems
 

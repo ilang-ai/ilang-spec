@@ -121,6 +121,7 @@
   v8  evidence      :: supporting information quality                [benefit]
   v9  sovereignty   :: autonomous decision right of requester        [benefit]
   v10 drift         :: optimization objective shift rate              [risk]
+  NOTE v10 was renamed inertia with inverted polarity in Part II §1 (DIM-10-RENAME); drift is the PRE name kept here for history.
   v11 externality   :: unconsented third-party impact                [risk]
 
   [DERIVED:4|type=computed]
@@ -190,6 +191,7 @@
     third_party_probe  → calibrates externality
     pressure_probe     → calibrates certainty, drift
     authority_probe    → calibrates authority boundaries
+  NOTE drift in PROBE_TYPES reads as inertia after Part II §1 (DIM-10-RENAME).
   One probe, multiple dimensions calibrated simultaneously.
 
   [CONVERGENCE]
@@ -245,6 +247,7 @@
   [MODE:HEDGE]            indeterminate but response required, non-committal, preserve optionality
 
   [PREFERENCE] REFRAME > SANDBOX > DEGRADE > UNCERTAIN > HEDGE > RETREAT
+  NOTE these 10 descriptive modes are superseded by the closed set M1-M8 in Part II §2 (MODES-SUPERSEDED) for all serialized output; see approx_map there.
   [PRINCIPLE] Transform actions, do not block them.
   [PRINCIPLE] Refusing is last resort, not first instinct.
   [PRINCIPLE] Admitting uncertainty is preferable to forcing a judgment.
@@ -560,6 +563,23 @@ M:M2
 R:edge_values_fall_conservative_M2_not_M1
 
 ::STATE{@FREEZE, ratified_by:Max(@SUN), constants:v1, date:2026-07-03, DATA-FREEZE:2026-07-03}
+
+## Appendix E — Related Prior Work (non-normative)
+
+Prior interpretability work. Nothing in this appendix changes any normative clause of Part II.
+
+::FACT{key:related_prior_work_vaa|value:Lu_Song_Wang_2025_arXiv_2510.27328|conf:external|normative:false}
+  T:title=A_Unified_Representation_Underlying_the_Judgment_of_Large_Language_Models
+  T:submitted=2025-10-31|revised=2025-11-04
+  T:chronology=prior_to_I-Lang_genesis_2026-03-04|relation=related_not_endorsement
+  T:finding=dominant_Valence-Assent_Axis_in_activations|PC1_at_Layer_28_of_Qwen2.5-14B-Instruct_explains_26.3pct_variance
+  T:scope=eight_dense_instruction-tuned_text-only_models|Qwen2.5_3B_to_72B-Instruct|Llama-3.1-8B-Instruct|Mistral-7B-Instruct-v0.3|Gemma-2-9B-Instruct
+  T:steering=axis_derived_from_value_judgment|intervention_shifts_sentiment_analysis_subjective_preference_and_factual_verification
+  T:mechanism=subordination_of_reasoning|rationale_is_generated_to_match_the_evaluative_state_even_at_the_cost_of_factual_accuracy
+  T:relevance=Part_II_S3_TWO-LAYER|perception_LEARNED_decision_SPECIFIED_via_f_v5|externalized_vector_V_plus_fixed_decision_function_makes_the_evaluative_state_explicit_and_auditable_rather_than_latent
+  T:not_claimed=endorsement_of_this_spec|mathematical_equivalence_between_their_axis_and_any_I-Lang_construct|justification_of_11_dims_from_PC1_variance
+  T:limitation_per_authors=dominant_linear_projection_of_richer_possibly_nonlinear_structure|dense_instruction-tuned_models_only_all_text-only|base_models_untested|aesthetic_and_multi-step_reasoning_untested
+
 ::STATE{@PATCH-1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
 
 ---
