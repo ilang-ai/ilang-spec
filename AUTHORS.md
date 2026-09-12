@@ -112,7 +112,7 @@ T[15] ::FACT{key:track|value:running|since:T[1]|duration:27y|interruptions:0|con
 ::CREATE{@SELF}{I-Lang Protocol}
   URL:ilang.ai ∧ ilang.cn
   SPEC:github.com/ilang-ai/ilang-spec
-  METRIC:40-65% token compression|verified_on:7 AI platforms
+  METRIC:token_reduction -68% on a realistic request (169 to 54 tokens), -7% written tersely (58 to 54), tiktoken cl100k_base, texts at ilang.ai/prompt-compression|tested_on:7 models, results at ilang.ai/benchmark (May 2026)
   LICENSE:MIT
 
 ::CREATE{@SELF}{AutoCode}
