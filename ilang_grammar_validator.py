@@ -18,7 +18,7 @@ registries) plus the v3.0 operation tables:
   PATCH-2 §2.2  entity casing @[A-Z][A-Z0-9_]* (E300); custom entities SHOULD
                 be introduced via ::STATE (WARN)
   v3.0 §3/§4    operation verbs (88) + Greek aliases (13) -> E304 / E305;
-                modifier keys (29 core) -> E302 (WARN by default, see NOTE)
+                modifier keys (29 core) -> E302 (ERROR, see NOTE)
   v4.1 §4.4     media profile (20 keys) accepted only where the operation
                 target is @IMG, @VID or @AUD; §5.4 registers those three
 
