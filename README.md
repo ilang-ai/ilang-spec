@@ -23,7 +23,7 @@ license: mit
 
 **The Native Language of Artificial Intelligence**
 
-**Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication)
+**Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication) | [PATCH-3](SPEC-v5.0-PATCH-3.md) (September 2026, adopted — image, video and audio vocabulary)
 
 I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation). Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang achieves zero-ambiguity instruction transmission across all major models.
 
@@ -86,6 +86,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | Version | Date | Status | File |
 |---------|------|--------|------|
+| v5.0 PATCH-3 | 2026-09-13 | **Adopted** (media profile and media entities; normative by reference from SPEC.md §4/§5) | [SPEC-v5.0-PATCH-3.md](SPEC-v5.0-PATCH-3.md) |
 | v5.0 Pre 2.0.1 (merged) | 2026-08-13 | **Latest** (Public Preview; consolidates PRE + PATCH-1 + PATCH-2 + GENE correction) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
 | v5.0 PATCH-2 | 2026-08-05 (rev 2026-08-11) | **Adopted** (grammar + registry; normative by reference from SPEC.md; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) |
 | v5.0 PATCH-1 | 2026-07-03 (rev 2026-08-11) | **Adopted** (trainable; constants ratified 2026-07-03; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-1.md](archive/SPEC-v5.0-PATCH-1.md) |
@@ -100,6 +101,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 
 | File | Description |
 |------|-------------|
+| [SPEC-v5.0-PATCH-3.md](SPEC-v5.0-PATCH-3.md) | v5.0 PATCH-3 — media profile (20 target-gated keys) and media entities (@IMG, @VID, @AUD) |
 | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) | **v5.0 Pre** — judgment layer, merged spec: Parts I–IV (latest, public preview) |
 | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) | v4.0 Final — execution semantics (current stable) |
 | [SPEC.md](SPEC.md) | v3.0 Final — communication format (stable, unchanged) |

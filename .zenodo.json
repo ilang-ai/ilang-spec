@@ -1,7 +1,7 @@
 {
   "title": "I-Lang Protocol Specification",
-  "description": "<p>I-Lang is an AI-native communication protocol that defines a formal vocabulary of 88 verbs, 29 modifiers, 22 entities, and 13 Greek aliases for structured communication between humans and AI, between AI agents, and within AI internal reasoning.</p><p>It introduces two syntaxes: operation syntax <code>[]</code> for executable instructions and declaration syntax <code>::</code> for behavioral identity. Version 3.0 defines the communication format, version 4.0 adds execution semantics, and version 5.0 adds a trainable judgment layer built on an 11-dimensional judgment vector space governed by four axioms and a three-layer architecture, grounded in fuzzy mathematics.</p><p>I-Lang provides the semantic and judgment layer that sits above tool-integration protocols such as Anthropic's Model Context Protocol (MCP) and agent-discovery protocols such as Google's Agent-to-Agent Protocol (A2A). MIT licensed.</p>",
-  "version": "4.0",
+  "description": "<p>I-Lang is an AI-native communication protocol that defines a formal vocabulary of 88 verbs, 29 core modifiers plus a 20-key media profile, 25 entities (17 addressable, 8 role), and 13 Greek aliases for structured communication between humans and AI, between AI agents, and within AI internal reasoning.</p><p>It introduces two syntaxes: operation syntax <code>[]</code> for executable instructions and declaration syntax <code>::</code> for behavioral identity. Version 3.0 defines the communication format, version 4.0 adds execution semantics, and version 5.0 adds a trainable judgment layer built on an 11-dimensional judgment vector space governed by four axioms and a three-layer architecture, grounded in fuzzy mathematics.</p><p>I-Lang provides the semantic and judgment layer that sits above tool-integration protocols such as Anthropic's Model Context Protocol (MCP) and agent-discovery protocols such as Google's Agent-to-Agent Protocol (A2A). MIT licensed.</p><p>This release adds PATCH-3, which registers image, video and audio generation intent: a media profile of 20 keys counted separately from the closed core registry and in force only where an operation addresses a media artifact, and a media entity tier of three artifact targets. The 88 verbs, the 29 core modifiers and the Core, External and Role entity tiers are unchanged.</p>",
+  "version": "5.0-pre.2.1.0",
   "upload_type": "software",
   "license": "MIT",
   "access_right": "open",
@@ -24,7 +24,10 @@
     "agent orchestration",
     "large language models",
     "structured instruction",
-    "semantic loss"
+    "semantic loss",
+    "image generation",
+    "video generation",
+    "structured image prompts"
   ],
   "related_identifiers": [
     {

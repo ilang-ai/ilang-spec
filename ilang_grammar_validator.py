@@ -18,16 +18,21 @@ registries) plus the v3.0 operation tables:
   PATCH-2 §2.2  entity casing @[A-Z][A-Z0-9_]* (E300); custom entities SHOULD
                 be introduced via ::STATE (WARN)
   v3.0 §3/§4    operation verbs (88) + Greek aliases (13) -> E304 / E305;
-                modifier keys (29) -> E302 (WARN by default, see NOTE)
+                modifier keys (29 core) -> E302 (WARN by default, see NOTE)
+  PATCH-3 §4.4  media profile (20 keys) accepted only where the operation
+                target is @IMG, @VID or @AUD; §5.4 registers those three
 
 Static scope: E200 (unresolvable name) and E201 (environment availability) are
 runtime semantics, intentionally out of scope. E202 (rebinding a registered
 name) is reported as a WARN candidate when a document ::STATE-introduces a
 Tier-1/2 name.
 
-NOTE on E302: the modifier registry is closed at 29 (no_new_modifiers
+NOTE on E302: the core modifier registry is closed at 29 (no_new_modifiers
 reaffirmed 2026-08-11; the v4.0-FINAL §7 examples that used ad-hoc keys were
-rewritten to registered ones). Unknown operation modifier keys are ERROR.
+rewritten to registered ones). PATCH-3 (2026-09-13) registers a separate
+20-key media profile through the §1.5 MOD-COUNT amendment channel; it is
+counted apart from the 29 and gated on a media target. Unknown operation
+modifier keys are ERROR.
 
 Input modes (auto-detected per file):
   raw    first nonblank line is ::ILANG::  -> whole file is I-Lang
@@ -79,13 +84,21 @@ ALIASES = set("Σ Δ φ ∇ λ ∂ μ ψ ξ ζ θ Ω Π".split())
 GREEKISH = "ΣΔφ∇λ∂μψξζθΩΠ"
 MODIFIERS = set(("src dst path fmt lng sty ton len lim off top bot srt grp "
                  "whr mch exc dep rng typ enc cap pri col row frm to scp op").split())
+# PATCH-3 §4.4: a separate, target-gated table. Counted apart from the closed core 29
+# and in force only where the operation target resolves to a media entity (TIER4).
+MEDIA_PROFILE = set(("sbj act plc txt pov fcl mvt lgt pal mdm "
+                     "asp rsl qly dur fps sed adh ref dlg sfx").split())
 # meta-variables used by the specs' own teaching examples — informational only
 PLACEHOLDER_HEADS = {"VERB", "VERB1", "VERB2", "VERB3", "DECL"}
 
 TIER1 = set("@SRC @DST @PREV @LOCAL @SCREEN @LOG @NULL @STDIN".split())
 TIER2 = set("@GH @R2 @COS @DRIVE @WORKER @CF".split())
 TIER3 = set("@SYSTEM @RUNTIME @GRADER @USER @SELF @AGENT @TASK @TOOL".split())
-REGISTERED_ENTITIES = TIER1 | TIER2 | TIER3
+# PATCH-3 §5.4: media artifact targets. Their own tier, so Core, External and Role keep
+# the counts earlier releases cite, and a ::STATE preset on a media entity is not read as
+# rebinding a registered I/O name (E202 covers TIER1|TIER2 only).
+TIER4 = set("@IMG @VID @AUD".split())
+REGISTERED_ENTITIES = TIER1 | TIER2 | TIER3 | TIER4
 # meta-variables the specs use in canonical forms — never real entities
 PLACEHOLDER_ENTITIES = set("A B ENTITY FROM TO TARGET NAME SOURCE".split())
 
@@ -580,15 +593,25 @@ class Linter:
                     self.add(ERROR, lineno, "E300",
                              "operation target `%s` is not an @ENTITY (v3.0 §2.2; BATC/Π excepted)" % target)
             if "|" in rest:
+                # PATCH-3 §4.4.1: the media profile is in force only when the target is a
+                # media entity. Core keys keep their meaning inside media operations.
+                media = target in TIER4
+                allowed = MODIFIERS | MEDIA_PROFILE if media else MODIFIERS
+                where = ("the 29-key core registry or the 20-key media profile"
+                         if media else "the 29-key registry")
                 mods = rest.split("|", 1)[1]
                 for seg in re.split(r"[|]", mods):
                     for piece in seg.split(","):
                         if "=" not in piece:
                             continue          # continuation of previous value
                         key = piece.split("=", 1)[0].strip()
-                        if key and key not in MODIFIERS:
+                        if key and key not in allowed:
+                            hint = ""
+                            if not media and key in MEDIA_PROFILE:
+                                hint = (" (media profile key used on a non-media target;"
+                                        " §4.4.1 gates it to @IMG, @VID and @AUD)")
                             self.add(ERROR, lineno, "E302",
-                                     "modifier `%s` not in the 29-key registry" % key)
+                                     "modifier `%s` not in %s%s" % (key, where, hint))
 
     # -------------------------------------------------------------- entities
     def scan_entities(self, i, s):
@@ -725,6 +748,10 @@ EOF_u1
 ::SAY{@USER→@SELF}{hello there}
 ::EVENT{simple}
 
+::STATE{@IMG, mdm:photo, lgt:golden_hour}
+[GEN:@IMG|sbj=a fox,pov=close_up,asp=16:9,exc=text]=>[Ω]
+[GEN:@VID|sbj=@PREV,mvt=pan_left,dur=8,fps=24]=>[Ω]
+
 ::ILANG::v5.0::END
 """
 
@@ -752,6 +779,10 @@ BAD_CASES = [
 
 BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[READ:@GH|frobnicate=1]",
                   "E302", "unknown modifier"))
+BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[READ:@GH|sbj=a fox]",
+                  "E302", "media profile key on a non-media target"))
+BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[GEN:@IMG|frobnicate=1]",
+                  "E302", "unknown key on a media target"))
 
 WARN_CASES = [
     ("::STATE{@SRC, meaning:redefined}", "E202", "tier-1 rebinding candidate"),

@@ -3,12 +3,15 @@ message: "If you use this specification, please cite it as below."
 title: "I-Lang Protocol Specification"
 abstract: >-
   I-Lang is an AI-native communication protocol that defines a formal vocabulary
-  of 88 verbs, 29 modifiers, 22 entities, and 13 Greek aliases for structured
-  communication between humans and AI, between AI agents, and within AI internal
+  of 88 verbs, 29 core modifiers plus a 20-key media profile, 25 entities
+  (17 addressable, 8 role), and 13 Greek aliases for structured communication
+  between humans and AI, between AI agents, and within AI internal
   reasoning. It introduces two syntaxes: operation syntax for executable
   instructions and declaration syntax for behavioral identity. v3.0 defines
   communication format, v4.0 adds execution semantics, and v5.0 adds a trainable
-  judgment layer built on an 11-dimensional judgment vector space.
+  judgment layer built on an 11-dimensional judgment vector space. PATCH-3
+  registers image, video and audio generation intent as a target-gated modifier
+  profile and a dedicated artifact entity tier.
 type: software
 authors:
   - given-names: "Longquan"
@@ -23,8 +26,8 @@ identifiers:
 repository-code: "https://github.com/ilang-ai/ilang-spec"
 url: "https://ilang.ai"
 license: MIT
-version: "4.0"
-date-released: 2026-05-11
+version: "5.0-pre.2.1.0"
+date-released: 2026-09-13
 keywords:
   - AI communication protocol
   - human-AI interaction
