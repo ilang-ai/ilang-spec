@@ -9,7 +9,7 @@ abstract: >-
   reasoning. It introduces two syntaxes: operation syntax for executable
   instructions and declaration syntax for behavioral identity. v3.0 defines
   communication format, v4.0 adds execution semantics, and v5.0 adds a trainable
-  judgment layer built on an 11-dimensional judgment vector space. PATCH-3
+  judgment layer built on an 11-dimensional judgment vector space. v4.1
   registers image, video and audio generation intent as a target-gated modifier
   profile and a dedicated artifact entity tier.
 type: software
@@ -26,8 +26,8 @@ identifiers:
 repository-code: "https://github.com/ilang-ai/ilang-spec"
 url: "https://ilang.ai"
 license: MIT
-version: "5.0-pre.2.1.0"
-date-released: 2026-09-13
+version: "4.1.0"
+date-released: 2026-09-12
 keywords:
   - AI communication protocol
   - human-AI interaction

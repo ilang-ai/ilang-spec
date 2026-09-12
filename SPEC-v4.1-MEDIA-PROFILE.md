@@ -1,45 +1,57 @@
-# I-Lang v5.0-PRE — PATCH-3: Media Profile and Media Entities
+# I-Lang v4.1 — Media Profile and Media Entities
 
-::STATE{@PATCH, id:PATCH-3, target:SPEC-v5.0-PRE, status:adopted, date:2026-09-13}
-::STATE{@PATCH, authors:Max(@SUN)+CC(@CLAUDE), purpose:register_image_video_audio_generation_vocabulary}
-::STATE{@PATCH, frozen_set_touched:false, see:PATCH-1_§5}
-::STATE{@PATCH, core_modifiers:29, core_unchanged:true, media_profile:20, counted_separately:true}
-::STATE{@PATCH, entities_core:8, entities_external:6, entities_role:8, all_unchanged:true, media_tier:3}
-::STATE{@PATCH, verbs:88, unchanged:true, greek_aliases:13, unchanged:true}
-::STATE{@PATCH, normative_by_reference:SPEC.md_§4_§5}
+::STATE{@SPEC, id:v4.1-MEDIA-PROFILE, layer:expression, status:adopted, date:2026-09-12}
+::STATE{@SPEC, extends:SPEC.md_§4_§5, stable_line:v4, builds_on:SPEC-v4.0-FINAL}
+::STATE{@SPEC, authors:Max(@SUN)+CC(@CLAUDE), registered_by:@SUN}
+::STATE{@SPEC, core_modifiers:29, core_unchanged:true, media_profile:20, counted_separately:true}
+::STATE{@SPEC, entities_core:8, entities_external:6, entities_role:8, all_unchanged:true, media_tier:3}
+::STATE{@SPEC, verbs:88, verbs_unchanged:true, greek_aliases:13, aliases_unchanged:true}
+::STATE{@SPEC, judgment_layer_touched:false, see:SPEC-v5.0-PRE}
+::STATE{@SPEC, first_published:release_v5.0-pre.2.1.0, first_doi:10.5281/zenodo.22728994}
 
-Purpose: image, video and audio generation is the second largest class of AI output after
-text, and the protocol had no way to address it. A request for a picture had no target
-entity, and the parts of such a request that every system carries, subject, framing, light,
-aspect ratio, seed, exclusion, had no registered keys. In practice the whole request was
-written as one prose field, which is the state the protocol exists to leave behind.
+Purpose: image, video and audio generation are major classes of AI output, and the protocol
+had no way to address them. A request for a picture had no target entity, and the parts of
+such a request that generation systems carry, subject, framing, light, aspect ratio, seed,
+exclusion, had no registered keys. In practice the whole request was written as one prose
+field, which is the state the protocol exists to leave behind.
 
-This patch registers that vocabulary without touching the core registries. The 29 core
-modifiers stay closed and unchanged. The 20 new keys form a profile that is counted
-separately and is in force only where an operation addresses a media artifact. The three
-new entities form their own tier, so Core, External and Role keep the counts that earlier
-releases cite.
+This is an expression-layer extension. It adds vocabulary to the modifier and entity
+registries of SPEC.md §4 and §5, on the v4 stable line. It does not touch the v5.0 judgment
+layer: the 11 dimensions, the 8 modes, the reference function and the JUDGE schema are
+unchanged, and nothing in this document is a v5.0 patch.
 
-::CLAUSE{SCOPE|conf:confirmed|scope:v5}
-T:core_29_modifiers_closed|unchanged_by_this_patch
+The 29 core modifiers stay closed and unchanged. The 20 new keys form a profile that is
+counted separately and is in force only where an operation addresses a media artifact. The
+three new entities form their own tier, so Core, External and Role keep the counts that
+earlier releases cite.
+
+Provenance: first published on 2026-09-12 in release v5.0-pre.2.1.0 (DOI 10.5281/zenodo.22728994),
+under the working name PATCH-3. Re-released on the v4 line as v4.1.0 because it belongs to
+the expression layer rather than the judgment layer. The normative content is unchanged apart
+from this header and the registration line.
+
+::CLAUSE{SCOPE|conf:confirmed|scope:v4.1}
+T:expression_layer_extension|extends_SPEC.md_§4_§5
+T:core_29_modifiers_closed|unchanged_by_this_document
 T:media_profile_20_keys|target_gated|counted_separately
 T:media_entities_3|own_tier|Core_External_Role_unchanged
-T:frozen_set_untouched|11_dims+8_modes+f_v5+JUDGE_schema_unchanged
 T:no_new_verbs|88_reaffirmed
-T:amends_PATCH-2_SCOPE_no_new_modifiers|scope_of_that_clause_is_the_core_registry|profile_is_a_separate_table
+T:judgment_layer_untouched|11_dims+8_modes+f_v5+JUDGE_schema_unchanged
+T:no_new_modifiers_closure_honoured|closure_covers_the_core_registry|profile_is_a_separate_table
 A:reading_profile_keys_as_core_registry_entries⇒drift
 A:citing_a_modifier_total_without_saying_core_or_profile⇒drift
+A:reading_this_document_as_a_v5.0_patch⇒misread
 
 ---
 
 ## 4.4 Media Profile (20 keys)
 
-The core modifier registry in §4 stays closed at 29 keys. This section registers a profile: a key set counted separately from the core registry and in force only where an operation addresses a media artifact. The profile is registered through the §1.5 amendment channel as MOD-COUNT, in the same way `::LIST` was registered through the DECL-COUNT channel on 2026-08-11. The core count of 29 is not changed by this amendment. The public vocabulary reads 29 core modifiers plus a 20 key media profile.
+The core modifier registry in §4 stays closed at 29 keys. This section registers a profile: a key set counted separately from the core registry and in force only where an operation addresses a media artifact. The profile is registered as MOD-COUNT by the same procedure that registered `::LIST` through DECL-COUNT on 2026-08-11 (SPEC-v5.0-PRE Part III §1.5): a counted table, a clause naming the canonical count, a date, and the principal who registered it. The core count of 29 is not changed by this amendment. The public vocabulary reads 29 core modifiers plus a 20 key media profile.
 
-::CLAUSE{MOD-COUNT|conf:confirmed|scope:v5}
+::CLAUSE{MOD-COUNT|conf:confirmed|scope:v4.1}
 T:core_modifiers=29|closed|unchanged_by_this_amendment
 T:media_profile=20|target_gated|counted_separately
-T:registered_2026-09-13_via_§1.5_amendment_channel|direction_approved_2026-09-12_by_@SUN
+T:registered_2026-09-12_by_@SUN|procedure_as_::LIST_DECL-COUNT_2026-08-11
 A:citing_a_different_total_without_amending_this_table⇒drift
 
 ### 4.4.1 Activation

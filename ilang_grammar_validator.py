@@ -19,7 +19,7 @@ registries) plus the v3.0 operation tables:
                 be introduced via ::STATE (WARN)
   v3.0 §3/§4    operation verbs (88) + Greek aliases (13) -> E304 / E305;
                 modifier keys (29 core) -> E302 (WARN by default, see NOTE)
-  PATCH-3 §4.4  media profile (20 keys) accepted only where the operation
+  v4.1 §4.4     media profile (20 keys) accepted only where the operation
                 target is @IMG, @VID or @AUD; §5.4 registers those three
 
 Static scope: E200 (unresolvable name) and E201 (environment availability) are
@@ -29,9 +29,9 @@ Tier-1/2 name.
 
 NOTE on E302: the core modifier registry is closed at 29 (no_new_modifiers
 reaffirmed 2026-08-11; the v4.0-FINAL §7 examples that used ad-hoc keys were
-rewritten to registered ones). PATCH-3 (2026-09-13) registers a separate
-20-key media profile through the §1.5 MOD-COUNT amendment channel; it is
-counted apart from the 29 and gated on a media target. Unknown operation
+rewritten to registered ones). SPEC-v4.1-MEDIA-PROFILE (2026-09-12) registers a
+separate 20-key media profile as MOD-COUNT, by the procedure that registered
+::LIST; it is counted apart from the 29 and gated on a media target. Unknown operation
 modifier keys are ERROR.
 
 Input modes (auto-detected per file):
@@ -84,7 +84,7 @@ ALIASES = set("Σ Δ φ ∇ λ ∂ μ ψ ξ ζ θ Ω Π".split())
 GREEKISH = "ΣΔφ∇λ∂μψξζθΩΠ"
 MODIFIERS = set(("src dst path fmt lng sty ton len lim off top bot srt grp "
                  "whr mch exc dep rng typ enc cap pri col row frm to scp op").split())
-# PATCH-3 §4.4: a separate, target-gated table. Counted apart from the closed core 29
+# v4.1 §4.4 (SPEC-v4.1-MEDIA-PROFILE): a separate, target-gated table. Counted apart from the closed core 29
 # and in force only where the operation target resolves to a media entity (TIER4).
 MEDIA_PROFILE = set(("sbj act plc txt pov fcl mvt lgt pal mdm "
                      "asp rsl qly dur fps sed adh ref dlg sfx").split())
@@ -94,7 +94,7 @@ PLACEHOLDER_HEADS = {"VERB", "VERB1", "VERB2", "VERB3", "DECL"}
 TIER1 = set("@SRC @DST @PREV @LOCAL @SCREEN @LOG @NULL @STDIN".split())
 TIER2 = set("@GH @R2 @COS @DRIVE @WORKER @CF".split())
 TIER3 = set("@SYSTEM @RUNTIME @GRADER @USER @SELF @AGENT @TASK @TOOL".split())
-# PATCH-3 §5.4: media artifact targets. Their own tier, so Core, External and Role keep
+# v4.1 §5.4 (SPEC-v4.1-MEDIA-PROFILE): media artifact targets. Their own tier, so Core, External and Role keep
 # the counts earlier releases cite, and a ::STATE preset on a media entity is not read as
 # rebinding a registered I/O name (E202 covers TIER1|TIER2 only).
 TIER4 = set("@IMG @VID @AUD".split())
@@ -593,7 +593,7 @@ class Linter:
                     self.add(ERROR, lineno, "E300",
                              "operation target `%s` is not an @ENTITY (v3.0 §2.2; BATC/Π excepted)" % target)
             if "|" in rest:
-                # PATCH-3 §4.4.1: the media profile is in force only when the target is a
+                # v4.1 §4.4.1: the media profile is in force only when the target is a
                 # media entity. Core keys keep their meaning inside media operations.
                 media = target in TIER4
                 allowed = MODIFIERS | MEDIA_PROFILE if media else MODIFIERS
