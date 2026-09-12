@@ -96,7 +96,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 | v4.0 RC1 | 2026-05-11 | Superseded | [archive/SPEC-v4.0-RC1.md](archive/SPEC-v4.0-RC1.md) |
 | v4.0 DRAFT | 2026-05-11 | Superseded | [archive/SPEC-v4.0-DRAFT.md](archive/SPEC-v4.0-DRAFT.md) |
 | v3.0 Final | 2026-04 | Stable | [SPEC.md](SPEC.md) |
-| v2.0 | 2026-02 | Archived | [I-Lang-Protocol-Spec-v2.pdf](I-Lang-Protocol-Spec-v2.pdf) |
+| v2.0 | 2026-03 | Archived | [I-Lang-Protocol-Spec-v2.pdf](I-Lang-Protocol-Spec-v2.pdf) |
 
 ## What This Repo Contains
 
