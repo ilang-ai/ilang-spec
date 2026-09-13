@@ -25,7 +25,7 @@ license: mit
 
 **Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication) | [v4.1 Media Profile](SPEC-v4.1-MEDIA-PROFILE.md) (September 2026, expression layer — image, video and audio vocabulary on the v4 stable line)
 
-I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation). Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang achieves zero-ambiguity instruction transmission across all major models.
+I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation). Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang has been tested across ChatGPT, Claude, Gemini, DeepSeek, Kimi, Qwen and GLM (results on ilang.ai/benchmark/, May 2026).
 
 **v3.0** defines communication format — how to talk to AI.
 **v4.0** defines execution semantics — how AI thinks, acts, verifies, and stops.
@@ -45,7 +45,7 @@ I-Lang is the AI-native communication protocol. It reduces semantic loss between
   A:blind_execution⇒fatal
 ```
 
-88 verbs. 13 Greek aliases. 29 modifiers. Zero filler. 100% meaning density.
+88 verbs. 13 Greek aliases. 29 core modifiers plus a 20-key media profile. Zero filler.
 
 ## What's New in v4.0
 
@@ -161,6 +161,7 @@ BATCH:      BATC
 | Training Corpus | [huggingface.co/datasets/i-Lang/ilang-instruction-corpus](https://huggingface.co/datasets/i-Lang/ilang-instruction-corpus) |
 | All Datasets | [huggingface.co/i-Lang](https://huggingface.co/i-Lang) |
 | Website | [ilang.ai](https://ilang.ai) |
+| Specification (web) | [ilang.ai/spec/](https://ilang.ai/spec/) |
 | AI See | [i.ilang.ai](https://i.ilang.ai) |
 | AI Detection | [detect.ilang.cn](https://detect.ilang.cn) |
 | Book (Narrative) | [Amazon](https://www.amazon.com/dp/B0CZY6V3GM) (I-Lang Protocol Series, Book 1) |
