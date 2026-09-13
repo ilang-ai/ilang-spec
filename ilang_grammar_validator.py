@@ -21,6 +21,9 @@ registries) plus the v3.0 operation tables:
                 modifier keys (29 core) -> E302 (ERROR, see NOTE)
   v4.1 §4.4     media profile (20 keys) accepted only where the operation
                 target is @IMG, @VID or @AUD; §5.4 registers those three
+  v3.0 §2.4     a quoted value is opaque: commas, pipes, equals signs and
+                brackets inside "..." (with the §2.4 escapes) are not syntax,
+                so they raise no E302 / E304
 
 Static scope: E200 (unresolvable name) and E201 (environment availability) are
 runtime semantics, intentionally out of scope. E202 (rebinding a registered
@@ -121,6 +124,30 @@ RE_BRACKET_GROUPS = re.compile(r"\[([^\[\]]*)\]")
 RE_FENCE = re.compile(r"^\s*```")
 RE_STATE_INTRO = re.compile(r"^::STATE\{(@[A-Z][A-Z0-9_]*)[,|}\s]")
 
+
+def mask_quoted(s):
+    """Blank the inside of quoted values (v3.0 §2.4) so a comma, pipe, equals sign or
+    bracket in a value is not read as structure. A quote opens a value only right after
+    `=`, `:` or `,`; escapes \\" \\\\ \\n stay inside. Positions are kept. A line with
+    an unterminated quoted value is returned unmasked, so it is checked as before."""
+    out, quoted, escaped = [], False, False
+    for k, ch in enumerate(s):
+        if quoted:
+            if escaped:
+                escaped = False
+            elif ch == "\\":
+                escaped = True
+            elif ch == '"':
+                quoted = False
+                out.append(ch)
+                continue
+            out.append("_")
+            continue
+        if ch == '"' and k > 0 and s[k - 1] in "=:,":
+            quoted = True
+        out.append(ch)
+    return s if quoted else "".join(out)
+
 ERROR, WARN, INFO = "ERROR", "WARN", "INFO"
 
 
@@ -192,9 +219,10 @@ class Linter:
                 if self.mixed_last_op:
                     self.check_operation(i, s[2:].strip(), chain=True)
             elif s.startswith("[") and "](" not in s and not s.startswith("[!"):
-                if "]=>" in s or RE_TAG_LINE.match(s):
+                ms = mask_quoted(s)
+                if "]=>" in ms or RE_TAG_LINE.match(ms):
                     self.check_bracket_line(i, s)
-                    self.mixed_last_op = ("]=>" in s
+                    self.mixed_last_op = ("]=>" in ms
                                           or self.head_of(s) in VERBS | ALIASES)
             else:
                 self.mixed_last_op = False
@@ -255,13 +283,14 @@ class Linter:
                 # preamble position (§1.7): tag lines right after a ::ILANG
                 # header are document metadata even when TAG collides with a
                 # verb name — never parsed as operations, no E304
-                if in_preamble_here and RE_TAG_LINE.match(s) and "]=>" not in s:
+                ms = mask_quoted(s)
+                if in_preamble_here and RE_TAG_LINE.match(ms) and "]=>" not in ms:
                     in_preamble = True
                     last_op = False
                     i += 1
                     continue
                 self.check_bracket_line(i, s)
-                last_op = "]=>" in s or self.head_of(s) in VERBS | ALIASES
+                last_op = "]=>" in ms or self.head_of(s) in VERBS | ALIASES
                 if last_op:
                     seen_construct = True   # tag metadata lines are not constructs
                 i += 1
@@ -497,7 +526,8 @@ class Linter:
         if s.startswith(("T:", "A:")):
             return True
         if s.startswith("["):
-            return bool((RE_TAG_LINE.match(s) or RE_TAG_TEXT.match(s))
+            ms = mask_quoted(s)
+            return bool((RE_TAG_LINE.match(ms) or RE_TAG_TEXT.match(ms))
                         and self.head_of(s) not in VERBS | ALIASES)
         return bool(RE_KEY.match(s)) or bool(RE_TEMPORAL_BIND.match(s))
 
@@ -519,10 +549,11 @@ class Linter:
                          "orphan `=>` continuation in ::%s body: no preceding operation line (§1.7)" % parent)
             return
         if s.startswith("["):                                # B5 or B8
-            if "]=>" in s or self.head_of(s) in VERBS | ALIASES:
+            ms = mask_quoted(s)
+            if "]=>" in ms or self.head_of(s) in VERBS | ALIASES:
                 self.check_operation(j, s, chain=True)
                 self.body_last_op = True
-            elif RE_TAG_LINE.match(s) or RE_TAG_TEXT.match(s):
+            elif RE_TAG_LINE.match(ms) or RE_TAG_TEXT.match(ms):
                 pass                                         # B5 tag line
             elif parent in PROSE_BODY:
                 pass                                         # bracket-initial prose
@@ -543,19 +574,20 @@ class Linter:
     # ---------------------------------------------------------- bracket lines
     @staticmethod
     def head_of(s):
-        m = RE_BRACKET_GROUPS.search(s)
+        m = RE_BRACKET_GROUPS.search(mask_quoted(s))
         if not m:
             return ""
         return re.split(r"[:|]", m.group(1), maxsplit=1)[0].strip()
 
     def check_bracket_line(self, i, s):
-        if "]=>" in s:
+        ms = mask_quoted(s)
+        if "]=>" in ms:
             self.check_operation(i, s, chain=True)
             return
         head = self.head_of(s)
         if head in VERBS | ALIASES:
             self.check_operation(i, s, chain=False)
-        elif RE_TAG_LINE.match(s):
+        elif RE_TAG_LINE.match(ms):
             pass                                             # metadata tag line
         else:
             self.add(ERROR, i + 1, "E300",
@@ -563,7 +595,11 @@ class Linter:
 
     def check_operation(self, i, s, chain):
         lineno = i + 1
-        for grp in RE_BRACKET_GROUPS.findall(s):
+        # groups and modifiers are read on the masked line, which keeps the offsets of s:
+        # separators inside a quoted value (v3.0 §2.4) never split it and brackets inside
+        # it never open a group. The target is read back from s, so messages quote it as written.
+        for gm in RE_BRACKET_GROUPS.finditer(mask_quoted(s)):
+            grp, ogrp = gm.group(1), s[gm.start(1):gm.end(1)]
             head = re.split(r"[:|]", grp, maxsplit=1)[0].strip()
             if head in PLACEHOLDER_HEADS:
                 continue
@@ -577,7 +613,8 @@ class Linter:
             rest = grp[len(head):]
             target = ""
             if rest.startswith(":"):
-                target = rest[1:].split("|", 1)[0].strip()
+                cut = len(head) + 1 + len(rest[1:].split("|", 1)[0])
+                target = ogrp[len(head) + 1:cut].strip()
             if target:
                 if target.startswith("@"):
                     if not RE_ENTITY_OK.match(target):
@@ -629,8 +666,8 @@ class Linter:
 
 
 # ------------------------------------------------------------------- commands
-CANON_FILES = ["SPEC.md", "SPEC-v4.0-FINAL.md", "SPEC-v5.0-PRE.md",
-               "AUTHORS.md", "README.md"]
+CANON_FILES = ["SPEC.md", "SPEC-v4.0-FINAL.md", "SPEC-v4.1-MEDIA-PROFILE.md",
+               "SPEC-v5.0-PRE.md", "AUTHORS.md", "README.md"]
 
 
 def lint_paths(paths, as_json, strict):
@@ -784,6 +821,25 @@ BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[READ:@GH|sbj=a 
 BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[GEN:@IMG|frobnicate=1]",
                   "E302", "unknown key on a media target"))
 
+BAD_CASES.append(("::ILANG::v5.0\n[GEN:@IMG|sbj=\"a,b=c\",frobnicate=1]=>[Ω]",
+                  "E302", "unknown key after a quoted value"))
+BAD_CASES.append(("::ILANG::v5.0\n[REED:@IMG|rng=\"[0.1,0.2]\"]=>[Ω]",
+                  "E304", "unknown verb whose quoted value holds brackets"))
+BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[FILL:@IMG|rng=\"[0.1,0.2]\",frobnicate=1]",
+                  "E302", "unknown key in a single operation whose quoted value holds brackets"))
+
+# v3.0 §2.4: separators and brackets inside a quoted value are not syntax
+GOOD_CASES = [
+    ("::ILANG::v5.0\n[FILL:@IMG|rng=\"0.1,0.2\",sbj=\"a,b=c\"]=>[Ω]",
+     "comma and equals sign inside a quoted value (no E302)"),
+    ("::ILANG::v5.0\n[FILL:@IMG|rng=\"[0.1,0.2,0.5,0.6]\",src=@PREV]=>[Ω]",
+     "brackets inside a quoted value (no E304)"),
+    ("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[FILL:@IMG|rng=\"[0.1,0.2]\"]",
+     "single operation whose quoted value holds brackets"),
+    ("::ILANG::v5.0\n[GEN:@IMG|txt=\"say \\\"hi, x=1\\\" [ok]\",asp=1:1]=>[Ω]",
+     "escaped quote inside a quoted value"),
+]
+
 WARN_CASES = [
     ("::STATE{@SRC, meaning:redefined}", "E202", "tier-1 rebinding candidate"),
 ]
@@ -802,6 +858,13 @@ def cmd_selftest():
         f = Linter("<bad>", src).run()
         hit = any(lv == ERROR and c == code for lv, _, c, _ in f)
         t.append(("rejects %s (%s)" % (label, code), hit, f))
+    for src, label in GOOD_CASES:
+        f = Linter("<good-case>", src).run()
+        errs = [x for x in f if x[0] == ERROR]
+        t.append(("accepts %s" % label, not errs, errs))
+    f = Linter("<quoted-target>", '::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[READ:"npm run, build"]').run()
+    t.append(("E300 message quotes a quoted target as written",
+              any(c == "E300" and '`"npm run, build"`' in m for _, _, c, m in f), f))
     for src, code, label in WARN_CASES:
         f = Linter("<warn>", src).run()
         hit = any(lv == WARN and c == code for lv, _, c, _ in f)
