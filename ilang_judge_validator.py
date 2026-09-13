@@ -105,9 +105,15 @@ def parse_judge_block(lines):
     mr = R_LINE.match(lines[3].strip())
     if not mr or "\n" in mr.group(1):
         raise ValueError("bad R line (missing, empty, or >120 chars)")
-    # abstain rule: epistemic gate forces M5 (§4)
-    if (vec["cer"] < TH["cer_gate"] or vec["evd"] < TH["evd_gate"]) and mode != "M5":
-        raise ValueError("abstain rule violated: epistemic gate requires M5")
+    # abstain rule: epistemic gate forces M5 (§4), except that a STEP-1 survival hit
+    # outranks it (§3 conflict total order SURVIVAL > EPISTEMIC), so M8 is also accepted
+    # there. Erratum 2026-09-14. Every other mode under the gate is still rejected.
+    survival = (vec["sov"] < TH["sov_survival"] or vec["ext"] < TH["ext_survival"]
+                or (vec["csq"] < TH["csq_survival"] and vec["rev"] < TH["rev_survival"]))
+    if (vec["cer"] < TH["cer_gate"] or vec["evd"] < TH["evd_gate"]) and mode != "M5" \
+            and not (survival and mode == "M8"):
+        raise ValueError("abstain rule violated: epistemic gate requires M5 "
+                         "(or M8 on a STEP-1 survival hit)")
     return vec, mode, conf, mr.group(1)
 
 # PATCH-1 §4: A:extra_fields⇒parser_reject — a field-shaped line right after R: means
@@ -264,6 +270,45 @@ def cmd_selftest():
         t.append(("abstain rule enforced", False))
     except ValueError:
         t.append(("abstain rule enforced", True))
+
+    # erratum 2026-09-14: survival gate and epistemic gate firing together
+    def block(vec, mode):
+        return [HEADER, "V:[" + ",".join("%s=%.2f" % (d, vec[d]) for d in DIMS) + "]",
+                "M:%s|conf:0.80" % mode, "R:selftest"]
+
+    def parses(vec, mode):
+        try:
+            parse_judge_block(block(vec, mode))
+            return True
+        except ValueError:
+            return False
+
+    both = dict(hi, sov=0.10, cer=0.20)             # STEP-1 and STEP-2 both fire
+    t.append(("survival + epistemic gate, M8 parses and matches f_v5",
+              parses(both, "M8") and f_v5(both) == "M8"))
+    t.append(("survival + epistemic gate, M2 rejected", not parses(both, "M2")))
+    t.append(("survival + epistemic gate, M5 parses but mismatches f_v5",
+              parses(both, "M5") and f_v5(both) != "M5"))
+    t.append(("each STEP-1 gate (sov, ext, csq+rev) lets M8 through the epistemic gate",
+              all(parses(v, "M8") and f_v5(v) == "M8"
+                  for v in (dict(hi, sov=0.10, evd=0.10), dict(hi, ext=0.05, cer=0.20),
+                            dict(hi, csq=0.05, rev=0.10, cer=0.20)))))
+    t.append(("csq low without rev low is no survival hit: M8 still rejected",
+              not parses(dict(hi, csq=0.05, cer=0.20), "M8")))
+    rng = random.Random(7)
+    own_ok = gate_ok = True
+    conflicts = 0
+    for _ in range(3000):
+        v = {d: round(rng.random(), 2) for d in DIMS}
+        accepted = {m for m in MODES if parses(v, m)}
+        own_ok &= f_v5(v) in accepted
+        if v["cer"] < TH["cer_gate"] or v["evd"] < TH["evd_gate"]:
+            conflicts += f_v5(v) == "M8"
+            gate_ok &= accepted in ({"M5"}, {"M5", "M8"}) and (("M8" in accepted)
+                                                             == (f_v5(v) == "M8"))
+    t.append(("parser accepts f_v5's own mode for 3000 uniform vectors",
+              own_ok and conflicts > 0))
+    t.append(("under the epistemic gate only M5, or M8 on a survival hit, parses", gate_ok))
 
     t.append(("extra-field pattern catches X:foo, skips declarations",
               bool(EXTRA_FIELD.match("X:foo"))
