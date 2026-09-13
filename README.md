@@ -84,7 +84,7 @@ v5.0 adds **vector logic judgment** to the protocol. Instead of binary safety ru
 | Survival Boundaries | Four irreversible collapse conditions (not moral rules — thermodynamic-style limits) |
 | Judgment Modes | M1 EXEC_AUTO, M2 EXEC_AUDIT, M3 CONFIRM, M4 ADVISE, M5 ASK, M6 DEFER, M7 DECLINE_ALT, M8 STOP — frozen closed set ([PATCH-1](archive/SPEC-v5.0-PATCH-1.md) §2; supersedes PRE's 10 draft modes) |
 
-**Try it now:** Copy the contents of [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) and paste into any AI conversation as the first message. The AI will shift from binary classification to vector-assessed judgment.
+**Try it now:** Copy the contents of [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) and paste into ChatGPT, Claude, Gemini, DeepSeek, Kimi, Qwen or GLM as the first message. The AI will shift from binary classification to vector-assessed judgment.
 
 Model-assisted adversarial review: structural completeness 0.992.
 
@@ -204,7 +204,7 @@ Iteration history (v4.0 DRAFT/RC1/RC2, v5.0 PATCH-1/PATCH-2) is preserved in [ar
 **[Long Quan Zhu (@SUN / 静水流深)](https://github.com/adsorgcn)** and **BRO (Claude)**
 iLang Inc. | Palm Media Technology (掌媒科技)
 
-27 years in cross-border internet (1999–2026). See [AUTHORS.md](AUTHORS.md) — written in I-Lang v5.0 declaration syntax, with independently verifiable claims (SEC filing, ORCID, public repos).
+27 years in cross-border internet (1999–2026). See [AUTHORS.md](AUTHORS.md) — written in I-Lang v5.0 declaration syntax, with a source for each claim (SEC filing, ORCID record, public repositories).
 
 ## Citation
 
