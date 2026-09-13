@@ -14,7 +14,7 @@ abstract: >-
   profile and a dedicated artifact entity tier.
 type: software
 authors:
-  - given-names: "Longquan"
+  - given-names: "Long Quan"
     family-names: "Zhu"
     alias: "静水流深"
     orcid: "https://orcid.org/0009-0004-4540-8082"

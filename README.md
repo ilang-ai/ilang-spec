@@ -195,7 +195,7 @@ Iteration history (v4.0 DRAFT/RC1/RC2, v5.0 PATCH-1/PATCH-2) is preserved in [ar
 
 ## Author
 
-**[Longquan Zhu (@SUN / 静水流深)](https://github.com/adsorgcn)** and **BRO (Claude)**
+**[Long Quan Zhu (@SUN / 静水流深)](https://github.com/adsorgcn)** and **BRO (Claude)**
 iLang Inc. | Palm Media Technology (掌媒科技)
 
 27 years in cross-border internet (1999–2026). See [AUTHORS.md](AUTHORS.md) — written in I-Lang v5.0 declaration syntax, with independently verifiable claims (SEC filing, ORCID, public repos).
@@ -206,7 +206,7 @@ If you use I-Lang in academic work, please cite:
 
 ```bibtex
 @software{zhu_ilang_2026,
-  author    = {Zhu, Longquan},
+  author    = {Zhu, Long Quan},
   title     = {I-Lang Protocol Specification},
   year      = {2026},
   publisher = {Zenodo},
@@ -219,7 +219,7 @@ If you use I-Lang in academic work, please cite:
 
 Plain text:
 
-> Zhu, Longquan. (2026). *I-Lang Protocol Specification*. Zenodo. https://doi.org/10.5281/zenodo.21821452
+> Zhu, Long Quan. (2026). *I-Lang Protocol Specification*. Zenodo. https://doi.org/10.5281/zenodo.21821452
 
 The DOI above is the concept DOI: it always resolves to the latest version. Each release also receives its own version-specific DOI.
 
