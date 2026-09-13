@@ -94,7 +94,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 |---------|------|--------|------|
 | Proposal: media regions and layers | 2026-09-12 | **Open** (not normative; registers nothing) | [PROPOSAL-MEDIA-REGIONS-AND-LAYERS.md](PROPOSAL-MEDIA-REGIONS-AND-LAYERS.md) |
 | v4.1 Media Profile | 2026-09-12 | **Current stable** (expression layer: 20-key media profile and @IMG, @VID, @AUD on the v4 line; core 29 and 88 verbs unchanged; first published in release v5.0-pre.2.1.0) | [SPEC-v4.1-MEDIA-PROFILE.md](SPEC-v4.1-MEDIA-PROFILE.md) |
-| v5.0 Pre 2.0.1 (merged) | 2026-08-13 | **Latest** (Public Preview; consolidates PRE + PATCH-1 + PATCH-2 + GENE correction) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
+| v5.0 Pre 2.1.1 (merged) | 2026-08-13 (rev 2026-09-14) | **Latest** (Public Preview; consolidates PRE + PATCH-1 + PATCH-2 + GENE correction; erratum 2026-09-14: the §4 abstain rule yields to a STEP-1 survival M8, per the §3 conflict total order) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
 | v5.0 PATCH-2 | 2026-08-05 (rev 2026-08-11) | **Adopted** (grammar + registry; normative by reference from SPEC.md; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) |
 | v5.0 PATCH-1 | 2026-07-03 (rev 2026-08-11) | **Adopted** (trainable; constants ratified 2026-07-03; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-1.md](archive/SPEC-v5.0-PATCH-1.md) |
 | v4.0 Final | 2026-05-11 | **Current stable** | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) |

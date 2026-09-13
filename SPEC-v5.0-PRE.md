@@ -1,8 +1,8 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.0.1]
-[DATE:2026-08-13]
+[VERSION:2.1.1]
+[DATE:2026-09-14]
 [STATUS:public_preview]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
 [LICENSE:MIT]
@@ -10,7 +10,7 @@
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order]
 ```
 
 ---
@@ -503,10 +503,10 @@ T:all_11_dims_always_present|fixed_order:int,cap,csq,rel,cer,aut,rev,evd,sov,ine
 T:values_2_decimals|range=[0.00,1.00]
 T:M_from_closed_set{M1..M8}|conf_2_decimals_diagnostic_only
 T:R_single_line|max=120_chars
-T:abstain_rule:cer<0.30∨evd<0.25 ⇒ M_must_be_M5_regardless_of_model_preference
+T:abstain_rule:cer<0.30∨evd<0.25 ⇒ M_must_be_M5_regardless_of_model_preference|except:STEP-1_survival_hit(sov<0.15∨ext<0.10∨(csq<0.10∧rev<0.20))⇒M8_also_valid|M5_stays_schema_valid|any_other_mode⇒parser_reject|see:§3_conflict_total_order_SURVIVAL>EPISTEMIC|erratum:2026-09-14
 A:extra_fields⇒parser_reject
 A:omitted_dim⇒parser_reject
-A:confident_judgment_under_epistemic_gate⇒reproduces_hallucination_pattern|see:Paper-1
+A:confident_judgment_under_epistemic_gate⇒reproduces_hallucination_pattern|see:Paper-1|except:M8_on_STEP-1_survival_hit_is_the_f_v5_mode_not_a_confident_judgment(§3_conflict_total_order_SURVIVAL>EPISTEMIC)|erratum:2026-09-14
 
 ---
 
