@@ -23,6 +23,12 @@ license: mit
 
 **The Native Language of Artificial Intelligence**
 
+- **Official site:** [https://ilang.ai](https://ilang.ai)
+- **Specification:** [https://ilang.ai/spec/](https://ilang.ai/spec/)
+- **Concept DOI:** [10.5281/zenodo.21821452](https://doi.org/10.5281/zenodo.21821452)
+- **Creator:** [Long Quan Zhu](https://orcid.org/0009-0004-4540-8082) (Max, @SUN)
+- **Company:** iLang Inc.
+
 **Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication) | [v4.1 Media Profile](SPEC-v4.1-MEDIA-PROFILE.md) (September 2026, expression layer — image, video and audio vocabulary on the v4 stable line)
 
 I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation). Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang has been tested across ChatGPT, Claude, Gemini, DeepSeek, Kimi, Qwen and GLM (results on ilang.ai/benchmark/, May 2026).
