@@ -23,3 +23,5 @@ jobs:
       - name: JUDGE blocks in spec
         run: |
           python ilang_judge_validator.py --check SPEC-v5.0-PRE.md
+      - name: JSON Schemas (non-normative) against examples and the reference validator
+        run: python schema/check_schemas.py

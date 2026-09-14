@@ -120,6 +120,8 @@ Model-assisted adversarial review: structural completeness 0.992.
 | [archive/SPEC-v4.0-DRAFT.md](archive/SPEC-v4.0-DRAFT.md) | v4.0 DRAFT — iteration record |
 | [ilang_judge_validator.py](ilang_judge_validator.py) | Reference validator for the v5.0 judgment layer |
 | [ilang_grammar_validator.py](ilang_grammar_validator.py) | Grammar & registry validator (PATCH-2 §1/§2 mechanical checks; CI canon gate) |
+| [schema/judge-v5.0.json](schema/judge-v5.0.json) | JSON Schema (draft 2020-12) for the JSON form of a `::JUDGE{v5.0}` block, including the §4 abstain rule and its 2026-09-14 erratum; non-normative implementation aid, the four-line text block stays canonical |
+| [schema/status-v4.0.json](schema/status-v4.0.json) | JSON Schema (draft 2020-12) for the JSON form of a `::STATUS{}` declaration under the v4.0 three-tier authority table; non-normative implementation aid; both schemas are checked in CI by [schema/check_schemas.py](schema/check_schemas.py) |
 | [AUTHORS.md](AUTHORS.md) | Authorship record written in I-Lang v5.0 declaration syntax (canon demo, includes `::LIST` usage) |
 | [CITATION.cff](CITATION.cff) | Citation metadata (GitHub citation support; mirrored by .zenodo.json) |
 | [I-Lang-Protocol-Spec-v2.pdf](I-Lang-Protocol-Spec-v2.pdf) | v2.0 archived PDF |

@@ -29,6 +29,7 @@ jobs:
           cp $GITHUB_WORKSPACE/LICENSE .
           cp $GITHUB_WORKSPACE/ilang_judge_validator.py .
           cp $GITHUB_WORKSPACE/ilang_grammar_validator.py .
+          mkdir -p schema && cp $GITHUB_WORKSPACE/schema/*.json $GITHUB_WORKSPACE/schema/*.py schema/
           git config user.name "ilang-ai"
           git config user.email "ilang-ai@users.noreply.github.com"
           git add -A
