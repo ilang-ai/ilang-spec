@@ -23,6 +23,7 @@ jobs:
           cp $GITHUB_WORKSPACE/SPEC-v4.0-FINAL.md .
           cp $GITHUB_WORKSPACE/SPEC-v5.0-PRE.md .
           cp $GITHUB_WORKSPACE/SPEC-v4.1-MEDIA-PROFILE.md .
+          cp $GITHUB_WORKSPACE/SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md .
           mkdir -p archive && cp $GITHUB_WORKSPACE/archive/*.md archive/
           cp $GITHUB_WORKSPACE/AUTHORS.md .
           cp $GITHUB_WORKSPACE/README.md .

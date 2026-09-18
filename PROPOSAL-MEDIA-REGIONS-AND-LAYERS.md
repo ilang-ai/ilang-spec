@@ -1,7 +1,7 @@
 # I-Lang Proposal — Media Regions and Layers
 
-::STATE{@PROPOSAL, id:MEDIA-REGIONS-LAYERS, status:open, filed:2026-09-12, normative:false}
-::STATE{@PROPOSAL, layer:expression, extends:SPEC-v4.1-MEDIA-PROFILE, version:unassigned}
+::STATE{@PROPOSAL, id:MEDIA-REGIONS-LAYERS, status:adopted, filed:2026-09-12, adopted:2026-09-18, adopted_by:SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS, normative:false}
+::STATE{@PROPOSAL, layer:expression, extends:SPEC-v4.1-MEDIA-PROFILE, version:v4.2}
 ::STATE{@PROPOSAL, authors:Max(@SUN)+CC(@CLAUDE), filed_by:@SUN}
 
 Purpose: record, with a date, that region, mask and layer operations on media artifacts have
@@ -76,3 +76,5 @@ separately in SPEC-v4.1-MEDIA-PROFILE §4.4.7 and are not part of this proposal.
 
 Open. This document registers nothing. It records that region, mask and layer operations were
 identified and scoped as the next expression-layer extension after v4.1.
+
+Adopted on 2026-09-18 by SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md, which meets the six constraints of section 3 and answers the four questions of section 5. The text above is kept as the dated record.

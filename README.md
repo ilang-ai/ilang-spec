@@ -28,8 +28,9 @@ license: mit
 - **Concept DOI:** [10.5281/zenodo.21821452](https://doi.org/10.5281/zenodo.21821452)
 - **Creator:** [Long Quan Zhu](https://orcid.org/0009-0004-4540-8082) (Max, @SUN)
 - **Company:** iLang Inc.
+- **Machine layer (experimental):** [ilang-ai/iml-protocol](https://github.com/ilang-ai/iml-protocol), IML (I-Lang Machine Layer), a compact machine form of v4.x operation chains. Draft; not part of the canon.
 
-**Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication) | [v4.1 Media Profile](SPEC-v4.1-MEDIA-PROFILE.md) (September 2026, expression layer — image, video and audio vocabulary on the v4 stable line)
+**Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication) | [v4.1 Media Profile](SPEC-v4.1-MEDIA-PROFILE.md) (September 2026, expression layer — image, video and audio vocabulary on the v4 stable line) | [v4.2 Media Regions and Image Layers](SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) (September 2026, expression layer — regions, masks and image layers on the v4 stable line)
 
 I-Lang is the AI-native communication protocol. It reduces semantic loss between human intent and machine execution. I-Lang is the first protocol to formally map Greek mathematical symbols (Σ, Δ, φ, λ, Ω, ∇, μ, Π, ψ, ξ, ζ, θ, ∂) as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment (11 dimensions, 4 axioms, fuzzy-mathematical foundation). Built from symbols already inside every LLM's training data (brackets, pipes, arrows, key-value pairs), I-Lang has been tested across ChatGPT, Claude, Gemini, DeepSeek, Kimi, Qwen and GLM (results on ilang.ai/benchmark/, May 2026).
 
@@ -93,7 +94,8 @@ Model-assisted adversarial review: structural completeness 0.992.
 | Version | Date | Status | File |
 |---------|------|--------|------|
 | Proposal: media regions and layers | 2026-09-12 | **Open** (not normative; registers nothing) | [PROPOSAL-MEDIA-REGIONS-AND-LAYERS.md](PROPOSAL-MEDIA-REGIONS-AND-LAYERS.md) |
-| v4.1 Media Profile | 2026-09-12 | **Current stable** (expression layer: 20-key media profile and @IMG, @VID, @AUD on the v4 line; core 29 and 88 verbs unchanged; first published in release v5.0-pre.2.1.0) | [SPEC-v4.1-MEDIA-PROFILE.md](SPEC-v4.1-MEDIA-PROFILE.md) |
+| v4.2 Media Regions and Image Layers | 2026-09-18 | **Current stable** (expression layer: regions as document-scoped entities with four body keys pts, bnd, vtx, msk; masks by reference or geometry; image layers composed by MERGE with ::LIST line order as stacking order; no new verb, key, entity or declaration; four amendments to released text in its §4.12) | [SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md](SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) |
+| v4.1 Media Profile | 2026-09-12 | Stable (expression layer: 20-key media profile and @IMG, @VID, @AUD on the v4 line; core 29 and 88 verbs unchanged; first published in release v5.0-pre.2.1.0) | [SPEC-v4.1-MEDIA-PROFILE.md](SPEC-v4.1-MEDIA-PROFILE.md) |
 | v5.0 Pre 2.1.1 (merged) | 2026-08-13 (rev 2026-09-14) | **Latest** (Public Preview; consolidates PRE + PATCH-1 + PATCH-2 + GENE correction; erratum 2026-09-14: the §4 abstain rule yields to a STEP-1 survival M8, per the §3 conflict total order) | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) |
 | v5.0 PATCH-2 | 2026-08-05 (rev 2026-08-11) | **Adopted** (grammar + registry; normative by reference from SPEC.md; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) |
 | v5.0 PATCH-1 | 2026-07-03 (rev 2026-08-11) | **Adopted** (trainable; constants ratified 2026-07-03; merged into v5.0 Pre 2.0) | [archive/SPEC-v5.0-PATCH-1.md](archive/SPEC-v5.0-PATCH-1.md) |
@@ -109,6 +111,7 @@ Model-assisted adversarial review: structural completeness 0.992.
 | File | Description |
 |------|-------------|
 | [SPEC-v4.1-MEDIA-PROFILE.md](SPEC-v4.1-MEDIA-PROFILE.md) | **v4.1** — media profile (20 target-gated keys) and media entities (@IMG, @VID, @AUD), expression layer |
+| [SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md](SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) | **v4.2** — media regions (pts, bnd, vtx, msk body keys), masks and image layers on the v4 stable line, expression layer |
 | [PROPOSAL-MEDIA-REGIONS-AND-LAYERS.md](PROPOSAL-MEDIA-REGIONS-AND-LAYERS.md) | Open proposal — region, mask and layer operations, the next expression-layer extension |
 | [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md) | **v5.0 Pre** — judgment layer, merged spec: Parts I–IV (latest, public preview) |
 | [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md) | v4.0 Final — execution semantics (current stable) |
