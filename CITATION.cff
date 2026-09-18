@@ -11,7 +11,8 @@ abstract: >-
   communication format, v4.0 adds execution semantics, and v5.0 adds a trainable
   judgment layer built on an 11-dimensional judgment vector space. v4.1
   registers image, video and audio generation intent as a target-gated modifier
-  profile and a dedicated artifact entity tier.
+  profile and a dedicated artifact entity tier. v4.2 adds media regions, masks
+  and image layers on the v4 line with no new verb, key or entity.
 type: software
 authors:
   - given-names: "Long Quan"
@@ -26,8 +27,8 @@ identifiers:
 repository-code: "https://github.com/ilang-ai/ilang-spec"
 url: "https://ilang.ai"
 license: MIT
-version: "4.1.1"
-date-released: 2026-09-14
+version: "4.2.0"
+date-released: 2026-09-18
 keywords:
   - AI communication protocol
   - human-AI interaction
