@@ -28,6 +28,7 @@ license: mit
 - **Concept DOI:** [10.5281/zenodo.21821452](https://doi.org/10.5281/zenodo.21821452)
 - **Creator:** [Long Quan Zhu](https://orcid.org/0009-0004-4540-8082) (Max, @SUN)
 - **Company:** iLang Inc.
+- **Community:** [r/iLang](https://www.reddit.com/r/iLang/) on Reddit
 - **Machine layer (experimental):** [ilang-ai/iml-protocol](https://github.com/ilang-ai/iml-protocol), IML (I-Lang Machine Layer), a machine form of v4.x documents, operation chains and declarations, with fixed-width codes derived from this canon. Experimental; not part of the canon.
 
 **Current stable: [v4.0 Final](SPEC-v4.0-FINAL.md)** (execution semantics) | **Latest: [v5.0 Pre](SPEC-v5.0-PRE.md)** (June 2026, public preview — the judgment layer) | [v3.0 Final](SPEC.md) (communication) | [v4.1 Media Profile](SPEC-v4.1-MEDIA-PROFILE.md) (September 2026, expression layer — image, video and audio vocabulary on the v4 stable line) | [v4.2 Media Regions and Image Layers](SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) (September 2026, expression layer — regions, masks and image layers on the v4 stable line)
