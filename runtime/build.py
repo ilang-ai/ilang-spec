@@ -31,10 +31,13 @@ def git(*args):
 HEADING = re.compile(r"^(#+) ")
 
 
-def trim(text, drops, path):
-    """Leave out every section whose heading starts with one of drops, with everything under it.
-    Headings inside code fences do not count. A rule that matches no heading stops the build, so a
-    renamed heading in the canon cannot silently change what the bundle carries."""
+def trim(text, drops, path, full_text):
+    """Leave out the body of every section whose heading starts with one of drops, with everything
+    under it. The heading stays, followed by a line that sends the reader to the full text, so a
+    model that looks for the section finds where it is instead of guessing. Headings inside code
+    fences do not count. A rule that matches no heading stops the build, so a renamed heading in the
+    canon cannot silently change what the bundle carries."""
+    stub = "*Left out of the core bundle; the full text is at %s. Do not guess its content.*" % full_text
     out, cut, level, fence, used = [], [], None, False, set()
     for line in text.split("\n"):
         is_fence = line.lstrip().startswith("```")
@@ -48,6 +51,7 @@ def trim(text, drops, path):
                 level = depth
                 used.add(hit)
                 cut.append(line[depth:].strip())
+                out += [line, "", stub, ""]
                 continue
         if is_fence:
             fence = not fence
@@ -66,7 +70,7 @@ def render(name, spec, commit, date):
             raw = f.read()
         text = raw.decode("utf-8").replace("\r\n", "\n").rstrip("\n")
         if src.get("drop"):
-            text, cut = trim(text, src["drop"], src["path"])
+            text, cut = trim(text, src["drop"], src["path"], spec["full_text"])
             left_out.append("- %s: %s" % (src["path"], "; ".join(cut)))
         index.append("%d. %s: %s. sha256:%s" % (n, src["path"], src["layer"], sha256(raw)))
         parts.append("===== BEGIN %s =====\n\n%s\n\n===== END %s =====" % (src["path"], text, src["path"]))
