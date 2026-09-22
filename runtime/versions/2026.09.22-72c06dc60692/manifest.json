@@ -1,14 +1,14 @@
 {
   "brand": "iLang",
   "runtime_schema": 1,
-  "channel": "latest",
+  "channel": "pinned",
   "version": "2026.09.22-72c06dc60692",
   "source_repo": "https://github.com/ilang-ai/ilang-spec",
   "source_commit": "410e1be48958555cb6fb72b912432051c7d05a1b",
   "updated_at": "2026-09-22T23:00:09+08:00",
   "bundles": {
     "core": {
-      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-latest.md",
+      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.22-72c06dc60692/ilang-latest.md",
       "sha256": "72c06dc6069225b25c729d3c12e589455e654b7dd162f89ce128b0808c0f4126",
       "bytes": 94114,
       "sources": [
@@ -18,7 +18,7 @@
       ]
     },
     "media": {
-      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-media-latest.md",
+      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.22-72c06dc60692/ilang-media-latest.md",
       "sha256": "733f6fcd21b505aea0aa7df69d2440a6ee1bd7c7ceb6ab5be664d292d76496ce",
       "bytes": 63671,
       "sources": [
