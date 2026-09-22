@@ -1,8 +1,8 @@
 cff-version: 1.2.0
 message: "If you use this specification, please cite it as below."
-title: "I-Lang Protocol Specification"
+title: "iLang Protocol Specification"
 abstract: >-
-  I-Lang is an AI-native communication protocol that defines a formal vocabulary
+  iLang is an AI-native communication protocol that defines a formal vocabulary
   of 88 verbs, 29 core modifiers plus a 20-key media profile, 25 entities
   (17 addressable, 8 role), and 13 Greek aliases for structured communication
   between humans and AI, between AI agents, and within AI internal
