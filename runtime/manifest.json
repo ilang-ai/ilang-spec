@@ -1,0 +1,31 @@
+{
+  "brand": "iLang",
+  "runtime_schema": 1,
+  "channel": "latest",
+  "version": "2026.09.22-a69b7d69b3a6",
+  "source_repo": "https://github.com/ilang-ai/ilang-spec",
+  "source_commit": "215f0f28575e46fc78bff23e256f7ad92707271e",
+  "updated_at": "2026-09-22T21:27:01+08:00",
+  "bundles": {
+    "core": {
+      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-latest.md",
+      "sha256": "a69b7d69b3a6eca7e7e1f73f82ec053c4bc9ad4b23e36dc82d09f9c83550ded5",
+      "bytes": 92661,
+      "sources": [
+        "SPEC.md",
+        "SPEC-v4.0-FINAL.md",
+        "SPEC-v5.0-PRE.md"
+      ]
+    },
+    "media": {
+      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-media-latest.md",
+      "sha256": "6e12b3afd71c0f6e0e369762cd9fe7cfffa4f39907853714f37c68356adc7374",
+      "bytes": 63673,
+      "sources": [
+        "SPEC-v4.1-MEDIA-PROFILE.md",
+        "SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md"
+      ]
+    }
+  },
+  "pinned": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.22-a69b7d69b3a6/manifest.json"
+}
