@@ -63,9 +63,14 @@ def build():
         bundles[name] = {"url": "%s/%s" % (cfg["raw_base"], spec["file"]), "sha256": digest,
                          "bytes": len(data), "sources": [s["path"] for s in spec["sources"]]}
     version = "%s-%s" % (date[:10].replace("-", "."), bundles["core"]["sha256"][:12])
+    core_file = cfg["bundles"]["core"]["file"]
     manifest = {"brand": cfg["brand"], "runtime_schema": cfg["runtime_schema"], "channel": "latest",
-                "version": version, "source_repo": "https://github.com/ilang-ai/ilang-spec",
-                "source_commit": commit, "updated_at": date, "bundles": bundles,
+                "version": version,
+                # the single-bundle fields a minimal client reads (loader book 4); bundles has them all
+                "bundle_url": bundles["core"]["url"],
+                "sha256_url": "%s/%s" % (cfg["raw_base"], core_file.replace(".md", ".sha256")),
+                "source_repo": "https://github.com/ilang-ai/ilang-spec",
+                "source_commit": commit, "commit": commit, "updated_at": date, "bundles": bundles,
                 "pinned": "%s/versions/%s/manifest.json" % (cfg["raw_base"], version)}
     files["manifest.json"] = (json.dumps(manifest, indent=2) + "\n").encode()
     pinned = dict(manifest, channel="pinned")
@@ -73,8 +78,12 @@ def build():
                                                                    os.path.basename(b["url"])))
                          for n, b in bundles.items()}
     vdir = os.path.join("versions", version)
+    pinned["bundle_url"] = pinned["bundles"]["core"]["url"]
+    pinned["sha256_url"] = "%s/versions/%s/%s" % (cfg["raw_base"], version, core_file.replace(".md", ".sha256"))
     for name, spec in cfg["bundles"].items():
         files[os.path.join(vdir, spec["file"])] = files[spec["file"]]
+        sha_file = spec["file"].replace(".md", ".sha256")
+        files[os.path.join(vdir, sha_file)] = files[sha_file]
     files[os.path.join(vdir, "manifest.json")] = (json.dumps(pinned, indent=2) + "\n").encode()
 
     for rel, data in files.items():
