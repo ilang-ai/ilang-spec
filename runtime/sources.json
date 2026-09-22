@@ -5,19 +5,72 @@
   "bundles": {
     "core": {
       "file": "ilang-latest.md",
-      "purpose": "Everything a model that has never seen iLang needs to read, write, execute and judge it.",
+      "purpose": "The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the formal declaration grammar and most worked examples are left out; the full bundle has them.",
       "sources": [
-        {"path": "SPEC.md", "layer": "communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final)"},
-        {"path": "SPEC-v4.0-FINAL.md", "layer": "execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable)"},
-        {"path": "SPEC-v5.0-PRE.md", "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, public preview)"}
+        {
+          "path": "SPEC.md",
+          "layer": "communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final)",
+          "drop": [
+            "## 10. Examples",
+            "## 11. Version History"
+          ]
+        },
+        {
+          "path": "SPEC-v4.0-FINAL.md",
+          "layer": "execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable)",
+          "drop": [
+            "## Changelog: v3.0 → v4.0",
+            "## Deferred Candidates for v4.1",
+            "## Non-Normative Release Artifacts"
+          ]
+        },
+        {
+          "path": "SPEC-v5.0-PRE.md",
+          "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, public preview)",
+          "drop": [
+            "### §1.2 Canonical worked dimension",
+            "## §6 Dimension Orthogonality Audit",
+            "## §7 Judgment Conformance",
+            "## Appendix D — Boundary Cases",
+            "## Appendix E — Related Prior Work",
+            "## §1 Declaration Grammar",
+            "## Appendix A — Worked example",
+            "## Appendix B — Ratification notes"
+          ]
+        }
+      ],
+      "full_text": "https://ilang.ai/runtime/full"
+    },
+    "full": {
+      "file": "ilang-full.md",
+      "purpose": "The complete text of the three core documents, for a model or a person that needs a part the core bundle leaves out.",
+      "sources": [
+        {
+          "path": "SPEC.md",
+          "layer": "communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final)"
+        },
+        {
+          "path": "SPEC-v4.0-FINAL.md",
+          "layer": "execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable)"
+        },
+        {
+          "path": "SPEC-v5.0-PRE.md",
+          "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, public preview)"
+        }
       ]
     },
     "media": {
       "file": "ilang-media-latest.md",
       "purpose": "Optional extension for image, video and audio work.",
       "sources": [
-        {"path": "SPEC-v4.1-MEDIA-PROFILE.md", "layer": "media profile: image, video and audio vocabulary (v4.1)"},
-        {"path": "SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md", "layer": "media regions, masks and image layers (v4.2)"}
+        {
+          "path": "SPEC-v4.1-MEDIA-PROFILE.md",
+          "layer": "media profile: image, video and audio vocabulary (v4.1)"
+        },
+        {
+          "path": "SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md",
+          "layer": "media regions, masks and image layers (v4.2)"
+        }
       ]
     }
   }

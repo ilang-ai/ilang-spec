@@ -11,6 +11,7 @@ bundle header. Standard library only.
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 
@@ -27,14 +28,57 @@ def git(*args):
                           text=True).stdout.strip()
 
 
+HEADING = re.compile(r"^(#+) ")
+
+
+def trim(text, drops, path):
+    """Leave out every section whose heading starts with one of drops, with everything under it.
+    Headings inside code fences do not count. A rule that matches no heading stops the build, so a
+    renamed heading in the canon cannot silently change what the bundle carries."""
+    out, cut, level, fence, used = [], [], None, False, set()
+    for line in text.split("\n"):
+        is_fence = line.lstrip().startswith("```")
+        m = None if (fence or is_fence) else HEADING.match(line)
+        if m:
+            depth = len(m.group(1))
+            if level is not None and depth <= level:
+                level = None
+            hit = next((d for d in drops if line.startswith(d)), None) if level is None else None
+            if hit:
+                level = depth
+                used.add(hit)
+                cut.append(line[depth:].strip())
+                continue
+        if is_fence:
+            fence = not fence
+        if level is None:
+            out.append(line)
+    missing = [d for d in drops if d not in used]
+    if missing:
+        raise SystemExit("runtime: drop rules matched no heading in %s: %s" % (path, missing))
+    return "\n".join(out), cut
+
+
 def render(name, spec, commit, date):
-    parts, index = [], []
+    parts, index, left_out = [], [], []
     for n, src in enumerate(spec["sources"], 1):
         with open(os.path.join(ROOT, src["path"]), "rb") as f:
             raw = f.read()
         text = raw.decode("utf-8").replace("\r\n", "\n").rstrip("\n")
+        if src.get("drop"):
+            text, cut = trim(text, src["drop"], src["path"])
+            left_out.append("- %s: %s" % (src["path"], "; ".join(cut)))
         index.append("%d. %s: %s. sha256:%s" % (n, src["path"], src["layer"], sha256(raw)))
         parts.append("===== BEGIN %s =====\n\n%s\n\n===== END %s =====" % (src["path"], text, src["path"]))
+    note = []
+    if left_out:
+        note = ["",
+                "Left out of this bundle, and kept in the full text at %s :" % spec["full_text"],
+                *left_out,
+                "",
+                "When you are unsure how a rule applies, or you need one of the parts left out, read the full "
+                "text before you answer. If you cannot open it, name the rule you are unsure about instead of "
+                "guessing."]
     head = "\n".join([
         "# iLang runtime bundle (%s)" % name,
         "",
@@ -45,6 +89,7 @@ def render(name, spec, commit, date):
         "Contents, in order. Each document states its own status and scope:",
         "",
         *index,
+        *note,
     ])
     return (head + "\n\n" + "\n\n".join(parts) + "\n").encode("utf-8")
 
@@ -91,8 +136,7 @@ def build():
         os.makedirs(os.path.dirname(path), exist_ok=True)
         with open(path, "wb") as f:
             f.write(data)
-    print("iLang runtime %s  core %d bytes  media %d bytes" % (
-        version, bundles["core"]["bytes"], bundles["media"]["bytes"]))
+    print("iLang runtime %s  %s" % (version, "  ".join("%s %d bytes" % (n, b["bytes"]) for n, b in bundles.items())))
     return verify()
 
 
