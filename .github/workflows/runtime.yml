@@ -1,0 +1,42 @@
+# Rebuild the iLang runtime bundles whenever a canon file they are made from changes.
+# Loaders read runtime/manifest.json; the bundles are generated here and never edited by hand.
+name: Runtime bundle
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'SPEC.md'
+      - 'SPEC-v4.0-FINAL.md'
+      - 'SPEC-v4.1-MEDIA-PROFILE.md'
+      - 'SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md'
+      - 'SPEC-v5.0-PRE.md'
+      - 'runtime/sources.json'
+      - 'runtime/build.py'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: runtime-bundle
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Build and verify the runtime bundles
+        run: python runtime/build.py
+      - name: Commit the bundles
+        run: |
+          git add runtime
+          if git diff --cached --quiet; then echo "bundles unchanged"; exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "runtime: rebuild bundles from ${GITHUB_SHA::7}"
+          git push || (git pull --rebase && git push)

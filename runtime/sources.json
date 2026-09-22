@@ -1,0 +1,24 @@
+{
+  "brand": "iLang",
+  "runtime_schema": 1,
+  "raw_base": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime",
+  "bundles": {
+    "core": {
+      "file": "ilang-latest.md",
+      "purpose": "Everything a model that has never seen iLang needs to read, write, execute and judge it.",
+      "sources": [
+        {"path": "SPEC.md", "layer": "communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final)"},
+        {"path": "SPEC-v4.0-FINAL.md", "layer": "execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable)"},
+        {"path": "SPEC-v5.0-PRE.md", "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, public preview)"}
+      ]
+    },
+    "media": {
+      "file": "ilang-media-latest.md",
+      "purpose": "Optional extension for image, video and audio work.",
+      "sources": [
+        {"path": "SPEC-v4.1-MEDIA-PROFILE.md", "layer": "media profile: image, video and audio vocabulary (v4.1)"},
+        {"path": "SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md", "layer": "media regions, masks and image layers (v4.2)"}
+      ]
+    }
+  }
+}
