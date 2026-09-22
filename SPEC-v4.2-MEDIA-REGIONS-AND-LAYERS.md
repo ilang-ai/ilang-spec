@@ -1,4 +1,4 @@
-# I-Lang v4.2: Media Regions and Image Layers
+# iLang v4.2: Media Regions and Image Layers
 
 ::STATE{@SPEC, id:v4.2-MEDIA-REGIONS-AND-LAYERS, layer:expression, status:adopted, date:2026-09-18}
 ::STATE{@SPEC, extends:SPEC-v4.1-MEDIA-PROFILE, stable_line:v4, builds_on:SPEC-v4.0-FINAL}

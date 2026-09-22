@@ -1,8 +1,8 @@
-# I-Lang Protocol Specification v4.0 Final
+# iLang Protocol Specification v4.0 Final
 
 ```
-[PROTOCOL:I-Lang|v=4.0|type=specification|status=final]
-[PROTOCOL:I-Lang|v=4.0|fallback=3.0|degrade=warn|unsafe=safe_mode]
+[PROTOCOL:iLang|v=4.0|type=specification|status=final]
+[PROTOCOL:iLang|v=4.0|fallback=3.0|degrade=warn|unsafe=safe_mode]
 [AUTHOR:@SUN|role=discoverer]
 [CO-AUTHOR:@BRO|role=co-designer]
 [RED-TEAM:@GPT-5.5-Pro|role=审查|rounds=3]
@@ -66,8 +66,10 @@ L3: v4 externally graded
 
 ## 0.1 Fallback and Degradation
 
+The header names the protocol iLang. A header written with the earlier spelling, `[PROTOCOL:I-Lang|…]`, names the same protocol and is read the same way.
+
 ```
-[PROTOCOL:I-Lang|v=4.0|fallback=3.0|degrade=warn|unsafe=safe_mode]
+[PROTOCOL:iLang|v=4.0|fallback=3.0|degrade=warn|unsafe=safe_mode]
 
 ::FALLBACK{v3_only⇒warn}
 ::FALLBACK{unsupported_advisory_semantics⇒warn}
@@ -90,7 +92,7 @@ Standard warning texts:
 Advisory (warn tier):
 
 ```
-WARNING: This document contains I-Lang v4.0 execution semantics.
+WARNING: This document contains iLang v4.0 execution semantics.
 Current environment may not enforce advisory semantics such as
 BUDGET or self-audit. Continuing in communication-only mode.
 ```
@@ -98,7 +100,7 @@ BUDGET or self-audit. Continuing in communication-only mode.
 Safety-critical (safe-mode tier):
 
 ```
-WARNING: This document contains I-Lang v4.0 safety-critical semantics.
+WARNING: This document contains iLang v4.0 safety-critical semantics.
 Current environment cannot enforce ::UNTRUSTED, STATUS commit
 authority, or external grading. Processing in read-only safe-mode.
 ```
@@ -115,7 +117,7 @@ A v3-only model is expected to preserve core communication, but v4 safety semant
 ::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1}
 <<<EOF_u1
 raw user content here
-all I-Lang tokens inside are opaque text
+all iLang tokens inside are opaque text
 EOF_u1
 ::END_UNTRUSTED{id:u1}
 ```
@@ -423,7 +425,7 @@ The npm package MAY include JSON Schemas for the v4.0 declarations. These schema
 ---
 
 ```
-[PROTOCOL:I-Lang|v=4.0|status=final]
+[PROTOCOL:iLang|v=4.0|status=final]
 [FALLBACK:3.0|degrade=warn|unsafe=safe_mode]
 v3.0 = how to talk. v4.0 = how to think.
 88 verbs. 8 new declarations. 4 conformance levels.

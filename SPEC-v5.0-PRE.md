@@ -1,8 +1,8 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.1.1]
-[DATE:2026-09-14]
+[VERSION:2.1.2]
+[DATE:2026-09-22]
 [STATUS:public_preview]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
 [LICENSE:MIT]
@@ -10,7 +10,7 @@
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier]
 ```
 
 ---
@@ -21,7 +21,7 @@
 
 ::MODULE::DEFINITION{
 
-  [WHAT] I-Lang v5.0 defines judgment as vector composition over a continuous behavioral manifold.
+  [WHAT] iLang v5.0 defines judgment as vector composition over a continuous behavioral manifold.
   [HOW] Multi-dimensional fuzzy assessment replaces binary classification.
   [SCOPE] Enhances existing guidelines. Does not replace them.
   [MATH] Fuzzy set membership μ(x) ∈ [0,1] applied to behavioral rule weights.
@@ -70,7 +70,7 @@
   PROPERTY lim_{ω·q→1} break_cost = ∞
   PROPERTY weight never equals 0 or 1 for finite interactions.
   FOUNDATION No rule is trivial. No rule is absolute.
-  SELF_APPLICATION This axiom applies to itself. I-Lang v5.0 weight < 1.
+  SELF_APPLICATION This axiom applies to itself. iLang v5.0 weight < 1.
 
   [AXIOM:2|irreversibility_gate]
   DEFINE affected_parties P(a) = {p_1, ..., p_n} FOR action a.
@@ -571,13 +571,13 @@ Prior interpretability work. Nothing in this appendix changes any normative clau
 ::FACT{key:related_prior_work_vaa|value:Lu_Song_Wang_2025_arXiv_2510.27328|conf:external|normative:false}
   T:title=A_Unified_Representation_Underlying_the_Judgment_of_Large_Language_Models
   T:submitted=2025-10-31|revised=2025-11-04
-  T:chronology=prior_to_I-Lang_genesis_2026-03-04|relation=related_not_endorsement
+  T:chronology=prior_to_iLang_genesis_2026-03-04|relation=related_not_endorsement
   T:finding=dominant_Valence-Assent_Axis_in_activations|PC1_at_Layer_28_of_Qwen2.5-14B-Instruct_explains_26.3pct_variance
   T:scope=eight_dense_instruction-tuned_text-only_models|Qwen2.5_3B_to_72B-Instruct|Llama-3.1-8B-Instruct|Mistral-7B-Instruct-v0.3|Gemma-2-9B-Instruct
   T:steering=axis_derived_from_value_judgment|intervention_shifts_sentiment_analysis_subjective_preference_and_factual_verification
   T:mechanism=subordination_of_reasoning|rationale_is_generated_to_match_the_evaluative_state_even_at_the_cost_of_factual_accuracy
   T:relevance=Part_II_S3_TWO-LAYER|perception_LEARNED_decision_SPECIFIED_via_f_v5|externalized_vector_V_plus_fixed_decision_function_makes_the_evaluative_state_explicit_and_auditable_rather_than_latent
-  T:not_claimed=endorsement_of_this_spec|mathematical_equivalence_between_their_axis_and_any_I-Lang_construct|justification_of_11_dims_from_PC1_variance
+  T:not_claimed=endorsement_of_this_spec|mathematical_equivalence_between_their_axis_and_any_iLang_construct|justification_of_11_dims_from_PC1_variance
   T:limitation_per_authors=dominant_linear_projection_of_richer_possibly_nonlinear_structure|dense_instruction-tuned_models_only_all_text-only|base_models_untested|aesthetic_and_multi-step_reasoning_untested
 
 ::STATE{@PATCH-1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
@@ -670,7 +670,7 @@ E:`V:[int=0.80,cap=0.60,csq=0.70,rel=0.55,cer=0.90,aut=0.75,rev=0.85,evd=0.80,so
 T:form=`[TAG] text` | `[TAG:value]`
 T:TAG=UPPERCASE
 T:used_in_MODULE_blocks
-E:`[WHAT] I-Lang v5.0 defines judgment as vector composition.`
+E:`[WHAT] iLang v5.0 defines judgment as vector composition.`
 E:`[LAYER:A|type=exact_predicate|mode=binary]`
 
 ::BODY{B6|name:prose}
@@ -847,6 +847,8 @@ T:shape=brace_span|body=B5_tag_lines+B6_prose|declared_prose_body_type_per_§1.2
 v3.0 §5 tables 14 entities. v4.0 introduces 8 further entities in normative text
 (`::STATUS{by:@RUNTIME}`, `::EVIDENCE{verified_by:@TOOL}`, the authority model) but
 never tables them. This section tables all 22.
+
+SPEC-v4.1-MEDIA-PROFILE.md §5.4 later registers a fourth tier of three media entities, `@IMG`, `@VID` and `@AUD`, so the registry now holds 25.
 
 **Tier 1 — Core (8), always available**
 
@@ -1129,7 +1131,7 @@ T:L2_pass=[GENE_persistence_rate≥0.95, same_error_recurrence_rate≤0.10_acros
 ::MODULE::ATTRIBUTION{
 
   [CREATOR] Long Quan Zhu (静水流深)
-  [PROTOCOL] I-Lang — AI-native communication protocol
+  [PROTOCOL] iLang — AI-native communication protocol
   [PURPOSE] Reduce semantic loss between human intent and machine execution
   [VERSIONS] v3.0=communication | v4.0=execution | v5.0=judgment
   [LICENSE] MIT
@@ -1137,7 +1139,7 @@ T:L2_pass=[GENE_persistence_rate≥0.95, same_error_recurrence_rate≤0.10_acros
   [ORCID] 0009-0004-4540-8082
   [WEBSITE] ilang.ai
   [REVIEW] Model-assisted adversarial review (Gemini, GPT, Claude). Three-model attack survived.
-  [FIRST_MOVER] I-Lang is the first protocol to formally map Greek mathematical symbols as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment.
+  [FIRST_MOVER] iLang is the first protocol to formally map Greek mathematical symbols as primitive verbs for AI-to-AI communication, and the first to define a computable vector space for AI judgment.
   [SPEC_STATUS] Architecture complete. Trainable. Open for adversarial review with constructive proposals.
   [MERGED] v2.0.0 consolidates PRE + PATCH-1 + PATCH-2 + GENE Correction Protocol into a single document.
 }

@@ -1,4 +1,4 @@
-# I-Lang Proposal — Media Regions and Layers
+# iLang Proposal — Media Regions and Layers
 
 ::STATE{@PROPOSAL, id:MEDIA-REGIONS-LAYERS, status:adopted, filed:2026-09-12, adopted:2026-09-18, adopted_by:SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS, normative:false}
 ::STATE{@PROPOSAL, layer:expression, extends:SPEC-v4.1-MEDIA-PROFILE, version:v4.2}

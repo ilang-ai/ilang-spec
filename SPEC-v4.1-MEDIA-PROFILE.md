@@ -1,4 +1,4 @@
-# I-Lang v4.1 — Media Profile and Media Entities
+# iLang v4.1 — Media Profile and Media Entities
 
 ::STATE{@SPEC, id:v4.1-MEDIA-PROFILE, layer:expression, status:adopted, date:2026-09-12}
 ::STATE{@SPEC, extends:SPEC.md_§4_§5, stable_line:v4, builds_on:SPEC-v4.0-FINAL}
