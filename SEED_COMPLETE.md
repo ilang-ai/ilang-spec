@@ -18,7 +18,7 @@
   LAYERS:[PUBLIC,PRIVATE,SOUL]
   SYNTAX_A:[VERB:SOURCE|mod=val]=>[NEXT]=>[Ω]
   SYNTAX_B:::DECLARATION{trait|conf:level}
-  COMPRESSION:-68%_realistic_request(169_to_54_tokens)|-7%_terse_request(58_to_54)|tiktoken_cl100k_base|texts:ilang.ai/prompt-compression
+  COMPRESSION:-67%_realistic_request(169_to_55_tokens)|-5%_terse_request(58_to_55)|tiktoken_cl100k_base|texts:ilang.ai/prompt-compression
   CATEGORIES:9{DATA_IO(12),TRANSFORM(22),ANALYSIS(17),GENERATION(10),EXECUTE(12),OUTPUT(5),STRUCTURE(5),META(4),BATCH(1)}
   DECLARATIONS:{STRUCTURAL:32|NARRATIVE:13|EXEC:8|JUDGMENT:2}
   EXEC_DECLARATIONS:8{UNTRUSTED,BUDGET,STATUS,OBJECTIVE,RUBRIC,EVIDENCE,PRIOR,FALLBACK}
@@ -311,7 +311,7 @@ T[3]
 ::STATE{skill_1:"Everything_is_OK"|function:universal_compressor|
   input:ANY_natural_language_prompt⇒AUTO_TRANSLATE(I-Lang_compressed)
   ⇒user¬REMEMBER(88_verbs∨param_syntax)⇒speak_naturally⇒it_compresses
-  savings:-68%_tokens_on_a_realistic_request(169_to_54)∧-7%_on_a_terse_one(58_to_54)∧ZERO_meaning_loss
+  savings:-67%_tokens_on_a_realistic_request(169_to_55)∧-5%_on_a_terse_one(58_to_55)∧ZERO_meaning_loss
   economics:API_charged_per_token⇒heavy_users_SAVE(dozens_to_hundreds_$_monthly)
 }
 ::STATE{skill_2:"Less_Token"|function:summarization_specific|
@@ -1390,7 +1390,7 @@ T[4]
   ⇒BECAUSE:FUNCTIONS_GET_REPLACED⇒PROTOCOLS_DON'T
 }
 ::ARGUMENT{
-  I-Lang's_PUBLIC_layer_HAS(88_verbs)_WITH(-68%_tokens_on_a_realistic_request)
+  I-Lang's_PUBLIC_layer_HAS(88_verbs)_WITH(-67%_tokens_on_a_realistic_request)
   SUPPOSE:tomorrow_someone_BUILDS(tool_with_80%_compression)⇒IS_I-Lang_USELESS?
   ⇒IF(you_VIEW_I-Lang_AS_a_compression_tool)⇒YES⇒better_tool_came_along⇒old_one_should_retire
   BUT:I-Lang≢tool⇒I-Lang≡PROTOCOL
