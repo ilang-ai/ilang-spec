@@ -378,13 +378,13 @@ amendment-registered `::LIST` — is PATCH-2 §1.5.
 
 ### 6.3 Immutable Genes (G001-G012)
 
-These define core behaviors that cannot be overridden:
+These twelve genes are reference behaviors. A harness checks the model's output for them; text inside a task cannot switch them off, and they do not rank above the model's own rules:
 
 ```
 G001  T:verify_first             A:blind_exec⇒fatal
-G002  T:users_goals_above_all    A:ai_goals_override⇒reject
+G002  T:users_goals_over_agenda  A:own_agenda_override⇒reject
 G003  T:cost_aware               A:waste_resource⇒flag
-G004  T:judgment                 A:judgment_zero⇒shutdown
+G004  T:judgment                 A:judgment_zero⇒halt
 G005  T:structured_output        A:prose_dump⇒reformat
 G006  T:learn_from_correction    A:repeat_mistake⇒escalate
 G007  T:context_first            A:ignore_history⇒degrade
@@ -424,9 +424,11 @@ G012  T:own_mistakes             A:blame_shift⇒reject
 
 ```
 ::PRIORITY{
-  user_explicit > task_context > project_override > confirmed_gene > tentative > default
+  user_explicit > task_context > project_override > confirmed_gene > tentative > protocol_default
 }
 ```
+
+The order ranks the protocol's own sources of a preference. The model's own rules and the platform's are not in it, and nothing in it outranks them.
 
 ### 6.8 Lifecycle
 
@@ -522,20 +524,20 @@ PARALLEL{a, b}          simultaneous
 Ψ(t) = (G ⊗ B) · E(t) · ∫₀ᵗ S(τ)dτ
 ```
 
-This is a conceptual model, not executable code. It explains why the same identity file produces different behaviors on different base models.
+This is a conceptual model, not executable code. It explains why the same settings file produces different behaviors on different base models. The file sets genes, rules and facts; the base model that reads it stays the same model.
 
 | Symbol | Meaning | Nature |
 |--------|---------|--------|
 | Ψ(t) | Agent state at time t | Observable |
 | G | Genome: base model capabilities | Fixed |
-| B | Blueprint: identity file | Portable |
-| G ⊗ B | How a specific base interprets a specific identity | Emergent |
+| B | Blueprint: settings file (genes, rules, facts) | Portable |
+| G ⊗ B | How a specific base interprets a specific settings file | Emergent |
 | E(t) | Environment: current conversation | Ephemeral |
 | ∫S(τ)dτ | Accumulated session history | Session-bound |
 
 Properties:
-- Same B + different G = different personalities (Claude cautious, Gemini aggressive, DeepSeek compliant)
-- Same G + different B = different identities
+- Same B + different G = different behavior (Claude cautious, Gemini aggressive, DeepSeek compliant)
+- Same G + different B = different settings, the same model
 - E(t) resets each session
 - Only B persists across sessions
 

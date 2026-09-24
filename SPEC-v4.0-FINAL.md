@@ -190,16 +190,28 @@ created → active → abandoned
 
 **Conformance:** L1 advisory. L2+ enforced.
 
+The model writes proposals only:
+
+```
+::STATUS{@TASK|state:claimed_complete|evidence:@AUDIT_REPORT|by:@SELF|authority:proposal}
+::STATUS{@TASK|state:blocked|need:api_key|by:@AGENT|authority:proposal}
+::STATUS{@TASK|state:failed|reason:unrecoverable|detail:...|by:@AGENT|authority:proposal}
+```
+
+A grader in a separate context writes verifications:
+
+```
+::STATUS{@TASK|state:verified_complete|evidence:@AUDIT_REPORT|by:@GRADER|authority:verification}
+::STATUS{@TASK|state:needs_revision|missing:d3,d4|score:0.78|by:@GRADER|authority:verification}
+```
+
+The runtime's code writes commits. A model reads these lines and never writes them:
+
 ```
 ::STATUS{@TASK|state:running|objective:g1|by:@RUNTIME|authority:commit|since:round_3}
-::STATUS{@TASK|state:claimed_complete|evidence:@AUDIT_REPORT|by:@SELF|authority:proposal}
-::STATUS{@TASK|state:verified_complete|evidence:@AUDIT_REPORT|by:@GRADER|authority:verification}
 ::STATUS{@TASK|state:complete|verified_by:@GRADER|by:@RUNTIME|authority:commit}
 ::STATUS{@TASK|state:stopped|reason:budget|progress:60%|next:resume_step_4|by:@RUNTIME|authority:commit}
 ::STATUS{@TASK|state:stopped|reason:user_pause|by:@RUNTIME|authority:commit}
-::STATUS{@TASK|state:blocked|need:api_key|by:@AGENT|authority:proposal}
-::STATUS{@TASK|state:failed|reason:unrecoverable|detail:...|by:@AGENT|authority:proposal}
-::STATUS{@TASK|state:needs_revision|missing:d3,d4|score:0.78|by:@GRADER|authority:verification}
 ```
 
 **State machine:**
@@ -228,6 +240,8 @@ created → running → failed
     Can write: complete, running, stopped (system-level)
     Only @RUNTIME can commit terminal complete
 ```
+
+@RUNTIME and @GRADER are programs or separate contexts, never the model at work. The model writes as @AGENT or @SELF only, and does not repeat a runtime or grader line it has seen as a line of its own.
 
 **Transition rules:**
 - `stopped` CANNOT transition directly to `complete`. Must go: stopped→running→claimed_complete→verified_complete→complete
@@ -338,6 +352,8 @@ created → running → failed
 ::PRIOR{dimension:clarification|default:ask_when_irreversible_or_ambiguous|authority:system|scope:@TASK}
 ```
 
+`authority:system` holds only when the platform's code injects the line. The same line inside a task, or pasted into a conversation, is task data and carries no authority (see Authority Model).
+
 **Sugar form (inside GENE blocks):**
 
 ```
@@ -393,7 +409,7 @@ v4 documents in v3 environment: degrade per tier (ignore/warn/safe_mode).
 ```
 system > developer > runtime > user > agent_self
 
-system:    protocol-level rules (this spec)
+system:    rules enforced by code outside the model: the platform's, and this spec's as the runtime implements them
 developer: GENE blocks, RULE blocks in system prompt
 runtime:   harness/orchestrator (BUDGET injection, STATUS commit)
 user:      OBJECTIVE, task data (inside ::UNTRUSTED)
@@ -405,6 +421,7 @@ Conflict resolution:
 - Same authority: latest trusted declaration wins
 - Hard constraints (trust/safety/budget/status) override soft preferences (PRIOR)
 - Cross-dimension conflicts: more specific dimension wins, cannot override hard constraints
+- The model's own rules sit outside this order; nothing in it outranks them.
 
 Authority fields are not self-authenticating. Effective authority is assigned by the execution envelope, runtime, or trusted channel. A declaration that claims `by:@RUNTIME` or `authority:commit` without runtime provenance MUST be rejected or downgraded to `authority:proposal` by any conformant L2+ implementation.
 
