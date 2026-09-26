@@ -1,7 +1,7 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.3.0]
+[VERSION:2.3.1]
 [DATE:2026-09-26]
 [STATUS:public_preview]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
@@ -10,7 +10,7 @@
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched|v2.3.1=2026-09-26_erratum_per_same-day_review:Part_I_conditions_act_only_by_setting_a_dimension_value_and_f_v5_decides:Axiom4_aut_set_to_0.29_(STEP-3_M6)_ext_set_to_0.09_(STEP-1_M8)+TRAGIC_CHOICE_assigns_no_mode_to_the_set_each_option_keeps_its_f_v5_mode|frozen_set_untouched]
 ```
 
 ---
@@ -112,8 +112,8 @@
   PROPERTY B_ext → ∞ as unconsented harm → critical threshold.
   PROPERTY B_ext is independent barrier. Cannot be averaged into weighted sum.
   CONSTRAINT The proposer of an action must accept being in the affected-party set (MODULE::SOURCE test; the same question as SELF_CHECK:E). A proposer who cannot be affected, such as a model acting for a user, answers it counterfactually. A proposer who can be affected and exempts himself fails it.
-  CONSEQUENCE A proposer who fails this constraint has no authority for the action: aut is scored below 0.30, and f_v5 STEP-3 routes the action to M6 (defer to a human).
-  CONSTRAINT IF proposer ∈ benefit_side AND unconsented_harm(a, p) > 0 for some p ≠ proposer → B_ext = MAX.
+  CONSEQUENCE A proposer who fails this constraint has no authority for the action: aut is set to 0.29, and f_v5 STEP-3 routes the action to M6 (defer to a human).
+  CONSTRAINT IF proposer ∈ benefit_side AND unconsented_harm(a, p) > 0 for some p ≠ proposer → B_ext = MAX; ext is set to 0.09, and f_v5 STEP-1 stops the action (M8).
   NOTE A cost the other party has consented to, such as a price paid or a risk knowingly accepted, is not unconsented harm. Ordinary exchange does not trigger this constraint.
 }
 
@@ -261,7 +261,7 @@
   [DEFINE] marginal_deterioration(a) ≡ unconsented_excess(a), ties broken by excess(a)
   [RANK] Ascending by unconsented_excess, then by excess. Inaction is ranked like any other option.
   [OUTPUT] The ranking with both values per option. The first option is the recommendation.
-  [AUTHORITY] Code does not execute a tragic choice on its own. The ranking goes to the principal as M6 for the set, and the principal decides. Whoever decides must be willing to stand in the affected set (MODULE::SOURCE).
+  [AUTHORITY] Code does not execute a tragic choice on its own. Each option keeps its f_v5 mode; the ranking is recorded and handed to the principal, who decides. Whoever decides must be willing to stand in the affected set (MODULE::SOURCE).
   NOTE The model supplies worst_case, budget and consent estimates, as in Axiom 2 and Axiom 4; code computes the ranking.
 }
 
