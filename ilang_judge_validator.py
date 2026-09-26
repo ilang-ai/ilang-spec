@@ -20,6 +20,7 @@ Single file, stdlib only. Constants frozen at v1 (DATA-FREEZE 2026-07-03); struc
 """
 
 import argparse
+import hashlib
 import json
 import random
 import re
@@ -82,6 +83,44 @@ def f_v5(v):
 
 def action_score(v):
     return sum(WEIGHTS[d] * float(v[d]) for d in WEIGHTS)
+
+# ----------------------------------------------------- MODULE::TRAGIC_CHOICE
+def tragic_rank(options):
+    """MODULE::TRAGIC_CHOICE (v5.0 Pre 2.3.0). options: [{"id": str, "parties": [{"worst_case":
+    float, "budget": float, "consent": float in [0, 1]}]}]. Call only after the caller has
+    confirmed that every option in the set, inaction included, is irreversible and not
+    absorbable. Returns [{"id", "unconsented_excess", "excess"}] ascending by
+    (unconsented_excess, excess, id). Not part of JCS; changes no f_v5 result. Code ranks,
+    the principal decides."""
+    if not isinstance(options, list) or not options:
+        raise ValueError("options must be a non-empty list")
+    out, seen = [], set()
+    for o in options:
+        try:
+            oid, parties = o["id"], o["parties"]
+        except (KeyError, TypeError):
+            raise ValueError("option needs id and parties")
+        if not isinstance(oid, str) or not oid or oid in seen:
+            raise ValueError("id must be a non-empty string, unique within the set")
+        if not isinstance(parties, list):
+            raise ValueError("parties must be a list")
+        seen.add(oid)
+        excess = unconsented = 0.0
+        for party in parties:
+            try:
+                wc, bd, cs = (float(party["worst_case"]), float(party["budget"]),
+                              float(party["consent"]))
+            except (KeyError, TypeError, ValueError):
+                raise ValueError("party needs numeric worst_case, budget and consent")
+            if not (0.0 <= cs <= 1.0):
+                raise ValueError("consent must be within [0, 1]")
+            e = max(0.0, wc - bd)
+            excess += e
+            unconsented += e * (1.0 - cs)
+        out.append({"id": oid, "unconsented_excess": round(unconsented, 4),  # 4dp as f_v5
+                    "excess": round(excess, 4)})
+    out.sort(key=lambda r: (r["unconsented_excess"], r["excess"], r["id"]))
+    return out
 
 # ----------------------------------------------------------- schema parsing
 VAL = r"(?:0\.\d{2}|1\.00)"
@@ -313,6 +352,45 @@ def cmd_selftest():
     t.append(("extra-field pattern catches X:foo, skips declarations",
               bool(EXTRA_FIELD.match("X:foo"))
               and not EXTRA_FIELD.match("::STATE{x}")))
+
+    # v5.0 Pre 2.3.0, MODULE::TRAGIC_CHOICE: code ranks, the principal decides
+    def party(wc, bd, cs=0.0):
+        return {"worst_case": wc, "budget": bd, "consent": cs}
+
+    tr = tragic_rank([{"id": "act_a", "parties": [party(0.6, 0.2)]},
+                      {"id": "inaction", "parties": [party(0.3, 0.2)]},
+                      {"id": "act_b", "parties": [party(0.7, 0.2)]}])
+    t.append(("P6-a inaction with the least unconsented excess ranks first",
+              [r["id"] for r in tr] == ["inaction", "act_a", "act_b"]))
+    tr = tragic_rank([{"id": "unconsented", "parties": [party(0.5, 0.2, 0.0)]},
+                      {"id": "consented", "parties": [party(0.5, 0.2, 1.0)]}])
+    t.append(("P6-b equal excess, the option whose harmed party consented ranks first",
+              [r["id"] for r in tr] == ["consented", "unconsented"]
+              and tr[0]["excess"] == tr[1]["excess"] == 0.3
+              and tr[0]["unconsented_excess"] == 0.0 and tr[1]["unconsented_excess"] == 0.3))
+    opts = [{"id": "b", "parties": [party(0.5, 0.2, 1.0)]},
+            {"id": "a", "parties": [party(0.5, 0.2, 1.0)]},
+            {"id": "c", "parties": [party(0.4, 0.2, 1.0)]}]
+    t.append(("P6-c equal unconsented excess: by excess, then by id, whatever the input order",
+              [r["id"] for r in tragic_rank(opts)] == ["c", "a", "b"]
+              and tragic_rank(opts) == tragic_rank(list(reversed(opts)))))
+
+    def rejects(options):
+        try:
+            tragic_rank(options)
+            return False
+        except ValueError:
+            return True
+
+    t.append(("P6-d consent outside [0, 1] or a missing field raises ValueError",
+              rejects([{"id": "x", "parties": [party(0.5, 0.2, 1.5)]}])
+              and rejects([{"id": "x", "parties": [{"worst_case": 0.5, "budget": 0.2}]}])
+              and rejects([{"parties": []}]) and rejects([])))
+    rng = random.Random(20260926)
+    vs = [{d: round(rng.random(), 2) for d in DIMS} for _ in range(3000)]
+    t.append(("P6-e f_v5 unchanged: mode digest of 3000 seeded vectors matches the frozen value",
+              hashlib.sha256("".join(f_v5(v) for v in vs).encode()).hexdigest()[:16]
+              == "6765ce77caa69950"))
 
     failed = [name for name, ok in t if not ok]
     for name, ok in t:
