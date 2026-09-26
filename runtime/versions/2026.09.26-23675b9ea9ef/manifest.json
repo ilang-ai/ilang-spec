@@ -1,17 +1,17 @@
 {
   "brand": "iLang",
   "runtime_schema": 1,
-  "channel": "latest",
+  "channel": "pinned",
   "version": "2026.09.26-23675b9ea9ef",
-  "bundle_url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-latest.md",
-  "sha256_url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-latest.sha256",
+  "bundle_url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.26-23675b9ea9ef/ilang-latest.md",
+  "sha256_url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.26-23675b9ea9ef/ilang-latest.sha256",
   "source_repo": "https://github.com/ilang-ai/ilang-spec",
   "source_commit": "f23f952a583f58a77d7a557d24b2516caa9ae789",
   "commit": "f23f952a583f58a77d7a557d24b2516caa9ae789",
   "updated_at": "2026-09-26T15:57:01+08:00",
   "bundles": {
     "core": {
-      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-latest.md",
+      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.26-23675b9ea9ef/ilang-latest.md",
       "sha256": "23675b9ea9ef1801dba12f571eaaaf4b1b3c0e92073a2a971355db82c8dbe5b2",
       "bytes": 92129,
       "sources": [
@@ -21,7 +21,7 @@
       ]
     },
     "full": {
-      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-full.md",
+      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.26-23675b9ea9ef/ilang-full.md",
       "sha256": "f68897dabba61ba35245eb6a65a3830b281ce35e505a119c444c330009a312cb",
       "bytes": 117457,
       "sources": [
@@ -31,7 +31,7 @@
       ]
     },
     "media": {
-      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/ilang-media-latest.md",
+      "url": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime/versions/2026.09.26-23675b9ea9ef/ilang-media-latest.md",
       "sha256": "d0b4f008da8d02a25a0d5281949016c12675bb704f8b0c021e0ea45fd54d1d49",
       "bytes": 63671,
       "sources": [
