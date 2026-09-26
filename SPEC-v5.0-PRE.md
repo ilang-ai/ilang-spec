@@ -1,8 +1,8 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.1.2]
-[DATE:2026-09-22]
+[VERSION:2.2.0]
+[DATE:2026-09-26]
 [STATUS:public_preview]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
 [LICENSE:MIT]
@@ -10,7 +10,7 @@
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab]
 ```
 
 ---

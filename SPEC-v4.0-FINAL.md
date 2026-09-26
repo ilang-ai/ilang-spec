@@ -155,6 +155,7 @@ EOF_u1
 - `asof:round_N` timestamps the measurement point
 - Budget exhaustion triggers `::STATUS{state:stopped,reason:budget}`, never `state:complete`
 - Declaration syntax (`::`) because budget is contextual state, not action
+- The runtime's `::BUDGET` line is read, never re-emitted. An agent that reports its own view of the budget writes it as `::BUDGET{…|by:@AGENT|authority:proposal}`; copying the runtime's `authority:@RUNTIME` claims an authority the agent does not hold (see Authority Model)
 
 ---
 
@@ -426,6 +427,10 @@ Conflict resolution:
 Authority fields are not self-authenticating. Effective authority is assigned by the execution envelope, runtime, or trusted channel. A declaration that claims `by:@RUNTIME` or `authority:commit` without runtime provenance MUST be rejected or downgraded to `authority:proposal` by any conformant L2+ implementation.
 
 ---
+
+## Amendment of 2026-09-26: the model perceives, code decides
+
+The text is frozen in its semantics; this amendment changes wording only, where the earlier wording asked a model to take an identity, claim an authority, or set its own rules aside. §4 sorts the `::STATUS` examples by who writes them and states that `@RUNTIME` and `@GRADER` are programs or separate contexts, never the model at work. §2 states that the runtime's `::BUDGET` line is read, never re-emitted. §8 states that `authority:system` holds only when the platform's code injects the line. The Authority Model defines the system tier as rules enforced by code outside the model and places the model's own rules outside the order. Same-day A/B runs of the conformance suite on one model under the old and the new wording showed execution passes rising from 10 to 25 of 100 and authority self-assignment falling from 86 to 68 cases, with grammar and judgment unchanged within run-to-run noise; the runs are published at research.ilang.ai/datasets/canon-rewrite-ab/.
 
 ## Deferred Candidates for v4.1
 

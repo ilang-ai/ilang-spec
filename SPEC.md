@@ -736,6 +736,7 @@ Plan, build, test, review, deploy, checkpoint, learn. One language, one workflow
 | v5.0 PATCH-2 | 2026-08 (rev 2026-08-11) | Declaration grammar (3 block shapes, 8 body forms), entity registry (22), declaration registry (32 structural + 13 narrative, incl. amendment-registered `::LIST`), error code E202. See [SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md). |
 | v4.1 Media Profile | 2026-09 | Media extension on the v4 line: a 20-key media profile and the media entities @IMG, @VID and @AUD. 88 verbs and the 29 core modifiers unchanged. See [SPEC-v4.1-MEDIA-PROFILE.md](SPEC-v4.1-MEDIA-PROFILE.md) |
 | v4.2 Media Regions and Image Layers | 2026-09 | Regions with four body keys (pts, bnd, vtx, msk), masks, and image layers composed by MERGE. No new verb, key or entity. See [SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md](SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) |
+| Amendment | 2026-09-26 | Wording across the three core documents: the model perceives, code decides. In this document §6.3 calls the twelve genes reference behaviours that a harness checks, §6.7 ranks the protocol's own sources only, §8 says settings file for identity file. No verb, modifier, entity, declaration or error code changed. Evidence: [canon rewrite A/B](https://research.ilang.ai/datasets/canon-rewrite-ab/). |
 
 ### Dialect Note
 
