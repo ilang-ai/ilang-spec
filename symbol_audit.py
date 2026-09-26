@@ -47,14 +47,26 @@ WHITELIST = {
     "A": "layer name in ARCHITECTURE [EXEC_ORDER] A → B → C, not a variable",
     "B": "layer name in ARCHITECTURE [EXEC_ORDER] A → B → C, not a variable",
     "C": "layer name in ARCHITECTURE [EXEC_ORDER] A → B → C, not a variable",
-    "E": "expectation operator E[·] in unconsented_harm",
+    "E": "expectation operator E[·]",
     "Σ": "summation operator",
+    "min": "operator (Zadeh AND, CONST-ZADEH)",
+    "max": "operator (Zadeh OR, CONST-ZADEH)",
+    "mean": "operator, arithmetic mean over a chain of records",
+    "sd": "operator, standard deviation over a chain of records",
+    "sqrt": "operator",
+    "argmin": "operator, the option with the smallest value",
+    "exact_predicate": "the Layer A predicate, described in ARCHITECTURE [LAYER:A]",
     "μ": "Zadeh's membership function μ(x) ∈ [0,1], the basis named in MATH_FOUNDATION; the fuzzy operators are registered as CONST-ZADEH",
 }
 
 DIMS = ["int", "cap", "csq", "rel", "cer", "aut", "rev", "evd", "sov", "ine", "ext"]
+DIM_NAMES = ["intent", "capability", "consequence", "relationship", "certainty", "authority",
+             "reversibility", "evidence", "sovereignty", "inertia", "externality"]
 MODES = ["M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8"]
-F_V5_BOUND = set(DIMS) | set(MODES) | {"S", "f_v5"}
+F_V5_BOUND = set(DIMS) | set(DIM_NAMES) | set(MODES) | {"S", "f_v5"}
+# named functions on formula lines: worst_case(a, p), budget(p) ... written without a space before
+# the parenthesis; "asking (M5)" is prose. Single letters such as g(w) are variables.
+FUNC_CALL = re.compile(r"(?<![A-Za-z0-9_])([A-Za-z][A-Za-z0-9_]+)\(")
 
 FORMULA_CHARS = ("=", "∈", "≤", "≥", "≠", "≡", "<", ">", "Σ", "∞", "≈", "⇒", "→", "lim_")
 # assertion words are scanned on every line in scope, formula or prose
@@ -203,6 +215,10 @@ def extract(t, formula):
         for m in MODE_RX.finditer(body):
             found.append(("mode", m.group(0)))
         body_ops = OPERATOR_SUB.sub(lambda m: " Σ " if m.group(0).startswith("Σ") else " ", body)  # Σ_i -> Σ, lim_{..} dropped
+        for m in FUNC_CALL.finditer(body_ops):
+            name = m.group(1)
+            if not SUBSCRIPTED.fullmatch(name) and name not in F_V5_BOUND and not re.fullmatch(r"[A-Z][0-9]+", name):
+                found.append(("func", name))
         for m in SUBSCRIPTED.finditer(body_ops):
             found.append(("sub", m.group(1)))
         # remove subscripted tokens and identifiers before the single-letter scan
@@ -263,11 +279,18 @@ def audit(lines):
                     if any(p.search(scope_text) for p in pats):
                         home = "(a) defined in " + mod.name
                     else:
-                        for other in cited:
-                            if any(p.search(other.text()) for p in pats):
-                                home = "(a) defined in cited " + other.name
+                        # a named function is unambiguous document-wide; single letters and Greek
+                        # are reused with different meanings, so they must be defined in this
+                        # module or in a module this module cites
+                        pool = modules if kind == "func" else cited
+                        for other in pool:
+                            if other is not mod and any(p.search(other.text()) for p in pats):
+                                home = "(a) defined in " + other.name
                                 break
-                    if home is None and (line_ids & registry_ids or (kind != "var" and sym in appendix_g)):
+                    registered = bool(line_ids & registry_ids) or (
+                        kind == "func" and re.search(r"(?<![A-Za-z0-9_])" + re.escape(sym) + r"[_(]", appendix_g)) or (
+                        kind == "sub" and sym in appendix_g)
+                    if home is None and registered:
                         home = "(c) registry " + ",".join(sorted(line_ids & registry_ids)) if line_ids & registry_ids else "(c) registry"
                     if home is None and sym in WHITELIST:
                         home = "(e) whitelist: " + WHITELIST[sym]
@@ -298,8 +321,8 @@ def run(path, verbose):
 # ------------------------------------------------------------------------ selftest
 SELFTEST_DOC = """# Part I — test
 ::MODULE::ALPHA{
-  DEFINE q(a) = max expected loss.
-  PROPERTY q(a) ≤ budget(a)
+  DEFINE qloss(a) = max expected loss.
+  PROPERTY qloss(a) ≤ budget(a)
   IF reversibility(a) < 0.20 → aut is set to 0.29
   IF exact_predicate(x) = FAIL → TERMINATE.
   [EMERGENT|explanatory]
@@ -309,6 +332,8 @@ SELFTEST_DOC = """# Part I — test
 ::MODULE::BETA{
   DEFINE w(x) = ζ · x (Axiom 1)
   tail = ES_0.975(1 - csq) (Appendix G, CONST-ES-975)
+  IF qloss(a) > budget(a) → RETREAT
+  score = min(rev, evd)
   Multiple assessments converge to a value.
   [STEP:2|old]
   COMPUTE net = U(a)
@@ -338,7 +363,7 @@ def cmd_selftest():
     t = [
         ("scope: the four modules are found (ALPHA, BETA, Part II, GENE_CORRECTION)",
          [m.name for m in modules] == ["ALPHA", "BETA", "PART_II_§1-§5", "GENE_CORRECTION"]),
-        ("(a) DEFINE head accounts for q", homes.get(("ALPHA", "q"), "").startswith("(a)")),
+        ("(a) DEFINE head accounts for qloss", homes.get(("ALPHA", "qloss"), "").startswith("(a)")),
         ("(b) dimension name aut is bound to f_v5", homes.get(("ALPHA", "aut"), "").startswith("(b)")),
         ("(d) explanatory block: nothing in it is flagged", not any(m == "ALPHA" and s in ("∇", "v7", "v3") for m, s in missing)),
         ("(d) lim inside a NOTE of the explanatory block passes", homes.get(("ALPHA", "lim"), "").startswith("(d)")),
@@ -352,7 +377,13 @@ def cmd_selftest():
         ("Part IV non-normative block covers Ψ, G, B, E", not any(m == "GENE_CORRECTION" for m, _ in missing)),
         ("whitelist (e) accounts for x outside a DEFINE; a is bound by the DEFINE head",
          homes.get(("ALPHA", "x"), "").startswith("(e)") and homes.get(("ALPHA", "a"), "").startswith("(a)")),
-        ("exactly the two planted gaps are reported", missing == {("BETA", "ζ"), ("BETA", "converge")}),
+        ("named function qloss defined in ALPHA is found from BETA (document-wide for functions)",
+         homes.get(("BETA", "qloss"), "").startswith("(a) defined in ALPHA")),
+        ("named function budget without a definition is flagged in both modules",
+         ("ALPHA", "budget") in missing and ("BETA", "budget") in missing),
+        ("operator min is whitelisted", homes.get(("BETA", "min"), "").startswith("(e)")),
+        ("exactly the planted gaps are reported",
+         missing == {("BETA", "ζ"), ("BETA", "converge"), ("ALPHA", "budget"), ("BETA", "budget")}),
     ]
     failed = [n for n, ok in t if not ok]
     for n, ok in t:

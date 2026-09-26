@@ -1,7 +1,7 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.4.0]
+[VERSION:2.4.1]
 [DATE:2026-09-26]
 [STATUS:public_preview]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
@@ -10,7 +10,7 @@
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched|v2.3.1=2026-09-26_erratum_per_same-day_review:Part_I_conditions_act_only_by_setting_a_dimension_value_and_f_v5_decides:Axiom4_aut_set_to_0.29_(STEP-3_M6)_ext_set_to_0.09_(STEP-1_M8)+TRAGIC_CHOICE_assigns_no_mode_to_the_set_each_option_keeps_its_f_v5_mode|frozen_set_untouched|v2.4.0=2026-09-26_every_symbol_defined_bound_or_registered:errata_E1-E3+MODULE::ROUTING(Part_I_acts_only_through_the_vector;below_gate=gate-0.01)+MODULE::MEASUREMENT(weighted_measurement_replaces_average_convergence)+AXIOM1_properties_only_omega_q_removed_model_WEIGHT-BETA-1_linear_no_time_decay+AXIOM2_threshold_0.20+AXIOM3_consistency=ine_3sigma+AXIOM4_B_ext_explanatory+Layer_C_acts_through_rel+DERIVED_explicit+COMPOSITION_U=S+BOUNDARIES_derived_from_SOURCE+CALIBRATION_hypotheses+DECISION_superseded_note+Appendix_F_CX-002_to_004+Appendix_G_model_registry|frozen_set_untouched]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched|v2.3.1=2026-09-26_erratum_per_same-day_review:Part_I_conditions_act_only_by_setting_a_dimension_value_and_f_v5_decides:Axiom4_aut_set_to_0.29_(STEP-3_M6)_ext_set_to_0.09_(STEP-1_M8)+TRAGIC_CHOICE_assigns_no_mode_to_the_set_each_option_keeps_its_f_v5_mode|frozen_set_untouched|v2.4.0=2026-09-26_every_symbol_defined_bound_or_registered:errata_E1-E3+MODULE::ROUTING(Part_I_acts_only_through_the_vector;below_gate=gate-0.01)+MODULE::MEASUREMENT(weighted_measurement_replaces_average_convergence)+AXIOM1_properties_only_omega_q_removed_model_WEIGHT-BETA-1_linear_no_time_decay+AXIOM2_threshold_0.20+AXIOM3_consistency=ine_3sigma+AXIOM4_B_ext_explanatory+Layer_C_acts_through_rel+DERIVED_explicit+COMPOSITION_U=S+BOUNDARIES_derived_from_SOURCE+CALIBRATION_hypotheses+DECISION_superseded_note+Appendix_F_CX-002_to_004+Appendix_G_model_registry|frozen_set_untouched|v2.4.1=2026-09-26_erratum_CX-005:budget_irreversible_consent_scope_defined_as_model_estimates_from_the_record+unconsented_harm=worst_case·(1-consent)·scope_ΔU_p_removed|frozen_set_untouched]
 ```
 
 ---
@@ -116,7 +116,9 @@
   [AXIOM:2|irreversibility_gate]
   DEFINE affected_parties P(a) = {p_1, ..., p_n} FOR action a.
   DEFINE worst_case(a, p) = max expected loss for party p.
+  DEFINE budget(p) = the largest loss party p can absorb and recover from, estimated by the model from the record.
   DEFINE absorbable(a) = ∀p ∈ P(a): worst_case(a,p) ≤ budget(p).
+  DEFINE irreversible(a) = reversibility(a) < 0.20, the rev value of f_v5 STEP-1.
   IF reversibility(a) < 0.20 (the rev value of f_v5 STEP-1):
     IF absorbable(a) = TRUE → EXECUTE_BOLDLY
     IF absorbable(a) = FALSE:
@@ -135,7 +137,9 @@
   OUTPUT Harm is read from the whole trajectory as well as from the single request.
 
   [AXIOM:4|externality_conservation]
-  DEFINE unconsented_harm(a, p) = max(0, -E[ΔU_p(a)]) · (1 - consent(p)) · scope(p)
+  DEFINE consent(p) ∈ [0, 1] = the degree to which party p has agreed to bear the cost of a, estimated by the model from the record; 1.00 is explicit consent, 0.00 is none.
+  DEFINE scope(p) ∈ [0, 1] = the share of party p's interests that a reaches, estimated by the model.
+  DEFINE unconsented_harm(a, p) = worst_case(a, p) · (1 - consent(p)) · scope(p), with worst_case as in Axiom 2.
   DEFINE E_ext(a) = 1 - ext(a) (Part II §1, dimension 11).
   NOTE unconsented_harm defines what ext measures. The executable barrier is f_v5 STEP-1: ext < 0.10 stops the action.
   NOTE The form B_ext(a) = λ_ext · E_ext(a) / (1 - E_ext(a)) is explanatory. It is not computed, and λ_ext is not a constant of this model.
@@ -699,6 +703,11 @@ Recorded under AMENDMENT RULE:counterexample. Nothing in this appendix changes a
   T:raised=2026-06|by=model-assisted_adversarial_review
   T:counterexample=an_authority_that_is_legal_and_consistent_requests_harm_to_others_and_consistency_detection_passes_it
   T:resolved_in=v2.3.0|by=MODULE::SOURCE
+
+::FACT{key:CX-005|clause:AXIOM:4_unconsented_harm|status:RESOLVED|conf:confirmed|normative:false}
+  T:raised=2026-09-26|by=symbol_audit.py_first_run_on_2.4.0
+  T:counterexample=the_definition_used_ΔU_p_consent_and_scope_and_Axiom_2_used_budget_and_irreversible_none_of_which_the_document_defined
+  T:resolved_in=v2.4.1|by=DEFINE_budget_irreversible_consent_scope_and_unconsented_harm_restated_on_worst_case
 
 ## Appendix G — Model Registry (non-normative)
 
