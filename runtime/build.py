@@ -150,6 +150,8 @@ def verify():
     problems = []
     with open(os.path.join(HERE, "manifest.json"), encoding="utf-8") as f:
         manifest = json.load(f)
+    with open(os.path.join(HERE, "sources.json"), encoding="utf-8") as f:
+        base = json.load(f)["raw_base"].rstrip("/") + "/"     # the host the URLs are written for
     for pinned in (False, True):
         m = manifest
         if pinned:
@@ -157,7 +159,7 @@ def verify():
                       encoding="utf-8") as f:
                 m = json.load(f)
         for name, b in m["bundles"].items():
-            rel = b["url"].split("/runtime/", 1)[1]
+            rel = b["url"][len(base):] if b["url"].startswith(base) else b["url"].split("/runtime/", 1)[1]
             with open(os.path.join(HERE, rel), "rb") as f:
                 data = f.read()
             if len(data) < 1000:
