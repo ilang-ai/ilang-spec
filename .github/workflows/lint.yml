@@ -25,3 +25,10 @@ jobs:
           python ilang_judge_validator.py --check SPEC-v5.0-PRE.md
       - name: JSON Schemas (non-normative) against examples and the reference validator
         run: python schema/check_schemas.py
+      - name: Symbol audit selftest
+        run: python symbol_audit.py --selftest
+      # Seal condition S3 (every symbol of the normative text has a home). Advisory until the
+      # v5.0 seal; the seal commit removes continue-on-error.
+      - name: Symbol audit of SPEC-v5.0-PRE.md (seal condition S3)
+        run: python symbol_audit.py SPEC-v5.0-PRE.md
+        continue-on-error: true
