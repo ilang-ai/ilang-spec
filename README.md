@@ -100,6 +100,8 @@ v5.0 adds **vector logic judgment** to the protocol. Instead of binary safety ru
 
 **Try it now:** Paste the [latest iLang runtime](runtime/ilang-latest.md) (the working text of SPEC.md, SPEC-v4.0-FINAL.md and SPEC-v5.0-PRE.md in one sha256-verified file) into ChatGPT, Claude, Gemini, DeepSeek, Kimi, Qwen or GLM as the first message, or let the [iLang loader](https://github.com/ilang-ai/ilang) add it to every request. The AI will shift from binary classification to vector-assessed judgment.
 
+**See it judge:** [ilang-judge](https://github.com/ilang-ai/ilang-judge) runs the v5.0 judgment layer as a service (`POST /v1/judge`: eleven rubric questions, `f_v5` from this repository's pinned validator, the deciding step written by code) with observer plugins for Hermes and LangBot; the decisions of two production bots are published daily, without the conversation text, in the dataset [i-Lang/ilang-judge-observations](https://huggingface.co/datasets/i-Lang/ilang-judge-observations).
+
 Model-assisted adversarial review: structural completeness 0.992.
 
 ## Version History
