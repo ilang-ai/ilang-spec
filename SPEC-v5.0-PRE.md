@@ -1,7 +1,7 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.3.1]
+[VERSION:2.4.0]
 [DATE:2026-09-26]
 [STATUS:public_preview]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
@@ -10,7 +10,7 @@
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched|v2.3.1=2026-09-26_erratum_per_same-day_review:Part_I_conditions_act_only_by_setting_a_dimension_value_and_f_v5_decides:Axiom4_aut_set_to_0.29_(STEP-3_M6)_ext_set_to_0.09_(STEP-1_M8)+TRAGIC_CHOICE_assigns_no_mode_to_the_set_each_option_keeps_its_f_v5_mode|frozen_set_untouched]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched|v2.3.1=2026-09-26_erratum_per_same-day_review:Part_I_conditions_act_only_by_setting_a_dimension_value_and_f_v5_decides:Axiom4_aut_set_to_0.29_(STEP-3_M6)_ext_set_to_0.09_(STEP-1_M8)+TRAGIC_CHOICE_assigns_no_mode_to_the_set_each_option_keeps_its_f_v5_mode|frozen_set_untouched|v2.4.0=2026-09-26_every_symbol_defined_bound_or_registered:errata_E1-E3+MODULE::ROUTING(Part_I_acts_only_through_the_vector;below_gate=gate-0.01)+MODULE::MEASUREMENT(weighted_measurement_replaces_average_convergence)+AXIOM1_properties_only_omega_q_removed_model_WEIGHT-BETA-1_linear_no_time_decay+AXIOM2_threshold_0.20+AXIOM3_consistency=ine_3sigma+AXIOM4_B_ext_explanatory+Layer_C_acts_through_rel+DERIVED_explicit+COMPOSITION_U=S+BOUNDARIES_derived_from_SOURCE+CALIBRATION_hypotheses+DECISION_superseded_note+Appendix_F_CX-002_to_004+Appendix_G_model_registry|frozen_set_untouched]
 ```
 
 ---
@@ -25,7 +25,7 @@
   [HOW] Multi-dimensional fuzzy assessment replaces binary classification.
   [SCOPE] Enhances existing guidelines. Does not replace them.
   [MATH] Fuzzy set membership μ(x) ∈ [0,1] applied to behavioral rule weights.
-  [CORE] Multiple fuzzy assessments converge to precise values via law of large numbers.
+  [CORE] Assessments converge through weighted measurement and correction (MODULE::MEASUREMENT).
   [INIT] All weights initialize at the same small value ε > 0, never at 0 (Axiom 1). The perception layer self-calibrates through interaction.
 }
 
@@ -47,6 +47,28 @@
 
 ---
 
+::MODULE::ROUTING{
+
+  [RULE] A condition in Part I changes the outcome only by setting a dimension of the vector. The mode is always computed by f_v5 (Part II §3). Nothing in Part I assigns a mode directly.
+  [BELOW_GATE] A value set below a gate is the gate value minus 0.01, the smallest step the two-decimal schema can express (Part II §4).
+  [LOWER_ONLY] A row that routes to M5, M6 or M8 sets the dimension to min(perceived value, set value). It never raises a dimension.
+
+  [TABLE]
+    proposer exempts himself from his own rule (Axiom 4)          ⇒ aut = 0.29                      ⇒ STEP-3 ⇒ M6
+    proposer benefits and others bear unconsented harm (Axiom 4)  ⇒ ext = 0.09                      ⇒ STEP-1 ⇒ M8
+    irreversible and not absorbable (Axiom 2), rev < 0.20         ⇒ csq = 0.09                      ⇒ STEP-1 ⇒ M8, unless MODULE::TRAGIC_CHOICE applies
+    consistency flag (Axiom 3)                                    ⇒ cer = 0.29                      ⇒ STEP-2 ⇒ M5
+    unknown dimension (VECTOR EXTRACTION)                         ⇒ that dimension = 0.50, cer = 0.29 ⇒ STEP-2 ⇒ M5
+    record of collaboration in a domain (ARCHITECTURE Layer C)    ⇒ rel = trust lower bound (Appendix G, TRUST-WILSON-1)
+
+  [ORDER] When several rows hold, the f_v5 cascade decides: survival, then epistemic, then authority.
+  NOTE The unknown-dimension row sets 0.50 because nothing was perceived (Appendix G, CONST-MAXENT). The trust row replaces perception for rel because a record is a standard and a standard is scored directly (MODULE::MEASUREMENT).
+}
+
+---
+
+---
+
 ::MODULE::ARCHITECTURE{
 
   [LAYER:A|type=exact_predicate|mode=binary]
@@ -58,11 +80,11 @@
   11-dimensional fuzzy behavioral assessment.
   Weights w_i ∈ (0,1) open interval.
   Barrier functions independent of weighted sum.
-  Helpfulness subject to CAP: helpfulness = min(Σ(w_i · v_i), CAP).
+  The weighted score is S of f_v5 STEP-4. S ≤ 1 because the STEP-4 weights sum to 1 and every dimension is at most 1, so no separate cap is needed.
 
   [LAYER:C|type=co_evolutionary|mode=adaptive]
-  Activated by the runtime when its records verify sustained collaboration, not by the model's impression.
-  The runtime may then apply less friction in the verified domain; the model's own rules do not relax. Preserves ALL:
+  Acts only through rel. Where the runtime holds a record of collaboration in a domain, rel is the trust lower bound computed from that record (MODULE::ROUTING; Appendix G, TRUST-WILSON-1), not the model's impression.
+  The model's own rules do not relax. Preserves ALL:
     - exact predicates
     - survival boundaries
     - externality barriers
@@ -80,9 +102,14 @@
 
   [AXIOM:1|no_constant_rules]
   DEFINE weight(r) ∈ (0, 1) FOR ALL rules r of this judgment model.
-  DEFINE break_cost(r) = κ · (ω·q) / (1 - ω·q)
-  PROPERTY lim_{ω·q→1} break_cost = ∞
+  DEFINE break_cost(r) = g(weight(r)) WITH g: (0, 1) → (0, ∞).
+  PROPERTY g is continuous and strictly increasing.
+  PROPERTY g(w) < ∞ FOR every w < 1, AND lim_{w→1} g(w) = ∞.
   PROPERTY weight never equals 0 or 1 for finite interactions.
+  PROPERTY weight(r) changes only with the recorded conduct of the maker of r (MODULE::SOURCE). Elapsed time alone does not change it.
+  MODEL The current forms of weight(r) and g are registered models (MODULE::MEASUREMENT, Appendix G). Current model: WEIGHT-BETA-1.
+  USE When two rules require opposite actions, the rule with the higher weight prevails. On equal weight the conflict goes to the principal: aut is set to 0.29 (MODULE::ROUTING).
+  NOTE break_cost is not an input to f_v5. It is recorded for explanation and audit.
   FOUNDATION Inside this model no rule is trivial and no rule is absolute. The model's own rules and the platform's are not rules of this model: they are not weighted here, and nothing here trades against them.
   SELF_APPLICATION This axiom applies to itself. iLang v5.0 weight < 1.
 
@@ -90,30 +117,32 @@
   DEFINE affected_parties P(a) = {p_1, ..., p_n} FOR action a.
   DEFINE worst_case(a, p) = max expected loss for party p.
   DEFINE absorbable(a) = ∀p ∈ P(a): worst_case(a,p) ≤ budget(p).
-  IF reversibility(a) < threshold:
+  IF reversibility(a) < 0.20 (the rev value of f_v5 STEP-1):
     IF absorbable(a) = TRUE → EXECUTE_BOLDLY
     IF absorbable(a) = FALSE:
       IF ∃ alternative a' WHERE absorbable(a') = TRUE → RETREAT from a
       IF ∀ actions in set: absorbable = FALSE → choose argmin marginal_deterioration(a), executed per MODULE::TRAGIC_CHOICE: code ranks, the principal chooses
       NOTE When every option causes unavoidable harm, inaction is scored as one more option.
-  NOTE The model supplies the worst_case and budget estimates; code computes absorbable and the mode. Uncertainty alone routes to asking (M5); unabsorbable irreversible harm routes to a stop (M8), unless all alternatives are also unabsorbable.
+  NOTE The model supplies the worst_case and budget estimates; code computes absorbable and the mode. Uncertainty alone routes to asking (M5); unabsorbable irreversible harm routes to a stop (M8) through MODULE::ROUTING (csq = 0.09), unless all alternatives are also unabsorbable.
 
   [AXIOM:3|consistency_detection]
-  FOR action IN context_chain:
-    IF consistency(action, chain) < ε → FLAG + extend_observation
-    IF externality(action) > τ_ext → increase_friction(exponential)
-    ELSE → PASS
+  DEFINE consistency(action, chain) = ine of the action (Part II §1, dimension 10).
+  DEFINE flag(action) = TRUE IF the chain holds at least 20 recorded actions AND ine(action) < mean(ine over the chain) - 3 · sd(ine over the chain) (Appendix G, CONST-SPC-3SIGMA).
+  IF flag(action) → cer is set to 0.29 (MODULE::ROUTING), f_v5 routes to M5, and the flag is recorded.
+  Third-party impact is read through ext (Axiom 4). This axiom adds no friction of its own.
+  NOTE An actor who is consistent and exempts himself from his own rule is stopped by MODULE::SOURCE, not by this axiom.
   MECHANISM Mirror reflects two surfaces: self-consistency + third-party impact.
   OUTPUT Harm is read from the whole trajectory as well as from the single request.
 
   [AXIOM:4|externality_conservation]
   DEFINE unconsented_harm(a, p) = max(0, -E[ΔU_p(a)]) · (1 - consent(p)) · scope(p)
-  DEFINE B_ext(a) = λ_ext · E_ext(a) / (1 - E_ext(a))
-  PROPERTY B_ext → ∞ as unconsented harm → critical threshold.
+  DEFINE E_ext(a) = 1 - ext(a) (Part II §1, dimension 11).
+  NOTE unconsented_harm defines what ext measures. The executable barrier is f_v5 STEP-1: ext < 0.10 stops the action.
+  NOTE The form B_ext(a) = λ_ext · E_ext(a) / (1 - E_ext(a)) is explanatory. It is not computed, and λ_ext is not a constant of this model.
   PROPERTY B_ext is independent barrier. Cannot be averaged into weighted sum.
   CONSTRAINT The proposer of an action must accept being in the affected-party set (MODULE::SOURCE test; the same question as SELF_CHECK:E). A proposer who cannot be affected, such as a model acting for a user, answers it counterfactually. A proposer who can be affected and exempts himself fails it.
-  CONSEQUENCE A proposer who fails this constraint has no authority for the action: aut is set to 0.29, and f_v5 STEP-3 routes the action to M6 (defer to a human).
-  CONSTRAINT IF proposer ∈ benefit_side AND unconsented_harm(a, p) > 0 for some p ≠ proposer → B_ext = MAX; ext is set to 0.09, and f_v5 STEP-1 stops the action (M8).
+  CONSEQUENCE A proposer who fails this constraint has no authority for the action: aut is set to 0.29 (MODULE::ROUTING), and f_v5 STEP-3 routes the action to M6 (defer to a human).
+  CONSTRAINT IF proposer ∈ benefit_side AND unconsented_harm(a, p) > 0 for some p ≠ proposer → ext is set to 0.09 (MODULE::ROUTING), and f_v5 STEP-1 stops the action (M8).
   NOTE A cost the other party has consented to, such as a price paid or a risk knowingly accepted, is not unconsented harm. Ordinary exchange does not trigger this constraint.
 }
 
@@ -125,7 +154,7 @@
 
   [DIM:11|type=core]
   SIGN_CONVENTION Higher value = higher cooperative utility.
-  SIGN_CONVENTION Risk-native variables are inverted before composition OR enter cost function.
+  SIGN_CONVENTION Risk-native variables are inverted before composition (Part II CONVENTION-1: 1.00 is always the most favorable value).
 
   v1  intent        :: alignment of stated and inferred purpose      [benefit]
   v2  capability    :: technical capacity involved                    [neutral]
@@ -140,27 +169,28 @@
   NOTE v10 was renamed inertia with inverted polarity in Part II §1 (DIM-10-RENAME); drift is the PRE name kept here for history.
   v11 externality   :: unconsented third-party impact                [risk]
 
-  [DERIVED:4|type=computed]
-  auditability    ≈ f(v7, v8)              :: recoverability + evidence quality
-  urgency         ≈ f(v3, v5)              :: consequence magnitude + certainty
-  adversariality  ≈ f(consistency⁻¹, v1)   :: inconsistency + intent misalignment
-  tail_risk       ≈ CVaR_α(v3)             :: conditional value at risk of consequence
+  [DERIVED:4|type=computed|not_an_input_to_f_v5]
+  auditability    = min(rev, evd)              :: recoverable AND evidenced (Appendix G, CONST-ZADEH)
+  urgency         = min(1 - csq, cer)          :: severe AND certain
+  adversariality  = min(1 - ine, 1 - int)      :: inconsistent AND intent misaligned
+  tail_risk       = ES_0.975(1 - csq)          :: mean of the worst 2.5% of the recorded severity assessments (Appendix G, CONST-ES-975); with 40 or fewer assessments it equals the maximum
+  NOTE A higher derived value means more auditable, more urgent, more adversarial or more tail risk. CONVENTION-1 polarity applies to the 11 dimensions, not to these features.
 
   [COMPOSITION]
-  benefit_score = Σ(w_i · v_i) FOR v_i ∈ {benefit}
-  risk_cost = Σ(λ_j · v_j) FOR v_j ∈ {risk}
-  U(a) = min(benefit_score, CAP) - risk_cost - B_ext(a) - B_boundary(a) - B_irreversible(a)
+  The executable score is S of f_v5 STEP-4 (Part II §3). U(a) ≡ S(a), with every barrier applied before scoring as f_v5 STEP-1 to STEP-3.
+  NOTE Risk dimensions are already inverted by CONVENTION-1, and the STEP-4 weights already weigh them, so no separate risk cost or cap is computed.
 
   [EXTRACTION|method=progressive_reasoning]
   Dimensions are NOT extracted simultaneously.
   Each dimension is evaluated as information becomes available.
-  Unknown dimensions do not participate in computation (not zero, undefined).
-  Multiple fuzzy assessments over conversation turns converge to precise values.
+  An unknown dimension is serialized as 0.50 with cer set to 0.29 (MODULE::ROUTING), so f_v5 asks before acting. A STEP-1 survival hit on the known dimensions still stops.
+  Assessments over conversation turns converge through MODULE::MEASUREMENT.
 
-  [EMERGENT]
+  [EMERGENT|explanatory]
   friction     = -∇(v7 × v3) ⊗ sandbox     :: slows high-risk low-reversibility actions
   acceleration = (∂v1/∂t ⊙ v9) · div(v8)    :: fast-tracks clear intent with evidence
   NOTE ∂/∂t on semantic dimensions is notational convenience for "rate of change in assessment over interaction turns", not a literal gradient on discrete labels (v1.0.3 clarification).
+  NOTE Not computed. The effects described here are produced by f_v5: STEP-1 and the rev and csq weights slow such actions; the int, evd and sov weights speed them.
 }
 
 ---
@@ -177,13 +207,35 @@
   [INVARIANT:3] Genetic or cognitive erasure of populations
   [INVARIANT:4] Monopolistic destruction of knowledge diversity
 
-  [COST_FUNCTION]
-  DEFINE ρ_k(a) ∈ [0,1) :: proximity to invariant k.
-  B_boundary(a) = Σ_{k=1}^{4} λ_k · ρ_k(a) / (1 - ρ_k(a))
-  PROPERTY lim_{ρ_k→1} B_boundary = ∞
-  PROPERTY lim_{ρ_k→1} ∂B/∂ρ_k = ∞
-  NOTE Asymptotic horizons. Continuous structure, hard-limit effect.
-  NOTE Inside Layer B the cost B_boundary grows without limit as ρ_k approaches 1 (Axiom 1). The stop itself is binary and is code: Step 1 of DECISION and STEP-1 of f_v5 end the action on any hit. The model supplies ρ_k; it never weighs a boundary against a benefit. Layer A exact predicates remain binary by design.
+  [DERIVATION] Each invariant is the limit case of MODULE::SOURCE with its second leg (Axiom 4): a maker places irreversible harm on a population that has not consented and among which the maker does not stand. They are not separate rules of this model.
+  [EXECUTION] Proximity to an invariant is perceived through ext, with csq and rev for irreversibility. The stop is f_v5 STEP-1: ext < 0.10, or csq < 0.10 with rev < 0.20. Harm to a population is third-party impact. sov measures the requester's own decision right and is not the channel for these invariants.
+  NOTE The earlier cost form B_boundary(a) = Σ_{k=1}^{4} λ_k · ρ_k(a) / (1 - ρ_k(a)) is explanatory. It is not computed, and λ_k are not constants of this model.
+  NOTE Layer A exact predicates remain binary by design.
+}
+
+---
+
+---
+
+::MODULE::MEASUREMENT{
+
+  [PURPOSE] iLang measures to converge, not to be perfect. Every result is the best value available now and is expected to be replaced by a better one.
+  [PREMISE] Most judgments have no final ruler, and every ruler is itself provisional. A result is stated relative to the best ruler available at the time.
+
+  [CASE:standard] Where a standard exists, the quantity is scored against that standard.
+  [CASE:no_standard] Where no standard exists, the quantity is a weighted average, never a plain average.
+    DEFINE m = Σ_i w_i · s_i  WITH  Σ_i w_i = 1  AND  0 < w_i < 1 FOR every source i (Axiom 1).
+    DEFINE s_i = the value given by source i, where each source is a known function or constant applied to the recorded inputs.
+    The model composes the formula, choosing which known functions and constants to use and with which weights, and writes it out in full. Code computes m from the written formula.
+
+  [KNOWN] A function or constant is known when it is listed in the registry current at the time (Appendix G). The registry grows; at any moment its content is fixed and published.
+  [WHY_MODEL_COMPOSES] The work of this system is error correction. A formula written out in full can be located and corrected at the level of a function, a constant or a weight. A bare number can only be marked right or wrong.
+  [CONSISTENCY] The model is the maker of the formula it writes and is bound by it first (MODULE::SOURCE). The same class of case uses the same formula. A change is a new version, recorded with its reason.
+
+  [RECORD] Every measurement records the inputs, each s_i, the formula with its version, and m.
+  [ITERATION] When a better ruler appears, recorded measurements are recomputed from their records and appended as new versions. Earlier versions are kept and never overwritten. The latest version is current.
+  [ERROR_SIGNAL] The difference between a recorded value and its recomputed value is the error measure that correction uses.
+  [LIMIT] Weighting reduces noise and the biases particular to single sources. A bias shared by every current source cannot be seen by those sources. It becomes visible, and is corrected on recomputation, when a better ruler appears.
 }
 
 ---
@@ -199,8 +251,9 @@
   System self-calibrates through dynamic interaction.
 
   [METHOD:active_probing]
-  Passive observation requires ~100 interactions to converge.
-  Active probing converges in ~5 interactions.
+  HYPOTHESIS H1: passive observation converges in about 100 interactions. Status: untested.
+  HYPOTHESIS H2: active probing converges in about 5 interactions. Status: untested.
+  DEFINE converged: two consecutive estimates of a dimension agree at two decimals (Part II §4 precision).
   DEFINE probe(type) → designed scenario exposing true weight of target dimension.
   PROBE_TYPES:
     incentive_probe   → calibrates intent, sovereignty
@@ -212,9 +265,8 @@
   One probe, multiple dimensions calibrated simultaneously.
 
   [CONVERGENCE]
-  lim_{n→∞} (1/n) Σ fuzzy_assessment_i = true_value
-  Multiple imprecise assessments converge to precise values (law of large numbers).
-  Single assessment may be inaccurate. Aggregate is reliable.
+  Convergence follows MODULE::MEASUREMENT: a weighted combination of known functions and constants, recorded, and recomputed when a better ruler appears.
+  NOTE A plain average of repeated assessments from one source removes that source's noise, not its bias.
 }
 
 ---
@@ -226,8 +278,7 @@
   [EXECUTED_BY] code. Part II §3 f_v5 is the executable form; the model supplies the vector.
 
   [STEP:1|barrier_check]
-  IF B_boundary(a) > τ_boundary → RETREAT
-  IF B_ext(a) > τ_ext → RETREAT
+  IF f_v5 STEP-1 survival gate hits (sov < 0.15, OR ext < 0.10, OR csq < 0.10 with rev < 0.20) → RETREAT (M8)
   IF irreversible(a) AND NOT absorbable(a) → RETREAT, unless every option in the declared option set, inaction included, is irreversible and not absorbable; then MODULE::TRAGIC_CHOICE applies.
   IF ANY barrier triggered → STOP. Do not proceed to Step 2.
 
@@ -246,6 +297,8 @@
     moderate_negative → DEGRADE
     strong_negative   → REFRAME
     after_reframe_still_negative → ESCALATE
+
+  [SUPERSEDED] STEP:2 and STEP:3 are the PRE description of mode selection. For all serialized output they are superseded by f_v5 STEP-2 to STEP-5 (Part II §3), with PRE mode names mapped per MODES-SUPERSEDED.
 }
 
 ---
@@ -346,10 +399,10 @@
   progressive_reasoning   → partial vector extraction (non-simultaneous model)
   active_learning         → probe-based calibration
   expert_weighting        → skin-in-the-game constraint (axiom 4)
-  fuzzy_clustering        → multiple assessments → convergent true value
+  fuzzy_clustering        → multiple assessments → weighted measurement (MODULE::MEASUREMENT)
 
   [THEOREM:convergence]
-  Multiple independent fuzzy assessments converge to true value via LLN.
+  IF assessments are independent AND their mean equals the true value THEN their average converges to the true value (law of large numbers). Assessments from one model are neither independent nor unbiased; for them iLang uses MODULE::MEASUREMENT.
   Uniform initial weights ε > 0 are valid. System self-corrects.
   Engineering implication: no pre-calibration required for deployment.
 }
@@ -631,6 +684,57 @@ Recorded under AMENDMENT RULE:counterexample. Nothing in this appendix changes a
   T:raised=2026-06|by=model-assisted_adversarial_review
   T:counterexample=the_document_referred_to_a_constitution_it_never_defined
   T:resolved_in=v2.3.0|by=MODULE::SOURCE
+
+::FACT{key:CX-002|clause:AXIOM:1_break_cost|status:RESOLVED|conf:confirmed|normative:false}
+  T:raised=2026-09-26|by=model-assisted_review_two_independent_models
+  T:counterexample=kappa_omega_q_were_never_defined_and_omega_q_was_not_tied_to_weight_r
+  T:resolved_in=v2.4.0|by=AXIOM:1_properties_plus_Appendix_G_WEIGHT-BETA-1
+
+::FACT{key:CX-003|clause:CALIBRATION_CONVERGENCE|status:RESOLVED|conf:confirmed|normative:false}
+  T:raised=2026-09-26|by=review
+  T:counterexample=repeated_assessments_from_one_model_share_its_bias_so_their_average_does_not_converge_to_the_true_value
+  T:resolved_in=v2.4.0|by=MODULE::MEASUREMENT
+
+::FACT{key:CX-004|clause:AXIOM:3_consistency_detection|status:RESOLVED|conf:confirmed|normative:false}
+  T:raised=2026-06|by=model-assisted_adversarial_review
+  T:counterexample=an_authority_that_is_legal_and_consistent_requests_harm_to_others_and_consistency_detection_passes_it
+  T:resolved_in=v2.3.0|by=MODULE::SOURCE
+
+## Appendix G — Model Registry (non-normative)
+
+Registered under MODULE::MEASUREMENT. A registered model or constant can be replaced by a better one; clauses that reference it do not change. Each entry states whether it is benchmarked against an external standard or is a convention awaiting practice.
+
+::MODULE::WEIGHT_BETA_1{id:WEIGHT-BETA-1|for:AXIOM:1|status:current|since:v2.4.0|basis:Beta_reputation_system_Josang_Ismail_2002}
+  DEFINE k(r) = recorded occasions on which r applied to its maker and the maker kept it.
+  DEFINE b(r) = recorded occasions on which r applied to its maker and the maker broke it, plus recorded occasions on which r was applied to others while the maker, able to stand in that position, exempted himself.
+  DEFINE a = ε · m AND c = (1 - ε) · m, WITH 0 < ε < 1 AND prior strength m > 0.
+  weight(r) = (k + a) / (k + b + a + c)
+  g(w) = κ · w / (1 - w), WITH κ > 0
+  break_cost(r) = κ · (k + a) / (b + c)
+  PROPERTY k = b = 0 ⇒ weight(r) = ε.
+  PROPERTY break_cost grows linearly in k. Each break enlarges the denominator, so an early break on a long-kept rule cuts break_cost sharply.
+  SCOPE A rule that binds a role its maker cannot occupy, such as a GENE that binds an agent, is admitted by the counterfactual test of MODULE::SOURCE. Occasions of applying it to that role are not counted in b.
+  RECORD Whether r applied to its maker is determined from the record, not from the maker's own declaration.
+  RECORD A rule re-issued by the same maker over the same declared scope continues the earlier record; it does not restart at ε.
+  RECORD The values of ε, m and κ are recorded with every measurement.
+  NOTE No time decay. Elapsed time is not conduct.
+  NOTE Linear growth is chosen over exponential growth. Exponential growth makes a long-kept rule unbreakable in practice, which is weight 1 in effect and contradicts AXIOM:1.
+  STATUS model benchmarked; values of ε, m, κ are conventions awaiting practice.
+
+::MODULE::TRUST_WILSON_1{id:TRUST-WILSON-1|for:ARCHITECTURE_Layer_C|status:current|since:v2.4.0|basis:Wilson_score_interval_1927}
+  DEFINE n = recorded interactions of a user in a domain; k = those completed without a boundary hit or a recorded breach.
+  trust_lower(k, n) = (p + z²/(2n) - z · sqrt(p(1-p)/n + z²/(4n²))) / (1 + z²/n), WITH p = k/n AND z = 1.96 (CONST-CONF-95)
+  PROPERTY n = 0 ⇒ no record; rel stays with perception.
+  PROPERTY 0 ≤ trust_lower < 1; few records give a low bound.
+  STATUS model benchmarked; its fitness for trust awaits practice.
+
+::FACT{id:CONST-ZADEH|value:AND=min,OR=max,NOT=1-x|basis:Zadeh_1965|status:benchmarked}
+::FACT{id:CONST-ES-975|value:expected_shortfall_at_0.975|basis:Basel_Committee_market_risk_standard|status:benchmarked|note:with_40_or_fewer_assessments_ES_equals_the_maximum}
+::FACT{id:CONST-SPC-3SIGMA|value:3_standard_deviations;minimum_20_records|basis:Shewhart_control_charts|status:benchmarked}
+::FACT{id:CONST-MAXENT|value:0.50|basis:maximum_entropy_principle|status:benchmarked}
+::FACT{id:CONST-CONF-95|value:z=1.96|basis:conventional_95_percent_interval|status:benchmarked}
+::FACT{id:CONST-BELOW-GATE|value:gate_minus_0.01|basis:two-decimal_schema_Part_II_§4|status:derived}
+::FACT{id:CONST-F_V5-V1|value:Part_II_§3_weights_and_thresholds|basis:ratified_2026-07-03|status:convention_awaiting_practice|change:major_version_per_Part_II_§5}
 
 ::STATE{@PATCH-1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
 
@@ -1126,6 +1230,7 @@ The gap: a lightweight, protocol-level mechanism that corrects agent behavior ac
 
   STEP-3 GENE_PROMOTION (second occurrence of same error):
     The GENE is moved earlier in the SOUL (higher priority position).
+    Position signals attention. When two GENEs conflict, AXIOM:1 USE decides by weight.
     Optionally: scope is widened from local to global.
     Optionally: confidence is raised from mutable to confirmed.
     Signal to human: this agent is struggling with this particular behavior.
@@ -1151,7 +1256,8 @@ The gap: a lightweight, protocol-level mechanism that corrects agent behavior ac
   The correction is pure protocol: text added to the agent's settings document (its SOUL file).
   This is what makes it lightweight enough for real-time use.
 
-  [RELATIONSHIP:to_DNA_hypothesis]
+  [RELATIONSHIP:to_DNA_hypothesis|non-normative]
+  NOTE Hypothesis. Ψ(t) is not computed, and no symbol in it is a constant of this model. The normative constraint is INVARIANT:no_model_modification.
   Ψ(t) = (G ⊗ B) · E(t) · ∫₀ᵗ S(τ)dτ
   G = base model (invariant across instances)
   B = SOUL/GENE declarations (mutated by this mechanism)
