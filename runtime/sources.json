@@ -1,7 +1,7 @@
 {
   "brand": "iLang",
   "runtime_schema": 1,
-  "raw_base": "https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/runtime",
+  "raw_base": "https://runtime.ilang.app",
   "bundles": {
     "core": {
       "file": "ilang-latest.md",
