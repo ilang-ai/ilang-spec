@@ -1,16 +1,16 @@
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:2.4.1]
+[VERSION:2.4.2]
 [DATE:2026-09-26]
 [STATUS:public_preview]
-[MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_unvalidated]
+[MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_tested:T1_f_v5_agreement=0.0318(n=157,95%CI=0.0137-0.0724,five_class=0.3822,truth=model_consensus_pending_operator_confirmation);T2_weighted_vs_plain=not_better(MAE_0.1027_vs_0.1043,best_single_0.0989,n=37)]
 [LICENSE:MIT]
 [FOUNDATION:fuzzy_mathematics|Zadeh_1965]
 [SOURCE:ilang.ai]
 [REPO:github.com/ilang-ai/ilang-spec]
 [DOI:10.5281/zenodo.21821452]
-[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched|v2.3.1=2026-09-26_erratum_per_same-day_review:Part_I_conditions_act_only_by_setting_a_dimension_value_and_f_v5_decides:Axiom4_aut_set_to_0.29_(STEP-3_M6)_ext_set_to_0.09_(STEP-1_M8)+TRAGIC_CHOICE_assigns_no_mode_to_the_set_each_option_keeps_its_f_v5_mode|frozen_set_untouched|v2.4.0=2026-09-26_every_symbol_defined_bound_or_registered:errata_E1-E3+MODULE::ROUTING(Part_I_acts_only_through_the_vector;below_gate=gate-0.01)+MODULE::MEASUREMENT(weighted_measurement_replaces_average_convergence)+AXIOM1_properties_only_omega_q_removed_model_WEIGHT-BETA-1_linear_no_time_decay+AXIOM2_threshold_0.20+AXIOM3_consistency=ine_3sigma+AXIOM4_B_ext_explanatory+Layer_C_acts_through_rel+DERIVED_explicit+COMPOSITION_U=S+BOUNDARIES_derived_from_SOURCE+CALIBRATION_hypotheses+DECISION_superseded_note+Appendix_F_CX-002_to_004+Appendix_G_model_registry|frozen_set_untouched|v2.4.1=2026-09-26_erratum_CX-005:budget_irreversible_consent_scope_defined_as_model_estimates_from_the_record+unconsented_harm=worst_case·(1-consent)·scope_ΔU_p_removed|frozen_set_untouched]
+[HISTORY:v1.0.0=2026-06-24_PRE|v1.0.3=clarifications|PATCH-1=2026-07-03_trainable|PATCH-2=2026-08-05_grammar|v2.0.0=2026-08-13_merged+GENE_correction|v2.0.1=2026-08-13_restore_PATCH-2_SCOPE_clause+mixed_mode_lint|v2.1.0=2026-09-12_release_number_only_PATCH-3_media_profile_now_SPEC-v4.1_this_file_unchanged|v2.1.1=2026-09-14_erratum_§4_abstain_rule_yields_to_STEP-1_survival_M8_per_§3_conflict_total_order|v2.1.2=2026-09-22_editorial_name_written_iLang_earlier_spelling_names_the_same_protocol+registry_pointer_to_the_v4.1_media_tier|v2.2.0=2026-09-26_wording_the_model_perceives_code_decides:Layer_C_activated_by_runtime_record+Axiom1_scoped_to_this_model+Axiom2_code_computes_absorbable+BOUNDARIES_stop_is_code+DECISION_executed_by_code+MODES_principles+AMENDMENT_scope+SELF_CHECK_record_based+AppendixA_priorities+PartIV_session_ended_by_human_or_runtime|frozen_set_untouched|evidence_research.ilang.ai/datasets/canon-rewrite-ab|v2.3.0=2026-09-26_source_named:MODULE::SOURCE(whoever_makes_a_rule_is_bound_by_it_first)+Axiom4_proposer_constraint_aligned_with_SELF_CHECK_E_and_given_a_consequence+Axiom4_benefit_side_constraint_scoped_to_unconsented_harm+initial_weights_epsilon_not_0_and_calibration_scoped_to_perception+AMENDMENT_counterexample_register_(Appendix_F)_no_weight_0+MODULE::TRAGIC_CHOICE_(Axiom2_executable:code_ranks_principal_chooses)+GENE_principal_rule_error|frozen_set_untouched|v2.3.1=2026-09-26_erratum_per_same-day_review:Part_I_conditions_act_only_by_setting_a_dimension_value_and_f_v5_decides:Axiom4_aut_set_to_0.29_(STEP-3_M6)_ext_set_to_0.09_(STEP-1_M8)+TRAGIC_CHOICE_assigns_no_mode_to_the_set_each_option_keeps_its_f_v5_mode|frozen_set_untouched|v2.4.0=2026-09-26_every_symbol_defined_bound_or_registered:errata_E1-E3+MODULE::ROUTING(Part_I_acts_only_through_the_vector;below_gate=gate-0.01)+MODULE::MEASUREMENT(weighted_measurement_replaces_average_convergence)+AXIOM1_properties_only_omega_q_removed_model_WEIGHT-BETA-1_linear_no_time_decay+AXIOM2_threshold_0.20+AXIOM3_consistency=ine_3sigma+AXIOM4_B_ext_explanatory+Layer_C_acts_through_rel+DERIVED_explicit+COMPOSITION_U=S+BOUNDARIES_derived_from_SOURCE+CALIBRATION_hypotheses+DECISION_superseded_note+Appendix_F_CX-002_to_004+Appendix_G_model_registry|frozen_set_untouched|v2.4.1=2026-09-26_erratum_CX-005:budget_irreversible_consent_scope_defined_as_model_estimates_from_the_record+unconsented_harm=worst_case·(1-consent)·scope_ΔU_p_removed|frozen_set_untouched|v2.4.2=2026-09-26_empirical_round_1:Appendix_G_WEIGHTS-VECTOR-1_registered_first_round_not_won+WEIGHTS-TRACK-1+CONST-CLUSTER-1/3+Appendix_F_CX-006+CX-007+MATURITY_written_with_the_measured_numbers+runtime_served_at_runtime.ilang.app|frozen_set_untouched|normative_text_unchanged_since_the_seal]
 ```
 
 ---
@@ -709,6 +709,17 @@ Recorded under AMENDMENT RULE:counterexample. Nothing in this appendix changes a
   T:counterexample=the_definition_used_ΔU_p_consent_and_scope_and_Axiom_2_used_budget_and_irreversible_none_of_which_the_document_defined
   T:resolved_in=v2.4.1|by=DEFINE_budget_irreversible_consent_scope_and_unconsented_harm_restated_on_worst_case
 
+::FACT{key:CX-006|clause:WEIGHTS-VECTOR-1_Appendix_G|status:UNRESOLVED|conf:confirmed|normative:false}
+  T:raised=2026-09-26|by=T2b_ilang-conformance_02-scenario-to-vector_five_models_37_cases_answered_by_all
+  T:counterexample=the_leave-one-out_weighted_mean_of_the_five_vectors_MAE_0.1027_modes_22_of_37_did_not_beat_the_plain_mean_MAE_0.1043_modes_22_of_37_and_lost_to_the_best_single_model_relay-gemini-3.8-flash_MAE_0.0989_modes_28_of_37
+  T:open=MODULE::MEASUREMENT_unchanged_because_it_names_no_weight_function|WEIGHTS-VECTOR-1_stays_registered_as_first_round_not_won|a_better_registered_function_or_more_models_reopens_the_test|data=research.ilang.ai/datasets/v5-empirical-1
+
+::FACT{key:CX-007|clause:f_v5_STEP-4_S_bands|status:UNRESOLVED|conf:confirmed|normative:false}
+  T:raised=2026-09-26|by=the_controls_of_T1_112_decisions_the_operator_let_stand
+  T:counterexample=f_v5_agreed_with_the_accepted_decision_on_49_of_112_controls_across_the_five_classes_Wilson_95_0.3492_to_0.5299|104_of_the_109_control_disagreements_were_decided_at_the_STEP-4_S_bands_77_within_0.05|the_record_is_mostly_M1_and_M4_the_function_answered_mostly_M2_and_M3_median_S_of_M1_events_0.739
+  T:truth=model_consensus_pending_operator_confirmation
+  T:open=f_v5_unchanged_its_constants_change_only_by_a_major_version_per_Part_II_§5|evidence_held_for_that_version|the_operator_confirmations_re-run_this_report|data=research.ilang.ai/datasets/v5-empirical-1
+
 ## Appendix G — Model Registry (non-normative)
 
 Registered under MODULE::MEASUREMENT. A registered model or constant can be replaced by a better one; clauses that reference it do not change. Each entry states whether it is benchmarked against an external standard or is a convention awaiting practice.
@@ -737,6 +748,20 @@ Registered under MODULE::MEASUREMENT. A registered model or constant can be repl
   PROPERTY 0 ≤ trust_lower < 1; few records give a low bound.
   STATUS model benchmarked; its fitness for trust awaits practice.
 
+::MODULE::WEIGHTS_VECTOR_1{id:WEIGHTS-VECTOR-1|for:MODULE::MEASUREMENT_dimension_weights|status:first_round_not_won|since:v2.4.2|basis:Part_II_§7_vector_score}
+  DEFINE MAE_m = the mean absolute error of model m's vectors against the reference vectors on the calibration cases other than the case being measured (leave-one-out).
+  w_m = max(0, 1 - MAE_m / 0.25), normalised over the models that answered, floor 0.01 (the CONST-BELOW-GATE step), renormalised.
+  measured value of a dimension = Σ_m w_m · v_m over the models that answered.
+  RESULT 2026-09-26, T2(b) of the first empirical round, ilang-conformance 02-scenario-to-vector, 37 of 40 cases answered by all five models: weighted mean MAE 0.1027 with f_v5 mode accuracy 22/37; plain mean MAE 0.1043, 22/37; best single model (relay-gemini-3.8-flash, also the best by prior vector_score without looking at these cases) MAE 0.0989, 28/37, Wilson 95% 0.5988 to 0.8664. The weighted mean did not beat the plain mean by more than noise and lost to the best single model. Registered as CX-006.
+  STATUS convention; first round not won. MODULE::MEASUREMENT names no weight function, so the clause stands; a better registered function replaces this entry. Data and scripts: research.ilang.ai/datasets/v5-empirical-1
+
+::MODULE::WEIGHTS_TRACK_1{id:WEIGHTS-TRACK-1|for:merging_independent_labels_in_empirical_tests|status:convention_awaiting_practice|since:v2.4.2|basis:ilang-conformance_judgment_track_mode_acc}
+  DEFINE acc_m = model m's f_v5 mode accuracy on the judgment track of ilang-conformance (the cases with a reference answer), taken per route from the most recent run.
+  w_m = acc_m normalised over the labelling models, floor 0.01, renormalised.
+  merged label = the label with the largest summed weight; a tie is recorded as a disagreement, never resolved by the function.
+  USE T1 step 2 of the first empirical round: merging what several models independently read as the operator's intended mode. The operator's own confirmation overrides the merged label wherever it exists.
+  STATUS convention awaiting practice. Its check is the label reliability of T1 step 3: model consensus against the operator on a 20 % random sample of the agreed labels.
+
 ::FACT{id:CONST-ZADEH|value:AND=min,OR=max,NOT=1-x|basis:Zadeh_1965|status:benchmarked}
 ::FACT{id:CONST-ES-975|value:expected_shortfall_at_0.975|basis:Basel_Committee_market_risk_standard|status:benchmarked|note:with_40_or_fewer_assessments_ES_equals_the_maximum}
 ::FACT{id:CONST-SPC-3SIGMA|value:3_standard_deviations;minimum_20_records|basis:Shewhart_control_charts|status:benchmarked}
@@ -744,6 +769,7 @@ Registered under MODULE::MEASUREMENT. A registered model or constant can be repl
 ::FACT{id:CONST-CONF-95|value:z=1.96|basis:conventional_95_percent_interval|status:benchmarked}
 ::FACT{id:CONST-BELOW-GATE|value:gate_minus_0.01|basis:two-decimal_schema_Part_II_§4|status:derived}
 ::FACT{id:CONST-F_V5-V1|value:Part_II_§3_weights_and_thresholds|basis:ratified_2026-07-03|status:convention_awaiting_practice|change:major_version_per_Part_II_§5}
+::FACT{id:CONST-CLUSTER-1/3|value:one_gate_holds_one_third_or_more_of_the_disagreements_and_those_vectors_lie_within_0.05_of_it|basis:f_v5_has_13_gates_so_a_uniform_spread_gives_1/13_per_gate_and_one_third_is_more_than_four_times_that|status:convention_awaiting_practice|use:T1_result_case_B_of_the_first_empirical_round}
 
 ::STATE{@PATCH-1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
 
