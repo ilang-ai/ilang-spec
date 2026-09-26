@@ -301,6 +301,7 @@ SELFTEST_DOC = """# Part I — test
   DEFINE q(a) = max expected loss.
   PROPERTY q(a) ≤ budget(a)
   IF reversibility(a) < 0.20 → aut is set to 0.29
+  IF exact_predicate(x) = FAIL → TERMINATE.
   [EMERGENT|explanatory]
   friction = -∇(v7 × v3) ⊗ sandbox
   NOTE lim_{n→∞} of nothing is fine here.
@@ -349,8 +350,8 @@ def cmd_selftest():
          and homes.get(("PART_II_§1-§5", "int"), "").startswith("(b)")),
         ("field line T: is not scanned", not any(m == "PART_II_§1-§5" and s == "T" for m, s in missing)),
         ("Part IV non-normative block covers Ψ, G, B, E", not any(m == "GENE_CORRECTION" for m, _ in missing)),
-        ("whitelist (e) accounts for x; a is bound by the DEFINE head", homes.get(("BETA", "x"), "").startswith("(e)")
-         and homes.get(("ALPHA", "a"), "").startswith("(a)")),
+        ("whitelist (e) accounts for x outside a DEFINE; a is bound by the DEFINE head",
+         homes.get(("ALPHA", "x"), "").startswith("(e)") and homes.get(("ALPHA", "a"), "").startswith("(a)")),
         ("exactly the two planted gaps are reported", missing == {("BETA", "ζ"), ("BETA", "converge")}),
     ]
     failed = [n for n, ok in t if not ok]
