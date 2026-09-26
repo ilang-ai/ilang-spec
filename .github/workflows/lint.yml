@@ -27,8 +27,7 @@ jobs:
         run: python schema/check_schemas.py
       - name: Symbol audit selftest
         run: python symbol_audit.py --selftest
-      # Seal condition S3 (every symbol of the normative text has a home). Advisory until the
-      # v5.0 seal; the seal commit removes continue-on-error.
+      # Seal condition S3: every symbol of the normative text has a home. Blocking since the
+      # v5.0 seal (v5.0-pre-2.4.1-sealed, 2026-09-26).
       - name: Symbol audit of SPEC-v5.0-PRE.md (seal condition S3)
         run: python symbol_audit.py SPEC-v5.0-PRE.md
-        continue-on-error: true
