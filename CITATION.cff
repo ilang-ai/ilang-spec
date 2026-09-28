@@ -27,8 +27,8 @@ identifiers:
 repository-code: "https://github.com/ilang-ai/ilang-spec"
 url: "https://ilang.ai"
 license: MIT
-version: "4.5.4"
-date-released: 2026-09-26
+version: "4.5.5"
+date-released: 2026-09-28
 keywords:
   - AI communication protocol
   - human-AI interaction
