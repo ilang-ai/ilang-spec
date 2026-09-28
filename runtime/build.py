@@ -63,14 +63,38 @@ def trim(text, drops, path, full_text):
     return "\n".join(out), cut
 
 
+def trim_lines(text, prefixes, path, full_text):
+    """Leave out every line that starts with one of prefixes: header tags that carry a record for
+    people, such as the change history. The tag stays, with a value that sends the reader to the
+    full text. A rule that matches no line stops the build."""
+    out, cut, used = [], [], set()
+    for line in text.split("\n"):
+        hit = next((p for p in prefixes if line.startswith(p)), None)
+        if hit:
+            used.add(hit)
+            cut.append("the %s line of the header" % hit.strip("[:"))
+            out.append("%sleft_out_of_the_core_bundle|full_text=%s]" % (hit, full_text))
+        else:
+            out.append(line)
+    missing = [p for p in prefixes if p not in used]
+    if missing:
+        raise SystemExit("runtime: drop_lines rules matched no line in %s: %s" % (path, missing))
+    return "\n".join(out), cut
+
+
 def render(name, spec, commit, date):
     parts, index, left_out = [], [], []
     for n, src in enumerate(spec["sources"], 1):
         with open(os.path.join(ROOT, src["path"]), "rb") as f:
             raw = f.read()
         text = raw.decode("utf-8").replace("\r\n", "\n").rstrip("\n")
+        cut = []
         if src.get("drop"):
             text, cut = trim(text, src["drop"], src["path"], spec["full_text"])
+        if src.get("drop_lines"):
+            text, lines_cut = trim_lines(text, src["drop_lines"], src["path"], spec["full_text"])
+            cut += lines_cut
+        if cut:
             left_out.append("- %s: %s" % (src["path"], "; ".join(cut)))
         index.append("%d. %s: %s. sha256:%s" % (n, src["path"], src["layer"], sha256(raw)))
         parts.append("===== BEGIN %s =====\n\n%s\n\n===== END %s =====" % (src["path"], text, src["path"]))

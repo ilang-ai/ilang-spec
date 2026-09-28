@@ -5,7 +5,7 @@
   "bundles": {
     "core": {
       "file": "ilang-latest.md",
-      "purpose": "The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the formal declaration grammar and most worked examples are left out; the full bundle has them.",
+      "purpose": "The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.",
       "sources": [
         {
           "path": "SPEC.md",
@@ -33,9 +33,13 @@
             "## §7 Judgment Conformance",
             "## Appendix D — Boundary Cases",
             "## Appendix E — Related Prior Work",
+            "## Appendix F — Counterexample Register",
             "## §1 Declaration Grammar",
             "## Appendix A — Worked example",
             "## Appendix B — Ratification notes"
+          ],
+          "drop_lines": [
+            "[HISTORY:"
           ]
         }
       ],
