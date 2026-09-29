@@ -1,17 +1,17 @@
 {
   "brand": "iLang",
   "runtime_schema": 1,
-  "channel": "latest",
+  "channel": "pinned",
   "version": "2026.09.29-636ff0a97eb0",
-  "bundle_url": "https://runtime.ilang.app/ilang-latest.md",
-  "sha256_url": "https://runtime.ilang.app/ilang-latest.sha256",
+  "bundle_url": "https://runtime.ilang.app/versions/2026.09.29-636ff0a97eb0/ilang-latest.md",
+  "sha256_url": "https://runtime.ilang.app/versions/2026.09.29-636ff0a97eb0/ilang-latest.sha256",
   "source_repo": "https://github.com/ilang-ai/ilang-spec",
   "source_commit": "216070504d1355fc29e88d317f088827275b894e",
   "commit": "216070504d1355fc29e88d317f088827275b894e",
   "updated_at": "2026-09-29T23:19:37+08:00",
   "bundles": {
     "core": {
-      "url": "https://runtime.ilang.app/ilang-latest.md",
+      "url": "https://runtime.ilang.app/versions/2026.09.29-636ff0a97eb0/ilang-latest.md",
       "sha256": "636ff0a97eb0d15e29f3a8985fc5ff2d2b26bc2451ece30627de1f6f1e5bbe90",
       "bytes": 93875,
       "sources": [
@@ -21,7 +21,7 @@
       ]
     },
     "full": {
-      "url": "https://runtime.ilang.app/ilang-full.md",
+      "url": "https://runtime.ilang.app/versions/2026.09.29-636ff0a97eb0/ilang-full.md",
       "sha256": "d92249cc630bc5d5dab20deb0ab6446eda9e50e827f1152b8bb69eba4894daa2",
       "bytes": 128134,
       "sources": [
@@ -31,7 +31,7 @@
       ]
     },
     "media": {
-      "url": "https://runtime.ilang.app/ilang-media-latest.md",
+      "url": "https://runtime.ilang.app/versions/2026.09.29-636ff0a97eb0/ilang-media-latest.md",
       "sha256": "84fa07dbc9b54815999c4d0c53d90b383f9b0b26f3eb100dcf2a98226ce5fdb1",
       "bytes": 63671,
       "sources": [
