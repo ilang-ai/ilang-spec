@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 """
 Checks for the two non-normative JSON Schemas in this directory:
-  judge-v5.0.json   JSON form of a ::JUDGE{v5.0} block   (SPEC-v5.0-PRE.md Part II §4)
+  judge-v5.0.json   JSON form of a ::JUDGE{v5.0} block   (SPEC-v5.0.md Part II §4)
   status-v4.0.json  JSON form of a ::STATUS{} declaration (SPEC-v4.0-FINAL.md §4)
 
 The text forms stay canonical. This script checks that the schemas agree with them:
   - every example in each schema is valid, and each JUDGE example written back as text
     passes ilang_judge_validator.parse_judge_block with mode == f_v5(v);
-  - every ::JUDGE block in SPEC-v5.0-PRE.md that the reference validator accepts is
+  - every ::JUDGE block in SPEC-v5.0.md that the reference validator accepts is
     valid in its JSON form;
   - for generated vectors (threshold edges plus uniform samples) and all eight modes,
     the reference parser accepts the text block exactly when the schema accepts its JSON
@@ -467,7 +467,7 @@ def check_judge(rep, schema, dollar, verdicts):
             "%d examples" % len(schema.get("examples", [])))
 
     # ::JUDGE blocks in the spec
-    blocks = jv.extract_blocks(read("SPEC-v5.0-PRE.md"))
+    blocks = jv.extract_blocks(read("SPEC-v5.0.md"))
     accepted = rejected_by_schema = 0
     for n, (b, nxt) in enumerate(blocks, 1):
         obj = validator_json(b, nxt)
@@ -477,7 +477,7 @@ def check_judge(rep, schema, dollar, verdicts):
         ok = val.is_valid(obj)
         verdicts.append(("spec judge block %d" % n, ok))
         rejected_by_schema += not ok
-    rep.add(tag + "every ::JUDGE block in SPEC-v5.0-PRE.md accepted by the validator is "
+    rep.add(tag + "every ::JUDGE block in SPEC-v5.0.md accepted by the validator is "
                   "schema-valid", accepted > 0 and rejected_by_schema == 0,
             "blocks=%d accepted=%d schema_rejects=%d" % (len(blocks), accepted, rejected_by_schema))
 
@@ -577,7 +577,7 @@ def status_named_cases():
         ("SPEC-v4.0-FINAL.md §2 prose form {state:stopped, reason:budget}",
          {"state": "stopped", "reason": "budget"}, True),
         ("SPEC-v4.0-FINAL.md §0.1 table form {authority:commit}", {"authority": "commit"}, True),
-        ("SPEC-v5.0-PRE.md prose form {by:@RUNTIME}", {"by": "@RUNTIME"}, True),
+        ("SPEC-v5.0.md prose form {by:@RUNTIME}", {"by": "@RUNTIME"}, True),
         ("score as a word", {"state": "needs_revision", "score": "high", "by": "@GRADER",
                              "authority": "verification"}, True),
         ("score 78", {"state": "needs_revision", "score": 78, "by": "@GRADER",

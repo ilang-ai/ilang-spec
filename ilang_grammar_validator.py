@@ -877,7 +877,7 @@ class Linter:
             return
         if not (val.startswith("[") and val.endswith("]")):
             self.add(WARN, lineno, "E300",
-                     "%s is a B4 vector line `%s:[x,y,...]` (v4.2 §4.5.3; SPEC-v5.0-PRE"
+                     "%s is a B4 vector line `%s:[x,y,...]` (v4.2 §4.5.3; SPEC-v5.0"
                      " Part III §1.2)" % (key, key))
             return
         items = [x.strip() for x in val[1:-1].split(",")]
@@ -982,7 +982,7 @@ class Linter:
 
 # ------------------------------------------------------------------- commands
 CANON_FILES = ["SPEC.md", "SPEC-v4.0-FINAL.md", "SPEC-v4.1-MEDIA-PROFILE.md",
-               "SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md", "SPEC-v5.0-PRE.md",
+               "SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md", "SPEC-v5.0.md",
                "AUTHORS.md", "README.md"]
 
 

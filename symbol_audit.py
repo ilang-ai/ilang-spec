@@ -3,7 +3,7 @@
 """
 iLang v5.0 symbol audit (seal condition S3).
 
-Every symbol in the normative text of SPEC-v5.0-PRE.md must have a home. This script reads
+Every symbol in the normative text of SPEC-v5.0.md must have a home. This script reads
 the document, takes the formula lines of Part I (each ::MODULE), Part II §1 to §5 and Part IV
 GENE_CORRECTION, extracts the Greek letters, single-letter variables, subscripted variables
 and the assertion words (≈, lim, converge), and requires each of them to fall into one of:
@@ -21,7 +21,7 @@ line are structured payloads, not formulas, and are not scanned. Appendices are 
 Appendix G is read as the registry.
 
 Usage:
-  python3 symbol_audit.py [SPEC-v5.0-PRE.md]     # exit 0 when every symbol has a home
+  python3 symbol_audit.py [SPEC-v5.0.md]     # exit 0 when every symbol has a home
   python3 symbol_audit.py --verbose              # also print every accounted symbol
   python3 symbol_audit.py --selftest
 Standard library only.
@@ -394,7 +394,7 @@ def cmd_selftest():
 
 def main():
     p = argparse.ArgumentParser(description="iLang v5.0 symbol audit (seal condition S3)")
-    p.add_argument("path", nargs="?", default="SPEC-v5.0-PRE.md")
+    p.add_argument("path", nargs="?", default="SPEC-v5.0.md")
     p.add_argument("--selftest", action="store_true")
     p.add_argument("--verbose", action="store_true")
     a = p.parse_args()

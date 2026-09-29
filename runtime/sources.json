@@ -25,8 +25,8 @@
           ]
         },
         {
-          "path": "SPEC-v5.0-PRE.md",
-          "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, public preview)",
+          "path": "SPEC-v5.0.md",
+          "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0)",
           "drop": [
             "### §1.2 Canonical worked dimension",
             "## §6 Dimension Orthogonality Audit",
@@ -58,8 +58,8 @@
           "layer": "execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable)"
         },
         {
-          "path": "SPEC-v5.0-PRE.md",
-          "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, public preview)"
+          "path": "SPEC-v5.0.md",
+          "layer": "judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, released as 5.0.0)"
         }
       ]
     },

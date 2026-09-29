@@ -10,7 +10,7 @@ on:
       - 'SPEC-v4.0-FINAL.md'
       - 'SPEC-v4.1-MEDIA-PROFILE.md'
       - 'SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md'
-      - 'SPEC-v5.0-PRE.md'
+      - 'SPEC-v5.0.md'
       - 'runtime/sources.json'
       - 'runtime/build.py'
   workflow_dispatch:

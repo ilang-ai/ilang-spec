@@ -14,7 +14,7 @@ This document specifies the **communication layer** of iLang (v3.0): the two syn
 iLang is layered. Two further layers build on top of this one, in separate documents:
 
 - **v4.0 — execution semantics** (how AI thinks, acts, verifies, and stops): [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md)
-- **v5.0 — judgment layer** (how AI evaluates, decides, and adapts; the latest layer, public preview): [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md)
+- **v5.0 — judgment layer** (how AI evaluates, decides, and adapts; the latest layer, released as 5.0.0 on 2026-09-29): [SPEC-v5.0.md](SPEC-v5.0.md)
 
 The media extension adds to §4 and §5 of this document on the v4 stable line: [SPEC-v4.1-MEDIA-PROFILE.md](SPEC-v4.1-MEDIA-PROFILE.md) registers a 20-key media profile and the media entities `@IMG`, `@VID` and `@AUD`, and [SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md](SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md) adds regions, masks and image layers.
 
@@ -731,7 +731,7 @@ Plan, build, test, review, deploy, checkpoint, learn. One language, one workflow
 | v2.0 Dict | 2026-03 | 62 verbs, expanded reference with Greek aliases |
 | v3.0 Final | 2026-04 | Unified spec. 88 verbs with input/output/side-effect semantics. Two syntaxes formalized. Source resolution rules. Immutable gene registry inlined. Error codes expanded. Red-teamed by GPT. (This document — the communication layer.) |
 | v4.0 Final | 2026-05 | **Current stable.** Execution semantics layer. 8 execution declarations, 4 conformance levels, five-level authority model (system > developer > runtime > user > agent_self) with three-tier STATUS write authority. 0 new verbs. See [SPEC-v4.0-FINAL.md](SPEC-v4.0-FINAL.md). |
-| v5.0 Pre | 2026-06 | **Latest (public preview, frozen for review).** Judgment layer. Judgment as vector composition over a continuous behavioral manifold — 11-dimensional judgment vector, 4 axioms, three-layer architecture, 10 draft decision modes (superseded by PATCH-1's frozen M1–M8 set), fuzzy-mathematical foundation. See [SPEC-v5.0-PRE.md](SPEC-v5.0-PRE.md). |
+| v5.0 | 2026-06, released 2026-09-29 | **Latest (released as 5.0.0).** Judgment layer. Judgment as vector composition over a continuous behavioral manifold — 11-dimensional judgment vector, 4 axioms, three-layer architecture, 10 draft decision modes (superseded by PATCH-1's frozen M1–M8 set), fuzzy-mathematical foundation. See [SPEC-v5.0.md](SPEC-v5.0.md). |
 | v5.0 PATCH-1 | 2026-07 (rev 2026-08-11) | Trainable judgment layer: 11 dimensions operationalized, frozen 8-mode set M1–M8, reference function f_v5, frozen JUDGE serialization. Constants ratified 2026-07-03. See [SPEC-v5.0-PATCH-1.md](archive/SPEC-v5.0-PATCH-1.md). |
 | v5.0 PATCH-2 | 2026-08 (rev 2026-08-11) | Declaration grammar (3 block shapes, 8 body forms), entity registry (22), declaration registry (32 structural + 13 narrative, incl. amendment-registered `::LIST`), error code E202. See [SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md). |
 | v4.1 Media Profile | 2026-09 | Media extension on the v4 line: a 20-key media profile and the media entities @IMG, @VID and @AUD. 88 verbs and the 29 core modifiers unchanged. See [SPEC-v4.1-MEDIA-PROFILE.md](SPEC-v4.1-MEDIA-PROFILE.md) |
