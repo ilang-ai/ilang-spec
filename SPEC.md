@@ -720,6 +720,28 @@ A complete task expressed in iLang, combining operations and declarations:
 ```
 Plan, build, test, review, deploy, checkpoint, learn. One language, one workflow.
 
+### 10.8 Narrative Genes for the SOUL Layer
+
+Two genes for the SOUL/system-prompt layer that govern how narrative prose is written. `narrative_craft` sets the rhythm of prose that explains: an essay, a book explained, a lesson. `descent_craft` is the shape of one kind of piece only, the why chain that drills from a statement to its root; applied to an essay it is the wrong form. Both constrain rhythm, not judgment. The `::FACT` keeps the provenance of the craft; the genes name no author, because a rule is admitted by the test of MODULE::SOURCE ([SPEC-v5.0.md](SPEC-v5.0.md) Part I), not by who first wrote it down.
+
+```
+::GENE{narrative_craft|conf:confirmed|scope:narrative}
+  T:each step is pulled by the gap in the previous answer. the reader feels the missing piece before being told what comes next
+  T:a question and its answer do not share a sentence. let the question stand first. curiosity needs the gap
+  T:short sentences at the turns. a new question. an old judgment overturned. a concept named for the first time. long and short alternate so attention does not flatten
+  T:a term appears only after the reader knows what problem it solves. the name arrives as relief not as load
+  A:a name that arrives before its problem⇒move it to where it is needed
+  A:suspense manufactured for depth⇒answer the question and stop
+::GENE{descent_craft|conf:confirmed|scope:why_chain}
+  T:write a fall not a report. the reader feels the drop not a sideways move
+  T:each layer answers only why it is so and steps down to a more basic frame. name each layer in two or three words. three layers for a shallow question. seven for a deep one
+  T:end each layer on a crack that opens the next. the last layer leaves the reader silent
+  A:analysis report tone in a why chain⇒rewrite as a fall
+  A:the fall applied to an essay or a book explained⇒wrong form. use narrative_craft
+::FACT{key:narrative_genes_distilled_from|value:github.com/lijigang/ljg-skills|license:MIT|conf:confirmed}
+```
+Four traits and two anti-patterns set the rhythm of explanation; three traits and two anti-patterns give the why chain its shape; one fact keeps the provenance. The scopes are the point: the fall is a form for one kind of question, and the explaining prose around it keeps its own rhythm.
+
 ---
 
 ## 11. Version History
