@@ -3,10 +3,10 @@
 The complete text of the three core documents, for a model or a person that needs a part the core bundle leaves out.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 216070504d1355fc29e88d317f088827275b894e (2026-09-29T23:19:37+08:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 60e6e2807f5d9909e87af2b9b12df01e5a7e5ef6 (2026-10-25T13:09:22-04:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:891f53310bcd5ae366e573540dc74443a8955578649694cb61a1867169cdf2c8
+1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:5f4f5495a7e4e697fff5c6667d8ac68da7558affcba20612d74f192b328d773f
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
 3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, released as 5.0.0). sha256:e87100897a595937aaab61df1379e72521a2e3e7334ec2575063ba1d5b09c957
 
@@ -733,6 +733,28 @@ A complete task expressed in iLang, combining operations and declarations:
   Auth middleware must be registered before route handlers.
 ```
 Plan, build, test, review, deploy, checkpoint, learn. One language, one workflow.
+
+### 10.8 Narrative Genes for the SOUL Layer
+
+Two genes for the SOUL/system-prompt layer that govern how narrative prose is written. `narrative_craft` sets the rhythm of prose that explains: an essay, a book explained, a lesson. `descent_craft` is the shape of one kind of piece only, the why chain that drills from a statement to its root; applied to an essay it is the wrong form. Both constrain rhythm, not judgment. The `::FACT` keeps the provenance of the craft; the genes name no author, because a rule is admitted by the test of MODULE::SOURCE ([SPEC-v5.0.md](SPEC-v5.0.md) Part I), not by who first wrote it down.
+
+```
+::GENE{narrative_craft|conf:confirmed|scope:narrative}
+  T:each step is pulled by the gap in the previous answer. the reader feels the missing piece before being told what comes next
+  T:a question and its answer do not share a sentence. let the question stand first. curiosity needs the gap
+  T:short sentences at the turns. a new question. an old judgment overturned. a concept named for the first time. long and short alternate so attention does not flatten
+  T:a term appears only after the reader knows what problem it solves. the name arrives as relief not as load
+  A:a name that arrives before its problem⇒move it to where it is needed
+  A:suspense manufactured for depth⇒answer the question and stop
+::GENE{descent_craft|conf:confirmed|scope:why_chain}
+  T:write a fall not a report. the reader feels the drop not a sideways move
+  T:each layer answers only why it is so and steps down to a more basic frame. name each layer in two or three words. three layers for a shallow question. seven for a deep one
+  T:end each layer on a crack that opens the next. the last layer leaves the reader silent
+  A:analysis report tone in a why chain⇒rewrite as a fall
+  A:the fall applied to an essay or a book explained⇒wrong form. use narrative_craft
+::FACT{key:narrative_genes_distilled_from|value:github.com/lijigang/ljg-skills|license:MIT|conf:confirmed}
+```
+Four traits and two anti-patterns set the rhythm of explanation; three traits and two anti-patterns give the why chain its shape; one fact keeps the provenance. The scopes are the point: the fall is a form for one kind of question, and the explaining prose around it keeps its own rhythm.
 
 ---
 

@@ -3,10 +3,10 @@
 The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 216070504d1355fc29e88d317f088827275b894e (2026-09-29T23:19:37+08:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 60e6e2807f5d9909e87af2b9b12df01e5a7e5ef6 (2026-10-25T13:09:22-04:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:891f53310bcd5ae366e573540dc74443a8955578649694cb61a1867169cdf2c8
+1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:5f4f5495a7e4e697fff5c6667d8ac68da7558affcba20612d74f192b328d773f
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
 3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:e87100897a595937aaab61df1379e72521a2e3e7334ec2575063ba1d5b09c957
 
