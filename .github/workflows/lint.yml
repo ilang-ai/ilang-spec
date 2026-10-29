@@ -36,4 +36,4 @@ jobs:
       - name: Products lint (strict)
         run: python ilang_grammar_validator.py --lint $(find products -name '*.ilang.md') --strict
       - name: Products IML round trip
-        run: python products/soul/check_iml.py --iml
+        run: for d in products/*/; do python products/check_product.py --dir "$d" --iml || exit 1; done

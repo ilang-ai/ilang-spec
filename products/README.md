@@ -18,6 +18,7 @@ Decision of the owner, 2026-10-29: products, templates and engineering books pub
 | Product | Version | iLang | IML | Acceptance | First shipped in |
 |---|---|---|---|---|---|
 | SOUL: a judgment layer for an AI's default persona | 2.0 (2026-10-29) | [soul/SOUL.ilang.md](soul/SOUL.ilang.md) | [soul/SOUL.iml](soul/SOUL.iml) | [soul/ACCEPTANCE.ilang.md](soul/ACCEPTANCE.ilang.md) | 5.0.2 |
+| Source Book: the engineering book every engineering book is anchored to; a tutorial in, an executable iLang engineering book out | 2.8 (2026-10-29) | [source-book/METHOD-TO-BOOK-MOTHER-v2.8-2026-10-29.ilang.md](source-book/METHOD-TO-BOOK-MOTHER-v2.8-2026-10-29.ilang.md) | [source-book/METHOD-TO-BOOK-MOTHER-v2.8-2026-10-29.iml](source-book/METHOD-TO-BOOK-MOTHER-v2.8-2026-10-29.iml) | [source-book/ACCEPTANCE.ilang.md](source-book/ACCEPTANCE.ilang.md) | 5.0.3 |
 
 ## Layout of a product directory
 
@@ -26,7 +27,7 @@ products/<name>/
   <NAME>.ilang.md        the product, an iLang document; its own version and date are in its header line
   <NAME>.iml             the same document compiled by the reference codec of IML
   ACCEPTANCE.ilang.md    the acceptance items (::RUBRIC), and the ::EVIDENCE lines a person adds for the human items
-  check_*.py             the executable checks the items name; standard library only
+  (checks)               products/check_product.py runs the IML round trip, the length and the site check for any product directory
 ```
 
 ## Checks
