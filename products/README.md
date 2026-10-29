@@ -27,6 +27,8 @@ products/<name>/
   <NAME>.ilang.md        the product, an iLang document; its own version and date are in its header line
   <NAME>.iml             the same document compiled by the reference codec of IML
   ACCEPTANCE.ilang.md    the acceptance items (::RUBRIC), and the ::EVIDENCE lines a person adds for the human items
+  README.md              the explanation in plain English: what the product is, where it goes, what each line makes the AI do; the
+                         page on ilang.ai is generated from it, so the explanation carries the product's version and DOI
   (checks)               products/check_product.py runs the IML round trip, the length and the site check for any product directory
 ```
 
