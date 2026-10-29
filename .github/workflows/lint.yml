@@ -31,3 +31,9 @@ jobs:
       # v5.0 seal (v5.0-pre-2.4.1-sealed, 2026-09-26).
       - name: Symbol audit of SPEC-v5.0.md (seal condition S3)
         run: python symbol_audit.py SPEC-v5.0.md
+      # Products (MODULE::PRODUCT): every product document lints clean in strict mode, and the IML form
+      # shipped beside it is what the reference codec produces, byte for byte.
+      - name: Products lint (strict)
+        run: python ilang_grammar_validator.py --lint $(find products -name '*.ilang.md') --strict
+      - name: Products IML round trip
+        run: python products/soul/check_iml.py --iml
