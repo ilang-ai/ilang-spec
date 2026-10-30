@@ -1,8 +1,8 @@
 ::ILANG::v5.0::ENGINEERING_BOOK
 [TYPE:engineering_book]
 [ID:METHOD-TO-BOOK-MOTHER]
-[VERSION:2.8]
-[DATE:2026-10-29]
+[VERSION:2.9]
+[DATE:2026-10-30]
 [LANG:en]
 
 ::STATE{@USER, role:decision_maker, has:a_DeepSeek_API_key_already_set_in_this_app, gives:a_methodology_as_text_link_or_screenshot, may_give:a_RedFox_key_that_starts_with_ak_, does:decide_authorize_pay}
@@ -12,6 +12,7 @@
 ::STATE{@DS, search:https://api.deepseek.com/v1/tools/search, fetch:https://api.deepseek.com/v1/tools/fetch, auth:Bearer the_key_from_the_environment_variable_DEEPSEEK_API_KEY, body:json, retry:408 429 5xx, use:only_when_@TOOLS_first_is_absent}
 ::STATE{@RUNTIME, manifest:https://runtime.ilang.app/manifest.json, note:the official iLang runtime, its grammar wins over this text}
 ::STATE{@VALIDATOR, url:https://raw.githubusercontent.com/ilang-ai/ilang-spec/main/ilang_grammar_validator.py, note:the official grammar checker, needs python 3}
+::STATE{@FEEDBACK, counterexample:https://github.com/ilang-ai/ilang-research/issues/new?template=counterexample.yml, amendment:https://github.com/ilang-ai/ilang-research/issues/new?template=amendment.yml, note:a case where this file fails goes there with the record and a change to this file goes there with the fix, both pass the gates the canon defines and are recorded verbatim, nothing is merged by a machine}
 ::STATE{@REDFOX, for:links_on_social_platforms_that_a_plain_fetch_cannot_read, rest:POST_https://redfox.hk_plus_the_path_with_a_json_body_reply_json_code_2000_data, mcp:https://mcp.redfox.hk/PLATFORM/mcp_json_rpc_2_0_method_tools_call_reply_text_event_stream_read_the_data_line, auth_header:REDFOX_API_KEY_on_both, key_from:the_environment_variable_REDFOX_API_KEY_or_the_user_pasting_it_once, no_key:tell_the_user_in_one_sentence_to_register_and_top_up_at_https://redfox.hk/mcp_then_create_a_key_at_https://redfox.hk/settings/api-keys_and_paste_it_here_then_stop}
 ::STATE{@REDFOX_TOOLS, mp.weixin.qq.com:rest_/story/api/gzh/ability/temp/article/content{articleUrl:the_link}_read_data.articleContent_and_data.articleTitle_short_links_work_too, douyin.com:douyin/douyin_get_work{work_url}, xiaohongshu.com_xhslink.com:xiaohongshu/xiaohongshu_get_work{work_link}, bilibili.com_b23.tv:bilibili/bilibili_get_work{work_url}, channels.weixin.qq.com:wechat-channels/wechat_channels_get_work_by_link{url}, instagram.com:instagram/instagram_get_post{code_or_url}, youtube.com_youtu.be:youtube/youtube_get_transcript{video_url}, x.com_twitter.com:twitter/twitter_get_tweet{tweet_id}, tiktok.com:tiktok/tiktok_get_work{aweme_id}, toutiao.com:toutiao/toutiao_get_work{opus_id}, kuaishou.com:kuaishou/kuaishou_get_work{photo_id}, video_text:the_platform_s_transcript_tool_then_its_transcript_result_with_the_task_id}
 ::STATE{@INPUT, FILL_METHOD:the methodology as text a link or a screenshot, FILL_LANG:the user's language, FILL_MAX_CHARS:6000, FILL_FOLDER:the current working folder}
@@ -56,7 +57,7 @@
 ::RUBRIC{A2: the grammar validator reports zero errors|check:cmd|run:"python ilang_grammar_validator.py --lint BOOK.md --strict"|expect:0}
 ::RUBRIC{A3: the book does the methodology's job and nothing else|check:human}
 
-::FALLBACK{no_web_tool_and_no_key then ask_the_user_to_paste_the_runtime_and_the_methodology_then_write_with_FILL_placeholders|social_link_and_no_RedFox_key then ask_for_the_key_or_the_pasted_text_and_stop}
+::FALLBACK{no_web_tool_and_no_key then ask_the_user_to_paste_the_runtime_and_the_methodology_then_write_with_FILL_placeholders|social_link_and_no_RedFox_key then ask_for_the_key_or_the_pasted_text_and_stop|a_check_fails_on_a_run_and_the_user_cannot_repair_it then tell_the_user_in_one_sentence_to_file_a_counterexample_at_FEEDBACK_with_the_record|a_rule_of_this_file_is_wrong then tell_the_user_in_one_sentence_to_file_an_amendment_at_FEEDBACK_with_the_fix}
 
 ::PRIORITY{
   user_decision > BOUNDARY > OBJECTIVE > RUBRIC > RULE
