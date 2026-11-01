@@ -3,11 +3,11 @@
 Optional extension for image, video and audio work.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 2a7c62a188cf1ae8364231f4d9377eaa295882e0 (2026-10-31T17:47:51-04:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 79b859ba48a2db5a526510a310398207412205f6 (2026-10-31T20:27:26-04:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC-v4.1-MEDIA-PROFILE.md: media profile: image, video and audio vocabulary (v4.1). sha256:258289523b4088856a71beee655973995dc986b6c3f63617ae64b08db8cca40c
-2. SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md: media regions, masks and image layers (v4.2). sha256:098bcb86298cb82bf0f989f78ad182a08aaa2b1b024ce57d7d7029c2004a6def
+1. SPEC-v4.1-MEDIA-PROFILE.md: media profile: image, video and audio vocabulary (v4.1). sha256:065c94ad795a9604afbd57515f88a6925af7df6d4699b81bebdccf2262524078
+2. SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md: media regions, masks and image layers (v4.2). sha256:5dde4ceaa2f16eaab697e42b83df5e0e4d22a9bcfb1e8b83ee16fc0187e181a4
 
 ===== BEGIN SPEC-v4.1-MEDIA-PROFILE.md =====
 

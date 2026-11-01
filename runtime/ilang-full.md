@@ -3,12 +3,12 @@
 The complete text of the three core documents, for a model or a person that needs a part the core bundle leaves out.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 2a7c62a188cf1ae8364231f4d9377eaa295882e0 (2026-10-31T17:47:51-04:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 79b859ba48a2db5a526510a310398207412205f6 (2026-10-31T20:27:26-04:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:7f3e6f9df093b12cf7cf0f2f4eb35d63f519aeb3fe9652bbcf009dbec2a795e3
-2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:3f07447a73f96f48694c31259aba56e0428ee5f8ff419c460a8985d3cb0e896f
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, released as 5.0.0). sha256:e62ddf08af3069bc1afb9bf8de0968d9542b542d0e850a837d58134c7c3caabb
+1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:5f4f5495a7e4e697fff5c6667d8ac68da7558affcba20612d74f192b328d773f
+2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, declaration grammar and entity registry (v5.0, released as 5.0.0). sha256:e87100897a595937aaab61df1379e72521a2e3e7334ec2575063ba1d5b09c957
 
 ===== BEGIN SPEC.md =====
 
