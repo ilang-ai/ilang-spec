@@ -5,7 +5,7 @@
   "bundles": {
     "core": {
       "file": "ilang-latest.md",
-      "purpose": "The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.",
+      "purpose": "iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.",
       "sources": [
         {
           "path": "SPEC.md",
