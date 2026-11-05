@@ -39,3 +39,177 @@ keywords:
   - judgment vector
   - protocol standardization
   - agent orchestration
+references:
+  - type: article
+    title: "Fuzzy sets"
+    authors:
+      - family-names: "Zadeh"
+        given-names: "L. A."
+    year: 1965
+    doi: "10.1016/S0019-9958(65)90241-X"
+    notes: "foundation; header FOUNDATION, MODULE::DEFINITION MATH, Appendix G CONST-ZADEH"
+  - type: article
+    title: "Probable inference, the law of succession, and statistical inference"
+    authors:
+      - family-names: "Wilson"
+        given-names: "E. B."
+    year: 1927
+    doi: "10.1080/01621459.1927.10502953"
+    notes: "instrument; Appendix G TRUST-WILSON-1, MODULE::ROUTING trust row, MODULE::ARCHITECTURE Layer C, header MATURITY intervals"
+  - type: article
+    title: "Economic quality control of manufactured product"
+    authors:
+      - family-names: "Shewhart"
+        given-names: "W. A."
+    year: 1930
+    doi: "10.1002/j.1538-7305.1930.tb00373.x"
+    notes: "instrument; MODULE::AXIOMS AXIOM:3 flag(action), Appendix G CONST-SPC-3SIGMA"
+  - type: article
+    title: "Information theory and statistical mechanics"
+    authors:
+      - family-names: "Jaynes"
+        given-names: "E. T."
+    year: 1957
+    doi: "10.1103/PhysRev.106.620"
+    notes: "foundation; Appendix G CONST-MAXENT, MODULE::ROUTING unknown dimension row, Part II §2 maximum entropy principle"
+  - type: article
+    title: "Coherent measures of risk"
+    authors:
+      - family-names: "Artzner"
+        given-names: "P."
+      - family-names: "Delbaen"
+        given-names: "F."
+      - family-names: "Eber"
+        given-names: "J.-M."
+      - family-names: "Heath"
+        given-names: "D."
+    year: 1999
+    doi: "10.1111/1467-9965.00068"
+    notes: "foundation; Part II §2 tail risk, Appendix G CONST-ES-975"
+  - type: article
+    title: "On the coherence of expected shortfall"
+    authors:
+      - family-names: "Acerbi"
+        given-names: "C."
+      - family-names: "Tasche"
+        given-names: "D."
+    year: 2002
+    doi: "10.1016/S0378-4266(02)00283-2"
+    notes: "foundation; Part II §2 tail risk, Appendix G CONST-ES-975"
+  - type: standard
+    title: "Minimum capital requirements for market risk"
+    authors:
+      - name: "Basel Committee on Banking Supervision"
+    year: 2019
+    url: "https://www.bis.org/publications/201901-standards-minimum-capital-requirements-market-risk"
+    notes: "instrument; Appendix G CONST-ES-975"
+  - type: conference-paper
+    title: "The beta reputation system"
+    authors:
+      - family-names: "Ismail"
+        given-names: "R."
+      - family-names: "Jøsang"
+        given-names: "A."
+    year: 2002
+    url: "https://aisel.aisnet.org/bled2002/41/"
+    notes: "foundation; Appendix G WEIGHT-BETA-1"
+  - type: article
+    title: "A survey of trust and reputation systems for online service provision"
+    authors:
+      - family-names: "Jøsang"
+        given-names: "A."
+      - family-names: "Ismail"
+        given-names: "R."
+      - family-names: "Boyd"
+        given-names: "C."
+    year: 2007
+    doi: "10.1016/j.dss.2005.05.019"
+    notes: "foundation; Appendix G WEIGHT-BETA-1"
+  - type: article
+    title: "A unified representation underlying the judgment of large language models"
+    authors:
+      - family-names: "Lu"
+        given-names: "Y.-L."
+      - family-names: "Song"
+        given-names: "J."
+      - family-names: "Wang"
+        given-names: "W."
+    year: 2025
+    doi: "10.48550/arXiv.2510.27328"
+    notes: "related not endorsement; Appendix E, Part II §3 TWO-LAYER"
+  - type: article
+    title: "Constitutional AI: harmlessness from AI feedback"
+    authors:
+      - family-names: "Bai"
+        given-names: "Y."
+      - family-names: "Kadavath"
+        given-names: "S."
+      - family-names: "Kundu"
+        given-names: "S."
+      - name: "et al."
+    year: 2022
+    doi: "10.48550/arXiv.2212.08073"
+    notes: "contrast; MODULE::SOURCE, MODULE::AMENDMENT constitutional dominance, Part II §3 TWO-LAYER"
+  - type: article
+    title: "Training a helpful and harmless assistant with reinforcement learning from human feedback"
+    authors:
+      - family-names: "Bai"
+        given-names: "Y."
+      - family-names: "Jones"
+        given-names: "A."
+      - family-names: "Ndousse"
+        given-names: "K."
+      - name: "et al."
+    year: 2022
+    doi: "10.48550/arXiv.2204.05862"
+    notes: "contrast; MODULE::DEFINITION SCOPE, Part II §3 TWO-LAYER"
+  - type: conference-paper
+    title: "Refusal in language models is mediated by a single direction"
+    authors:
+      - family-names: "Arditi"
+        given-names: "A."
+      - family-names: "Obeso"
+        given-names: "O."
+      - family-names: "Syed"
+        given-names: "A."
+      - name: "et al."
+    year: 2024
+    doi: "10.48550/arXiv.2406.11717"
+    notes: "contrast; MODULE::BOUNDARIES, Part II §3 modes M7 M8, Appendix E"
+  - type: article
+    title: "ReAct: synergizing reasoning and acting in language models"
+    authors:
+      - family-names: "Yao"
+        given-names: "S."
+      - family-names: "Zhao"
+        given-names: "J."
+      - family-names: "Yu"
+        given-names: "D."
+      - name: "et al."
+    year: 2022
+    doi: "10.48550/arXiv.2210.03629"
+    notes: "contrast; SPEC.md §2 operation syntax, SPEC-v4.0-FINAL §4 task lifecycle, Part IV"
+  - type: software
+    title: "ilang-conformance: a deterministic conformance test set for the I-Lang protocol, release 2.2.0 (goal-check)"
+    authors:
+      - family-names: "Zhu"
+        given-names: "Long Quan"
+    year: 2026
+    doi: "10.5281/zenodo.23006027"
+    notes: "instrument; MODULE::PRODUCT PRODUCT-3"
+  - type: software
+    title: "IML (I-Lang Machine Layer), the reference codec of IML 0.5"
+    authors:
+      - family-names: "Zhu"
+        given-names: "Long Quan"
+    year: 2026
+    doi: "10.5281/zenodo.22823285"
+    notes: "instrument; MODULE::PRODUCT PRODUCT-2"
+  - type: software
+    title: "Mem-Forever: a Git-native persistent memory layer for AI agents"
+    authors:
+      - family-names: "Zhu"
+        given-names: "Long Quan"
+    year: 2026
+    doi: "10.5281/zenodo.22865160"
+    notes: "reference template; MODULE::MEMORY WHERE"

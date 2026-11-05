@@ -816,6 +816,114 @@ Registered under MODULE::MEASUREMENT. A registered model or constant can be repl
 
 ---
 
+## Appendix H — References Register (non-normative)
+
+Every work this document takes its mathematics from, uses as a method, names as an implementation, or is positioned against, one ::FACT each: the identifier, the clauses that use it, and the relation. Relations: foundation (the clause takes its definition or mathematics from the work), instrument (the clause uses the work's method, standard or tool as published), contrast (the clause is positioned against the work; nothing is taken from it), related_not_endorsement (the sense of Appendix E), reference_template (an implementation the clause names). Nothing here is an endorsement by the cited authors, and nothing here changes a normative clause. The release metadata (.zenodo.json references and related identifiers, CITATION.cff references) is generated from this register by tools/references.py, and CI rejects a release whose metadata cites a work this register does not list.
+
+::FACT{key:REF-001|doi:10.1016/S0019-9958(65)90241-X|relation:foundation|used_by:header_FOUNDATION,MODULE::DEFINITION_MATH,Appendix_G_CONST-ZADEH|conf:confirmed|normative:false}
+  T:cite=Zadeh,_L._A._(1965)._Fuzzy_sets._Information_and_Control,_8(3),_338-353
+  T:authors=Zadeh_L._A.
+  T:type=article|year=1965
+  T:takes=membership_mu(x)_in_[0,1]_as_the_value_of_every_dimension;AND=min,OR=max,NOT=1-x_as_the_connectives_of_derived_features
+
+::FACT{key:REF-002|doi:10.1080/01621459.1927.10502953|relation:instrument|used_by:Appendix_G_TRUST-WILSON-1,MODULE::ROUTING_trust_row,MODULE::ARCHITECTURE_Layer_C,header_MATURITY_intervals|conf:confirmed|normative:false}
+  T:cite=Wilson,_E._B._(1927)._Probable_inference,_the_law_of_succession,_and_statistical_inference._Journal_of_the_American_Statistical_Association,_22(158),_209-212
+  T:authors=Wilson_E._B.
+  T:type=article|year=1927
+  T:takes=the_score_interval_whose_lower_bound_is_trust_lower(k,n)_and_the_95_percent_intervals_reported_in_MATURITY
+
+::FACT{key:REF-003|doi:10.1002/j.1538-7305.1930.tb00373.x|relation:instrument|used_by:MODULE::AXIOMS_AXIOM:3_flag(action),Appendix_G_CONST-SPC-3SIGMA|conf:confirmed|normative:false}
+  T:cite=Shewhart,_W._A._(1930)._Economic_quality_control_of_manufactured_product._Bell_System_Technical_Journal,_9(2),_364-389
+  T:authors=Shewhart_W._A.
+  T:type=article|year=1930
+  T:takes=the_three-sigma_control_limit_and_the_minimum_record_before_a_point_is_called_out_of_control
+
+::FACT{key:REF-004|doi:10.1103/PhysRev.106.620|relation:foundation|used_by:Appendix_G_CONST-MAXENT,MODULE::ROUTING_unknown_dimension_row,Part_II_§2_maximum_entropy_principle|conf:confirmed|normative:false}
+  T:cite=Jaynes,_E._T._(1957)._Information_theory_and_statistical_mechanics._Physical_Review,_106(4),_620-630
+  T:authors=Jaynes_E._T.
+  T:type=article|year=1957
+  T:takes=the_maximum_entropy_principle:a_dimension_nothing_was_perceived_about_is_set_to_0.50,and_no_prior_ranks_the_dimensions
+
+::FACT{key:REF-005|doi:10.1111/1467-9965.00068|relation:foundation|used_by:Part_II_§2_tail_risk,Appendix_G_CONST-ES-975|conf:confirmed|normative:false}
+  T:cite=Artzner,_P.,_Delbaen,_F.,_Eber,_J.-M.,_Heath,_D._(1999)._Coherent_measures_of_risk._Mathematical_Finance,_9(3),_203-228
+  T:authors=Artzner_P.;Delbaen_F.;Eber_J.-M.;Heath_D.
+  T:type=article|year=1999
+  T:takes=the_coherence_axioms_that_the_tail_risk_measure_must_satisfy
+
+::FACT{key:REF-006|doi:10.1016/S0378-4266(02)00283-2|relation:foundation|used_by:Part_II_§2_tail_risk,Appendix_G_CONST-ES-975|conf:confirmed|normative:false}
+  T:cite=Acerbi,_C.,_Tasche,_D._(2002)._On_the_coherence_of_expected_shortfall._Journal_of_Banking_and_Finance,_26(7),_1487-1503
+  T:authors=Acerbi_C.;Tasche_D.
+  T:type=article|year=2002
+  T:takes=expected_shortfall_as_the_coherent_tail_measure;tail_risk=ES_0.975(1-csq)
+
+::FACT{key:REF-007|url:https://www.bis.org/publications/201901-standards-minimum-capital-requirements-market-risk|relation:instrument|used_by:Appendix_G_CONST-ES-975|conf:confirmed|normative:false}
+  T:cite=Basel_Committee_on_Banking_Supervision_(2019)._Minimum_capital_requirements_for_market_risk._Bank_for_International_Settlements
+  T:authors=Basel_Committee_on_Banking_Supervision
+  T:type=standard|year=2019
+  T:takes=the_97.5_percent_level_of_expected_shortfall;no_DOI_is_issued_for_this_document
+
+::FACT{key:REF-008|url:https://aisel.aisnet.org/bled2002/41/|relation:foundation|used_by:Appendix_G_WEIGHT-BETA-1|conf:confirmed|normative:false}
+  T:cite=Ismail,_R.,_Jøsang,_A._(2002)._The_beta_reputation_system._Proceedings_of_the_15th_Bled_Electronic_Commerce_Conference,_paper_41
+  T:authors=Ismail_R.;Jøsang_A.
+  T:type=conference-paper|year=2002
+  T:takes=the_Beta_reputation_model_behind_weight(r)=(k+a)/(k+b+a+c);no_DOI_is_issued_for_this_paper
+
+::FACT{key:REF-009|doi:10.1016/j.dss.2005.05.019|relation:foundation|used_by:Appendix_G_WEIGHT-BETA-1|conf:confirmed|normative:false}
+  T:cite=Jøsang,_A.,_Ismail,_R.,_Boyd,_C._(2007)._A_survey_of_trust_and_reputation_systems_for_online_service_provision._Decision_Support_Systems,_43(2),_618-644
+  T:authors=Jøsang_A.;Ismail_R.;Boyd_C.
+  T:type=article|year=2007
+  T:takes=the_published_form_of_the_Beta_reputation_system_that_REF-008_introduced
+
+::FACT{key:REF-010|doi:10.48550/arXiv.2510.27328|relation:related_not_endorsement|used_by:Appendix_E,Part_II_§3_TWO-LAYER|conf:confirmed|normative:false}
+  T:cite=Lu,_Y.-L.,_Song,_J.,_Wang,_W._(2025)._A_unified_representation_underlying_the_judgment_of_large_language_models._arXiv:2510.27328
+  T:authors=Lu_Y.-L.;Song_J.;Wang_W.
+  T:type=preprint|year=2025
+  T:takes=nothing;Appendix_E_records_the_relation_in_full
+
+::FACT{key:REF-011|doi:10.48550/arXiv.2212.08073|relation:contrast|used_by:MODULE::SOURCE,MODULE::AMENDMENT_constitutional_dominance,Part_II_§3_TWO-LAYER|conf:confirmed|normative:false}
+  T:cite=Bai,_Y.,_Kadavath,_S.,_Kundu,_S.,_et_al._(2022)._Constitutional_AI:_harmlessness_from_AI_feedback._arXiv:2212.08073
+  T:authors=Bai_Y.;Kadavath_S.;Kundu_S.;et_al.
+  T:type=preprint|year=2022
+  T:contrast=there_a_written_constitution_shapes_the_policy_through_training;here_the_source_constitution_binds_a_fixed_decision_function_f_v5_at_run_time_and_binds_its_makers_first,and_no_training_is_asked_of_the_model
+
+::FACT{key:REF-012|doi:10.48550/arXiv.2204.05862|relation:contrast|used_by:MODULE::DEFINITION_SCOPE,Part_II_§3_TWO-LAYER|conf:confirmed|normative:false}
+  T:cite=Bai,_Y.,_Jones,_A.,_Ndousse,_K.,_et_al._(2022)._Training_a_helpful_and_harmless_assistant_with_reinforcement_learning_from_human_feedback._arXiv:2204.05862
+  T:authors=Bai_Y.;Jones_A.;Ndousse_K.;et_al.
+  T:type=preprint|year=2022
+  T:contrast=there_human_preference_is_learned_into_the_policy;here_perception_is_learned_and_the_decision_is_specified,so_the_evaluative_state_is_an_explicit_vector_and_the_decision_is_auditable_code
+
+::FACT{key:REF-013|doi:10.48550/arXiv.2406.11717|also_doi:10.52202/079017-4322|relation:contrast|used_by:MODULE::BOUNDARIES,Part_II_§3_modes_M7_M8,Appendix_E|conf:confirmed|normative:false}
+  T:cite=Arditi,_A.,_Obeso,_O.,_Syed,_A.,_et_al._(2024)._Refusal_in_language_models_is_mediated_by_a_single_direction._Advances_in_Neural_Information_Processing_Systems_37;_arXiv:2406.11717
+  T:authors=Arditi_A.;Obeso_O.;Syed_A.;et_al.
+  T:type=conference-paper|year=2024
+  T:contrast=there_refusal_is_one_latent_direction_that_can_be_added_or_removed;here_stop_(M8)_and_decline_(M7)_are_modes_f_v5_computes_from_named_dimensions,and_a_boundary_is_code_not_a_direction
+
+::FACT{key:REF-014|doi:10.48550/arXiv.2210.03629|relation:contrast|used_by:SPEC.md_§2_operation_syntax,SPEC-v4.0-FINAL_§4_task_lifecycle,Part_IV|conf:confirmed|normative:false}
+  T:cite=Yao,_S.,_Zhao,_J.,_Yu,_D.,_et_al._(2022)._ReAct:_synergizing_reasoning_and_acting_in_language_models._arXiv:2210.03629
+  T:authors=Yao_S.;Zhao_J.;Yu_D.;et_al.
+  T:type=preprint|year=2022
+  T:contrast=there_reasoning_and_acting_interleave_as_free_text;here_the_chain_is_a_fixed_order_of_verbs_with_CHEK_gates,and_completion_is_decided_by_code_against_DONE_WHEN
+
+::FACT{key:REF-015|doi:10.5281/zenodo.23006027|relation:instrument|used_by:MODULE::PRODUCT_PRODUCT-3|conf:confirmed|normative:false}
+  T:cite=Zhu,_L._Q._(2026)._ilang-conformance:_a_deterministic_conformance_test_set_for_the_I-Lang_protocol,_release_2.2.0_(goal-check)._Zenodo
+  T:authors=Zhu_Long_Quan
+  T:type=software|year=2026
+  T:takes=the_check_kinds_a_product_acceptance_item_may_carry
+
+::FACT{key:REF-016|doi:10.5281/zenodo.22823285|relation:instrument|used_by:MODULE::PRODUCT_PRODUCT-2|conf:confirmed|normative:false}
+  T:cite=Zhu,_L._Q._(2026)._IML_(I-Lang_Machine_Layer),_the_reference_codec_of_IML_0.5._Zenodo_concept_record
+  T:authors=Zhu_Long_Quan
+  T:type=software|year=2026
+  T:takes=the_codec_that_compiles_a_product_to_its_IML_form_and_back
+
+::FACT{key:REF-017|doi:10.5281/zenodo.22865160|relation:reference_template|used_by:MODULE::MEMORY_WHERE|conf:confirmed|normative:false}
+  T:cite=Zhu,_L._Q._(2026)._Mem-Forever:_a_Git-native_persistent_memory_layer_for_AI_agents._Zenodo_concept_record
+  T:authors=Zhu_Long_Quan
+  T:type=software|year=2026
+  T:takes=nothing;MODULE::MEMORY_names_it_as_the_reference_template_of_the_memory_repository
+
+---
+
 # Part III — Declaration Grammar and Entity Registry
 
 > Origin: PATCH-2 (2026-08-05, rev 2026-08-11). Codifies the grammar of declaration bodies and tables all 22 entities.
