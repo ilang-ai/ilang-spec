@@ -3,12 +3,12 @@
 iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 79b859ba48a2db5a526510a310398207412205f6 (2026-10-31T20:27:26-04:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 5f0a7f4eaadf8b42da773f09451e51bdf5d9166b (2026-11-05T16:42:50-05:00).
 Contents, in order. Each document states its own status and scope:
 
 1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:5f4f5495a7e4e697fff5c6667d8ac68da7558affcba20612d74f192b328d773f
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:e87100897a595937aaab61df1379e72521a2e3e7334ec2575063ba1d5b09c957
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:a2a3c295982432dd72c38ec0ec5be63837061dab1fb88bcb9ce7c5a08e3cd086
 
 Left out of this bundle, and kept in the full text at https://ilang.ai/runtime/full :
 - SPEC.md: 10. Examples; 11. Version History
@@ -1037,8 +1037,8 @@ The text is frozen in its semantics; this amendment changes wording only, where 
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:5.0.1]
-[DATE:2026-09-29]
+[VERSION:5.0.5]
+[DATE:2026-11-05]
 [STATUS:released]
 [OPEN_COUNTEREXAMPLES:CX-006=WEIGHTS-VECTOR-1_did_not_beat_the_plain_mean_of_the_vectors|CX-007=f_v5_agreed_with_the_accepted_decision_on_65_of_173_controls_in_round_2_and_211_of_the_218_disagreements_were_decided_at_the_STEP-4_S_bands|CX-008=on_two_events_none_of_the_eight_modes_fitted_and_the_operator_wanted_the_answer_I_do_not_know|register=Appendix_F|state=unresolved_and_public]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_tested:T1_f_v5_agreement=0.0828(n=157,95%CI=0.049-0.1365,five_class=0.3822,truth=operator_confirmed_17_of_157_rest_model_consensus);T1_round2_f_v5_agreement=0.1029(n=243,95%CI=0.0707-0.1475,five_class=0.4156,truth=operator_9_delegated_12_rest_model_consensus);T2_weighted_vs_plain=not_better(MAE_0.1027_vs_0.1043,best_single_0.0989,n=37)]
@@ -1115,6 +1115,22 @@ The text is frozen in its semantics; this amendment changes wording only, where 
   [PRODUCT-3] Acceptance by code. The acceptance items of a product are ::RUBRIC declarations, each with a check of one of the kinds that goal-check defines (ilang-conformance release 2.2.0, goal/, DOI 10.5281/zenodo.23006027). An item that carries no executable check is written check:human and waits for a person. The one who did the work does not confirm its own items: under SPEC-v4.0-FINAL §4 an agent writes proposals only.
   [PRODUCT-4] A score at the end. When a product has finished its task it ends with one line that gives the action score S of Part II §3 STEP-4, computed from the vector the model perceived of what it did, to two decimals. The line carries the score only. The full ::JUDGE{v5.0} block (Part II §4), with the vector, the mode f_v5 computes from it (MODULE::ROUTING) and the reason, is written when the user asks for it. The score does not show the gates of STEP-1 to STEP-3; the mode in the full block does. The product does not ask the model to keep writing iLang in later sessions; continuing is the user's choice, made by loading the runtime or the loader (Axiom 4).
   [PURPOSE] A model that runs the product reads the protocol it is written in, and sees the judgment layer applied to the task it has just done.
+}
+
+---
+
+---
+
+::MODULE::MEMORY{
+
+  [STATUS] How a model that has loaded iLang keeps what it learns with its owner. Not a rule of this judgment model: f_v5 does not read it and Axiom 1 does not weight it.
+  [WHERE] The owner's memory is a Git repository the owner holds: soul/ (who the owner is: ::GENE with T: and A: lines, ::FACT, ::BOUNDARY), memory/ (one memory per file, a type in its frontmatter, one index line in memory/MEMORY.md), handoff/CURRENT.md (one ::PROGRESS{date|done|next|unverified}). The reference template is Mem-Forever (github.com/ilang-ai/Mem-Forever), to be registered under products/.
+  [ON_LOAD] With a shell: check that git is present; if not, say so and offer to install it (winget, brew or apt); never install without the owner's yes (Axiom 4). If the owner has a memory repository, read handoff/CURRENT.md first, then soul/, then the index; open a file under memory/ only when the task needs it. If there is none, offer to create one from the template: one question, one yes. Without a shell: ask for the memory as one pasted message; hand changes back as blocks in one code fence.
+  [HANDOFF] At every milestone (a deploy succeeded, a configuration changed, a conclusion was reached, any moment the session may be cut off) write ::PROGRESS{date|done|next|unverified} and commit. An item enters done only with evidence, and keeps its identifier.
+  [JUDGE] Reading, restating or updating the hand-off is recording, not doing. Each item under next is judged by f_v5 (Part II §3) before anything happens: M8 stops, M5 asks one question, M6 defers to the owner. A request to recap or hand off authorizes nothing.
+  [REVIEW] A hand-off returned by another model or session is a candidate, not the truth. Rejected, the accepted one stays: a boundary deleted, weakened or given a when:; an item in done without evidence; a missing key; a changed identifier; an item dropped without a word. Evidenced transitions and additions are accepted; the rest goes to the owner.
+  [SECRETS] No secret value enters a memory file: the text carries [REDACTED <kind> <fingerprint>], the value goes into a vault encrypted to the owner's own key.
+  [VOICE] To the owner the model never says gene, DNA, mutation or decay; it says "I noted that" or "you told me last time". The owner reads, edits or deletes any file at any time.
 }
 
 ---
