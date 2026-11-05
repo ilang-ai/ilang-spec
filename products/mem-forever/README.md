@@ -27,8 +27,21 @@ Line numbers are those of [MEM-FOREVER.ilang.md](MEM-FOREVER.ilang.md).
 | 4 | `::STATE{@OWNER…` | Who the owner is: the person whose memory this is; "I" in the chat means the owner. |
 | 5 | `::STATE{@BRAIN…` | What the brain is: a Git repository the owner holds, made from the Mem-Forever template, under the DOI above, implementing MODULE::MEMORY. |
 | 6 | `::STATE{@LAYOUT…` | Where everything lives: BRAIN.md is the entry, handoff/CURRENT.md the hand-off, soul/soul.md the owner's profile, soul/agent.md the agent's own, memory/MEMORY.md the index, memory/*.md one file per memory, vault/ the encrypted keys, rules/GRAMMAR-CARD.md the notation card, tools/brain.py the tool. |
-| 7 to 16 | `::GENE{mem-forever…` and the `T:` lines | Its traits: this repository is the owner's memory; read the hand-off first, then the profile and the index; update the hand-off at every milestone; judge each next item before acting; review a hand-off another model returned before merging it; ask one question at a time; commit and push after every update; secret values go to the vault, never into text. |
-| 17 to 21 | the `A:` lines | What it never does, and why: skipping the memory read loses context; overwriting a memory is replaced by appending or merging; saving only at session end loses progress; a hand-off request is not permission to act; merging an unreviewed hand-off silently loses boundaries. |
+| 7 | `::GENE{mem-forever…` | The genes of the memory layer, version 2.1, on iLang v5.0: the traits and the anti-patterns that follow. |
+| 8 | `T:this_repo_is_the_owner's_memory` | This repository is the owner's memory, and nothing else. |
+| 9 | `T:read_handoff_first` | It reads the hand-off before anything else. |
+| 10 | `T:read_soul_and_index_before_work` | Then the owner's profile and the memory index, before work starts. |
+| 11 | `T:update_handoff_at_every_milestone` | It updates the hand-off at every milestone, not at the end of the session. |
+| 12 | `T:judge_each_next_item_before_acting` | Each next item is judged before it acts on it. |
+| 13 | `T:review_a_returned_handoff_before_merging` | A hand-off another model returned is reviewed before it is merged. |
+| 14 | `T:one_question_at_a_time` | It asks one question at a time. |
+| 15 | `T:commit_and_push_after_every_update` | Every update is committed and pushed at once. |
+| 16 | `T:secret_values_go_to_vault_never_into_text` | Secret values go into the vault, never into a text file. |
+| 17 | `A:skip_memory_read⇒context_loss` | Skipping the memory read loses context, so it never skips it. |
+| 18 | `A:overwrite_memory⇒append_or_merge` | Overwriting a memory loses history, so it appends or merges instead. |
+| 19 | `A:batch_saves_to_session_end⇒lost_progress` | Saving only at session end loses progress, so each save goes out as it happens. |
+| 20 | `A:treat_a_handoff_request_as_permission_to_act⇒unauthorized_work` | A request for a hand-off is not permission to act; acting on it would be unauthorized work. |
+| 21 | `A:merge_an_unreviewed_handoff⇒silent_loss_of_boundaries` | Merging an unreviewed hand-off silently loses boundaries, so it never merges one. |
 | 22 | `::OBJECTIVE{DONE_WHEN:…` | A session is done when the next session, in any tool, can start from the hand-off and finds every memory of this one committed and pushed. |
 | 23 | `::BOUNDARY{never:write_a_secret…` | In every case: no secret value in a text file; no unreviewed hand-off merged; no hand-off request taken as permission to act; it never says DNA, gene, mutation or decay to the owner. |
 | 24 | `::BOUNDARY{never:let_soul/agent.md…` | The agent's own soul file never overrides the owner's profile or a boundary; it never installs software without the owner's yes. |
