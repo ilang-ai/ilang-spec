@@ -19,6 +19,7 @@ Decision of the owner, 2026-10-29: products, templates and engineering books pub
 |---|---|---|---|---|---|
 | SOUL: a judgment layer for an AI's default persona | 2.0 (2026-10-29) | [soul/SOUL.ilang.md](soul/SOUL.ilang.md) | [soul/SOUL.iml](soul/SOUL.iml) | [soul/ACCEPTANCE.ilang.md](soul/ACCEPTANCE.ilang.md) | 5.0.2 |
 | Source Book: the engineering book every engineering book is anchored to; a tutorial in, an executable iLang engineering book out | 2.9 (2026-10-30) | [source-book/METHOD-TO-BOOK-MOTHER-v2.9-2026-10-30.ilang.md](source-book/METHOD-TO-BOOK-MOTHER-v2.9-2026-10-30.ilang.md) | [source-book/METHOD-TO-BOOK-MOTHER-v2.9-2026-10-30.iml](source-book/METHOD-TO-BOOK-MOTHER-v2.9-2026-10-30.iml) | [source-book/ACCEPTANCE.ilang.md](source-book/ACCEPTANCE.ilang.md) | 5.0.3 |
+| Mem-Forever: the memory layer; the owner's memory in a Git repository the owner holds, a hand-off at every milestone, review before merge, keys in an encrypted vault (MODULE::MEMORY implemented; template repository github.com/ilang-ai/Mem-Forever) | 2.1 (2026-11-05) | [mem-forever/MEM-FOREVER.ilang.md](mem-forever/MEM-FOREVER.ilang.md) | [mem-forever/MEM-FOREVER.iml](mem-forever/MEM-FOREVER.iml) | [mem-forever/ACCEPTANCE.ilang.md](mem-forever/ACCEPTANCE.ilang.md) | 5.0.6 |
 
 ## Layout of a product directory
 
