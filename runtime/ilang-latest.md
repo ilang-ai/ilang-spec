@@ -3,17 +3,17 @@
 iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 5f0a7f4eaadf8b42da773f09451e51bdf5d9166b (2026-11-05T16:42:50-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit ba58b9865eb6d99b9892c20a4c68df784361275a (2026-11-05T17:10:39-05:00).
 Contents, in order. Each document states its own status and scope:
 
 1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:5f4f5495a7e4e697fff5c6667d8ac68da7558affcba20612d74f192b328d773f
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:a2a3c295982432dd72c38ec0ec5be63837061dab1fb88bcb9ce7c5a08e3cd086
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:7b3f6782be0b015859071ba9288253a4d6d188f1d98a528eb220adee5ee19862
 
 Left out of this bundle, and kept in the full text at https://ilang.ai/runtime/full :
 - SPEC.md: 10. Examples; 11. Version History
 - SPEC-v4.0-FINAL.md: Changelog: v3.0 → v4.0; Deferred Candidates for v4.1; Non-Normative Release Artifacts
-- SPEC-v5.0.md: §1.2 Canonical worked dimension: rev (reversibility); §6 Dimension Orthogonality Audit; §7 Judgment Conformance (measurable); Appendix D — Boundary Cases (seed 3 of 20; remaining 17 per TASK files); Appendix E — Related Prior Work (non-normative); Appendix F — Counterexample Register (non-normative); §1 Declaration Grammar; Appendix A — Worked example: agent blueprint; Appendix B — Ratification notes; the HISTORY line of the header
+- SPEC-v5.0.md: §1.2 Canonical worked dimension: rev (reversibility); §6 Dimension Orthogonality Audit; §7 Judgment Conformance (measurable); Appendix D — Boundary Cases (seed 3 of 20; remaining 17 per TASK files); Appendix E — Related Prior Work (non-normative); Appendix F — Counterexample Register (non-normative); Appendix H — References Register (non-normative); §1 Declaration Grammar; Appendix A — Worked example: agent blueprint; Appendix B — Ratification notes; the HISTORY line of the header
 
 When you are unsure how a rule applies, or you need one of the parts left out, read the full text before you answer. If you cannot open it, name the rule you are unsure about instead of guessing.
 
@@ -1733,6 +1733,10 @@ Registered under MODULE::MEASUREMENT. A registered model or constant can be repl
 ::STATE{@PATCH-1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
 
 ---
+
+## Appendix H — References Register (non-normative)
+
+*Left out of the core bundle; the full text is at https://ilang.ai/runtime/full. Do not guess its content.*
 
 # Part III — Declaration Grammar and Entity Registry
 
