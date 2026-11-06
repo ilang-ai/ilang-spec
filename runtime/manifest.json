@@ -2,18 +2,18 @@
   "brand": "iLang",
   "runtime_schema": 1,
   "channel": "latest",
-  "version": "2026.11.05-e45fd039752f",
+  "version": "2026.11.06-2f3804430fa1",
   "bundle_url": "https://runtime.ilang.app/ilang-latest.md",
   "sha256_url": "https://runtime.ilang.app/ilang-latest.sha256",
   "source_repo": "https://github.com/ilang-ai/ilang-spec",
-  "source_commit": "15677b14841a4ef92b2a732effae2f43b00f4503",
-  "commit": "15677b14841a4ef92b2a732effae2f43b00f4503",
-  "updated_at": "2026-11-05T17:15:26-05:00",
+  "source_commit": "e66b4a28e336f0dc943b92dd32a789ac128df732",
+  "commit": "e66b4a28e336f0dc943b92dd32a789ac128df732",
+  "updated_at": "2026-11-06T15:43:24-05:00",
   "bundles": {
     "core": {
       "url": "https://runtime.ilang.app/ilang-latest.md",
-      "sha256": "e45fd039752fc6087c55c57810be9cbc5b1510840952d2637bfad72c09bb2e9a",
-      "bytes": 96501,
+      "sha256": "2f3804430fa117736b6fd3631ea84fd345823c8725050dcbea46c62c316d4554",
+      "bytes": 96491,
       "sources": [
         "SPEC.md",
         "SPEC-v4.0-FINAL.md",
@@ -22,8 +22,8 @@
     },
     "full": {
       "url": "https://runtime.ilang.app/ilang-full.md",
-      "sha256": "7dc7b59e173f14791dac874e103dd263000c72abaadbb1db83bd48d54ee9ff32",
-      "bytes": 143054,
+      "sha256": "0144badc686d83d2656c99f24f4bea77cc62e9628690558021fe719eb3fb6546",
+      "bytes": 143331,
       "sources": [
         "SPEC.md",
         "SPEC-v4.0-FINAL.md",
@@ -32,7 +32,7 @@
     },
     "media": {
       "url": "https://runtime.ilang.app/ilang-media-latest.md",
-      "sha256": "55701b9bffcf9434e9e8af868d1e5aa09c0e2faa6a0c875b7b492bba9b7d6a63",
+      "sha256": "41f5e3176edb127f0690e88b8b6b2b8b2b89a862f6f6cb37a145894b7d577eb1",
       "bytes": 63671,
       "sources": [
         "SPEC-v4.1-MEDIA-PROFILE.md",
@@ -40,5 +40,5 @@
       ]
     }
   },
-  "pinned": "https://runtime.ilang.app/versions/2026.11.05-e45fd039752f/manifest.json"
+  "pinned": "https://runtime.ilang.app/versions/2026.11.06-2f3804430fa1/manifest.json"
 }
