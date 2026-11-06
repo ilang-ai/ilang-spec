@@ -51,7 +51,7 @@ Identity, state, rules, behavioral genes, metadata.
 
 ### 2.2 Operation Syntax `[]` - what something DOES
 
-Compression, task chains, data operations.
+Task chains and data operations.
 
 ```
 [VERB:@TARGET|mod=value]=>[VERB2]=>[VERB3:@DST]
@@ -748,7 +748,7 @@ Four traits and two anti-patterns set the rhythm of explanation; three traits an
 
 | Version | Date | Changes |
 |---------|------|---------|
-| v1.0 | 2025 | Initial discovery, basic compression |
+| v1.0 | 2025 | Initial discovery |
 | v2.0 Spec | 2026-03 | 52 verbs, first formal spec, published in book |
 | v2.0 Dict | 2026-03 | 62 verbs, expanded reference with Greek aliases |
 | v3.0 Final | 2026-04 | Unified spec. 88 verbs with input/output/side-effect semantics. Two syntaxes formalized. Source resolution rules. Immutable gene registry inlined. Error codes expanded. Red-teamed by GPT. (This document — the communication layer.) |
