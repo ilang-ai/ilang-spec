@@ -6,7 +6,7 @@
   target: the Mem-Forever 3.0 product in this directory is the one an agent loads to keep its owner's memory as a derivation from the keys: it lints clean against the canon, carries its IML form, fits one instruction field, is served by the site byte for byte, and its template repository passes its own acceptance checks and behavior tests
   ACCEPT: every ::RUBRIC item below passes; the human items pass only on an ::EVIDENCE line that names a record made by someone or something other than the author of the change, a person's check or a CI run
 
-::FACT{key:module|value:SPEC-v5.0.md Part I MODULE::PRODUCT, items PRODUCT-1 to PRODUCT-4; the protocol it implements is MODULE::MEMORY of the same Part, whose SECRETS line still names the 2.1 vault and is amended by a separate proposal|conf:confirmed}
+::FACT{key:module|value:SPEC-v5.0.md Part I MODULE::PRODUCT, items PRODUCT-1 to PRODUCT-4; the protocol it implements is MODULE::MEMORY of the same Part, whose WHERE and SECRETS lines name the ledger since 5.0.9 (AMENDMENT-MODULE-MEMORY-SECRETS v1.0, accepted by the owner 2026-11-08)|conf:confirmed}
 ::FACT{key:template|value:github.com/ilang-ai/Mem-Forever, concept DOI 10.5281/zenodo.22865160, release 3.0.0 (version DOI 10.5281/zenodo.24048280, tag v3.0.0, main b80fcc5); its README is the engineering book and its skills/mem-forever/SKILL.md the normative text for agents that have the repository open; the design record is MEM-FOREVER-3-ILANG-CRYPTO-DESIGN v1.1 (2026-11-08), kept by the owner|conf:confirmed}
 ::FACT{key:checker|value:goal-check, ilang-conformance 2.2.0, run from the repository root with --allow-cmd|conf:confirmed}
 
