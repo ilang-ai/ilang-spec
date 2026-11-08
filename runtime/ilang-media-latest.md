@@ -3,7 +3,7 @@
 Optional extension for image, video and audio work.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 0c630f61f3a64b34f5f323ea7951fe09a58cfdaf (2026-11-08T00:49:10-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 2a65db54491c1f307c1e30af0ae3c0cdca9799cb (2026-11-08T02:51:38-05:00).
 Contents, in order. Each document states its own status and scope:
 
 1. SPEC-v4.1-MEDIA-PROFILE.md: media profile: image, video and audio vocabulary (v4.1). sha256:065c94ad795a9604afbd57515f88a6925af7df6d4699b81bebdccf2262524078
