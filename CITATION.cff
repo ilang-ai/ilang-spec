@@ -29,7 +29,7 @@ identifiers:
 repository-code: "https://github.com/ilang-ai/ilang-spec"
 url: "https://ilang.ai"
 license: MIT
-version: "5.0.9"
+version: "5.0.10"
 date-released: 2026-11-08
 keywords:
   - AI communication protocol
