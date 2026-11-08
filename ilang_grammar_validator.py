@@ -10,7 +10,7 @@ registries) plus the v3.0 operation tables:
   PATCH-2 §1.2  body forms B1-B8 by first-token dispatch; B6 prose only inside
                 prose-body types [::LESSON, ::MODULE, ::LIST, ::RULE annotation,
                 ::OBJECTIVE narrative fields]
-  PATCH-2 §1.5/§1.6  declaration registry: 32 structural + 13 narrative
+  PATCH-2 §1.5/§1.6  declaration registry: 33 structural + 13 narrative
                 (::LATENCY / ::CONFIDENCE tolerated per §1.6 pending registration)
   PATCH-2 §1.7  document header ::ILANG::<ver>, [TAG:value] preamble lines,
                 temporal prefix T[n] and T[n]=value, `=>` chain continuation,
@@ -69,7 +69,7 @@ REGISTRY_V3 = ("STATE TRUST ALIVE MEMORY GENE GENE_MUTABLE RULE ACTIVATE "
                "FACT LESSON PROGRESS PRIORITY DECAY IMMUNE").split()
 REGISTRY_V4 = "UNTRUSTED BUDGET STATUS OBJECTIVE RUBRIC EVIDENCE PRIOR FALLBACK".split()
 REGISTRY_V5 = "JUDGE BOUNDARY DIM MODE FUNC SCHEMA CASE CLAUSE MODULE".split()
-REGISTRY_AMEND = ["LIST"]
+REGISTRY_AMEND = ["LIST", "EXCLUDE"]
 DECL_STRUCTURAL = set(REGISTRY_V3 + REGISTRY_V4 + REGISTRY_V5 + REGISTRY_AMEND)
 
 DECL_NARRATIVE = set("SAY THINK ACT DECIDE DISCOVER CREATE EVENT SILENCE "
@@ -477,7 +477,7 @@ class Linter:
                 self.annotations += 1
                 return i + 1
             self.add(ERROR, i + 1, "E300",
-                     "::%s is not in the declaration registry (32 structural + 13 narrative, PATCH-2 §1.5/§1.6)" % name)
+                     "::%s is not in the declaration registry (33 structural + 13 narrative, PATCH-2 §1.5/§1.6)" % name)
 
         self.scan_entities(i, decl_text)
 
