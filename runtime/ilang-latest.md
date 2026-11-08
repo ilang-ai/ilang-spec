@@ -3,12 +3,12 @@
 iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit e66b4a28e336f0dc943b92dd32a789ac128df732 (2026-11-06T15:43:24-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 8fc72cf7eb772a0d4b107947eb70555e17b5c519 (2026-11-08T00:35:29-05:00).
 Contents, in order. Each document states its own status and scope:
 
 1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:eafc2b22897f9dde8545d4c02a41062c71cc36717482f4e4208eaaa63fef52d5
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:46c18ef9f0c4328bbc4f7cbbff99def17177d371aee4ca3d7044d4d28f95c5a0
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:a565e8ddf434e54afbe2e81953ec0ac676649ff9a266fa5784ec1da665154119
 
 Left out of this bundle, and kept in the full text at https://ilang.ai/runtime/full :
 - SPEC.md: 10. Examples; 11. Version History
@@ -1037,8 +1037,8 @@ The text is frozen in its semantics; this amendment changes wording only, where 
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:5.0.7]
-[DATE:2026-11-06]
+[VERSION:5.0.8]
+[DATE:2026-11-08]
 [STATUS:released]
 [OPEN_COUNTEREXAMPLES:CX-006=WEIGHTS-VECTOR-1_did_not_beat_the_plain_mean_of_the_vectors|CX-007=f_v5_agreed_with_the_accepted_decision_on_65_of_173_controls_in_round_2_and_211_of_the_218_disagreements_were_decided_at_the_STEP-4_S_bands|CX-008=on_two_events_none_of_the_eight_modes_fitted_and_the_operator_wanted_the_answer_I_do_not_know|register=Appendix_F|state=unresolved_and_public]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_tested:T1_f_v5_agreement=0.0828(n=157,95%CI=0.049-0.1365,five_class=0.3822,truth=operator_confirmed_17_of_157_rest_model_consensus);T1_round2_f_v5_agreement=0.1029(n=243,95%CI=0.0707-0.1475,five_class=0.4156,truth=operator_9_delegated_12_rest_model_consensus);T2_weighted_vs_plain=not_better(MAE_0.1027_vs_0.1043,best_single_0.0989,n=37)]
