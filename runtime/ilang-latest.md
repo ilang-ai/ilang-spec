@@ -3,12 +3,12 @@
 iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 8fc72cf7eb772a0d4b107947eb70555e17b5c519 (2026-11-08T00:35:29-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 0c630f61f3a64b34f5f323ea7951fe09a58cfdaf (2026-11-08T00:49:10-05:00).
 Contents, in order. Each document states its own status and scope:
 
 1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:eafc2b22897f9dde8545d4c02a41062c71cc36717482f4e4208eaaa63fef52d5
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:a565e8ddf434e54afbe2e81953ec0ac676649ff9a266fa5784ec1da665154119
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:9cf9ea8bd51873f56953ab9aeedfa8cf96cbfffb463c425cfc791eb82d494e81
 
 Left out of this bundle, and kept in the full text at https://ilang.ai/runtime/full :
 - SPEC.md: 10. Examples; 11. Version History
@@ -1037,7 +1037,7 @@ The text is frozen in its semantics; this amendment changes wording only, where 
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:5.0.8]
+[VERSION:5.0.9]
 [DATE:2026-11-08]
 [STATUS:released]
 [OPEN_COUNTEREXAMPLES:CX-006=WEIGHTS-VECTOR-1_did_not_beat_the_plain_mean_of_the_vectors|CX-007=f_v5_agreed_with_the_accepted_decision_on_65_of_173_controls_in_round_2_and_211_of_the_218_disagreements_were_decided_at_the_STEP-4_S_bands|CX-008=on_two_events_none_of_the_eight_modes_fitted_and_the_operator_wanted_the_answer_I_do_not_know|register=Appendix_F|state=unresolved_and_public]
@@ -1124,12 +1124,12 @@ The text is frozen in its semantics; this amendment changes wording only, where 
 ::MODULE::MEMORY{
 
   [STATUS] How a model that has loaded iLang keeps what it learns with its owner. Not a rule of this judgment model: f_v5 does not read it and Axiom 1 does not weight it.
-  [WHERE] The owner's memory is a Git repository the owner holds: soul/ (who the owner is: ::GENE with T: and A: lines, ::FACT, ::BOUNDARY), memory/ (one memory per file, a type in its frontmatter, one index line in memory/MEMORY.md), handoff/CURRENT.md (one ::PROGRESS{date|done|next|unverified}). The reference template is Mem-Forever (github.com/ilang-ai/Mem-Forever), to be registered under products/.
+  [WHERE] The owner's memory is a private Git repository the owner holds: env/ledger.env (the ledger: one row per door the brain can open, with how to verify it and how to get back in), soul/ (who the owner is: ::GENE with T: and A: lines, ::FACT, ::BOUNDARY, and the owner's words the blocks cite), memory/ (one memory per file, a type in its frontmatter, one index line in memory/MEMORY.md), handoff/CURRENT.md (one ::PROGRESS{date|done|next|unverified}), log/ (the owner's turns verbatim). Memory is a derivation: the keys derive the tasks, the tasks yield constants, the logic between them is annotation. The reference template is Mem-Forever (github.com/ilang-ai/Mem-Forever), registered under products/mem-forever.
   [ON_LOAD] With a shell: check that git is present; if not, say so and offer to install it (winget, brew or apt); never install without the owner's yes (Axiom 4). If the owner has a memory repository, read handoff/CURRENT.md first, then soul/, then the index; open a file under memory/ only when the task needs it. If there is none, offer to create one from the template: one question, one yes. Without a shell: ask for the memory as one pasted message; hand changes back as blocks in one code fence.
   [HANDOFF] At every milestone (a deploy succeeded, a configuration changed, a conclusion was reached, any moment the session may be cut off) write ::PROGRESS{date|done|next|unverified} and commit. An item enters done only with evidence, and keeps its identifier.
   [JUDGE] Reading, restating or updating the hand-off is recording, not doing. Each item under next is judged by f_v5 (Part II §3) before anything happens: M8 stops, M5 asks one question, M6 defers to the owner. A request to recap or hand off authorizes nothing.
   [REVIEW] A hand-off returned by another model or session is a candidate, not the truth. Rejected, the accepted one stays: a boundary deleted, weakened or given a when:; an item in done without evidence; a missing key; a changed identifier; an item dropped without a word. Evidenced transitions and additions are accepted; the rest goes to the owner.
-  [SECRETS] No secret value enters a memory file: the text carries [REDACTED <kind> <fingerprint>], the value goes into a vault encrypted to the owner's own key.
+  [SECRETS] No key value enters a memory file; a key is a row of the ledger, plain in the owner's private repository, because for one person losing a key costs more than leaking one. A key reaches the model only when a next item of the hand-off names its door; a top door opens only by a one-time code the owner issues. Nothing is sealed at rest; sealing is a pairing act, to the receiver's key and the owner's, so with the files in hand the owner always gets in, and unlocking is a tool action, never a model's reasoning. Every block says by: whose words it rests on; only the owner's words make or keep a boundary.
   [VOICE] To the owner the model never says gene, DNA, mutation or decay; it says "I noted that" or "you told me last time". The owner reads, edits or deletes any file at any time.
 }
 
