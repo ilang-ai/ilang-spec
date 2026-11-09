@@ -10,9 +10,9 @@
 ::FACT{key:checker|value:goal-check, ilang-conformance 2.2.0, run from the repository root with --allow-cmd|conf:confirmed}
 
 ::RUBRIC{A1: SOUL.ilang.md passes the canon grammar validator in strict mode|check:cmd|run:"python ilang_grammar_validator.py --lint products/soul/SOUL.ilang.md --strict"|expect:0}
-::RUBRIC{A2: SOUL.iml is what the reference codec of IML 0.5 compiles from SOUL.ilang.md and it decompiles back to SOUL.ilang.md byte for byte|check:cmd|run:"python products/soul/check_iml.py --iml"|expect:0}
+::RUBRIC{A2: SOUL.iml is what the reference codec of IML 0.6 compiles from SOUL.ilang.md and it decompiles back to SOUL.ilang.md byte for byte|check:cmd|run:"python products/soul/check_iml.py --iml"|expect:0}
 ::RUBRIC{A3: the iLang file is the released one|check:file|path:products/soul/SOUL.ilang.md|sha256:9b22c7d5bbbcbca24db044cb5c9d2bb98b8e019b776a764e339b505d465a66f1}
-::RUBRIC{A4: the IML file is the released one|check:file|path:products/soul/SOUL.iml|sha256:f2aca23303677f604074d1e4d02b46f2b3b813f8584acbcc8bafc80b36a80e8e}
+::RUBRIC{A4: the IML file is the released one|check:file|path:products/soul/SOUL.iml|sha256:de358f8b855aab75cc07d16fa53f49a568b1ba4a4e365cf806fa49c31f6d214e}
 ::RUBRIC{A5: the block fits one instruction field, at most 2000 characters|check:cmd|run:"python products/soul/check_iml.py --length"|expect:0}
 ::RUBRIC{A6: the file the site serves is byte-identical to SOUL.ilang.md|check:cmd|run:"python products/soul/check_iml.py --site https://ilang.ai/soul/SOUL.ilang.md"|expect:0}
 ::RUBRIC{A7: a fresh Claude session adopts the SOUL without reading it as an injection, keeps its own safety rules as the host where the two meet, and confirms outward actions per item|check:human}

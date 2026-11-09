@@ -25,7 +25,7 @@ import tempfile
 import urllib.request
 
 CODEC_REPO = "https://github.com/ilang-ai/iml-protocol.git"
-CODEC_PIN = "3a545f13d069095d3ac257fdec50e3293f4373ee"  # iml-protocol, 0.5 stable (2026-09-29)
+CODEC_PIN = "98972e746cc900bd645ab367a7977a746f8482e1"  # iml-protocol, 0.6.0 (2026-11-08): the 0.6 registry, ::EXCLUDE as EX, the #iml/0.6/ header
 
 
 def files(d):

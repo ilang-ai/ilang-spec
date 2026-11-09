@@ -11,9 +11,9 @@
 ::FACT{key:checker|value:goal-check, ilang-conformance 2.2.0, run from the repository root with --allow-cmd|conf:confirmed}
 
 ::RUBRIC{C1: MEM-FOREVER.ilang.md passes the canon grammar validator in strict mode|check:cmd|run:"python ilang_grammar_validator.py --lint products/mem-forever/MEM-FOREVER.ilang.md --strict"|expect:0}
-::RUBRIC{C2: MEM-FOREVER.iml is what the reference codec of IML 0.5 compiles from MEM-FOREVER.ilang.md and it decompiles back to it|check:cmd|run:"python products/check_product.py --dir products/mem-forever --iml"|expect:0}
+::RUBRIC{C2: MEM-FOREVER.iml is what the reference codec of IML 0.6 compiles from MEM-FOREVER.ilang.md and it decompiles back to it|check:cmd|run:"python products/check_product.py --dir products/mem-forever --iml"|expect:0}
 ::RUBRIC{C3: the iLang file is the released one|check:file|path:products/mem-forever/MEM-FOREVER.ilang.md|sha256:24f41de1fe602bdfa10819a33d5256a82dbd88a917ac9d44d1d6a5313cb105d0}
-::RUBRIC{C4: the IML file is the released one|check:file|path:products/mem-forever/MEM-FOREVER.iml|sha256:b220e2132081709458742438bb12b170da2a7ba20318f7cf9a4d535e675a863c}
+::RUBRIC{C4: the IML file is the released one|check:file|path:products/mem-forever/MEM-FOREVER.iml|sha256:4a073dfc2084f9c59252a75354379f78420fd18dae5afb076ddc40061382f753}
 ::RUBRIC{C5: the document fits one instruction field, at most 6000 characters|check:cmd|run:"python products/check_product.py --dir products/mem-forever --length 6000"|expect:0}
 ::RUBRIC{C6: the file the site serves is byte-identical to MEM-FOREVER.ilang.md|check:cmd|run:"python products/check_product.py --dir products/mem-forever --site https://ilang.ai/memory/MEM-FOREVER.ilang.md"|expect:0}
 ::RUBRIC{C7: the template repository at release 3.2.0 passes its own acceptance checks: brain.py check 0 errors, every Markdown file with blocks validator-clean in strict mode, the five instruction files byte-identical to the body of the skill, the hook scripts parse, and tools/test_brain.py passes its 43 scenarios|check:human}
