@@ -42,7 +42,7 @@ The samples were made on 2026-10-29 with Source Book 2.4 through 2.7 on DeepSeek
 
 ## iLang or IML
 
-Paste the iLang block. It is written for people and models; it is what the agent reads. The IML block is the same document compiled for programs by the reference codec of IML 0.5, at github.com/ilang-ai/iml-protocol. It decompiles back to the iLang document, blank lines aside. Declaration names become two-character codes; the text inside braces is carried exactly. Use IML only when a program, not a chat, takes the file.
+Paste the iLang block. It is written for people and models; it is what the agent reads. The IML block is the same document compiled for programs by the reference codec of IML 0.6, at github.com/ilang-ai/iml-protocol. It decompiles back to the iLang document, blank lines aside. Declaration names become two-character codes; the text inside braces is carried exactly. Use IML only when a program, not a chat, takes the file.
 
 ## Questions
 

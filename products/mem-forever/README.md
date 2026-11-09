@@ -69,7 +69,7 @@ Line numbers are those of [MEM-FOREVER.ilang.md](MEM-FOREVER.ilang.md).
 
 ## iLang or IML
 
-Paste the iLang block, written for people and models. The IML block is the same document compiled for programs with the IML 0.5 reference codec (github.com/ilang-ai/iml-protocol). It decompiles to the iLang text; the acceptance items check both ways.
+Paste the iLang block, written for people and models. The IML block is the same document compiled for programs with the IML 0.6 reference codec (github.com/ilang-ai/iml-protocol). It decompiles to the iLang text; the acceptance items check both ways.
 
 ## Questions
 

@@ -40,7 +40,7 @@ Line numbers are those of [SOUL.ilang.md](SOUL.ilang.md); the page https://ilang
 
 ## iLang or IML
 
-Paste the iLang block, written for people and models. The IML block is the same document compiled for programs with the IML 0.5 reference codec (github.com/ilang-ai/iml-protocol). It decompiles to the iLang file byte for byte. Its first line carries the codec version and registry digest. The names after the double colons become short codes: GENE becomes GN, OBJECTIVE OB, BOUNDARY BN, UNTRUSTED UN, RULE RL, FALLBACK FL. The flow line becomes a chain; text inside braces is carried exactly.
+Paste the iLang block, written for people and models. The IML block is the same document compiled for programs with the IML 0.6 reference codec (github.com/ilang-ai/iml-protocol). It decompiles to the iLang file byte for byte. Its first line carries the codec version and registry digest. The names after the double colons become short codes: GENE becomes GN, OBJECTIVE OB, BOUNDARY BN, UNTRUSTED UN, RULE RL, FALLBACK FL. The flow line becomes a chain; text inside braces is carried exactly.
 
 ## Questions
 
