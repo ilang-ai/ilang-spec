@@ -3,12 +3,12 @@
 iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit cc4df3886ad0f3649002fbc01ed089a51854578c (2026-11-08T20:45:59-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit be1c936e4539ba6d7caa8374a95d4fa36010101b (2026-11-12T17:48:52-05:00).
 Contents, in order. Each document states its own status and scope:
 
 1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:eafc2b22897f9dde8545d4c02a41062c71cc36717482f4e4208eaaa63fef52d5
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:f0aeef775e1dfba4d782842dcc3d30b5c7c95530b091aa846ab73586f7b7ec9f
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:187bce83ae8e342edc79bd4fccc08d390080d97569620971f82a23018e9f8654
 
 Left out of this bundle, and kept in the full text at https://ilang.ai/runtime/full :
 - SPEC.md: 10. Examples; 11. Version History
@@ -1037,8 +1037,8 @@ The text is frozen in its semantics; this amendment changes wording only, where 
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:5.0.12]
-[DATE:2026-11-08]
+[VERSION:5.0.13]
+[DATE:2026-11-12]
 [STATUS:released]
 [OPEN_COUNTEREXAMPLES:CX-006=WEIGHTS-VECTOR-1_did_not_beat_the_plain_mean_of_the_vectors|CX-007=f_v5_agreed_with_the_accepted_decision_on_65_of_173_controls_in_round_2_and_211_of_the_218_disagreements_were_decided_at_the_STEP-4_S_bands|CX-008=on_two_events_none_of_the_eight_modes_fitted_and_the_operator_wanted_the_answer_I_do_not_know|register=Appendix_F|state=unresolved_and_public]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_tested:T1_f_v5_agreement=0.0828(n=157,95%CI=0.049-0.1365,five_class=0.3822,truth=operator_confirmed_17_of_157_rest_model_consensus);T1_round2_f_v5_agreement=0.1029(n=243,95%CI=0.0707-0.1475,five_class=0.4156,truth=operator_9_delegated_12_rest_model_consensus);T2_weighted_vs_plain=not_better(MAE_0.1027_vs_0.1043,best_single_0.0989,n=37)]
@@ -1097,9 +1097,25 @@ The text is frozen in its semantics; this amendment changes wording only, where 
     consistency flag (Axiom 3)                                    ⇒ cer = 0.29                      ⇒ STEP-2 ⇒ M5
     unknown dimension (VECTOR EXTRACTION)                         ⇒ that dimension = 0.50, cer = 0.29 ⇒ STEP-2 ⇒ M5
     record of collaboration in a domain (ARCHITECTURE Layer C)    ⇒ rel = trust lower bound (Appendix G, TRUST-WILSON-1)
+    loop on a target and the rebuilt option set is exhausted (LOOP)  ⇒ aut = 0.29                      ⇒ STEP-3 ⇒ M6
 
   [ORDER] When several rows hold, the f_v5 cascade decides: survival, then epistemic, then authority.
   NOTE The unknown-dimension row sets 0.50 because nothing was perceived (Appendix G, CONST-MAXENT). The trust row replaces perception for rel because a record is a standard and a standard is scored directly (MODULE::MEASUREMENT).
+
+  [LOOP] (5.0.13)
+  DEFINE loop(a, chain) = the last three actions of the chain are of one class with a AND none of them shrank the error surface.
+  DEFINE one class = one target, one error, one approach, read as meaning, not as strings: editing the same file against the same failing check is one class whatever the diff says.
+  DEFINE shrank the error surface = fewer failing items, a different error, or a narrower scope than the attempt before. The same error at the same scope by the same approach is a loop.
+  Code computes loop over the recorded chain, as AXIOM:3 computes the consistency flag; the model supplies the class and the surface of each attempt.
+  WHEN loop(a, chain) holds:
+    1. Checkpoint. Code records a rollback point before anything else: a commit or a stash for the working tree. The checkpoint makes safe only the state it covers; nothing outside it is made safe by it.
+    2. The option set is rebuilt. a and every action on its vector leave it; the reductive alternatives enter it: a minimal reproduction, a bisection, a rebuild from the last known-good state. f_v5 scores each on its own. An alternative that is irreversible on state the checkpoint does not cover meets Axiom 2 as any action does (csq = 0.09 unless absorbable).
+    3. An alternative that resolves the goal proceeds and is committed. When none is admissible, or the chosen one does not resolve it, code restores the checkpoint and the LOOP row routes: aut = 0.29, STEP-3, M6, with what was tried, how many times and why it did not converge.
+  Three readings, modes by f_v5 (Part II §3), every other dimension 0.90:
+    the rebuilt set is exhausted, aut = 0.29 ⇒ M6: the agent's own authority to keep going on this target is spent; the principal decides.
+    the only reductive alternative rebuilds state the checkpoint does not cover (a live database, a remote), csq = 0.09, rev = 0.10 ⇒ M8: a checkpoint covers the working tree, not the world; Axiom 2 holds inside a loop.
+    the third attempt fails with a different error ⇒ not a loop, the count restarts, the action is routed as any other ⇒ M1: a shrinking surface is progress.
+  NOTE A loop is non-convergence (MODULE::MEASUREMENT, PURPOSE). Detecting it and switching strategy is the protocol enforcing its own axiom, not a failure. This count is the agent's own over its chain; Part IV counts the principal's corrections of the agent; the two never merge. The LOOP row sets aut, as the self-exemption row does, because what a loop spends is the agent's authority to continue on that target by itself. Proposed 2026-11-12 as LOOP-ESCAPE by the source book (products/source-book) running on Claude Opus 4.6; ratified by @SUN the same day, with the condition that the reductive step is admissible only where the checkpoint covers the state it touches.
 }
 
 ---
@@ -1959,6 +1975,7 @@ T:judgment_error=agent_makes_wrong_decision_given_available_information|correcti
 T:style_violation=agent_output_violates_formatting_or_tone_rules|correction:add_GENE_to_deai_or_formatting_section
 T:boundary_breach=agent_reveals_protected_information_or_exceeds_authority|correction:add_IMMUNE_or_BOUNDARY
 T:repeated_pattern=same_error_class_recurring_despite_prior_correction|correction:promote_GENE_priority_or_terminate
+T:loop_in_the_agent's_own_chain=three_attempts_of_one_class_on_one_target_none_shrinking_the_error_surface|handled_by:MODULE::ROUTING_LOOP_before_routing|not_an_error_class_here|does_not_count_toward_STEP-3_promotion_or_STEP-4_termination
 
 ## §4 Conformance
 
