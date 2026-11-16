@@ -87,8 +87,12 @@ def check_length(d, limit):
 def check_site(d, url):
     ilang, _ = files(d)
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (ilang-spec products check)"})
-    with urllib.request.urlopen(req, timeout=30) as r:
-        served = r.read().replace(b"\r\n", b"\n")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            served = r.read().replace(b"\r\n", b"\n")
+    except OSError as e:  # HTTPError (a 404), URLError (no DNS) and a timeout: the check could not run, exit 2
+        print("could not fetch %s: %s" % (url, e))
+        return 2
     a, b = hashlib.sha256(served).hexdigest(), hashlib.sha256(read(ilang)).hexdigest()
     print("served %s\nrepo   %s" % (a, b))
     return 0 if a == b else 1
