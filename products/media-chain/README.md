@@ -4,7 +4,7 @@ Media Chain is the provenance layer of iLang for generated images, video and aud
 
 It uses two parts of the canon that already exist and adds nothing to either. The request is the GEN line of SPEC-v4.1-MEDIA-PROFILE (20 media keys, the entities IMG, VID and AUD, adopted 2026-09-12). The judgment is the frozen JUDGE block of SPEC-v5.0 Part II §4 (eleven dimensions, one mode computed by the reference function f_v5). Both are stored verbatim, as iLang text, under the label ai.ilang.chain: inside the file before the generator platform signs it (a PNG text chunk or XMP), so the issuer's credential binds the chain; as one C2PA custom assertion when we are the signer; as an XMP sidecar when the format carries no C2PA at all. The delta of each iteration is written with the declarations the canon already has: FACT for what changed, DECIDE for the owner's verdict, PROGRESS for the series.
 
-Status: 1.1, dated 2026-11-15, name media-chain final by the owner's word of 2026-11-15; in products/media-chain of ilang-spec since 2026-11-15, not yet in a release.
+Status: 1.1, dated 2026-11-15, name media-chain final by the owner's word of 2026-11-15; in products/media-chain of ilang-spec since 2026-11-15, first shipped in release 5.0.14.
 
 ## Where it goes
 
