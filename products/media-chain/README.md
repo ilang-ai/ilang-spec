@@ -77,3 +77,5 @@ The iLang file is for people and models to read. [MEDIA-CHAIN.iml](MEDIA-CHAIN.i
 **Does this train a model?** No. It produces the records a training set would need and publishes their form. Whether training on them helps is written as two hypotheses with status untested, and stays that way until someone measures.
 
 **What about video transitions?** Outside this product. SPEC-v4.1 §4.4.7 records transitions between shots as the business of a timeline profile that does not exist yet.
+
+**Where do my own series go?** To the dataset i-Lang/media-chain on Hugging Face (https://huggingface.co/datasets/i-Lang/media-chain): one folder per series, the files with the chain inside and the series document, opened as a pull request from the browser. A gate reads the chain back out of each file, runs the two validators, and merges what passes, with your words as written; what fails stays open with the failing line. CC BY 4.0.
