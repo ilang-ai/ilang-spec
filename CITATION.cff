@@ -213,3 +213,209 @@ references:
     year: 2026
     doi: "10.5281/zenodo.22865160"
     notes: "reference template; MODULE::MEMORY WHERE"
+  - type: conference-paper
+    title: "FaceNet: a unified embedding for face recognition and clustering"
+    authors:
+      - family-names: "Schroff"
+        given-names: "F."
+      - family-names: "Kalenichenko"
+        given-names: "D."
+      - family-names: "Philbin"
+        given-names: "J."
+    year: 2015
+    doi: "10.1109/CVPR.2015.7298682"
+    notes: "instrument; products/media-chain RULE::judge(the same person across takes), products/media-chain RULE::delta"
+  - type: conference-paper
+    title: "ArcFace: additive angular margin loss for deep face recognition"
+    authors:
+      - family-names: "Deng"
+        given-names: "J."
+      - family-names: "Guo"
+        given-names: "J."
+      - family-names: "Xue"
+        given-names: "N."
+      - family-names: "Zafeiriou"
+        given-names: "S."
+    year: 2019
+    doi: "10.1109/CVPR.2019.00482"
+    notes: "instrument; products/media-chain RULE::judge(the same person across takes), products/media-chain RULE::delta"
+  - type: conference-paper
+    title: "The unreasonable effectiveness of deep features as a perceptual metric"
+    authors:
+      - family-names: "Zhang"
+        given-names: "R."
+      - family-names: "Isola"
+        given-names: "P."
+      - family-names: "Efros"
+        given-names: "A. A."
+      - family-names: "Shechtman"
+        given-names: "E."
+      - family-names: "Wang"
+        given-names: "O."
+    year: 2018
+    doi: "10.1109/CVPR.2018.00068"
+    notes: "instrument; products/media-chain RULE::seal(a cut of takes), products/media-chain RULE::delta"
+  - type: article
+    title: "Learning transferable visual models from natural language supervision"
+    authors:
+      - family-names: "Radford"
+        given-names: "A."
+      - family-names: "Kim"
+        given-names: "J. W."
+      - family-names: "Hallacy"
+        given-names: "C."
+      - name: "et al."
+    year: 2021
+    doi: "10.48550/arXiv.2103.00020"
+    notes: "instrument; products/media-chain RULE::judge(the request against the artifact)"
+  - type: article
+    title: "GANs trained by a two time-scale update rule converge to a local Nash equilibrium"
+    authors:
+      - family-names: "Heusel"
+        given-names: "M."
+      - family-names: "Ramsauer"
+        given-names: "H."
+      - family-names: "Unterthiner"
+        given-names: "T."
+      - family-names: "Nessler"
+        given-names: "B."
+      - family-names: "Hochreiter"
+        given-names: "S."
+    year: 2017
+    doi: "10.48550/arXiv.1706.08500"
+    notes: "instrument; products/media-chain RULE::dataset(a series of artifacts)"
+  - type: article
+    title: "Towards accurate generative models of video: a new metric and challenges"
+    authors:
+      - family-names: "Unterthiner"
+        given-names: "T."
+      - family-names: "van Steenkiste"
+        given-names: "S."
+      - family-names: "Kurach"
+        given-names: "K."
+      - family-names: "Marinier"
+        given-names: "R."
+      - family-names: "Michalski"
+        given-names: "M."
+      - family-names: "Gelly"
+        given-names: "S."
+    year: 2018
+    doi: "10.48550/arXiv.1812.01717"
+    notes: "instrument; products/media-chain RULE::dataset(a series of video artifacts)"
+  - type: article
+    title: "How to time-stamp a digital document"
+    authors:
+      - family-names: "Haber"
+        given-names: "S."
+      - family-names: "Stornetta"
+        given-names: "W. S."
+    year: 1991
+    doi: "10.1007/BF00196791"
+    notes: "foundation; products/media-chain @CHAIN, products/media-chain RULE::seal, products/media-chain RULE::read"
+  - type: conference-paper
+    title: "A digital signature based on a conventional encryption function"
+    authors:
+      - family-names: "Merkle"
+        given-names: "R. C."
+    year: 1988
+    doi: "10.1007/3-540-48184-2_32"
+    notes: "foundation; products/media-chain RULE::seal(a cut of takes), products/media-chain @DELTA"
+  - type: standard
+    title: "Secure Hash Standard (SHS)"
+    authors:
+      - name: "National Institute of Standards and Technology"
+    year: 2015
+    doi: "10.6028/NIST.FIPS.180-4"
+    notes: "instrument; products/media-chain @CHAIN, products/media-chain RULE::seal, products/media-chain RULE::read"
+  - type: standard
+    title: "C2PA Technical Specification, version 2.2"
+    authors:
+      - name: "Coalition for Content Provenance and Authenticity"
+    year: 2025
+    url: "https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html"
+    notes: "instrument; products/media-chain RULE::seal(when the platform signs), products/media-chain RULE::read"
+  - type: conference-paper
+    title: "FaceForensics++: learning to detect manipulated facial images"
+    authors:
+      - family-names: "Rössler"
+        given-names: "A."
+      - family-names: "Cozzolino"
+        given-names: "D."
+      - family-names: "Verdoliva"
+        given-names: "L."
+      - family-names: "Riess"
+        given-names: "C."
+      - family-names: "Thies"
+        given-names: "J."
+      - family-names: "Nießner"
+        given-names: "M."
+    year: 2019
+    doi: "10.1109/ICCV.2019.00009"
+    notes: "contrast; products/media-chain RULE::seal, products/media-chain RULE::read"
+  - type: article
+    title: "Media forensics and DeepFakes: an overview"
+    authors:
+      - family-names: "Verdoliva"
+        given-names: "L."
+    year: 2020
+    doi: "10.1109/JSTSP.2020.3002101"
+    notes: "contrast; products/media-chain RULE::seal, products/media-chain RULE::read"
+  - type: article
+    title: "Deepfakes and beyond: a survey of face manipulation and fake detection"
+    authors:
+      - family-names: "Tolosana"
+        given-names: "R."
+      - family-names: "Vera-Rodriguez"
+        given-names: "R."
+      - family-names: "Fierrez"
+        given-names: "J."
+      - family-names: "Morales"
+        given-names: "A."
+      - family-names: "Ortega-Garcia"
+        given-names: "J."
+    year: 2020
+    doi: "10.1016/j.inffus.2020.06.014"
+    notes: "contrast; products/media-chain RULE::seal, products/media-chain RULE::read"
+  - type: article
+    title: "Scalable watermarking for identifying large language model outputs"
+    authors:
+      - family-names: "Dathathri"
+        given-names: "S."
+      - family-names: "See"
+        given-names: "A."
+      - family-names: "Ghaisas"
+        given-names: "S."
+      - name: "et al."
+    year: 2024
+    doi: "10.1038/s41586-024-08025-4"
+    notes: "related not endorsement; products/media-chain RULE::seal"
+  - type: article
+    title: "Tree-Ring watermarks: fingerprints for diffusion images that are invisible and robust"
+    authors:
+      - family-names: "Wen"
+        given-names: "Y."
+      - family-names: "Kirchenbauer"
+        given-names: "J."
+      - family-names: "Geiping"
+        given-names: "J."
+      - family-names: "Goldstein"
+        given-names: "T."
+    year: 2023
+    doi: "10.48550/arXiv.2305.20030"
+    notes: "related not endorsement; products/media-chain RULE::seal"
+  - type: article
+    title: "The Stable Signature: rooting watermarks in latent diffusion models"
+    authors:
+      - family-names: "Fernandez"
+        given-names: "P."
+      - family-names: "Couairon"
+        given-names: "G."
+      - family-names: "Jégou"
+        given-names: "H."
+      - family-names: "Douze"
+        given-names: "M."
+      - family-names: "Furon"
+        given-names: "T."
+    year: 2023
+    doi: "10.48550/arXiv.2303.15435"
+    notes: "related not endorsement; products/media-chain RULE::seal"

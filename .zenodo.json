@@ -157,6 +157,102 @@
       "relation": "references",
       "resource_type": "software",
       "scheme": "doi"
+    },
+    {
+      "identifier": "10.1109/CVPR.2015.7298682",
+      "relation": "references",
+      "resource_type": "publication-conferencepaper",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1109/CVPR.2019.00482",
+      "relation": "references",
+      "resource_type": "publication-conferencepaper",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1109/CVPR.2018.00068",
+      "relation": "references",
+      "resource_type": "publication-conferencepaper",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.48550/arXiv.2103.00020",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.48550/arXiv.1706.08500",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.48550/arXiv.1812.01717",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1007/BF00196791",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1007/3-540-48184-2_32",
+      "relation": "references",
+      "resource_type": "publication-conferencepaper",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.6028/NIST.FIPS.180-4",
+      "relation": "references",
+      "resource_type": "publication-other",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html",
+      "relation": "references",
+      "resource_type": "publication-other",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.1109/ICCV.2019.00009",
+      "relation": "references",
+      "resource_type": "publication-conferencepaper",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1109/JSTSP.2020.3002101",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1016/j.inffus.2020.06.014",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.1038/s41586-024-08025-4",
+      "relation": "references",
+      "resource_type": "publication-article",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.48550/arXiv.2305.20030",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.48550/arXiv.2303.15435",
+      "relation": "references",
+      "resource_type": "publication-preprint",
+      "scheme": "doi"
     }
   ],
   "language": "eng",
@@ -177,6 +273,22 @@
     "Yao, S., Zhao, J., Yu, D., et al. (2022). ReAct: synergizing reasoning and acting in language models. arXiv:2210.03629. https://doi.org/10.48550/arXiv.2210.03629",
     "Zhu, L. Q. (2026). ilang-conformance: a deterministic conformance test set for the I-Lang protocol, release 2.2.0 (goal-check). Zenodo. https://doi.org/10.5281/zenodo.23006027",
     "Zhu, L. Q. (2026). IML (I-Lang Machine Layer), the reference codec of IML 0.5. Zenodo concept record. https://doi.org/10.5281/zenodo.22823285",
-    "Zhu, L. Q. (2026). Mem-Forever: a Git-native persistent memory layer for AI agents. Zenodo concept record. https://doi.org/10.5281/zenodo.22865160"
+    "Zhu, L. Q. (2026). Mem-Forever: a Git-native persistent memory layer for AI agents. Zenodo concept record. https://doi.org/10.5281/zenodo.22865160",
+    "Schroff, F., Kalenichenko, D., Philbin, J. (2015). FaceNet: a unified embedding for face recognition and clustering. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 815-823. https://doi.org/10.1109/CVPR.2015.7298682",
+    "Deng, J., Guo, J., Xue, N., Zafeiriou, S. (2019). ArcFace: additive angular margin loss for deep face recognition. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 4690-4699. https://doi.org/10.1109/CVPR.2019.00482",
+    "Zhang, R., Isola, P., Efros, A. A., Shechtman, E., Wang, O. (2018). The unreasonable effectiveness of deep features as a perceptual metric. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 586-595. https://doi.org/10.1109/CVPR.2018.00068",
+    "Radford, A., Kim, J. W., Hallacy, C., et al. (2021). Learning transferable visual models from natural language supervision. Proceedings of the 38th International Conference on Machine Learning (ICML), PMLR 139, 8748-8763; arXiv:2103.00020. https://doi.org/10.48550/arXiv.2103.00020",
+    "Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., Hochreiter, S. (2017). GANs trained by a two time-scale update rule converge to a local Nash equilibrium. Advances in Neural Information Processing Systems 30; arXiv:1706.08500. https://doi.org/10.48550/arXiv.1706.08500",
+    "Unterthiner, T., van Steenkiste, S., Kurach, K., Marinier, R., Michalski, M., Gelly, S. (2018). Towards accurate generative models of video: a new metric and challenges. arXiv:1812.01717. https://doi.org/10.48550/arXiv.1812.01717",
+    "Haber, S., Stornetta, W. S. (1991). How to time-stamp a digital document. Journal of Cryptology, 3(2), 99-111. https://doi.org/10.1007/BF00196791",
+    "Merkle, R. C. (1988). A digital signature based on a conventional encryption function. Advances in Cryptology - CRYPTO '87, Lecture Notes in Computer Science 293, 369-378. https://doi.org/10.1007/3-540-48184-2_32",
+    "National Institute of Standards and Technology (2015). Secure Hash Standard (SHS). FIPS PUB 180-4. https://doi.org/10.6028/NIST.FIPS.180-4",
+    "Coalition for Content Provenance and Authenticity (2025). C2PA Technical Specification, version 2.2. https://spec.c2pa.org/specifications/specifications/2.2/specs/C2PA_Specification.html",
+    "Rössler, A., Cozzolino, D., Verdoliva, L., Riess, C., Thies, J., Nießner, M. (2019). FaceForensics++: learning to detect manipulated facial images. Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), 1-11. https://doi.org/10.1109/ICCV.2019.00009",
+    "Verdoliva, L. (2020). Media forensics and DeepFakes: an overview. IEEE Journal of Selected Topics in Signal Processing, 14(5), 910-932. https://doi.org/10.1109/JSTSP.2020.3002101",
+    "Tolosana, R., Vera-Rodriguez, R., Fierrez, J., Morales, A., Ortega-Garcia, J. (2020). Deepfakes and beyond: a survey of face manipulation and fake detection. Information Fusion, 64, 131-148. https://doi.org/10.1016/j.inffus.2020.06.014",
+    "Dathathri, S., See, A., Ghaisas, S., et al. (2024). Scalable watermarking for identifying large language model outputs. Nature, 634, 818-823. https://doi.org/10.1038/s41586-024-08025-4",
+    "Wen, Y., Kirchenbauer, J., Geiping, J., Goldstein, T. (2023). Tree-Ring watermarks: fingerprints for diffusion images that are invisible and robust. Advances in Neural Information Processing Systems 36; arXiv:2305.20030. https://doi.org/10.48550/arXiv.2305.20030",
+    "Fernandez, P., Couairon, G., Jégou, H., Douze, M., Furon, T. (2023). The Stable Signature: rooting watermarks in latent diffusion models. Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV), 22466-22477; arXiv:2303.15435. https://doi.org/10.48550/arXiv.2303.15435"
   ]
 }

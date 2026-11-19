@@ -70,8 +70,11 @@ def citation_text(e):
 def cff_person(name):
     if name == "et al.":
         return {"name": "et al."}
-    if " " not in name or name.startswith("Basel"):
+    if " " not in name or name.startswith(("Basel", "National Institute", "Coalition for")):
         return {"name": name}
+    if name[:1].islower():  # a particle such as van: the family name is the first two words
+        first, second, given = name.split(" ", 2)
+        return {"family-names": first + " " + second, "given-names": given}
     family, given = name.split(" ", 1)
     return {"family-names": family, "given-names": given}
 
