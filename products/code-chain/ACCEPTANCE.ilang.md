@@ -1,19 +1,19 @@
 ::ILANG::v5.0
-[TYPE:acceptance][ID:ILANG-CODE-CHAIN-ACCEPTANCE][VERSION:1.0][DATE:2026-11-19][LANG:en]
+[TYPE:acceptance][ID:ILANG-CODE-CHAIN-ACCEPTANCE][VERSION:1.1][DATE:2026-11-19][LANG:en]
 [FROM:@SUN][TO:@TESTER][STATUS:active]
 
 ::OBJECTIVE{id:code_chain_v10|owner:@SUN|trust:trusted|version:1|status:active}
-  target: the Code Chain 1.0 product in this directory is the one an agent loads to put the request and the judgment inside a git commit and the one a gate reads back: it lints clean against the canon, carries its IML form, fits one instruction field, and its first repository reads its own chained commits back with 0 invalid
+  target: the Code Chain 1.1 product in this directory is the one an agent loads to put the request and the judgment inside a git commit and the one a gate reads back: it lints clean against the canon, carries its IML form, fits one instruction field, and its first repository reads its own chained commits back with 0 invalid
   ACCEPT: every ::RUBRIC item below passes; the human items pass only on an ::EVIDENCE line that names a record made by someone or something other than the author of the product, a tester's run or a CI run; that line is the tester's own text, stored verbatim in records/
 
 ::FACT{key:module|value:SPEC-v5.0.md Part I MODULE::PRODUCT, items PRODUCT-1 to PRODUCT-4; the vocabulary it uses is the FACT declaration of §1 and SPEC-v5.0.md Part II §1 §2 §4 (eleven dimensions, f_v5, the frozen JUDGE block); the sibling products/media-chain uses the same chain for a media file|conf:confirmed}
-::FACT{key:owner|value:decision of @SUN on 2026-11-19: 做 先在DSH自己的commit上跑; the product lives under products/ of ilang-spec; the first repository is github.com/adsorgcn/DeepSeekHarness and its gate is tools/code_chain.py|conf:confirmed}
+::FACT{key:owner|value:decision of @SUN on 2026-11-19: 做 先在DSH自己的commit上跑; the product lives under products/ of ilang-spec; the first repository is github.com/adsorgcn/DeepSeekHarness and its gate is tools/code_chain.py; 1.1 on 2026-11-19 by his word of the same day, 改 发5.0.18: the anti-pattern line on a chain in a file beside the code now gives the reason, the file travels with every later commit and any of them can edit it while the message belongs to this commit alone, in place of the hash does not cover it, a clause that was inaccurate since a file in the tree is under the commit hash too|conf:confirmed}
 ::FACT{key:checker|value:goal-check, ilang-conformance goal/goal_check.py, run from this repository's root with --allow-cmd; the validators ilang_grammar_validator.py and ilang_judge_validator.py of ilang-spec sit at the root|conf:confirmed}
 
 ::RUBRIC{C1: CODE-CHAIN.ilang.md passes the canon grammar validator in strict mode|check:cmd|run:"python -X utf8 ilang_grammar_validator.py --lint products/code-chain/CODE-CHAIN.ilang.md --strict"|expect:0}
 ::RUBRIC{C2: CODE-CHAIN.iml is what the reference codec of IML 0.6 compiles from CODE-CHAIN.ilang.md and it decompiles back to it|check:cmd|run:"python -X utf8 products/check_product.py --dir products/code-chain --iml"|expect:0}
-::RUBRIC{C3: the iLang file is the released one|check:file|path:products/code-chain/CODE-CHAIN.ilang.md|sha256:b3610620c0334c75b6b545fdeeb17b6c288b3770eb0856c98a99a375c987c5e0}
-::RUBRIC{C4: the IML file is the released one|check:file|path:products/code-chain/CODE-CHAIN.iml|sha256:c53bf16bfe548ad402903675fbe47e784d1e9abf9ae79582bee49dd8a384c785}
+::RUBRIC{C3: the iLang file is the released one|check:file|path:products/code-chain/CODE-CHAIN.ilang.md|sha256:ab24c19c724c657392008250f8210bc17b2c40e02cb69ddb36cc87c33ea6e676}
+::RUBRIC{C4: the IML file is the released one|check:file|path:products/code-chain/CODE-CHAIN.iml|sha256:d3500cb84fc52e964500943ea0412e9d2d6aa3c228c3dc7c61c6d09f4e0b5bd2}
 ::RUBRIC{C5: the document fits one instruction field, at most 6000 characters|check:cmd|run:"python -X utf8 products/check_product.py --dir products/code-chain --length 6000"|expect:0}
 ::RUBRIC{C6: the chain in the README, the request line then the JUDGE block, passes both validators when written to a file under the canon header|check:human}
 ::RUBRIC{C7: the first repository, DeepSeekHarness, reads its chained commits back with its gate tools/code_chain.py check and reports 0 invalid, in a CI run|check:human}

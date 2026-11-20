@@ -1,10 +1,10 @@
-# Code Chain 1.0
+# Code Chain 1.1
 
 Code Chain is the provenance layer of iLang for a change to a repository: the same chain Media Chain puts inside an image or a video, put inside a git commit. The commit message ends with one blank line, the label `ai.ilang.chain` on its own line, then five lines: one `::FACT{key:request|...}` line carrying the owner's words verbatim and the change in one clause, and one JUDGE block of SPEC-v5.0 Part II §4 (`::JUDGE{v5.0}`, `V:`, `M:`, `R:`). The commit hash covers the chain; a signed commit binds it to a key. Nothing is encoded, nothing is paraphrased, and the mode is the `M:` line only.
 
 It adds nothing to the canon. The request is a FACT line; the judgment is the frozen JUDGE block; the two validators of ilang-spec check both. What it names is where the chain stands and how a gate reads it back from `git log`.
 
-Status: 1.0, dated 2026-11-19, by the owner's word of the same day ("做 先在DSH自己的commit上跑"); first run on github.com/adsorgcn/DeepSeekHarness, whose `tools/code_chain.py` is the first gate.
+Status: 1.1, dated 2026-11-19, by the owner's word of the same day ("改 发5.0.18"): the anti-pattern line of the GENE on a chain in a file beside the code now gives the reason, the file travels with every later commit and any of them can edit it while the message belongs to this commit alone, in place of "the hash does not cover it", a clause that was inaccurate since a file in the tree is under the commit hash too. 1.0, the same day, by his word "做 先在DSH自己的commit上跑"; first run on github.com/adsorgcn/DeepSeekHarness, whose `tools/code_chain.py` is the first gate.
 
 ## Where it goes
 
