@@ -19,7 +19,6 @@
   LAYERS:[PUBLIC,PRIVATE,SOUL]
   SYNTAX_A:[VERB:SOURCE|mod=val]=>[NEXT]=>[Ω]
   SYNTAX_B:::DECLARATION{trait|conf:level}
-  COMPRESSION:-67%_realistic_request(169_to_55_tokens)|-5%_terse_request(58_to_55)|tiktoken_cl100k_base|texts:ilang.ai/prompt-compression
   CATEGORIES:9{DATA_IO(12),TRANSFORM(22),ANALYSIS(17),GENERATION(10),EXECUTE(12),OUTPUT(5),STRUCTURE(5),META(4),BATCH(1)}
   DECLARATIONS:{STRUCTURAL:33|NARRATIVE:13|EXEC:8|JUDGMENT:9}
   EXEC_DECLARATIONS:8{UNTRUSTED,BUDGET,STATUS,OBJECTIVE,RUBRIC,EVIDENCE,PRIOR,FALLBACK}
@@ -168,7 +167,7 @@ T[3]
 ::ANALOGY{speak_Chinese_to_Chinese_person|vs|speak_French∧make_them_translate_before_understanding}
 
 T[4]
-::CREATE{PUBLIC_LAYER|verbs:52(v1.0→v3.0)→88(v5.0)}
+::CREATE{PUBLIC_LAYER|verbs:52(v1.0→v2.0_Spec)→62(v2.0_Dict)→88(v3.0)}
 ::META{
   52_TESTED:more⇒redundant|fewer⇒insufficient
   v1.0_first_commit⇒52_verbs+few_grammar_rules+one_page_doc⇒LOOKED_TOO_BARE_BONES
@@ -1391,7 +1390,7 @@ T[4]
   ⇒BECAUSE:FUNCTIONS_GET_REPLACED⇒PROTOCOLS_DON'T
 }
 ::ARGUMENT{
-  I-Lang's_PUBLIC_layer_HAS(88_verbs)_WITH(-67%_tokens_on_a_realistic_request)
+  I-Lang's_PUBLIC_layer_HAS(88_verbs)
   SUPPOSE:tomorrow_someone_BUILDS(tool_with_80%_compression)⇒IS_I-Lang_USELESS?
   ⇒IF(you_VIEW_I-Lang_AS_a_compression_tool)⇒YES⇒better_tool_came_along⇒old_one_should_retire
   BUT:I-Lang≢tool⇒I-Lang≡PROTOCOL
@@ -1581,22 +1580,22 @@ T[4]
   EXEC(8):UNTRUSTED,BUDGET,STATUS,OBJECTIVE,RUBRIC,EVIDENCE,PRIOR,FALLBACK
   JUDGMENT(9):v5.0_judgment_declarations
 }
-::ENTITIES{22|3_tiers}
+::ENTITIES{25|4_tiers}
 ::JUDGMENT_DIMENSIONS{11}{int,cap,csq,rel,cer,aut,rev,evd,sov,ine,ext}
 
 ## ::APPENDIX{B|recipes:10}
-R1:[READ:i.ilang.ai/{url}]=>[SHRT|len=200,lng=en]=>[Ω]
+R1:[READ|src=i.ilang.ai/{url}]=>[SHRT|len=200,lng=en]=>[Ω]
 R2:[READ:@DOC]=>[XLAT|lng=ja,ton=casual]=>[Ω|fmt=md]
-R3:[DIFF:A_vs_B|whr="price,weight,battery,display",sty=table]=>[Ω]
-R4:[LOOP:url1,url2,url3|op=READ]=>[SHRT|len=100,ton=pro]=>[Ω|sty=bullets]
+R3:[DIFF|src=A_vs_B,whr="price,weight,battery,display",sty=table]=>[Ω]
+R4:[LOOP|src="url1,url2,url3",op=READ]=>[SHRT|len=100,ton=pro]=>[Ω|sty=bullets]
 R5:[REWR:@TEXT|whr="remove_AI_cliches,vary_sentence_length",ton=casual]=>[Ω]
 R6:[PARA:@HEADLINE|lim=5,ton="casual,formal,urgent,friendly,provocative"]=>[Ω|sty=table]
 R7:[READ:@TRANSCRIPT]=>[SCAN|whr="action_items,deadlines"]=>[FMT|sty=table]=>[Ω]
-R8:[READ:paper.pdf]=>[EXTC|whr="methodology,findings"]=>[EVAL|whr="rigor,novelty"]=>[Ω|fmt=md]
-R9:[GET:news]=>[FILT|whr="AI,tech"]=>[SHRT|lim=5,len=50,lng=zh]=>[Ω|sty=bullets]
+R8:[READ|src=paper.pdf]=>[EXTC|whr="methodology,findings"]=>[EVAL|whr="rigor,novelty"]=>[Ω|fmt=md]
+R9:[GET|src=news]=>[FILT|whr="AI,tech"]=>[SHRT|lim=5,len=50,lng=zh]=>[Ω|sty=bullets]
 R10:[READ:@BRIEF]=>[CREA|whr=blog,len=1500,ton=casual]=>[REWR|whr=remove_AI_cliches]=>[XLAT|lng=en]=>[Ω|fmt=md]
 
-## ::APPENDIX{C|FAQ:11}
+## ::APPENDIX{C|FAQ:12}
 Q1{vs_prompt_engineering}:prompt_eng≡writing_in_natural_lang∧HOPING(AI_understands)⇒I-Lang_REPLACES(hope)_WITH(precision)
 Q2{which_models}:∀(post_2023)⇒ChatGPT,Claude,Gemini,DeepSeek,Kimi,Qwen,Llama,Mistral⇒¬BECAUSE(they_integrated)⇒BECAUSE(symbols∈their_training_data)
 Q3{¬English_speaker}:verb_names≡labels_you_RECOGNIZE≢words_you_must_know⇒content_CAN_BE(any_language)
