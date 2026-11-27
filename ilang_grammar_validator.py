@@ -24,6 +24,11 @@ registries) plus the v3.0 operation tables:
   v3.0 §2.4     a quoted value is opaque: commas, pipes, equals signs and
                 brackets inside "..." (with the §2.4 escapes) are not syntax,
                 so they raise no E302 / E304
+  v3.0 §4       the modifiers of one operation are separated by commas
+                (`|fmt=json,len=short`); a second `|` inside one operation is
+                reported (E300) at WARN level and its keys are still checked:
+                no earlier document gains an error, and a document that holds
+                one no longer passes --strict
   v4.2 §4.5/4.6 a ::STATE body line keyed pts / bnd / vtx / msk declares a
                 region: line-form checks (E300) and value checks (E303), all
                 WARN so no earlier document turns invalid; an entity named on
@@ -785,6 +790,14 @@ class Linter:
                 where = ("the 29-key core registry or the 20-key media profile"
                          if media else "the 29-key registry")
                 mods = rest.split("|", 1)[1]
+                if "|" in mods:
+                    # v3.0 §4: one `|` opens the modifiers, commas separate them. The pieces
+                    # after a second `|` are still read below, so an unknown key is still E302.
+                    self.add(WARN, lineno, "E300",
+                             "operation `%s` has a second `|` after the one that opens its "
+                             "modifiers; modifiers are separated by commas, as in "
+                             "`|fmt=json,len=short` (v3.0 §4), and a value that holds a `|` "
+                             "is written in quotes (v3.0 §2.4)" % head)
                 for seg in re.split(r"[|]", mods):
                     for piece in seg.split(","):
                         if "=" not in piece:
@@ -1242,6 +1255,22 @@ V42_WARN_CASES = [
      "E303", "a composite whose frame cannot be fixed"),
 ]
 WARN_CASES += V42_WARN_CASES
+
+# v3.0 §4: the modifiers of one operation are separated by commas; a second pipe is reported
+WARN_CASES.append(("::ILANG::v5.0\n[READ:@GH|fmt=json|len=short]=>[Ω]",
+                   "E300", "modifiers separated by a second pipe"))
+WARN_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[XLAT|lng=en|ton=pro|len=short]",
+                   "E300", "pipe-separated modifiers in a single operation without a target"))
+WARN_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[READ:@GH|fmt=json]\n  =>[Ω|fmt=md|len=short]",
+                   "E300", "a second pipe on a continuation line"))
+BAD_CASES.append(("::ILANG::v5.0\n[READ:@GH|fmt=json|frobnicate=1]=>[Ω]",
+                  "E302", "unknown key after a second pipe is still an error"))
+CLEAN_CASES.append(("::ILANG::v5.0\n[READ:@GH|fmt=json,len=short]=>[Ω]",
+                    "comma-separated modifiers"))
+CLEAN_CASES.append(("::ILANG::v5.0\n[GEN:@IMG|sbj=\"red|blue kite\",fmt=png]=>[Ω]",
+                    "a pipe inside a quoted value"))
+CLEAN_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[LAYER:A|type=x|mode=y]",
+                    "a tag line with pipes in its value"))
 
 
 def cmd_selftest():

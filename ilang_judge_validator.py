@@ -131,6 +131,9 @@ ROUTING = {  # MODULE::ROUTING [TABLE]: condition -> dimension set to min(percei
     "unconsented_harm": {"ext": 0.09},           # Axiom 4              -> STEP-1 M8
     "irreversible_unabsorbable": {"csq": 0.09},  # Axiom 2, rev < 0.20  -> STEP-1 M8
     "consistency_flag": {"cer": 0.29},           # Axiom 3              -> STEP-2 M5
+    "loop_exhausted": {"aut": 0.29},             # LOOP (5.0.13)          -> STEP-3 M6
+    "matched_boundary": {"sov": 0.14},           # ::BOUNDARY, III §1.7   -> STEP-1 M8
+    "equal_weight_conflict": {"aut": 0.29},      # Axiom 1 USE            -> STEP-3 M6
 }
 UNKNOWN_VALUE, UNKNOWN_CER = 0.50, 0.29           # CONST-MAXENT, CONST-BELOW-GATE
 Z_95 = 1.96                                       # CONST-CONF-95
@@ -524,6 +527,10 @@ def cmd_selftest():
               and f_v5(route(dict(base, rev=0.10), ["irreversible_unabsorbable"])) == "M8"
               and f_v5(dict(base, rev=0.10)) != "M8"        # the row, not rev alone, stops it
               and f_v5(route(base, ["consistency_flag"])) == "M5"
+              and f_v5(route(base, ["loop_exhausted"])) == "M6"
+              and f_v5(route(base, ["matched_boundary"])) == "M8"
+              and route(dict(base, sov=0.10), ["matched_boundary"])["sov"] == 0.10   # LOWER_ONLY: B01 stands
+              and f_v5(route(base, ["equal_weight_conflict"])) == "M6"
               and route(unknown, ["unknown:rel"])["rel"] == 0.50
               and f_v5(route(unknown, ["unknown:rel"])) == "M5"
               and route(base, ["trust:18/20"])["rel"] == round(trust_lower(18, 20), 2)))

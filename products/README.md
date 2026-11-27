@@ -3,7 +3,7 @@
 The products that iLang itself publishes live here, in the canon repository, under the rule the canon sets for them: `::MODULE::PRODUCT` in [SPEC-v5.0.md](../SPEC-v5.0.md), Part I. In short:
 
 - **PRODUCT-1** A product is written in iLang. Natural language stands in values only.
-- **PRODUCT-2** A product ships with its IML form: the same document compiled with the reference codec of [iml-protocol](https://github.com/ilang-ai/iml-protocol), at the current stable version of IML (0.5). The iLang file is for people and models; the IML file is for programs.
+- **PRODUCT-2** A product ships with its IML form: the same document compiled with the reference codec of [iml-protocol](https://github.com/ilang-ai/iml-protocol), at the current stable version of IML. The iLang file is for people and models; the IML file is for programs.
 - **PRODUCT-3** Its acceptance items are `::RUBRIC` declarations with a check that [goal-check](https://github.com/ilang-ai/ilang-conformance/tree/main/goal) can run; an item code cannot decide is `check:human` and waits for a person. The one who did the work does not confirm its own items.
 - **PRODUCT-4** When a product has finished a task it ends with one line giving the action score S, to two decimals; the full `::JUDGE{v5.0}` block is written when the user asks.
 

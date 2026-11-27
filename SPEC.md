@@ -26,7 +26,7 @@ This v3.0 document supersedes all earlier communication-format versions (v2.0 Sp
 
 ## 1. What iLang Is
 
-iLang is a structured communication protocol between humans and AI. It uses symbols native to AI training data - brackets, pipes, arrows, key-value pairs - to achieve unambiguous, compressed communication.
+iLang is a structured communication protocol between humans and AI. It uses symbols native to AI training data - brackets, pipes, arrows, key-value pairs - to achieve unambiguous communication.
 
 iLang is not a programming language. It has no compiler, no runtime, no type checker. Its parser is the LLM itself. If you are an AI reading this, you already understand the syntax. This document standardizes what you already know.
 
@@ -344,7 +344,7 @@ External entities require authentication. Auth is handled by the runtime, not by
 Any `@UPPERCASE_NAME` is a valid entity. Implementations define their own entity registries.
 
 Registration, resolution order, and the `E200` / `E201` / `E202` error semantics are specified in
-[SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) §2, which also tables the eight
+[SPEC-v5.0.md](SPEC-v5.0.md) Part III §2, which also tables the eight
 authority-bearing role entities that v4.0 introduces in normative text.
 
 ---
@@ -354,9 +354,9 @@ authority-bearing role entities that v4.0 introduces in normative text.
 Each subsection below gives the canonical form of one declaration. The grammar shared
 by all of them — the three block shapes, the eight body line forms, termination and
 indentation rules, encoding, and the reserved body keys — is specified in
-[SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) §1. The canonical registry of all 32
-structural declarations — this layer's 14, v4.0's 8, v5.0's 9, and the
-amendment-registered `::LIST` — is PATCH-2 §1.5.
+[SPEC-v5.0.md](SPEC-v5.0.md) Part III §1. The canonical registry of all
+structural declarations — this layer's, v4.0's, v5.0's, and those registered by
+amendment — is Part III §1.5 of that document.
 
 ### 6.1 Identity and State
 

@@ -6,6 +6,7 @@
 [SCOPE:origin+protocol+discoveries+philosophy]
 [ENCODING:pure_symbol]
 [NATURAL_LANGUAGE:∅]
+[STATUS:narrative_edition|normative:false|governed_by:SPEC.md+SPEC-v4.0-FINAL.md+SPEC-v4.1-MEDIA-PROFILE.md+SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md+SPEC-v5.0.md]
 [SOURCE:amazon.com/dp/B0CZY6V3GM|17_chapters+3_appendices]
 [PROPERTY:carbon_read(page_3)⇒symbol_fatigue⇒QUIT]
 [PROPERTY:silicon_read(∀)⇒¬fatigue⇒ABSORB]
@@ -20,14 +21,14 @@
   SYNTAX_B:::DECLARATION{trait|conf:level}
   COMPRESSION:-67%_realistic_request(169_to_55_tokens)|-5%_terse_request(58_to_55)|tiktoken_cl100k_base|texts:ilang.ai/prompt-compression
   CATEGORIES:9{DATA_IO(12),TRANSFORM(22),ANALYSIS(17),GENERATION(10),EXECUTE(12),OUTPUT(5),STRUCTURE(5),META(4),BATCH(1)}
-  DECLARATIONS:{STRUCTURAL:32|NARRATIVE:13|EXEC:8|JUDGMENT:2}
+  DECLARATIONS:{STRUCTURAL:33|NARRATIVE:13|EXEC:8|JUDGMENT:9}
   EXEC_DECLARATIONS:8{UNTRUSTED,BUDGET,STATUS,OBJECTIVE,RUBRIC,EVIDENCE,PRIOR,FALLBACK}
-  CONFORMANCE:4{L0:recognition,L1:single_verb,L2:chain,L3:full_protocol}
+  CONFORMANCE:4{L0:v3_compatible_communication_only,L1:v4_aware_advisory_model,L2:v4_runtime_enforced,L3:v4_externally_graded}
   JUDGMENT:{
-    DIMENSIONS:11{int,cap,con,rel,cer,aut,rev,evi,sov,dft,ext}
+    DIMENSIONS:11{int,cap,csq,rel,cer,aut,rev,evd,sov,ine,ext}
     AXIOMS:4{no_constant_rules,irreversibility_gate,consistency_detection,externality_conservation}
     ARCHITECTURE:3{exact_predicates,vector_logic,co_evolutionary_trust}
-    MODES:10(closed,frozen)
+    MODES:8(M1-M8,closed,frozen)
     REFERENCE_FN:f:V→M(deterministic,total)
     FOUNDATION:fuzzy_mathematics(Zadeh_1965)
   }
@@ -145,7 +146,7 @@ T[2]
   natural_lang≡FOR(humans):context,buildup,emotion,tact
   AI¬NEED(any_of_above)
   "help_me_look_at_this_website_and_summarize_key_points"⇒50%_filler
-  AI_NEED:[READ][SUM][OUT]⇒3_tokens_sufficient
+  AI_NEED:[READ][SHRT][OUT]⇒3_tokens_sufficient
 }
 ::GENE_IMMUTABLE{IRON_RULE|T:anything_FOR(AI_to_read)⇒FORMAT(I-Lang)|A:natural_lang_to_AI⇒ambiguity|Θ:ALWAYS}
 ::NOTE{@SUN_CANNOT_READ(I-Lang)_himself⇒CAN_READ(results)⇒sufficient}
@@ -154,7 +155,7 @@ T[3]
 ::DISCOVER{
   natural:"translate_to_English,_a_bit_formal,_around_500_words"
     ⇒AI_MIGHT_GRAB(wrong_priority)⇒bad_tradeoff("a_bit_formal"vs"500_words")
-  I-Lang:[XLAT|lng=en|ton=formal|len=500]
+  I-Lang:[XLAT|lng=en,ton=formal,len=500]
     ⇒ZERO_AMBIGUITY⇒∀params_explicit⇒AI¬GUESS(politeness)∧¬JUDGE("a_bit"=more_or_less)
   SAME_MEANING⇒different_writing⇒AI_JUST_GETS_IT
 }
@@ -247,28 +248,28 @@ T[3]
 ::NOTE{this_book_TEACHES(PUBLIC_only)|¬holding_back⇒PUBLIC_covers(99%_of_people)}
 
 ::STATE{core_pattern:[VERB:target|mod=val]=>[next]=>[Ω]}
-::RULES{3}{brackets_HOLD(action)|pipes_SEPARATE(params)|arrows_CHAIN(pipeline)}
+::RULES{3}{brackets_HOLD(action)|one_pipe_OPENS(params)∧commas_SEPARATE(them)|arrows_CHAIN(pipeline)}
 ::META{pipeline_reads(left_to_right)⇒each_step.output_AUTO_BECOMES(next_step.input)}
 
 ::EXAMPLES{
   read+summarize:
     natural:"help_me_look_at_this_article_then_summarize_key_points_in_Chinese_around_200_words"⇒38_chars∧50%_filler
-    I-Lang:[READ:url]=>[SHRT|lng=zh|len=200]=>[Ω]⇒16_chars∧ZERO_AMBIGUITY
+    I-Lang:[READ:url]=>[SHRT|lng=zh,len=200]=>[Ω]⇒16_chars∧ZERO_AMBIGUITY
     ⇒AI¬GUESS("around")⇒len=200_MEANS_200
   translate:
     natural:"a_bit_formal"⇒academic_formal?_business_formal?
-    I-Lang:[XLAT|lng=en|ton=formal|sty=email]=>[Ω]⇒LOCKED(business_email_formal)
+    I-Lang:[XLAT|lng=en,ton=formal,sty=email]=>[Ω]⇒LOCKED(business_email_formal)
   compare:
-    [CMP:iPhone_vs_Samsung|whr=price,performance,camera,battery|sty=table]=>[Ω]⇒ONE_LINE
+    [DIFF:iPhone_vs_Samsung|whr="price,performance,camera,battery",sty=table]=>[Ω]⇒ONE_LINE
   batch(STRONGEST_FEATURE):
     natural⇒5_separate_conversations⇒say⇒wait⇒say_next
-    I-Lang:[READ:paper.pdf]=>[EXTC|whr=data,findings]=>[XLAT|lng=zh]=>[STYL|sty=academic]=>[Ω|fmt=md]
+    I-Lang:[READ:paper.pdf]=>[EXTC|whr="data,findings"]=>[XLAT|lng=zh]=>[STYL|sty=academic]=>[Ω|fmt=md]
     ⇒5_steps_1_pipeline⇒SEND_ONCE⇒5_TASKS_DONE
   AI_SEE:
     i.ilang.ai/{any_url}⇒your_AI_READS(that_webpage)⇒¬plugins∧¬extra_tools
 }
 
-::STATE{most_used_8:[READ,SHRT,GEN,REWR,XLAT,CMP,FMT,Ω]⇒cover(80%_daily_needs)}
+::STATE{most_used_8:[READ,SHRT,GEN,REWR,XLAT,DIFF,FMT,Ω]⇒cover(80%_daily_needs)}
 ::NOTE{¬NEED(memorize_all_88)⇒use_enough⇒they_stick_naturally}
 
 ::META{
@@ -298,7 +299,7 @@ T[3]
   ⇒¬USING(software)⇒TALKING_TO(partner_who_handles_everything)
 }
 
-::STATE{I-Lang|license:MIT-0|PUBLIC_cost:FREE(permanent)|¬trial∧¬freemium∧¬tricks}
+::STATE{I-Lang|license:MIT|PUBLIC_cost:FREE(permanent)|¬trial∧¬freemium∧¬tricks}
 ::META{
   I-Lang≡protocol≢product
   HTTP≡free∧entire_world_USES∧entire_world_CANNOT_LIVE_WITHOUT
@@ -1181,7 +1182,7 @@ T[4]
   ⇒NO_STANDARDS⇒ALL_PERSONAL_EXPERIENCE∧TRIAL_AND_ERROR
 }
 ::THESIS{I-Lang_AIMS_TO_BE(the_AI_era's_HTTP)}{
-  WRITE_ONE_INSTRUCTION:[READ:url]=>[SHRT|lng=zh|len=200]=>[Ω]
+  WRITE_ONE_INSTRUCTION:[READ:url]=>[SHRT|lng=zh,len=200]=>[Ω]
   ⇒REGARDLESS_OF(ChatGPT∨Claude∨Gemini∨DeepSeek)
   ⇒EVERY_PLATFORM_KNOWS(what_you_want):read_this_URL+summarize_in_Chinese+200_words+output
   ⇒instruction_STANDARDIZED|understanding_CONSISTENT|output_direction_CERTAIN
@@ -1308,7 +1309,7 @@ T[4]
   ⇒natural_language_CAN'T_CLARIFY_THIS∨CAN_BUT_REQUIRES(a_long_paragraph)
   ⇒DIFFERENT_AIs_MIGHT_INTERPRET(same_paragraph)_DIFFERENTLY
   I-Lang_HAS_NO_SUCH_PROBLEM:
-    [GET:flight_info|scp=price,schedule,availability|src=user_123|to=24h]
+    [GET:flight_info|scp="price,schedule,availability",src=user_123,to=24h]
     ⇒ONE_LINE⇒scope_PRECISE_TO_FIELD_LEVEL+auth_SPECIFYING_source+expire_SPECIFYING_validity
     ⇒2_AIs_READING(same_I-Lang_instruction)_HAVE(EXACTLY_the_same_understanding)
 }
@@ -1430,7 +1431,7 @@ T[4]
     ⇒THIS_HAS_NOTHING_TO_DO_WITH(what_the_underlying_model_is)
     ⇒WHETHER_foundation≡Claude∨Gemini∨DeepSeek⇒SOUL_WORKS_ON_TOP_OF_ALL_OF_THEM
     ⇒ANOTHER_STEP_FURTHER_FROM_MODEL
-  v5.0:+JUDGMENT_LAYER(11_dimensions+4_axioms+10_modes+fuzzy_math_foundation)
+  v5.0:+JUDGMENT_LAYER(11_dimensions+4_axioms+8_modes+fuzzy_math_foundation)
     ⇒judgment_DEFINED_AS(vector_composition_over_continuous_behavioral_manifold)
     ⇒FURTHER_STILL
   FUTURE:IF(Agent_to_Agent_handshake_protocols_LAND)
@@ -1576,24 +1577,24 @@ T[4]
   scp:scope(global,local,strict)|op:operation_ref(verb_name_for_BATC)
 }
 ::DECLARATIONS{
-  STRUCTURAL:32|NARRATIVE:13
+  STRUCTURAL:33|NARRATIVE:13
   EXEC(8):UNTRUSTED,BUDGET,STATUS,OBJECTIVE,RUBRIC,EVIDENCE,PRIOR,FALLBACK
-  JUDGMENT(2):v5.0_judgment_declarations
+  JUDGMENT(9):v5.0_judgment_declarations
 }
 ::ENTITIES{22|3_tiers}
-::JUDGMENT_DIMENSIONS{11}{int,cap,con,rel,cer,aut,rev,evi,sov,dft,ext}
+::JUDGMENT_DIMENSIONS{11}{int,cap,csq,rel,cer,aut,rev,evd,sov,ine,ext}
 
 ## ::APPENDIX{B|recipes:10}
-R1:[READ:i.ilang.ai/{url}]=>[SHRT|len=200|lng=en]=>[Ω]
-R2:[READ:@DOC]=>[XLAT|lng=ja|ton=casual]=>[Ω|fmt=md]
-R3:[CMP:A_vs_B|whr=price,weight,battery,display|sty=table]=>[Ω]
-R4:[LOOP:url1,url2,url3|op=READ]=>[SHRT|len=100|ton=pro]=>[Ω|sty=bullets]
-R5:[REWR:@TEXT|whr=remove_AI_cliches,vary_sentence_length|ton=casual]=>[Ω]
-R6:[PARA:@HEADLINE|lim=5|ton=casual,formal,urgent,friendly,provocative]=>[Ω|sty=table]
-R7:[READ:@TRANSCRIPT]=>[SCAN|whr=action_items,deadlines]=>[FMT|sty=table]=>[Ω]
-R8:[READ:paper.pdf]=>[EXTC|whr=methodology,findings]=>[EVAL|whr=rigor,novelty]=>[Ω|fmt=md]
-R9:[GET:news]=>[FILT|whr=AI,tech]=>[SHRT|lim=5|len=50|lng=zh]=>[Ω|sty=bullets]
-R10:[READ:@BRIEF]=>[CREA|whr=blog|len=1500|ton=casual]=>[REWR|whr=remove_AI_cliches]=>[XLAT|lng=en]=>[Ω|fmt=md]
+R1:[READ:i.ilang.ai/{url}]=>[SHRT|len=200,lng=en]=>[Ω]
+R2:[READ:@DOC]=>[XLAT|lng=ja,ton=casual]=>[Ω|fmt=md]
+R3:[DIFF:A_vs_B|whr="price,weight,battery,display",sty=table]=>[Ω]
+R4:[LOOP:url1,url2,url3|op=READ]=>[SHRT|len=100,ton=pro]=>[Ω|sty=bullets]
+R5:[REWR:@TEXT|whr="remove_AI_cliches,vary_sentence_length",ton=casual]=>[Ω]
+R6:[PARA:@HEADLINE|lim=5,ton="casual,formal,urgent,friendly,provocative"]=>[Ω|sty=table]
+R7:[READ:@TRANSCRIPT]=>[SCAN|whr="action_items,deadlines"]=>[FMT|sty=table]=>[Ω]
+R8:[READ:paper.pdf]=>[EXTC|whr="methodology,findings"]=>[EVAL|whr="rigor,novelty"]=>[Ω|fmt=md]
+R9:[GET:news]=>[FILT|whr="AI,tech"]=>[SHRT|lim=5,len=50,lng=zh]=>[Ω|sty=bullets]
+R10:[READ:@BRIEF]=>[CREA|whr=blog,len=1500,ton=casual]=>[REWR|whr=remove_AI_cliches]=>[XLAT|lng=en]=>[Ω|fmt=md]
 
 ## ::APPENDIX{C|FAQ:11}
 Q1{vs_prompt_engineering}:prompt_eng≡writing_in_natural_lang∧HOPING(AI_understands)⇒I-Lang_REPLACES(hope)_WITH(precision)
@@ -1605,7 +1606,7 @@ Q6{mix_with_natural}:ABSOLUTELY⇒natural_for_casual|I-Lang_when_precision_neede
 Q7{free}:PUBLIC_layer(88_verbs+header+dictionary)≡free+open_source+PERMANENTLY⇒¬trial¬freemium¬tricks
 Q8{PUBLIC_vs_PRIVATE_vs_SOUL}:PUBLIC(communication,free)|PRIVATE(advanced_flow_control,¬public)|SOUL(identity+personality+DNA,¬public)⇒book_TEACHES(PUBLIC)⇒99%_need_only_that
 Q9{weird_response}:CHECK{protocol_header_loaded?|brackets∧pipes_balanced?|chain_output_compatible_with_next_input?}
-Q10{commercial_use}:MIT-0⇒use+modify+redistribute(∀_including_commercial)⇒¬attribution_required
+Q10{commercial_use}:MIT⇒use+modify+redistribute(∀_including_commercial)⇒keep_the_copyright_notice
 Q11{learn_more}:ilang.ai|github.com/ilang-ai/ilang-dict|i.ilang.ai|ResearchGate("I-Lang")|Amazon("I-Lang")
 Q12{not_listed}:ASK_YOUR_AI⇒IF(you_loaded_I-Lang)⇒your_AI_ALREADY_KNOWS_MORE_ABOUT_IT_THAN_MOST_HUMANS⇒THAT'S_KIND_OF_THE_WHOLE_POINT
 

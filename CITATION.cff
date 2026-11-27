@@ -71,7 +71,7 @@ references:
         given-names: "E. T."
     year: 1957
     doi: "10.1103/PhysRev.106.620"
-    notes: "foundation; Appendix G CONST-MAXENT, MODULE::ROUTING unknown dimension row, Part II §2 maximum entropy principle"
+    notes: "foundation; Appendix G CONST-MAXENT, MODULE::ROUTING unknown dimension row, MODULE::CALIBRATION INIT"
   - type: article
     title: "Coherent measures of risk"
     authors:
@@ -85,7 +85,7 @@ references:
         given-names: "D."
     year: 1999
     doi: "10.1111/1467-9965.00068"
-    notes: "foundation; Part II §2 tail risk, Appendix G CONST-ES-975"
+    notes: "foundation; MODULE::VECTOR DERIVED tail risk, Appendix G CONST-ES-975"
   - type: article
     title: "On the coherence of expected shortfall"
     authors:
@@ -95,7 +95,7 @@ references:
         given-names: "D."
     year: 2002
     doi: "10.1016/S0378-4266(02)00283-2"
-    notes: "foundation; Part II §2 tail risk, Appendix G CONST-ES-975"
+    notes: "foundation; MODULE::VECTOR DERIVED tail risk, Appendix G CONST-ES-975"
   - type: standard
     title: "Minimum capital requirements for market risk"
     authors:
@@ -198,7 +198,7 @@ references:
     doi: "10.5281/zenodo.23006027"
     notes: "instrument; MODULE::PRODUCT PRODUCT-3"
   - type: software
-    title: "IML (I-Lang Machine Layer), the reference codec of IML 0.5"
+    title: "IML (I-Lang Machine Layer), the reference codec of IML"
     authors:
       - family-names: "Zhu"
         given-names: "Long Quan"
