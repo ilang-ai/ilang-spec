@@ -31,6 +31,11 @@ jobs:
           cp $GITHUB_WORKSPACE/ilang_judge_validator.py .
           cp $GITHUB_WORKSPACE/ilang_grammar_validator.py .
           mkdir -p schema && cp $GITHUB_WORKSPACE/schema/*.json $GITHUB_WORKSPACE/schema/*.py schema/
+          # README.md links runtime/ilang-latest.md, runtime/ and products/. The bundles, their sha256
+          # files and the manifest are the runtime a reader can paste; products/ goes without its two
+          # PNG files, since the Hub refuses binary files that are not stored through LFS or Xet.
+          mkdir -p runtime && cp $GITHUB_WORKSPACE/runtime/*.md $GITHUB_WORKSPACE/runtime/*.sha256 $GITHUB_WORKSPACE/runtime/manifest.json runtime/
+          cp -r $GITHUB_WORKSPACE/products . && find products -name '*.png' -delete
           git config user.name "ilang-ai"
           git config user.email "ilang-ai@users.noreply.github.com"
           git add -A

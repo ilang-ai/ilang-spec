@@ -247,10 +247,10 @@ After:
 
 [GEN:@AUD|src="park wind, distant children laughing",mdm=ambient,dur=8,fmt=wav,dst=@VID]
 
-[GEN:@VID|sbj=kid_aria,act="running after the kite",pov="low angle",mvt=tracking,fcl=35mm,dur=8,frm=@PREV,dlg="Higher!",fmt=mp4]=>[WRIT:@LOCAL|path=out/kite_02.mp4]
+[GEN:@VID|sbj=kid_aria,act="running after the kite",pov="low angle",mvt=tracking,fcl=35mm,dur=8,frm=out/kite_01.mp4,dlg="Higher!",fmt=mp4]=>[WRIT:@LOCAL|path=out/kite_02.mp4]
 ```
 
-Notes on the rewrite. The seven constants that both shots share are declared once and neither shot repeats them. `sbj=kid_aria` appears in both shots and states that the two children are the same child; it does not describe the child, which stays in prose. Shot size and camera movement separate onto `pov` and `mvt`, and the subject's own motion stays on `act`. The first shot starts from an image, the second starts where the first ended, and both are written with `frm`. The audio line reuses `src`, `mdm`, `dur`, `fmt` and `dst`. At `dur=8` and `fps=24` each shot is 192 frames. Corrected 2026-11-26 (SPEC-v5.0.md Part III Appendix B): the count of shared constants and the description of the audio line.
+Notes on the rewrite. The seven constants that both shots share are declared once and neither shot repeats them. `sbj=kid_aria` appears in both shots and states that the two children are the same child; it does not describe the child, which stays in prose. Shot size and camera movement separate onto `pov` and `mvt`, and the subject's own motion stays on `act`. The first shot starts from an image, the second starts where the first ended, and both are written with `frm`. The audio line reuses `src`, `mdm`, `dur`, `fmt` and `dst`. At `dur=8` and `fps=24` each shot is 192 frames. Corrected 2026-11-26 (SPEC-v5.0.md Part III Appendix B): the count of shared constants and the description of the audio line. Corrected 2026-11-27 (the same channel): the second shot names the clip it continues, `frm=out/kite_01.mp4`, where it read `frm=@PREV`.
 
 ---
 

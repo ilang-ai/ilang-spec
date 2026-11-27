@@ -310,7 +310,7 @@ created → running → failed
   → confirm evidence set covers every requirement
   → score against rubric if present
 
-[CHEK:@AUDIT_REPORT|whr=score>=threshold,no_unknown,no_fail]
+[CHEK:@AUDIT_REPORT|whr="score>=threshold,no_unknown,no_fail"]
   → decide whether claimed_complete is allowed
 
 ::STATUS{@TASK|state:claimed_complete|evidence:@AUDIT_REPORT|by:@SELF|authority:proposal}

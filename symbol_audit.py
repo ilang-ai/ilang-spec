@@ -18,7 +18,8 @@ and the assertion words (≈, lim, converge), and requires each of them to fall 
 
 Field lines (T:, A:, S:, V:, M:, R:), declaration heads (::X{...}), headings and the HISTORY
 line are structured payloads, not formulas, and are not scanned. Appendices are not scanned;
-Appendix G is read as the registry.
+Appendix G is read as the registry, up to its closing ::STATE{@PATCH_1 line or the next
+appendix heading, whichever comes first.
 
 Usage:
   python3 symbol_audit.py [SPEC-v5.0.md]     # exit 0 when every symbol has a home
@@ -138,7 +139,8 @@ def split_document(lines):
             part = "IV"
         if t.startswith("## Appendix G"):
             in_g = True
-        elif in_g and (t.startswith("::STATE{@PATCH-1") or t.startswith("# Part")):
+        elif in_g and (t.startswith("::STATE{@PATCH_1") or t.startswith("# Part")
+                       or t.startswith("## Appendix")):
             in_g = False
         if in_g:
             appendix_g.append(t)
@@ -352,7 +354,7 @@ T:all_dims_range=[0.00,1.00]|precision:2dp
 }
 ## Appendix G — Model Registry (non-normative)
 ::FACT{id:CONST-ES-975|value:expected_shortfall_at_0.975|basis:Basel|status:benchmarked}
-::STATE{@PATCH-1, end:true}
+::STATE{@PATCH_1, end:true}
 """
 
 
@@ -385,6 +387,19 @@ def cmd_selftest():
         ("exactly the planted gaps are reported",
          missing == {("BETA", "ζ"), ("BETA", "converge"), ("ALPHA", "budget"), ("BETA", "budget")}),
     ]
+    # 2026-11-27: the registry is Appendix G alone. A name written after it (Appendix H cites
+    # budget(p) here) must not account for a symbol, whether Appendix G ends at its closing
+    # ::STATE{@PATCH_1 line or, without that line, at the next appendix heading.
+    planted = {("BETA", "ζ"), ("BETA", "converge"), ("ALPHA", "budget"), ("BETA", "budget")}
+    tail = "## Appendix H — References Register (non-normative)\nREF-001 cites budget(p) in an entry.\n"
+    for label, doc in (("its closing ::STATE{@PATCH_1 line",
+                        SELFTEST_DOC + "A line after the closing line names budget(p).\n" + tail),
+                       ("the next appendix heading",
+                        SELFTEST_DOC.replace("::STATE{@PATCH_1, end:true}\n", "") + tail)):
+        u, _, _ = audit(doc.split("\n"))
+        _, g_text = split_document(doc.split("\n"))
+        t.append(("Appendix G ends at %s: a name in Appendix H accounts for nothing" % label,
+                  {(m, sym) for _, m, _, sym, _ in u} == planted and "REF-001" not in g_text))
     failed = [n for n, ok in t if not ok]
     for n, ok in t:
         print(("PASS " if ok else "FAIL ") + n)

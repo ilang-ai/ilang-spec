@@ -90,6 +90,7 @@ scope:           applicability (global | project | session)
 
 - Barewords: `json`, `short`, `p1`, `config.json`
 - Quoted strings: `"contains spaces or special chars"`
+- A value that contains a comma is quoted, because a comma separates modifiers (§4)
 - Escape inside quotes: `\"` `\\` `\n`
 - Numbers: integers and floats as-is
 - Booleans: `true`, `false`

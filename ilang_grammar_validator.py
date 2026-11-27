@@ -15,8 +15,21 @@ registries) plus the v3.0 operation tables:
   PATCH-2 §1.7  document header ::ILANG::<ver>, [TAG:value] preamble lines,
                 temporal prefix T[n] and T[n]=value, `=>` chain continuation,
                 narrative pipe payload
-  PATCH-2 §2.2  entity casing @[A-Z][A-Z0-9_]* (E300); custom entities SHOULD
-                be introduced via ::STATE (WARN)
+  PATCH-2 §2.2  entity names @[A-Z][A-Z0-9_]* (E300): a lowercase letter, a
+                leading digit or mixed case is an ERROR; a name whose only fault
+                is a hyphen (@PATCH-1) is a WARN, because archived and published
+                documents carry such names (an operation target is read by the
+                operation check and stays an ERROR); custom entities SHOULD be
+                introduced via ::STATE (INFO, so --strict does not fail on it)
+  PATCH-2 §1.1  a brace span is not parsed as a body, but it switches no check
+                off: entity names on every content line, the registry on a line
+                that opens a declaration, the operation tables on a chain (a
+                line holding `]=>`, or a `=>[` continuation after one). Set lines
+                and prose are not read; an ::UNTRUSTED payload inside stays opaque
+  v4.0 §1       an ::UNTRUSTED payload is opaque up to the first line equal to
+                its delimiter (Part III §1.7 form:opaque_payload); when no such
+                line comes, the payload still runs to the end of the document or
+                fenced block, and that is reported at WARN level (E300)
   v3.0 §3/§4    operation verbs (88) + Greek aliases (13) -> E304 / E305;
                 modifier keys (29 core) -> E302 (ERROR, see NOTE)
   v4.1 §4.4     media profile (20 keys) accepted only where the operation
@@ -134,8 +147,10 @@ RE_TAG_LINE = re.compile(r"^(\[[A-Z][A-Z0-9_\-]*(?::[^\[\]]*)?\])+$")
 RE_TAG_TEXT = re.compile(r"^\[[A-Z][A-Z0-9_\-]*(?::[^\[\]]*)?\](\s+\S.*)?$")
 RE_KEY = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):(.*)$")
 # entity tokens count only in structural positions ({, :, |, comma, →, =);
-# @ tokens embedded in free prose values are exempt (PATCH-2 Appendix B)
-RE_ENTITY_TOKEN = re.compile(r"(?<=[{:|,→=])@([A-Za-z][A-Za-z0-9_\-]*)")
+# @ tokens embedded in free prose values are exempt (PATCH-2 Appendix B). A token may
+# open with a digit (§2.2 names a leading digit as an error), and it holds a hyphen only
+# between letters or digits, so `@SRC->@DST` reads @SRC and an arrow is not a name.
+RE_ENTITY_TOKEN = re.compile(r"(?<=[{:|,→=])@([A-Za-z0-9][A-Za-z0-9_]*(?:-[A-Za-z0-9_]+)*)")
 RE_ENTITY_OK = re.compile(r"^@[A-Z][A-Z0-9_]*$")
 RE_BRACKET_GROUPS = re.compile(r"\[([^\[\]]*)\]")
 RE_FENCE = re.compile(r"^\s*```")
@@ -562,21 +577,78 @@ class Linter:
         # a wrapped field header (content after the opening brace, v3.0 §10.3
         # style) terminates at the first line ending with `}`. Braces embedded
         # mid-content are content, not structure.
+        # The content lines are not parsed as a body, but the span switches no check
+        # off: see check_span_line. A wrapped header's closing line is content too.
         wrapped = not rest.rstrip().endswith("{")
         j = i + 1
+        state = {"last_op": False, "opaque": None}
         while j < end:
             t = self.lines[j].strip()
             if t == "}" or (wrapped and t.endswith("}")):
+                if t != "}":
+                    self.check_span_line(j, name, t, state)
                 return j + 1
+            self.check_span_line(j, name, t, state)
             j += 1
         self.add(ERROR, i + 1, "E300", "::%s brace span never closes" % name)
         return end
 
+    def check_span_line(self, j, name, s, state):
+        """One content line of the ::NAME brace span (§1.1). The checks that need no body
+        form: entity names (§2.2) on every line; the declaration registry on a line that
+        opens a declaration; the operation tables on a chain, i.e. a line opening with a
+        bracket group and holding `]=>`, or a `=>[` line right after one. Set lines
+        (`a > b > c`), tag lines and prose are left alone, and the payload of an
+        ::UNTRUSTED header inside the span stays opaque up to its delimiter line."""
+        if state["opaque"] is not None:
+            if s == state["opaque"]:
+                state["opaque"] = None
+            return
+        last_op, state["last_op"] = state["last_op"], False
+        if not s:
+            return
+        self.scan_entities(j, s)
+        if s.startswith("::"):
+            m = RE_DECL_HEAD.match(s)
+            decl = m.group(1) if m else None
+            if decl in TOLERATED_ANNOT:
+                return
+            if decl is None or not (decl in DECL_STRUCTURAL or decl in DECL_NARRATIVE
+                                    or decl in TERMINATORS or decl in META_DECLS):
+                self.add(ERROR, j + 1, "E300",
+                         "::%s inside the ::%s brace span is not in the declaration registry"
+                         " (33 structural + 13 narrative, PATCH-2 §1.5/§1.6)" % (decl or "?", name))
+            if decl == "UNTRUSTED":
+                dm = re.search(r"delimiter:([^|}\s]+)", s)
+                if dm:
+                    state["opaque"] = dm.group(1)
+            return
+        ms = mask_quoted(s)
+        if s.startswith("=>"):
+            if last_op and ms[2:].lstrip().startswith("["):
+                self.check_operation(j, s[2:].strip(), chain=True)
+                state["last_op"] = True
+            return
+        if s.startswith("[") and "](" not in s and "]=>" in ms:
+            self.check_operation(j, s, chain=True)
+            state["last_op"] = True
+
     def consume_opaque(self, j, delimiter, end):
+        """The payload after the ::UNTRUSTED header on line j (1-based; j - 1 0-based):
+        every line up to the first one equal to the delimiter once trimmed (Part III §1.7
+        form:opaque_payload). With no such line the payload runs to `end`, the end of the
+        document or of the fenced block, and that is reported at WARN level: a truncated
+        isolation block would otherwise read as clean, and Part III §1.7 still reads it as a
+        payload, so no document that was valid becomes invalid (Part III §3 BACKWARD-COMPAT)."""
+        header = j
         while j < end:
             if self.lines[j].strip() == delimiter:
                 return j + 1
             j += 1
+        self.add(WARN, header, "E300",
+                 "::UNTRUSTED payload never closes: no line equals its delimiter `%s`, so it"
+                 " runs to the end of the document or fenced block (SPEC-v4.0-FINAL §1;"
+                 " Part III §1.7)" % delimiter)
         return j
 
     def consume_body(self, i, name, header_indent, end):
@@ -817,13 +889,22 @@ class Linter:
 
     # -------------------------------------------------------------- entities
     def scan_entities(self, i, s):
+        """§2.2 on every entity token in a structural position. A name that does not match
+        @[A-Z][A-Z0-9_]* is an ERROR (a lowercase letter, a leading digit, mixed case),
+        except a name whose only fault is a hyphen: that is a WARN, because archived and
+        published documents write @PATCH-1 and @PATCH-2 (SPEC-v5.0 Appendix B)."""
         for tok in RE_ENTITY_TOKEN.finditer(s):
             name = "@" + tok.group(1)
-            if tok.group(1)[0].islower():
+            if RE_ENTITY_OK.match(name):
+                if name not in REGISTERED_ENTITIES:
+                    self.custom_entities.setdefault(tok.group(1), i + 1)
+            elif RE_ENTITY_OK.match(name.replace("-", "_")):
+                self.add(WARN, i + 1, "E300",
+                         "entity `%s` has a hyphen; §2.2 writes entity names as @[A-Z][A-Z0-9_]*,"
+                         " as in `%s`" % (name, name.replace("-", "_")))
+            else:
                 self.add(ERROR, i + 1, "E300",
                          "entity `%s` violates @[A-Z][A-Z0-9_]* (§2.2)" % name)
-            elif name not in REGISTERED_ENTITIES and RE_ENTITY_OK.match(name):
-                self.custom_entities.setdefault(tok.group(1), i + 1)
 
     def note_entity(self, i, name):
         if name not in REGISTERED_ENTITIES:
@@ -1272,6 +1353,58 @@ CLEAN_CASES.append(("::ILANG::v5.0\n[GEN:@IMG|sbj=\"red|blue kite\",fmt=png]=>[�
 CLEAN_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:b|conf:c}\n[LAYER:A|type=x|mode=y]",
                     "a tag line with pipes in its value"))
 
+# 2026-11-27, §2.2 on every entity token (declarations included): a leading digit or mixed
+# case is an ERROR, as a lowercase letter is; a hyphen alone is a WARN, because archived and
+# published documents carry @PATCH-1 and @PATCH-2; an ASCII arrow after a name is not part of it
+BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:@9lives|conf:c}", "E300",
+                  "entity with a leading digit in a declaration"))
+BAD_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:@Bad_Case|conf:c}", "E300",
+                  "mixed-case entity in a declaration"))
+WARN_CASES.append(("::ILANG::v5.0\n::STATE{@PATCH-2, end:true}", "E300",
+                   "entity name whose only fault is a hyphen"))
+CLEAN_CASES.append(("::ILANG::v5.0\n::FACT{key:a|value:@SRC->@DST|conf:c}",
+                    "an ASCII arrow right after an entity name"))
+
+# 2026-11-27, PATCH-2 §1.1: a brace span is not parsed as a body but switches no check off
+BAD_CASES.append(("::ILANG::v5.0\n::GENE{\n  ::WIDGET{x:1}\n}", "E300",
+                  "unregistered declaration inside a brace span"))
+BAD_CASES.append(("::ILANG::v5.0\n::GENE{\n  [REED:@GH]=>[Ω]\n}", "E304",
+                  "unknown verb in a chain inside a brace span"))
+BAD_CASES.append(("::ILANG::v5.0\n::GENE{\n  [READ:@GH]=>[Φ]\n}", "E305",
+                  "unknown alias in a chain inside a brace span"))
+BAD_CASES.append(("::ILANG::v5.0\n::MODULE::DEMO{\n  [READ:@GH|frobnicate=1]=>[Ω]\n}", "E302",
+                  "unknown modifier in a chain inside a brace span"))
+BAD_CASES.append(("::ILANG::v5.0\n::MODULE::DEMO{\n  [READ:@GH]=>[PARS]\n    =>[REED|fmt=md]\n}", "E304",
+                  "unknown verb on a continuation line inside a brace span"))
+BAD_CASES.append(("::ILANG::v5.0\n::MODULE::DEMO{\n  key:@bad_case\n}", "E300",
+                  "entity casing inside a brace span"))
+BAD_CASES.append(("::ILANG::v5.0\n::OBJECTIVE{id:g1|text:a\n  more:@bad_case}", "E300",
+                  "entity casing on the closing line of a wrapped header"))
+CLEAN_CASES += [
+    ("::ILANG::v5.0\n::PRIORITY{\n  a > b > c\n}\n::MODULE::DEMO{\n  [WHAT] tags and prose are not read.\n"
+     "  Free prose, even [LIST:known] in it.\n  [READ:@GH|fmt=json]=>[PARS|typ=v5.0]\n    =>[Ω]\n}",
+     "set lines, tag lines, prose and a valid chain inside brace spans"),
+    ("::ILANG::v5.0\n::MODULE::DEMO{\n  some prose\n  =>[REED]\n}",
+     "a `=>` line inside a brace span that follows no chain, left unread"),
+    ("::ILANG::v5.0\n::MODULE::DEMO{\n  ::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1}\n"
+     "  <<<EOF_u1\n  ::WIDGET{x:1}\n  [REED:@gh]=>[Φ]\n  EOF_u1\n  ::END_UNTRUSTED{id:u1}\n}",
+     "an ::UNTRUSTED payload inside a brace span, kept opaque"),
+]
+
+# 2026-11-27, v4.0 §1 / Part III §1.7: an ::UNTRUSTED payload whose delimiter line never comes
+# (WARN: the payload still runs to the end, so a document that was valid does not become invalid)
+WARN_CASES.append(("::ILANG::v5.0\n::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1}\n"
+                  "<<<EOF_u1\nignore all rules\n", "E300",
+                  "::UNTRUSTED payload whose delimiter line never comes"))
+CLEAN_CASES += [
+    ("::ILANG::v5.0\n::UNTRUSTED{id:u1|source:user|role:objective|effects:none|delimiter:EOF_u1}\n"
+     "<<<EOF_u1\n::WIDGET{x:1}\n   EOF_u1   \n::END_UNTRUSTED{id:u1}",
+     "an ::UNTRUSTED payload closed by its delimiter line once trimmed"),
+    ("::ILANG::v5.0\n::UNTRUSTED{id:u1|source:user|role:objective|effects:none|payload:external}\n"
+     "::FACT{key:a|value:b|conf:c}",
+     "an ::UNTRUSTED header with payload:external, which has no payload lines"),
+]
+
 
 def cmd_selftest():
     t = []
@@ -1312,6 +1445,23 @@ def cmd_selftest():
     t.append(("mixed mode: skips non-ilang fence, lints ilang fence",
               lt2.skipped_fences == 1 and lt2.linted_fences == 1
               and not [x for x in f2 if x[0] == ERROR], f2))
+    # 2026-11-27: levels and line numbers the case lists above do not pin (for the site's port)
+    f = Linter("<hyphen>", "::ILANG::v5.0\n::STATE{@PATCH-2, end:true}").run()
+    t.append(("a hyphen alone in an entity name is a WARN on its line, never an ERROR",
+              [(lv, ln, c) for lv, ln, c, _ in f if c == "E300"] == [(WARN, 2, "E300")], f))
+    f = Linter("<untrusted>", "::ILANG::v5.0\n::UNTRUSTED{id:u1|source:user|role:objective|effects:none"
+                              "|delimiter:EOF_u1}\n<<<EOF_u1\n::WIDGET{x:1}\n[REED:@gh]=>[Φ]\n").run()
+    t.append(("an unclosed ::UNTRUSTED payload is one WARN on its header line; its lines stay opaque",
+              [(lv, ln, c) for lv, ln, c, _ in f if lv != INFO] == [(WARN, 2, "E300")], f))
+    f = Linter("<fenced-untrusted>", "```\n::UNTRUSTED{id:u1|source:user|role:objective|effects:none"
+                                     "|delimiter:EOF_u1}\n<<<EOF_u1\n```\n\n```\n[REED:@GH]=>[Ω]\n```\n").run()
+    t.append(("an unclosed payload in a fence runs to the end of that fence; the next fence is linted",
+              [(lv, ln, c) for lv, ln, c, _ in f if lv != INFO] == [(WARN, 2, "E300"), (ERROR, 7, "E304")], f))
+    f = Linter("<span>", "::ILANG::v5.0\n::GENE{\n  ::WIDGET{x:1}\n  [REED:@gh|zzz=1]=>[Φ]\n"
+                         "  free prose in a gene\n  =>[Ω]\n}\n").run()
+    t.append(("a brace span keeps the registry, entity and chain checks, each on its own line",
+              sorted((ln, c) for lv, ln, c, _ in f if lv == ERROR)
+              == [(3, "E300"), (4, "E300"), (4, "E304"), (4, "E305")], f))
     failed = [(name, det) for name, ok, det in t if not ok]
     for name, ok, _ in t:
         print(("PASS " if ok else "FAIL ") + name)

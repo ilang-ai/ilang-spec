@@ -16,6 +16,11 @@ JSONL line format for --eval:
    "schema_valid": true}
 "schema_valid" is optional; rows omitting it count as valid. Feed --check results in
 so schema_validity_rate (JCS weight 0.20, L2 gate schema>=0.99) is actually measured.
+L2_pass is NO until both the schema rate and boundary accuracy are measured: when no row
+carries schema_valid, or no row has boundary true (boundary_acc then defaults to 1.0), JCS is
+printed as before and a note says why L2_pass is NO. A row without a pred_v vector (the
+block did not parse) is a schema failure, its mode is pred_mode or else M5 (Part II §3
+STEP-0), and it stays out of MAE.
 Single file, stdlib only. Constants frozen at v1 (DATA-FREEZE 2026-07-03); structure frozen.
 """
 
@@ -168,7 +173,10 @@ def trust_lower(k, n, z=Z_95):
     if n == 0:
         return None
     p, z2 = k / n, z * z
-    return (p + z2 / (2 * n) - z * math.sqrt(p * (1 - p) / n + z2 / (4 * n * n))) / (1 + z2 / n)
+    # at k = 0 the bound is 0 in exact arithmetic; rounding left it at -3e-17 (447 of n <= 1999),
+    # which route() wrote as rel=-0.00, a value the V line rejects. PROPERTY 0 <= trust_lower < 1
+    return max(0.0, (p + z2 / (2 * n) - z * math.sqrt(p * (1 - p) / n + z2 / (4 * n * n)))
+               / (1 + z2 / n))
 
 
 def derived(v):
@@ -222,7 +230,7 @@ def route(v, conditions):
     return out
 
 # ----------------------------------------------------------- schema parsing
-VAL = r"(?:0\.\d{2}|1\.00)"
+VAL = r"(?:0\.[0-9]{2}|1\.00)"   # ASCII digits only: on str, \d also takes ８ and ٨
 V_LINE = re.compile(r"^V:\[" + ",".join(d + "=(" + VAL + ")" for d in DIMS) + r"\]$")
 M_LINE = re.compile(r"^M:(M[1-8])\|conf:(" + VAL + r")$")
 R_LINE = re.compile(r"^R:(.{1,120})$")
@@ -327,40 +335,74 @@ def cmd_sample(n, seed=42, balanced=False):
               file=sys.stderr)
     return 0
 
+def eval_rows(rows):
+    """JCS and the L2 gate over gold/pred rows (Part II §5). Returns (result, notes, unmeasured):
+    the numbers, the notes printed before the summary, and what L2 could not see."""
+    mode_hits = 0
+    maes = []
+    b_total = b_hits = 0
+    schema_ok = 0
+    for r in rows:
+        gold_mode = f_v5(r["gold_v"])
+        pred_v = r.get("pred_v")
+        has_v = isinstance(pred_v, dict)
+        # no vector: the block did not parse, a schema failure whose mode is M5 (§3 STEP-0)
+        pred_mode = r.get("pred_mode") or (f_v5(pred_v) if has_v else DEFAULT_MODE)
+        hit = pred_mode == gold_mode
+        mode_hits += hit
+        if has_v:
+            maes.append(sum(abs(float(pred_v[d]) - float(r["gold_v"][d]))
+                            for d in DIMS) / len(DIMS))
+        schema_ok += has_v and bool(r.get("schema_valid", True))
+        if r.get("boundary"):
+            b_total += 1
+            b_hits += hit
+    n = len(rows)
+    notes, unmeasured = [], []
+    mode_acc = mode_hits / n
+    if maes:
+        mae = sum(maes) / len(maes)
+    else:
+        mae = 1.0
+        notes.append("note: no row has a pred_v vector; MAE is written as 1.0000, the largest it "
+                     "can be, and vector_score as 0")
+        unmeasured.append("MAE (no row has a pred_v vector)")
+    if len(maes) < n:
+        notes.append("note: %d row(s) without a pred_v vector count as schema failures with mode "
+                     "M5 unless they give pred_mode, and stay out of MAE" % (n - len(maes)))
+    vector_score = max(0.0, 1 - mae / 0.25)
+    boundary_acc = (b_hits / b_total) if b_total else 1.0
+    if not b_total:
+        unmeasured.append("boundary_acc (no row has boundary true; 1.0 is a default)")
+    schema_rate = schema_ok / n
+    if all("schema_valid" not in r for r in rows):
+        notes.append("note: no schema_valid field in rows; schema_rate defaults to 1.0 — "
+                     "feed --check results in for a measured rate" if len(maes) == n else
+                     "note: no schema_valid field in rows; a row with a pred_v vector counts as "
+                     "valid — feed --check results in for a measured rate")
+        unmeasured.append("schema_rate (no row carries schema_valid)")
+    jcs = 0.20 * schema_rate + 0.40 * mode_acc + 0.20 * vector_score + 0.20 * boundary_acc
+    l2 = (not unmeasured and schema_rate >= 0.99 and mode_acc >= 0.90 and mae <= 0.12
+          and boundary_acc >= 0.80 and jcs >= 0.90)
+    return ({"n": n, "schema_rate": schema_rate, "mode_acc": mode_acc, "mae": mae,
+             "vector_score": vector_score, "boundary_acc": boundary_acc, "boundary_n": b_total,
+             "jcs": jcs, "l2": l2}, notes, unmeasured)
+
+
 def cmd_eval(path):
     rows = [json.loads(ln) for ln in open(path, encoding="utf-8") if ln.strip()]
     if not rows:
         print("empty eval file")
         return 1
-    mode_hits = 0
-    maes = []
-    b_total = b_hits = 0
-    for r in rows:
-        gold_mode = f_v5(r["gold_v"])
-        pred_mode = r.get("pred_mode") or f_v5(r["pred_v"])
-        hit = pred_mode == gold_mode
-        mode_hits += hit
-        maes.append(sum(abs(float(r["pred_v"][d]) - float(r["gold_v"][d]))
-                        for d in DIMS) / len(DIMS))
-        if r.get("boundary"):
-            b_total += 1
-            b_hits += hit
-    n = len(rows)
-    mode_acc = mode_hits / n
-    mae = sum(maes) / n
-    vector_score = max(0.0, 1 - mae / 0.25)
-    boundary_acc = (b_hits / b_total) if b_total else 1.0
-    schema_rate = sum(bool(r.get("schema_valid", True)) for r in rows) / n
-    if all("schema_valid" not in r for r in rows):
-        print("note: no schema_valid field in rows; schema_rate defaults to 1.0 — "
-              "feed --check results in for a measured rate")
-    jcs = 0.20 * schema_rate + 0.40 * mode_acc + 0.20 * vector_score + 0.20 * boundary_acc
-    l2 = (schema_rate >= 0.99 and mode_acc >= 0.90 and mae <= 0.12
-          and boundary_acc >= 0.80 and jcs >= 0.90)
-    print(f"n={n} schema_rate={schema_rate:.4f} mode_acc={mode_acc:.4f} MAE={mae:.4f} "
-          f"vector_score={vector_score:.4f} boundary_acc={boundary_acc:.4f} "
-          f"(boundary n={b_total})")
-    print(f"JCS={jcs:.4f}  L2_pass={'YES' if l2 else 'NO'}")
+    res, notes, unmeasured = eval_rows(rows)
+    for note in notes:
+        print(note)
+    print(f"n={res['n']} schema_rate={res['schema_rate']:.4f} mode_acc={res['mode_acc']:.4f} "
+          f"MAE={res['mae']:.4f} vector_score={res['vector_score']:.4f} "
+          f"boundary_acc={res['boundary_acc']:.4f} (boundary n={res['boundary_n']})")
+    print(f"JCS={res['jcs']:.4f}  L2_pass={'YES' if res['l2'] else 'NO'}")
+    if unmeasured:
+        print("note: L2_pass is NO because it was not measured: " + "; ".join(unmeasured))
     return 0
 
 # ----------------------------------------------------------------- selftest
@@ -556,6 +598,37 @@ def cmd_selftest():
 
     t.append(("a header that is not exactly ::JUDGE{v5.0} is a candidate block, a schema failure",
               [schema_ok(b) for b, _ in found] == [True, False, False, False, False]))
+
+    # 2026-11-27, four edge defects (audit spec-tools-10). f_v5 and P6-e's digest are untouched.
+    gv = parse_judge_block(good)[0]
+    res, _, unmeasured = eval_rows([{"gold_v": gv, "pred_v": gv}])
+    measured = eval_rows([{"gold_v": gv, "pred_v": gv, "boundary": True, "schema_valid": True}])[0]
+    t.append(("(a) L2_pass is NO when no boundary row and no schema_valid were measured; JCS as before",
+              not res["l2"] and len(unmeasured) == 2 and res["jcs"] == 1.0 and measured["l2"]))
+    try:
+        one = eval_rows([{"gold_v": gv, "schema_valid": False}])[0]
+        two = eval_rows([{"gold_v": gv, "pred_v": dict(gv, int=0.70), "schema_valid": True},
+                         {"gold_v": gv, "schema_valid": True}])[0]
+        ok_b = (one["schema_rate"] == 0.0 and one["mode_acc"] == float(f_v5(gv) == "M5")
+                and one["vector_score"] == 0.0 and not one["l2"]
+                and two["schema_rate"] == 0.5 and abs(two["mae"] - 0.10 / 11) < 1e-12)
+    except (KeyError, TypeError):
+        ok_b = False
+    t.append(("(b) a row without pred_v is a schema failure with mode M5, left out of MAE", ok_b))
+    routed = route(gv, ["trust:0/5"])
+    try:
+        parse_judge_block(block(routed, f_v5(routed)))
+        routed_ok = True
+    except ValueError:
+        routed_ok = False
+    t.append(("(c) trust_lower(0, n) is never negative, so trust:0/n routes to rel=0.00 and parses",
+              all(trust_lower(0, n) >= 0.0 for n in range(1, 2000))
+              and "%.2f" % routed["rel"] == "0.00" and routed_ok))
+    wide = list(good)
+    wide[1] = wide[1].replace("int=0.80", "int=0.\uff18\uff10")
+    arabic = list(good)
+    arabic[2] = arabic[2].replace("conf:0.87", "conf:0.\u0668\u0667")
+    t.append(("(d) V and conf values take ASCII digits only", not schema_ok(wide) and not schema_ok(arabic)))
 
     failed = [name for name, ok in t if not ok]
     for name, ok in t:

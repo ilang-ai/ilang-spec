@@ -1,2 +1,4 @@
 products/** text eol=lf
 products/**/*.png binary
+SPEC*.md text eol=lf
+runtime/** text eol=lf

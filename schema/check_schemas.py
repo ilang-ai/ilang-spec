@@ -561,6 +561,9 @@ def status_table(state, by, authority, reason):
         return False
     if authority is not None and state is not None and state not in CAN_WRITE[authority]:
         return False
+    # the writer alone fixes the tier (@SELF -> authority:proposal), authority written or not
+    if by in TIER and state is not None and state not in CAN_WRITE[TIER[by]]:
+        return False
     if state == "created":                                  # no tier can write it
         return False
     if state in ("complete", "running") and (by != "@RUNTIME" or authority != "commit"):
@@ -602,6 +605,19 @@ def status_named_cases():
         ("complete by @RUNTIME without authority", {"state": "complete", "by": "@RUNTIME"}, False),
         ("verified_complete with proposal", {"state": "verified_complete", "by": "@SELF",
                                              "authority": "proposal"}, False),
+        # 2026-11-27: the writer fixes the tier when authority is left out
+        ("verified_complete by @SELF without authority", {"target": "@TASK", "state": "verified_complete",
+                                                          "by": "@SELF"}, False),
+        ("verified_complete by @AGENT without authority", {"state": "verified_complete",
+                                                           "by": "@AGENT"}, False),
+        ("claimed_complete by @GRADER without authority", {"target": "@TASK", "state": "claimed_complete",
+                                                           "by": "@GRADER"}, False),
+        ("blocked by @RUNTIME without authority", {"target": "@TASK", "state": "blocked",
+                                                   "by": "@RUNTIME"}, False),
+        ("claimed_complete by @SELF without authority", {"state": "claimed_complete", "by": "@SELF"}, True),
+        ("verified_complete by @GRADER without authority", {"state": "verified_complete",
+                                                            "by": "@GRADER"}, True),
+        ("stopped by @RUNTIME without authority", {"state": "stopped", "by": "@RUNTIME"}, True),
         ("@GRADER with commit", {"state": "stopped", "by": "@GRADER", "authority": "commit"}, False),
         ("@AGENT with verification", {"state": "needs_revision", "by": "@AGENT",
                                       "authority": "verification"}, False),

@@ -33,6 +33,17 @@ jobs:
             echo "CITATION.cff has no version field" >&2
             exit 1
           fi
+          # Zenodo labels the archived release with the version in .zenodo.json when that
+          # file carries one, not with CITATION.cff (ilang-dict 2.2.3 and 2.3.0 were archived
+          # as 2.2.2 that way). No tag unless the two agree.
+          if [ -f .zenodo.json ]; then
+            zenodo=$(sed -n 's/.*"version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' .zenodo.json | head -1)
+            if [ -n "$zenodo" ] && [ "$zenodo" != "$version" ]; then
+              echo ".zenodo.json says $zenodo, CITATION.cff says $version" >&2
+              echo "Make the two agree on main; if that push does not change CITATION.cff, start this workflow by workflow_dispatch." >&2
+              exit 1
+            fi
+          fi
           echo "version=$version" >> "$GITHUB_OUTPUT"
           if git rev-parse -q --verify "refs/tags/v$version" >/dev/null; then
             echo "tagged=true" >> "$GITHUB_OUTPUT"

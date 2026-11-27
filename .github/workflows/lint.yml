@@ -23,6 +23,19 @@ jobs:
       - name: JUDGE blocks in spec
         run: |
           python ilang_judge_validator.py --check SPEC-v5.0.md
+      # products/media-chain/ACCEPTANCE.ilang.md C8 and C9 name these two commands, with the exit
+      # code and the counts each must print; a change to the judge validator or to a demo file that
+      # breaks either item fails here.
+      - name: Media Chain acceptance C8 (the demo series' JUDGE blocks are valid and consistent)
+        run: |
+          rc=0; out=$(python ilang_judge_validator.py --check products/media-chain/demo/SERIES-001.ilang.md) || rc=$?
+          echo "$out"
+          [ "$rc" -eq 0 ] && echo "$out" | grep -q "schema_fail=0 mode_mismatch=0"
+      - name: Media Chain acceptance C9 (the six defective JUDGE blocks of BAD-001 are all refused)
+        run: |
+          rc=0; out=$(python ilang_judge_validator.py --check products/media-chain/demo/BAD-001.ilang.md) || rc=$?
+          echo "$out"
+          [ "$rc" -eq 1 ] && echo "$out" | grep -q "schema_fail=5 mode_mismatch=1"
       - name: JSON Schemas (non-normative) against examples and the reference validator
         run: python schema/check_schemas.py
       - name: Symbol audit selftest
