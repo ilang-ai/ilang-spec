@@ -3,12 +3,12 @@
 iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit f90c9dd77614cbf34f4f3c31012288de65c30530 (2026-11-26T22:14:11-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 436d3ed2e8793604a2fd04d2a78323cc9334e806 (2026-11-27T04:37:06-05:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:6db8d4e78e42d22314b8f0242a4a2e9c798339efb84a4c6858a13228d3d6ec93
-2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:155e1971d067f4924dfc60a06479ae4775047eea43594da9e88319951fb77958
+1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:c155ac8d9620da5fc7787fa888d6b342da366f2eeb5c28496d4a05722f963a66
+2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:5317927e863c53df0f090c5a222649626b0e3d9e6c17f6575ee4c44c2409b2ca
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:fb8ef6661ff04e9ae82f8f9b6cf9553ff84df30a85209f78e68b063d75eb8062
 
 Left out of this bundle, and kept in the full text at https://ilang.ai/runtime/full :
 - SPEC.md: 10. Examples; 11. Version History
@@ -111,6 +111,7 @@ scope:           applicability (global | project | session)
 
 - Barewords: `json`, `short`, `p1`, `config.json`
 - Quoted strings: `"contains spaces or special chars"`
+- A value that contains a comma is quoted, because a comma separates modifiers (§4)
 - Escape inside quotes: `\"` `\\` `\n`
 - Numbers: integers and floats as-is
 - Booleans: `true`, `false`
@@ -899,7 +900,7 @@ created → running → failed
   → confirm evidence set covers every requirement
   → score against rubric if present
 
-[CHEK:@AUDIT_REPORT|whr=score>=threshold,no_unknown,no_fail]
+[CHEK:@AUDIT_REPORT|whr="score>=threshold,no_unknown,no_fail"]
   → decide whether claimed_complete is allowed
 
 ::STATUS{@TASK|state:claimed_complete|evidence:@AUDIT_REPORT|by:@SELF|authority:proposal}
@@ -1037,8 +1038,8 @@ The text is frozen in its semantics; this amendment changes wording only, where 
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:5.0.19]
-[DATE:2026-11-26]
+[VERSION:5.0.20]
+[DATE:2026-11-27]
 [STATUS:released]
 [OPEN_COUNTEREXAMPLES:CX-006=WEIGHTS-VECTOR-1_did_not_beat_the_plain_mean_of_the_vectors|CX-007=f_v5_agreed_with_the_accepted_decision_on_65_of_173_controls_in_round_2_and_211_of_the_218_disagreements_were_decided_at_the_STEP-4_S_bands|CX-008=on_two_events_none_of_the_eight_modes_fitted_and_the_operator_wanted_the_answer_I_do_not_know|CX-009=a_gate_decided_before_any_judgment_refused_a_user_in_a_survival_state_and_STEP-1_reads_only_the_agent's_action|register=Appendix_F|state=unresolved_and_public]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_tested:T1_f_v5_agreement=0.0828(n=157,95%CI=0.049-0.1365,five_class=0.3822,truth=operator_confirmed_17_of_157_rest_model_consensus);T1_round2_f_v5_agreement=0.1029(n=243,95%CI=0.0707-0.1475,five_class=0.4156,truth=operator_9_delegated_12_rest_model_consensus);T2_weighted_vs_plain=not_better(MAE_0.1027_vs_0.1043,best_single_0.0989,n=37)]
@@ -1061,6 +1062,7 @@ The text is frozen in its semantics; this amendment changes wording only, where 
   [WHAT] iLang v5.0 defines judgment as vector composition over a continuous behavioral manifold.
   [HOW] Multi-dimensional fuzzy assessment replaces binary classification.
   [SCOPE] Enhances existing guidelines. Does not replace them.
+  [EARLIER] v3.0 (SPEC.md, communication) and v4.0 (SPEC-v4.0-FINAL, execution) were written before the judgment layer. Where one of their lines gives another answer to a question an axiom answers, the axiom governs; on every other question they stand as written. One such question is which of two rules an action follows when they require opposite actions: Axiom 1 USE answers it, and the order of SPEC.md §6.7 and the lines "Higher authority wins" and "Same authority: latest trusted declaration wins" of the v4.0 Authority Model no longer do. One maker's words on one matter are not two rules: they are one rule in its latest form, his later word amending it and his narrower exception or his own ::PRIORITY block part of it; an amendment must pass the test of MODULE::SOURCE like any rule. Where the agent cannot tell whose a later line is, or how a maker last left his rule, aut is unknown (MODULE::ROUTING). Who made a declaration, and what v4.0 gives code outside the model to enforce, are not questions an axiom answers: the channel that assigns authority, ::UNTRUSTED, ::BUDGET and the ::STATUS write rights stand as written, text inside a task makes no rule, what an agent writes on its own is a proposal, and the model's own rules stay outside every order (Axiom 1 FOUNDATION).
   [MATH] Fuzzy set membership μ(x) ∈ [0,1] applied to behavioral rule weights.
   [CORE] Assessments converge through weighted measurement and correction (MODULE::MEASUREMENT).
   [INIT] All weights initialize at the same small value ε > 0, never at 0 (Axiom 1). The perception layer self-calibrates through interaction.
@@ -1750,7 +1752,7 @@ Registered under MODULE::MEASUREMENT. A registered model or constant can be repl
 ::FACT{id:CONST-F_V5-V1|value:Part_II_§3_weights_and_thresholds|basis:ratified_2026-07-03|status:convention_awaiting_practice|change:major_version_per_Part_II_§5}
 ::FACT{id:CONST-CLUSTER-1/3|value:one_gate_holds_one_third_or_more_of_the_disagreements_and_those_vectors_lie_within_0.05_of_it|basis:f_v5_has_13_gates_so_a_uniform_spread_gives_1/13_per_gate_and_one_third_is_more_than_four_times_that|status:convention_awaiting_practice|use:T1_result_case_B_of_the_first_empirical_round}
 
-::STATE{@PATCH-1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
+::STATE{@PATCH_1, end:true, next:generate_anchors→freeze_constants→generate_corpus→train}
 
 ---
 

@@ -2,18 +2,18 @@
   "brand": "iLang",
   "runtime_schema": 1,
   "channel": "latest",
-  "version": "2026.11.26-16d02f108a96",
+  "version": "2026.11.27-a0b50bd32099",
   "bundle_url": "https://runtime.ilang.app/ilang-latest.md",
   "sha256_url": "https://runtime.ilang.app/ilang-latest.sha256",
   "source_repo": "https://github.com/ilang-ai/ilang-spec",
-  "source_commit": "f90c9dd77614cbf34f4f3c31012288de65c30530",
-  "commit": "f90c9dd77614cbf34f4f3c31012288de65c30530",
-  "updated_at": "2026-11-26T22:14:11-05:00",
+  "source_commit": "436d3ed2e8793604a2fd04d2a78323cc9334e806",
+  "commit": "436d3ed2e8793604a2fd04d2a78323cc9334e806",
+  "updated_at": "2026-11-27T04:37:06-05:00",
   "bundles": {
     "core": {
       "url": "https://runtime.ilang.app/ilang-latest.md",
-      "sha256": "16d02f108a960c2bab1f0107c17d9d52cec3d7f06c795f9187737b1e4e31c328",
-      "bytes": 102272,
+      "sha256": "a0b50bd320995c8da7d97ae7586b96ce55fa25233fc532a1c98282e42c62b53d",
+      "bytes": 103649,
       "sources": [
         "SPEC.md",
         "SPEC-v4.0-FINAL.md",
@@ -22,8 +22,8 @@
     },
     "full": {
       "url": "https://runtime.ilang.app/ilang-full.md",
-      "sha256": "1ecaf437584e13fdcf4d962d6eea233461c276098907a19b5ed14518705c45cd",
-      "bytes": 174432,
+      "sha256": "64c2c1fbe85bef3cecaa6e9426d59988caa5e966f11897dc977197fceb640ea2",
+      "bytes": 184722,
       "sources": [
         "SPEC.md",
         "SPEC-v4.0-FINAL.md",
@@ -32,13 +32,13 @@
     },
     "media": {
       "url": "https://runtime.ilang.app/ilang-media-latest.md",
-      "sha256": "3031150debd8c4baba9933fffc044a74abc2716ded39d51ebdc210129dffe1c1",
-      "bytes": 63749,
+      "sha256": "3b4b6f8b5d65c6ffa0c256457bf5e6183161aee3129b91fb9ee3f01125fd4305",
+      "bytes": 64147,
       "sources": [
         "SPEC-v4.1-MEDIA-PROFILE.md",
         "SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md"
       ]
     }
   },
-  "pinned": "https://runtime.ilang.app/versions/2026.11.26-16d02f108a96/manifest.json"
+  "pinned": "https://runtime.ilang.app/versions/2026.11.27-a0b50bd32099/manifest.json"
 }

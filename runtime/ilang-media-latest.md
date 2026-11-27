@@ -3,11 +3,11 @@
 Optional extension for image, video and audio work.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit f90c9dd77614cbf34f4f3c31012288de65c30530 (2026-11-26T22:14:11-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit 436d3ed2e8793604a2fd04d2a78323cc9334e806 (2026-11-27T04:37:06-05:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC-v4.1-MEDIA-PROFILE.md: media profile: image, video and audio vocabulary (v4.1). sha256:5704198452900c25268b7be47132e119ab69b65ecafb96417919a4f54223eaee
-2. SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md: media regions, masks and image layers (v4.2). sha256:5dde4ceaa2f16eaab697e42b83df5e0e4d22a9bcfb1e8b83ee16fc0187e181a4
+1. SPEC-v4.1-MEDIA-PROFILE.md: media profile: image, video and audio vocabulary (v4.1). sha256:44a316a12bb3d32b191a05e948137ca1befaabf14cc0a9a12e1a0ef7bb9ce8f2
+2. SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md: media regions, masks and image layers (v4.2). sha256:7faf310c1dead388f0d7ca9c06416513b5077318c766ebeb6608fa71f468fcfd
 
 ===== BEGIN SPEC-v4.1-MEDIA-PROFILE.md =====
 
@@ -260,10 +260,10 @@ After:
 
 [GEN:@AUD|src="park wind, distant children laughing",mdm=ambient,dur=8,fmt=wav,dst=@VID]
 
-[GEN:@VID|sbj=kid_aria,act="running after the kite",pov="low angle",mvt=tracking,fcl=35mm,dur=8,frm=@PREV,dlg="Higher!",fmt=mp4]=>[WRIT:@LOCAL|path=out/kite_02.mp4]
+[GEN:@VID|sbj=kid_aria,act="running after the kite",pov="low angle",mvt=tracking,fcl=35mm,dur=8,frm=out/kite_01.mp4,dlg="Higher!",fmt=mp4]=>[WRIT:@LOCAL|path=out/kite_02.mp4]
 ```
 
-Notes on the rewrite. The seven constants that both shots share are declared once and neither shot repeats them. `sbj=kid_aria` appears in both shots and states that the two children are the same child; it does not describe the child, which stays in prose. Shot size and camera movement separate onto `pov` and `mvt`, and the subject's own motion stays on `act`. The first shot starts from an image, the second starts where the first ended, and both are written with `frm`. The audio line reuses `src`, `mdm`, `dur`, `fmt` and `dst`. At `dur=8` and `fps=24` each shot is 192 frames. Corrected 2026-11-26 (SPEC-v5.0.md Part III Appendix B): the count of shared constants and the description of the audio line.
+Notes on the rewrite. The seven constants that both shots share are declared once and neither shot repeats them. `sbj=kid_aria` appears in both shots and states that the two children are the same child; it does not describe the child, which stays in prose. Shot size and camera movement separate onto `pov` and `mvt`, and the subject's own motion stays on `act`. The first shot starts from an image, the second starts where the first ended, and both are written with `frm`. The audio line reuses `src`, `mdm`, `dur`, `fmt` and `dst`. At `dur=8` and `fps=24` each shot is 192 frames. Corrected 2026-11-26 (SPEC-v5.0.md Part III Appendix B): the count of shared constants and the description of the audio line. Corrected 2026-11-27 (the same channel): the second shot names the clip it continues, `frm=out/kite_01.mp4`, where it read `frm=@PREV`.
 
 ---
 
@@ -947,7 +947,7 @@ The proposal's status moved from open to adopted with this document on 2026-09-1
 
 The reference grammar validator ships in the same repository (SPEC-v5.0-PRE Part III §3). Release 4.2.0 ships the validator change with this text. For this extension the validator provides:
 
-1. Media gating for image layers: an entity named on a `::LIST` line that a `MERGE` on a media target consumes, through `src=` or from the previous step of the chain, is treated as a media target, so profile keys on it are not reported as E302.
+1. Media gating for image layers: an entity named on a `::LIST` line is treated as a media target when a `MERGE` on a media target names that list in `src=`, so profile keys on it are not reported as E302. A list the `MERGE` takes from the previous step of the chain, the other route §4.6.1 admits, is not followed, and profile keys on its entities are reported as E302. Corrected 2026-11-27 (SPEC-v5.0.md Part III Appendix B): this item said the previous step of the chain was followed as well.
 2. Region body checks, all at warning level so that no previously valid document becomes invalid: one region body key per region and B4 form for `pts`, `bnd` and `vtx` (structure, E300); one unit per line, item counts, bare integers, and x1 < x2 and y1 < y2 for `bnd` (values, E303).
 3. Quote-aware splitting of operation groups and modifiers, so that a bracket or a comma followed by an equals sign inside a quoted value is read as content. In the repository since commit 31e8fc8 (quoted values are opaque).
 4. Reports for the frame rules of §4.6.3: a `MERGE` whose composite frame cannot be fixed, an image layer whose stated `asp` or `rsl` differs from the composite frame, and one image layer named on two lists whose composites fix different frames. Reported as warnings (E303) so that no released document becomes invalid, and only where the text decides the frame without inference.
