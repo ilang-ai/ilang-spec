@@ -256,10 +256,12 @@ def parse_judge_block(lines):
 EXTRA_FIELD = re.compile(r"^[A-Za-z_][A-Za-z0-9_]{0,15}:")
 
 def extract_blocks(text):
-    """Find candidate 4-line ::JUDGE blocks; return (block, following_line) pairs."""
+    """Find candidate 4-line ::JUDGE blocks; return (block, following_line) pairs. Every line
+    that starts with ::JUDGE opens a candidate, so a header that is not exactly HEADER is a
+    schema failure of parse_judge_block and not a block that is never looked at."""
     lines = text.splitlines()
     return [(lines[i:i + 4], lines[i + 4] if i + 4 < len(lines) else "")
-            for i, ln in enumerate(lines) if ln.strip() == HEADER]
+            for i, ln in enumerate(lines) if ln.strip().startswith("::JUDGE")]
 
 # ----------------------------------------------------------------- commands
 def cmd_check(path):
@@ -532,6 +534,21 @@ def cmd_selftest():
               and route(base, ["self_exempting_proposer"])["aut"] == 0.29 and base["aut"] == 0.95))
     t.append(("G-h the 26 earlier selftests pass and P6-e's frozen f_v5 digest held",
               all(ok for _, ok in t[:26]) and any(n.startswith("P6-e") and ok for n, ok in t)))
+
+    # 2026-11-26: a block whose header is not exactly ::JUDGE{v5.0} is a candidate that fails
+    # the schema; --check used to pass over it and exit 0
+    heads = [HEADER, "::JUDGE{v5.0|note:x}", "::JUDGE{V5.0}", "::JUDGE{v5.0}  T:x", "::JUDGE{v4.0}"]
+    found = extract_blocks("\n\n".join("\n".join([h] + block(hi, "M1")[1:]) for h in heads))
+
+    def schema_ok(b):
+        try:
+            parse_judge_block(b)
+            return True
+        except ValueError:
+            return False
+
+    t.append(("a header that is not exactly ::JUDGE{v5.0} is a candidate block, a schema failure",
+              [schema_ok(b) for b, _ in found] == [True, False, False, False, False]))
 
     failed = [name for name, ok in t if not ok]
     for name, ok in t:

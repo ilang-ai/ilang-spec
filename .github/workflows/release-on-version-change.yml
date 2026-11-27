@@ -41,6 +41,22 @@ jobs:
             echo "tagged=false" >> "$GITHUB_OUTPUT"
           fi
 
+      # The release carries the runtime bundles, and runtime.yml rebuilds them in a
+      # commit of its own after a canon file changes. When the content and the new
+      # version reach main in one push, the bundles at this commit are still those
+      # of the previous release (v5.0.7, v5.0.13 and v5.0.15 were tagged that way).
+      # No tag unless each sha256 in a bundle's Contents list is that of the file.
+      - name: Check that the runtime bundles were built from the sources at this commit
+        if: steps.read.outputs.tagged == 'false'
+        run: |
+          for bundle in runtime/ilang-full.md runtime/ilang-media-latest.md; do
+            if ! sed -n -e '/^===== BEGIN /q' -e 's/^[0-9][0-9]*\. \([^:]*\): .* sha256:\([0-9a-f]\{64\}\)$/\2  \1/p' "$bundle" | sha256sum -c -; then
+              echo "$bundle was not built from the sources at this commit." >&2
+              echo "Wait for the \"runtime: rebuild bundles\" commit on main, then run this workflow again by workflow_dispatch." >&2
+              exit 1
+            fi
+          done
+
       - name: Tag and publish the release
         if: steps.read.outputs.tagged == 'false'
         env:
