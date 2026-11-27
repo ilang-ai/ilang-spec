@@ -3,10 +3,10 @@
 Optional extension for image, video and audio work.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 40821bc1acc75d58e11a42b94660756e52b7464d (2026-11-19T21:11:36-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit f90c9dd77614cbf34f4f3c31012288de65c30530 (2026-11-26T22:14:11-05:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC-v4.1-MEDIA-PROFILE.md: media profile: image, video and audio vocabulary (v4.1). sha256:065c94ad795a9604afbd57515f88a6925af7df6d4699b81bebdccf2262524078
+1. SPEC-v4.1-MEDIA-PROFILE.md: media profile: image, video and audio vocabulary (v4.1). sha256:5704198452900c25268b7be47132e119ab69b65ecafb96417919a4f54223eaee
 2. SPEC-v4.2-MEDIA-REGIONS-AND-LAYERS.md: media regions, masks and image layers (v4.2). sha256:5dde4ceaa2f16eaab697e42b83df5e0e4d22a9bcfb1e8b83ee16fc0187e181a4
 
 ===== BEGIN SPEC-v4.1-MEDIA-PROFILE.md =====
@@ -263,7 +263,7 @@ After:
 [GEN:@VID|sbj=kid_aria,act="running after the kite",pov="low angle",mvt=tracking,fcl=35mm,dur=8,frm=@PREV,dlg="Higher!",fmt=mp4]=>[WRIT:@LOCAL|path=out/kite_02.mp4]
 ```
 
-Notes on the rewrite. The five constants that both shots share are declared once and neither shot repeats them. `sbj=kid_aria` appears in both shots and states that the two children are the same child; it does not describe the child, which stays in prose. Shot size and camera movement separate onto `pov` and `mvt`, and the subject's own motion stays on `act`. The first shot starts from an image, the second starts where the first ended, and both are written with `frm`. The audio line adds one profile key beyond what it inherits and reuses `src`, `mdm`, `dur`, `fmt` and `dst`. At `dur=8` and `fps=24` each shot is 192 frames.
+Notes on the rewrite. The seven constants that both shots share are declared once and neither shot repeats them. `sbj=kid_aria` appears in both shots and states that the two children are the same child; it does not describe the child, which stays in prose. Shot size and camera movement separate onto `pov` and `mvt`, and the subject's own motion stays on `act`. The first shot starts from an image, the second starts where the first ended, and both are written with `frm`. The audio line reuses `src`, `mdm`, `dur`, `fmt` and `dst`. At `dur=8` and `fps=24` each shot is 192 frames. Corrected 2026-11-26 (SPEC-v5.0.md Part III Appendix B): the count of shared constants and the description of the audio line.
 
 ---
 

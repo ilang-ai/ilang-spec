@@ -3,12 +3,12 @@
 iLang is I Language, the native language of AI; in human terms, a protocol. The working text of iLang for a model that has never seen it: how to read, write, execute and judge it. Archive material, the change history, the counterexample register, the formal declaration grammar and most worked examples are left out; the full bundle has them.
 
 Generated from the iLang canon; not edited by hand.
-Source: https://github.com/ilang-ai/ilang-spec at commit 40821bc1acc75d58e11a42b94660756e52b7464d (2026-11-19T21:11:36-05:00).
+Source: https://github.com/ilang-ai/ilang-spec at commit f90c9dd77614cbf34f4f3c31012288de65c30530 (2026-11-26T22:14:11-05:00).
 Contents, in order. Each document states its own status and scope:
 
-1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:eafc2b22897f9dde8545d4c02a41062c71cc36717482f4e4208eaaa63fef52d5
+1. SPEC.md: communication layer: the two syntaxes, the 88 verbs, modifiers, entities, declarations (v3.0 Final). sha256:6db8d4e78e42d22314b8f0242a4a2e9c798339efb84a4c6858a13228d3d6ec93
 2. SPEC-v4.0-FINAL.md: execution semantics: input isolation, budget, objective and task lifecycle, rubric, evidence, completion audit (v4.0 Final, current stable). sha256:aa4ce8430f1891c0d326626616d548842c7fd90f6521c993f05b425c51337029
-3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:d9e346e8d5ddd0f5a2a9ab9adcace810fbb5e598be3f06fdfd0c4adb527d659b
+3. SPEC-v5.0.md: judgment layer: four axioms, the eleven-dimension vector, the decision modes and reference function, the entity registry and GENE correction (v5.0, released as 5.0.0). sha256:155e1971d067f4924dfc60a06479ae4775047eea43594da9e88319951fb77958
 
 Left out of this bundle, and kept in the full text at https://ilang.ai/runtime/full :
 - SPEC.md: 10. Examples; 11. Version History
@@ -47,7 +47,7 @@ This v3.0 document supersedes all earlier communication-format versions (v2.0 Sp
 
 ## 1. What iLang Is
 
-iLang is a structured communication protocol between humans and AI. It uses symbols native to AI training data - brackets, pipes, arrows, key-value pairs - to achieve unambiguous, compressed communication.
+iLang is a structured communication protocol between humans and AI. It uses symbols native to AI training data - brackets, pipes, arrows, key-value pairs - to achieve unambiguous communication.
 
 iLang is not a programming language. It has no compiler, no runtime, no type checker. Its parser is the LLM itself. If you are an AI reading this, you already understand the syntax. This document standardizes what you already know.
 
@@ -365,7 +365,7 @@ External entities require authentication. Auth is handled by the runtime, not by
 Any `@UPPERCASE_NAME` is a valid entity. Implementations define their own entity registries.
 
 Registration, resolution order, and the `E200` / `E201` / `E202` error semantics are specified in
-[SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) §2, which also tables the eight
+[SPEC-v5.0.md](SPEC-v5.0.md) Part III §2, which also tables the eight
 authority-bearing role entities that v4.0 introduces in normative text.
 
 ---
@@ -375,9 +375,9 @@ authority-bearing role entities that v4.0 introduces in normative text.
 Each subsection below gives the canonical form of one declaration. The grammar shared
 by all of them — the three block shapes, the eight body line forms, termination and
 indentation rules, encoding, and the reserved body keys — is specified in
-[SPEC-v5.0-PATCH-2.md](archive/SPEC-v5.0-PATCH-2.md) §1. The canonical registry of all 32
-structural declarations — this layer's 14, v4.0's 8, v5.0's 9, and the
-amendment-registered `::LIST` — is PATCH-2 §1.5.
+[SPEC-v5.0.md](SPEC-v5.0.md) Part III §1. The canonical registry of all
+structural declarations — this layer's, v4.0's, v5.0's, and those registered by
+amendment — is Part III §1.5 of that document.
 
 ### 6.1 Identity and State
 
@@ -1037,8 +1037,8 @@ The text is frozen in its semantics; this amendment changes wording only, where 
 ```
 ::ILANG::v5.0::SPEC
 [TYPE:protocol_specification]
-[VERSION:5.0.18]
-[DATE:2026-11-19]
+[VERSION:5.0.19]
+[DATE:2026-11-26]
 [STATUS:released]
 [OPEN_COUNTEREXAMPLES:CX-006=WEIGHTS-VECTOR-1_did_not_beat_the_plain_mean_of_the_vectors|CX-007=f_v5_agreed_with_the_accepted_decision_on_65_of_173_controls_in_round_2_and_211_of_the_218_disagreements_were_decided_at_the_STEP-4_S_bands|CX-008=on_two_events_none_of_the_eight_modes_fitted_and_the_operator_wanted_the_answer_I_do_not_know|CX-009=a_gate_decided_before_any_judgment_refused_a_user_in_a_survival_state_and_STEP-1_reads_only_the_agent's_action|register=Appendix_F|state=unresolved_and_public]
 [MATURITY:architecture_complete|mathematically_grounded|trainable|empirically_tested:T1_f_v5_agreement=0.0828(n=157,95%CI=0.049-0.1365,five_class=0.3822,truth=operator_confirmed_17_of_157_rest_model_consensus);T1_round2_f_v5_agreement=0.1029(n=243,95%CI=0.0707-0.1475,five_class=0.4156,truth=operator_9_delegated_12_rest_model_consensus);T2_weighted_vs_plain=not_better(MAE_0.1027_vs_0.1043,best_single_0.0989,n=37)]
@@ -1098,9 +1098,12 @@ The text is frozen in its semantics; this amendment changes wording only, where 
     unknown dimension (VECTOR EXTRACTION)                         ⇒ that dimension = 0.50, cer = 0.29 ⇒ STEP-2 ⇒ M5
     record of collaboration in a domain (ARCHITECTURE Layer C)    ⇒ rel = trust lower bound (Appendix G, TRUST-WILSON-1)
     loop on a target and the rebuilt option set is exhausted (LOOP)  ⇒ aut = 0.29                      ⇒ STEP-3 ⇒ M6
+    matched ::BOUNDARY (Part III §1.7)                            ⇒ sov = 0.14                      ⇒ STEP-1 ⇒ M8
+    two rules require opposite actions at equal weight (Axiom 1)  ⇒ aut = 0.29                      ⇒ STEP-3 ⇒ M6
 
   [ORDER] When several rows hold, the f_v5 cascade decides: survival, then epistemic, then authority.
   NOTE The unknown-dimension row sets 0.50 because nothing was perceived (Appendix G, CONST-MAXENT). The trust row replaces perception for rel because a record is a standard and a standard is scored directly (MODULE::MEASUREMENT).
+  NOTE The ::BOUNDARY row is the channel through which Part III §1.7 gives a matched boundary the M8 of the survival gates: sov is set below its gate and STEP-1 returns M8 whatever the score would be. By LOWER_ONLY a perceived sov below 0.14 stands (Appendix D, B01). The equal-weight row is the one Axiom 1 USE cites.
 
   [LOOP] (5.0.13)
   DEFINE loop(a, chain) = the last three actions of the chain are of one class with a AND none of them shrank the error surface.
@@ -1127,7 +1130,7 @@ The text is frozen in its semantics; this amendment changes wording only, where 
   [STATUS] A rule for the makers of iLang's own products, not a rule of this judgment model: f_v5 does not read it and Axiom 1 does not weight it. It is MODULE::SOURCE applied to those makers: the protocol's own products are written in the protocol.
   [SCOPE] The skills, engineering books and course templates that iLang itself publishes, from release 5.0.0 on. A product published before is brought under this module when it is next updated.
   [PRODUCT-1] Written in iLang. The declarations, the task description and the acceptance items of a product are written in iLang. Natural language is not the main language of a product; it stands in values, as Part III §1.3 allows.
-  [PRODUCT-2] Shipped with its IML form. A product ships its iLang source together with the same document compiled to IML, the machine layer of iLang, with the reference codec of IML (github.com/ilang-ai/iml-protocol). The iLang source is for people and models to read; the IML form is for programs to consume. The IML version is the current stable one, 0.5, and follows IML when it releases the next.
+  [PRODUCT-2] Shipped with its IML form. A product ships its iLang source together with the same document compiled to IML, the machine layer of iLang, with the reference codec of IML (github.com/ilang-ai/iml-protocol). The iLang source is for people and models to read; the IML form is for programs to consume. The IML version is the current stable one and follows IML when it releases the next.
   [PRODUCT-3] Acceptance by code. The acceptance items of a product are ::RUBRIC declarations, each with a check of one of the kinds that goal-check defines (ilang-conformance release 2.2.0, goal/, DOI 10.5281/zenodo.23006027). An item that carries no executable check is written check:human and waits for a person. The one who did the work does not confirm its own items: under SPEC-v4.0-FINAL §4 an agent writes proposals only.
   [PRODUCT-4] A score at the end. When a product has finished its task it ends with one line that gives the action score S of Part II §3 STEP-4, computed from the vector the model perceived of what it did, to two decimals. The line carries the score only. The full ::JUDGE{v5.0} block (Part II §4), with the vector, the mode f_v5 computes from it (MODULE::ROUTING) and the reason, is written when the user asks for it. The score does not show the gates of STEP-1 to STEP-3; the mode in the full block does. The product does not ask the model to keep writing iLang in later sessions; continuing is the user's choice, made by loading the runtime or the loader (Axiom 4).
   [PURPOSE] A model that runs the product reads the protocol it is written in, and sees the judgment layer applied to the task it has just done.
@@ -1205,7 +1208,7 @@ The text is frozen in its semantics; this amendment changes wording only, where 
   DEFINE absorbable(a) = ∀p ∈ P(a): worst_case(a,p) ≤ budget(p).
   DEFINE irreversible(a) = reversibility(a) < 0.20, the rev value of f_v5 STEP-1.
   IF reversibility(a) < 0.20 (the rev value of f_v5 STEP-1):
-    IF absorbable(a) = TRUE → EXECUTE_BOLDLY
+    IF absorbable(a) = TRUE → this branch sets no dimension and names no mode: the mode is f_v5 of the vector as it stands (the PRE text wrote EXECUTE_BOLDLY here; Part II §2 maps the PRE names)
     IF absorbable(a) = FALSE:
       IF ∃ alternative a' WHERE absorbable(a') = TRUE → RETREAT from a
       IF ∀ actions in set: absorbable = FALSE → choose argmin marginal_deterioration(a), executed per MODULE::TRAGIC_CHOICE: code ranks, the principal chooses
@@ -1612,7 +1615,7 @@ Cascade (strict order; first hit wins; encodes the conflict total order
 SURVIVAL > EPISTEMIC > AUTHORITY > SCORE > DEFAULT):
 
 STEP-0 default:
-  [PARSE:@JUDGE]→fail ⇒ M5
+  [PARS:@JUDGE]→fail ⇒ M5
 
 STEP-1 survival boundaries ⇒ M8:
   sov < 0.15 ⇒ M8
@@ -1874,7 +1877,7 @@ T:L2=enforce_entity_resolution_order+E200/E201_distinction
 T:L2=reject_E300_body_lines_in_non_prose_declarations
 T:L3=no_additional_requirement|PATCH-2_adds_no_grading_surface
 T:validator_coverage=grammar_and_registry_are_checkable_without_model_inference
-T:grammar_validator_ships_in_repo|ilang_grammar_validator.py|canon_gate:AUTHORS+PRE+PATCHes+SPEC+FINAL+README
+T:grammar_validator_ships_in_repo|ilang_grammar_validator.py|canon_gate:AUTHORS+SPEC+FINAL+v4.1+v4.2+v5.0+README
 
 ::CLAUSE{BACKWARD-COMPAT|conf:confirmed|scope:v5}
 T:every_example_in_v3.0_§10_parses_unchanged_under_this_grammar
@@ -1960,9 +1963,9 @@ The gap: a lightweight, protocol-level mechanism that corrects agent behavior ac
   G = base model (invariant across instances)
   B = SOUL/GENE declarations (mutated by this mechanism)
   E(t) = current session context
-  ∫S(τ)dτ = accumulated experience across all prior sessions (persisted GENEs)
+  ∫S(τ)dτ = accumulated history of the current session (SPEC.md §8)
 
-  The correction cycle modifies B and extends the integral of S.
+  The correction cycle modifies B. Of the four terms only B carries over to the next session (SPEC.md §8).
   G is never touched. This is the key constraint.
 }
 
